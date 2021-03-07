@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WPF.Test.Resources">
+    
+    <!--#region  Core Colors-->
+    <SolidColorBrush x:Key="scb_common" Color="White"/>
+    <SolidColorBrush x:Key="scb_core" Color="#FFA84B08"/>
+
+    <SolidColorBrush x:Key="scb_background1" Color="#FF26283A"/>
+    <SolidColorBrush x:Key="scb_background2" Color="#FF151721"/>
+    <SolidColorBrush x:Key="scb_highlight" Color="#FF63EA45"/>
+    <SolidColorBrush x:Key="button_hover" Color="#FF1F98D2"/>
+
+    <SolidColorBrush x:Key="scb_header" Color="White"/>
+    <SolidColorBrush x:Key="scb_title" Color="White"/>
+    <SolidColorBrush x:Key="scb_subtitle" Color="White"/>
+    <SolidColorBrush x:Key="scb_content" Color="White"/>
+    <SolidColorBrush x:Key="scb_content_inactive" Color="#FF4E4F53"/>
+    <SolidColorBrush x:Key="scb_placeholder" Color="#FFC5C5C5"/>
+    <!--#endregion-->
+</ResourceDictionary>

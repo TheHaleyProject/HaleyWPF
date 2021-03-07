@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="DevelopmentWPF.Controls.ctrl03"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:haley="clr-namespace:Haley.Models;assembly=Haley.MVVM"
+             xmlns:local="clr-namespace:DevelopmentWPF.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" haley:HaleyAP.ResolveMode="AsRegistered" haley:HaleyAP.InjectVM="False">
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{Binding NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
+        <CheckBox Content="{Binding content}"  IsChecked="{Binding ischecked}"/>
+    </Grid>
+</UserControl>
