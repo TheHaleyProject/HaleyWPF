@@ -1,22 +1,11 @@
-﻿using Haley.Abstractions;
-using Haley.Enums;
-using Haley.Events;
-using Haley.Models;
-using Haley.MVVM;
-using Haley.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Haley.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Haley.WPF;
 using Haley.WPF.BaseControls;
 
 namespace WPF.Test
 {
-    public class MainVM :ChangeNotifier
+    public class MainVM : ChangeNotifier
     {
 
         void _login(PlainPasswordBox obj)
@@ -55,7 +44,7 @@ namespace WPF.Test
         }
 
 
-        public MainVM() 
+        public MainVM()
         {
             ObservableCollection<Person> hello = new ObservableCollection<Person>();
             hello.Add(new Person("Senguttuvan", 32));
@@ -71,7 +60,7 @@ namespace WPF.Test
         }
     }
 
-    public class Person :ChangeNotifier
+    public class Person : ChangeNotifier
     {
         private string _Name;
         public string Name

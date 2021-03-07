@@ -1,21 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using Haley.Models;
 using Haley.Utils;
-using Haley.Models;
-using Haley.Enums;
-using System.Windows.Threading;
+using System.Windows;
 
 namespace WPF.Test
 {
@@ -37,7 +22,7 @@ namespace WPF.Test
 
         private void PlainButton_Click(object sender, RoutedEventArgs e)
         {
-            int _red = string.IsNullOrEmpty(redValue.Text) ?  0 : int.Parse(redValue.Text);
+            int _red = string.IsNullOrEmpty(redValue.Text) ? 0 : int.Parse(redValue.Text);
             int _green = string.IsNullOrEmpty(greenValue.Text) ? 0 : int.Parse(greenValue.Text);
             int _blue = string.IsNullOrEmpty(blueValue.Text) ? 0 : int.Parse(blueValue.Text);
 
@@ -53,7 +38,7 @@ namespace WPF.Test
         {
             /*_changeTheme();*/ //DIRECTLY CHANGE.
             GlobalData.Singleton.current_theme = _getTheme();
-        //Old theme will be set by themeloader.
+            //Old theme will be set by themeloader.
         }
 
         private Theme _getTheme()

@@ -1,18 +1,8 @@
-﻿using Haley.Abstractions;
-using Haley.Enums;
-using Haley.Events;
-using Haley.Models;
-using Haley.MVVM;
-using Haley.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Haley.Models;
 
 namespace WPF.Test
 {
-    public class GlobalData :ChangeNotifier
+    public class GlobalData : ChangeNotifier
     {
         private Theme _current_theme;
         public Theme current_theme

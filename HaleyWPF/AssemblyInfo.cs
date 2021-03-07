@@ -45,3 +45,4 @@ using System.Windows.Markup;
 [assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.WPF")]
 [assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Enums")]
 [assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Events")]
+[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.Models")]
