@@ -1,0 +1,32 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.BaseControls">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <ControlTemplate x:Key="internal_separator_vertical" TargetType="{x:Type bc:Separator}">
+        <StackPanel Orientation="Horizontal">
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}" Margin="0" Width="{Binding Path=Size, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </StackPanel>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="internal_separator_horizontal" TargetType="{x:Type bc:Separator}">
+        <StackPanel>
+            <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"  Margin="0" Height="{Binding Path=Size, RelativeSource={RelativeSource TemplatedParent}}"/>
+        </StackPanel>
+    </ControlTemplate>
+    
+    <Style TargetType="{x:Type bc:Separator}">
+        <Setter Property="Background" Value="{StaticResource defBorderBrush}"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Template" Value="{StaticResource internal_separator_horizontal}"/>
+        <Style.Triggers>
+                <Trigger Property="Orientation" Value="Vertical">
+                    <Setter Property="Template" Value="{StaticResource internal_separator_vertical}"/>
+                </Trigger>
+            </Style.Triggers>
+    </Style>
+</ResourceDictionary>

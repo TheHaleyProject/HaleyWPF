@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:utils="clr-namespace:Haley.Utils">
+    
+    <!--  Colors -->
+    <SolidColorBrush x:Key="defBackground" Color="#FFE0E0E0"/>
+    <SolidColorBrush x:Key="defBorderBrush" Color="#FF393939"/>
+    <SolidColorBrush x:Key="defContent" Color="#FF505050"/>
+    <SolidColorBrush x:Key="defLink" Color="#FF3466AA"/>
+    <SolidColorBrush x:Key="defLinkHover" Color="IndianRed"/>
+    <SolidColorBrush x:Key="defOn" Color="#FF75B075"/>
+    <SolidColorBrush x:Key="defOff" Color="#FFB07575"/> 
+    <SolidColorBrush x:Key="defHoverBackground" Color="#7ea0d6"/>
+    <SolidColorBrush x:Key="defShadow" Color="#FF56B2F3"/>
+    
+    
+</ResourceDictionary>

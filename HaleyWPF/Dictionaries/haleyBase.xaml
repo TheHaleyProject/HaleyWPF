@@ -1,0 +1,24 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
+
+        <!--Order: Theme, Defaults, Icons, Converters and then followed by base styles.-->
+        
+        <!--#region Primary-->
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeNormal.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyIcons.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyWPFConverters.xaml"/>
+        <!--#endregion-->
+     
+        <!--#region Base Styles-->
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
+        <!--#endregion-->
+   
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

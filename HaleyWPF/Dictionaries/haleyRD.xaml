@@ -1,0 +1,17 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--Users will get both haley base styles and also theme extra (in case they need to change something)-->
+    <ResourceDictionary.MergedDictionaries>
+        <!--#region Base-->
+        <ResourceDictionary Source="haleyBase.xaml"/>
+        <!--#endregion-->
+        
+        <!--#region Theme Extra (For use as static resource)-->
+        <ResourceDictionary Source="haleyThemeExtra.xaml"/>
+        <!--#endregion-->
+   
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

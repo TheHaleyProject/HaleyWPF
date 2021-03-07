@@ -1,0 +1,26 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <ResourceDictionary.MergedDictionaries>
+
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainTextBoxRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainPasswordBoxRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/SeparatorRD.xaml"/>
+        
+        <!--#region BUTTONS-->
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/LinkedTextRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainButtonRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ImageButtonRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ImageComboButtonRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ToggleButtonRD.xaml"/>
+        <!--#endregion-->
+        
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainExpanderRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PaginationRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainListViewRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/CollectionSelectorRD.xaml"/>
+        
+    </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

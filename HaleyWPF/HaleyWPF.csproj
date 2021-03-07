@@ -1,0 +1,424 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+	<PropertyGroup>
+		<TargetFrameworks>net461;netcoreapp3.1</TargetFrameworks>
+		<UseWPF>true</UseWPF>
+		<AssemblyName>Haley.WPF</AssemblyName>
+		<RootNamespace>Haley.WPF</RootNamespace>
+		<Version>2.0.6</Version>
+		<Authors>Lingam</Authors>
+		<Product>Haley WPF Core</Product>
+		<Company>TheHaleyProject</Company>
+		<Description>A simple WPF library with useful controls.</Description>
+		<PackageTags>WPF Haley CustomControls UILibrary</PackageTags>
+		<RepositoryUrl>https://github.com/rmsmech/HaleyWPF</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Copyright>Haley @ 2020</Copyright>
+		<PackageReleaseNotes>Added multiple controls</PackageReleaseNotes>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<AssemblyVersion>2.0.6</AssemblyVersion>
+		<FileVersion>2.0.6</FileVersion>
+		<PackageIcon>Haley.png</PackageIcon>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+	
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <Compile Remove="BaseControls\PropertyGrid\**" />
+    <EmbeddedResource Remove="BaseControls\PropertyGrid\**" />
+    <None Remove="BaseControls\PropertyGrid\**" />
+    <Page Remove="BaseControls\PropertyGrid\**" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <None Include="..\Haley.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\arrow.png" />
+    <Resource Include="Images\arrow_down_circle.png" />
+    <Resource Include="Images\arrow_down_circle_large.png" />
+    <Resource Include="Images\arrow_down_circle_medium.png" />
+    <Resource Include="Images\arrow_down_rounded.png" />
+    <Resource Include="Images\arrow_down_rounded_large.png" />
+    <Resource Include="Images\arrow_down_rounded_medium.png" />
+    <Resource Include="Images\arrow_down_sharp.png" />
+    <Resource Include="Images\arrow_down_sharp_large.png" />
+    <Resource Include="Images\arrow_down_sharp_medium.png" />
+    <Resource Include="Images\arrow_down_square.png" />
+    <Resource Include="Images\arrow_down_square_large.png" />
+    <Resource Include="Images\arrow_down_square_medium.png" />
+    <Resource Include="Images\arrow_large.png" />
+    <Resource Include="Images\arrow_line.png" />
+    <Resource Include="Images\arrow_line_large.png" />
+    <Resource Include="Images\arrow_line_medium.png" />
+    <Resource Include="Images\arrow_medium.png" />
+    <Resource Include="Images\camera.png" />
+    <Resource Include="Images\camera_flat.png" />
+    <Resource Include="Images\camera_flat_2.png" />
+    <Resource Include="Images\camera_flat_2_large.png" />
+    <Resource Include="Images\camera_flat_2_medium.png" />
+    <Resource Include="Images\camera_flat_large.png" />
+    <Resource Include="Images\camera_flat_medium.png" />
+    <Resource Include="Images\camera_large.png" />
+    <Resource Include="Images\camera_medium.png" />
+    <Resource Include="Images\chat_double.png" />
+    <Resource Include="Images\chat_double_large.png" />
+    <Resource Include="Images\chat_double_medium.png" />
+    <Resource Include="Images\chat_single.png" />
+    <Resource Include="Images\chat_single_large.png" />
+    <Resource Include="Images\chat_single_medium.png" />
+    <Resource Include="Images\clock.png" />
+    <Resource Include="Images\clock_large.png" />
+    <Resource Include="Images\clock_medium.png" />
+    <Resource Include="Images\collapse.png" />
+    <Resource Include="Images\collapse_large.png" />
+    <Resource Include="Images\collapse_medium.png" />
+    <Resource Include="Images\Common.png" />
+    <Resource Include="Images\Common_large.png" />
+    <Resource Include="Images\Common_medium.png" />
+    <Resource Include="Images\copy.png" />
+    <Resource Include="Images\copy_large.png" />
+    <Resource Include="Images\copy_medium.png" />
+    <Resource Include="Images\database.png" />
+    <Resource Include="Images\database_large.png" />
+    <Resource Include="Images\database_medium.png" />
+    <Resource Include="Images\delete.png" />
+    <Resource Include="Images\delete_large.png" />
+    <Resource Include="Images\delete_medium.png" />
+    <Resource Include="Images\diamond.png" />
+    <Resource Include="Images\diamond_large.png" />
+    <Resource Include="Images\diamond_medium.png" />
+    <Resource Include="Images\dustbin.png" />
+    <Resource Include="Images\dustbin_large.png" />
+    <Resource Include="Images\dustbin_medium.png" />
+    <Resource Include="Images\empty_image.png" />
+    <Resource Include="Images\empty_image_large.png" />
+    <Resource Include="Images\empty_image_medium.png" />
+    <Resource Include="Images\expand.png" />
+    <Resource Include="Images\expand_large.png" />
+    <Resource Include="Images\expand_medium.png" />
+    <Resource Include="Images\eye.png" />
+    <Resource Include="Images\eye_large.png" />
+    <Resource Include="Images\eye_medium.png" />
+    <Resource Include="Images\favourite.png" />
+    <Resource Include="Images\favourite_large.png" />
+    <Resource Include="Images\favourite_medium.png" />
+    <Resource Include="Images\female.png" />
+    <Resource Include="Images\female_large.png" />
+    <Resource Include="Images\female_medium.png" />
+    <Resource Include="Images\female_symbol.png" />
+    <Resource Include="Images\female_symbol_large.png" />
+    <Resource Include="Images\female_symbol_medium.png" />
+    <Resource Include="Images\filter.png" />
+    <Resource Include="Images\filter_large.png" />
+    <Resource Include="Images\filter_medium.png" />
+    <Resource Include="Images\folder.png" />
+    <Resource Include="Images\folder_large.png" />
+    <Resource Include="Images\folder_medium.png" />
+    <Resource Include="Images\heart_line.png" />
+    <Resource Include="Images\heart_line_large.png" />
+    <Resource Include="Images\heart_line_medium.png" />
+    <Resource Include="Images\heart_plain.png" />
+    <Resource Include="Images\heart_plain_large.png" />
+    <Resource Include="Images\heart_plain_medium.png" />
+    <Resource Include="Images\heart_shiny.png" />
+    <Resource Include="Images\heart_shiny_large.png" />
+    <Resource Include="Images\heart_shiny_medium.png" />
+    <Resource Include="Images\info_circle.png" />
+    <Resource Include="Images\info_circle_large.png" />
+    <Resource Include="Images\info_circle_medium.png" />
+    <Resource Include="Images\location_big.png" />
+    <Resource Include="Images\location_big_large.png" />
+    <Resource Include="Images\location_big_medium.png" />
+    <Resource Include="Images\location_plain.png" />
+    <Resource Include="Images\location_plain_large.png" />
+    <Resource Include="Images\location_plain_medium.png" />
+    <Resource Include="Images\mail.png" />
+    <Resource Include="Images\mail_large.png" />
+    <Resource Include="Images\mail_medium.png" />
+    <Resource Include="Images\male.png" />
+    <Resource Include="Images\male_large.png" />
+    <Resource Include="Images\male_medium.png" />
+    <Resource Include="Images\male_symbol.png" />
+    <Resource Include="Images\male_symbol_large.png" />
+    <Resource Include="Images\male_symbol_medium.png" />
+    <Resource Include="Images\maximize.png" />
+    <Resource Include="Images\maximize_large.png" />
+    <Resource Include="Images\maximize_medium.png" />
+    <Resource Include="Images\microphone.png" />
+    <Resource Include="Images\microphone_large.png" />
+    <Resource Include="Images\microphone_medium.png" />
+    <Resource Include="Images\minus.png" />
+    <Resource Include="Images\minus_large.png" />
+    <Resource Include="Images\minus_medium.png" />
+    <Resource Include="Images\mobile_phone.png" />
+    <Resource Include="Images\mobile_phone_large.png" />
+    <Resource Include="Images\mobile_phone_medium.png" />
+    <Resource Include="Images\monitor_circle.png" />
+    <Resource Include="Images\monitor_circle_large.png" />
+    <Resource Include="Images\monitor_circle_medium.png" />
+    <Resource Include="Images\monitor_keyboard.png" />
+    <Resource Include="Images\monitor_keyboard_large.png" />
+    <Resource Include="Images\monitor_keyboard_medium.png" />
+    <Resource Include="Images\monitor_plain.png" />
+    <Resource Include="Images\monitor_plain_large.png" />
+    <Resource Include="Images\monitor_plain_medium.png" />
+    <Resource Include="Images\music.png" />
+    <Resource Include="Images\music_cd.png" />
+    <Resource Include="Images\music_cd_large.png" />
+    <Resource Include="Images\music_cd_medium.png" />
+    <Resource Include="Images\music_large.png" />
+    <Resource Include="Images\music_medium.png" />
+    <Resource Include="Images\music_square.png" />
+    <Resource Include="Images\music_square_large.png" />
+    <Resource Include="Images\music_square_medium.png" />
+    <Resource Include="Images\new_file.png" />
+    <Resource Include="Images\new_file_large.png" />
+    <Resource Include="Images\new_file_medium.png" />
+    <Resource Include="Images\phone_circle.png" />
+    <Resource Include="Images\phone_circle_large.png" />
+    <Resource Include="Images\phone_circle_medium.png" />
+    <Resource Include="Images\phone_directory.png" />
+    <Resource Include="Images\phone_directory_large.png" />
+    <Resource Include="Images\phone_directory_medium.png" />
+    <Resource Include="Images\phone_plain.png" />
+    <Resource Include="Images\phone_plain_large.png" />
+    <Resource Include="Images\phone_plain_medium.png" />
+    <Resource Include="Images\play.png" />
+    <Resource Include="Images\play_large.png" />
+    <Resource Include="Images\play_medium.png" />
+    <Resource Include="Images\plus.png" />
+    <Resource Include="Images\plus_large.png" />
+    <Resource Include="Images\plus_medium.png" />
+    <Resource Include="Images\print.png" />
+    <Resource Include="Images\print_large.png" />
+    <Resource Include="Images\print_medium.png" />
+    <Resource Include="Images\refresh.png" />
+    <Resource Include="Images\refresh_large.png" />
+    <Resource Include="Images\refresh_medium.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\save_large.png" />
+    <Resource Include="Images\save_medium.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\search_large.png" />
+    <Resource Include="Images\search_medium.png" />
+    <Resource Include="Images\send.png" />
+    <Resource Include="Images\send_large.png" />
+    <Resource Include="Images\send_medium.png" />
+    <Resource Include="Images\settings_double_spanner.png" />
+    <Resource Include="Images\settings_double_spanner_large.png" />
+    <Resource Include="Images\settings_double_spanner_medium.png" />
+    <Resource Include="Images\settings_knobs.png" />
+    <Resource Include="Images\settings_knobs_large.png" />
+    <Resource Include="Images\settings_knobs_medium.png" />
+    <Resource Include="Images\settings_plain.png" />
+    <Resource Include="Images\settings_plain_large.png" />
+    <Resource Include="Images\settings_plain_medium.png" />
+    <Resource Include="Images\settings_simple.png" />
+    <Resource Include="Images\settings_simple_large.png" />
+    <Resource Include="Images\settings_simple_medium.png" />
+    <Resource Include="Images\settings_small_spanner.png" />
+    <Resource Include="Images\settings_small_spanner_large.png" />
+    <Resource Include="Images\settings_small_spanner_medium.png" />
+    <Resource Include="Images\star_blend.png" />
+    <Resource Include="Images\star_blend_large.png" />
+    <Resource Include="Images\star_blend_medium.png" />
+    <Resource Include="Images\star_sharp.png" />
+    <Resource Include="Images\star_sharp_large.png" />
+    <Resource Include="Images\star_sharp_medium.png" />
+    <Resource Include="Images\stop.png" />
+    <Resource Include="Images\stop_large.png" />
+    <Resource Include="Images\stop_medium.png" />
+    <Resource Include="Images\timer.png" />
+    <Resource Include="Images\timer_large.png" />
+    <Resource Include="Images\timer_medium.png" />
+    <Resource Include="Images\unknown_file.png" />
+    <Resource Include="Images\unknown_file_large.png" />
+    <Resource Include="Images\unknown_file_medium.png" />
+    <Resource Include="Images\video.png" />
+    <Resource Include="Images\video_camera.png" />
+    <Resource Include="Images\video_camera_large.png" />
+    <Resource Include="Images\video_camera_medium.png" />
+    <Resource Include="Images\video_large.png" />
+    <Resource Include="Images\video_medium.png" />
+    <Resource Include="Images\warning_circle.png" />
+    <Resource Include="Images\warning_circle_large.png" />
+    <Resource Include="Images\warning_circle_medium.png" />
+    <Resource Include="Images\warning_triangle.png" />
+    <Resource Include="Images\warning_triangle_large.png" />
+    <Resource Include="Images\warning_triangle_medium.png" />
+    <Resource Include="Images\wrong.png" />
+    <Resource Include="Images\wrong_large.png" />
+    <Resource Include="Images\wrong_medium.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GroupControls\Docker\" />
+    <Folder Include="GroupControls\RibbonManager\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Dictionaries\Base\BorderStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\Base\ListViewStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\Common\ToggleButtonCommon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyDefaults.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyIcons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyThemeExtra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyWPFConverters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeExtra\ToggleButtonSD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\CollectionSelectorRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\ImageButtonRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\ImageComboButtonRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\LinkedTextRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PaginationRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainButtonRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainExpanderRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainListViewRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainPasswordBoxRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainTextBoxRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\SeparatorRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\ToggleButtonRD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeNormal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+<Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
+<Choose>
+    <When Condition="Exists($(HaleyExtensions))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyExtensions)\HaleyExtensions.csproj">
+          <Name>HaleyExtensions</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.Extensions" Version="2.0.1" />
+	 </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+<Choose>
+    <When Condition="Exists($(HaleyHelpers))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyHelpers)\HaleyHelpers.csproj">
+          <Name>HaleyExtensions</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.Helpers" Version="2.0.0" />
+	 </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+<Choose>
+    <When Condition="Exists($(HaleyMVVM))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyMVVM)\HaleyMVVM.csproj">
+          <Name>HaleyExtensions</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.MVVM" Version="4.0.1" />
+	 </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+</Project>

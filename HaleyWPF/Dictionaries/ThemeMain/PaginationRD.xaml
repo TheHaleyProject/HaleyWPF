@@ -1,0 +1,211 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
+    xmlns:hly="http://schemas.hpod9.com/haley/mvvm"
+    xmlns:utils="clr-namespace:Haley.Utils">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="internal_paginationTextBlock" TargetType="{x:Type bc:PlainTextBox}">
+        <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="BorderBrush" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="hly:InputAP.Constraint" Value="Integer"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="internal_paginationImageButton" TargetType="{x:Type bc:ImageButton}">
+        <Setter Property="DefaultImage" Value="{StaticResource arrow_down_rounded}"/>
+        <Setter Property="DefaultImageColor" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="HoverImageColor" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="Margin" Value="5,0"/>
+    </Style>
+
+    <!--When used inside a ItemTemplate/Datatemplate of a ListView or ItemsControl, the styles won't work. So, refer Relative source as AncestorType for making sure that proper parent is targeted-->
+    <Style x:Key="internal_pagination_plainbutton" TargetType="{x:Type bc:PlainButton}">
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+        <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+        <Setter Property="BorderBrush" Value="{Binding Path=Background, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+        <Setter Property="Margin" Value="3,0"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="{Binding Path=Height, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="HoverBorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+            </Trigger>
+            <DataTrigger Value="true">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource MultiBindingEqualityCheck}">
+                        <Binding Path="CurrentPage" RelativeSource="{RelativeSource AncestorType={x:Type bc:Pagination}}"/>
+                        <Binding Path="Content" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="internal_pagination_linkedtext" TargetType="{x:Type bc:LinkedText}">
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="TurnOffTextDecorations" Value="True"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="HoverForeground" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+    </Style>
+
+    <ControlTemplate x:Key="internal_pagination_extended" TargetType="{x:Type bc:Pagination}">
+        <Grid Height="{TemplateBinding Height}">
+
+            <!--ITEMS COUNT PER PAGE-->
+            <StackPanel x:Name="PART_Counter" Orientation="Horizontal">
+                <TextBlock Text="Items : " VerticalAlignment="Center"/>
+                <bc:PlainTextBox x:Name="counttbx" WaterMark="Count" Style="{StaticResource internal_paginationTextBlock}">
+                    <bc:PlainTextBox.InputBindings>
+                        <KeyBinding CommandParameter="{Binding ElementName=counttbx,Path=Text}" Command="{x:Static utils:AdditionalCommands.ChangeCount}" Key="Enter" />
+                    </bc:PlainTextBox.InputBindings>
+                </bc:PlainTextBox>
+            </StackPanel>
+
+            <!--MAIN PAGINATION CONTROLS-->
+            <StackPanel x:Name="PART_MainPanel" Orientation="Horizontal"  HorizontalAlignment="Right">
+
+                <!--NAVIGATE BACK-->
+                <bc:ImageButton  RenderTransformOrigin="0.5,0.5" Style="{StaticResource internal_paginationImageButton}" Command="{x:Static NavigationCommands.PreviousPage}">
+                    <bc:ImageButton.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="90"/>
+                        </TransformGroup>
+                    </bc:ImageButton.RenderTransform>
+                </bc:ImageButton>
+
+                <!--START PAGE-->
+                <bc:PlainButton Width="50" Content="1" Margin="5,0" Background="{TemplateBinding PrimaryColor}" Foreground="White" BorderThickness="0" Style="{StaticResource internal_pagination_plainbutton}" Command="{x:Static NavigationCommands.FirstPage}"/>
+
+                <!--MORE PAGE TURN OFF AT THE MOMENT. IDEALY THIS SHOULD CHANGE MOVE THE VISIBLE PAGES COUNT-->
+                <bc:PlainButton x:Name="PART_btn_more_left"  Content="..." Style="{StaticResource internal_pagination_plainbutton}" IsHitTestVisible="False"/>
+
+                <!--VISIBLE PAGES. SHOULD BE GENERATED BY A LIST VIEW. Expected itemsource is in integer-->
+                <ItemsControl x:Name="PART_direct_btns" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <bc:PlainButton Content="{Binding}" Style="{StaticResource internal_pagination_plainbutton}" CommandParameter="{Binding}" Command="{x:Static NavigationCommands.GoToPage}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+                <!--MORE PAGE TURN OFF AT THE MOMENT. IDEALY THIS SHOULD CHANGE MOVE THE VISIBLE PAGES COUNT-->
+                <bc:PlainButton x:Name="PART_btn_more_right"  Content="..." Style="{StaticResource internal_pagination_plainbutton}" IsHitTestVisible="False"/>
+
+                <!--LAST PAGE-->
+                <bc:PlainButton x:Name="PART_btn_last" Width="50" Content="{TemplateBinding TotalPages}" Margin="5,0" Background="{TemplateBinding PrimaryColor}" Foreground="White" BorderThickness="0" Style="{StaticResource internal_pagination_plainbutton}" Command="{x:Static NavigationCommands.LastPage}"/>
+
+                <!--NAVIGATE FORWARD-->
+                <bc:ImageButton Style="{StaticResource internal_paginationImageButton}" RenderTransformOrigin="0.5,0.5" Command="{x:Static NavigationCommands.NextPage}">
+                    <bc:ImageButton.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform Angle="-90"/>
+                        </TransformGroup>
+                    </bc:ImageButton.RenderTransform>
+                </bc:ImageButton>
+
+                <!--JUMP TO SPECIFIC PAGE-->
+                <bc:PlainTextBox x:Name="PART_btn_jump" WaterMark="Go To" Style="{StaticResource internal_paginationTextBlock}">
+                    <bc:PlainTextBox.InputBindings>
+                        <KeyBinding CommandParameter="{Binding ElementName=PART_btn_jump,Path=Text}" Command="{x:Static NavigationCommands.GoToPage}" Key="Enter" />
+                    </bc:PlainTextBox.InputBindings>
+                </bc:PlainTextBox>
+            </StackPanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+            <Trigger Property="HideCounter" Value="True">
+                <Setter TargetName="PART_Counter" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="internal_pagination_simple" TargetType="{x:Type bc:Pagination}">
+        <Grid Height="{TemplateBinding Height}">
+            <!--ITEMS COUNT PER PAGE-->
+            <StackPanel x:Name="PART_Counter" Orientation="Horizontal">
+                <TextBlock Text="Items : " VerticalAlignment="Center"/>
+                <bc:PlainTextBox x:Name="counttbx" WaterMark="Count" Style="{StaticResource internal_paginationTextBlock}">
+                    <bc:PlainTextBox.InputBindings>
+                        <KeyBinding CommandParameter="{Binding ElementName=counttbx,Path=Text}" Command="{x:Static utils:AdditionalCommands.ChangeCount}" Key="Enter" />
+                    </bc:PlainTextBox.InputBindings>
+                </bc:PlainTextBox>
+            </StackPanel>
+
+            <!--MAIN PAGINATION CONTROLS-->
+            <StackPanel x:Name="PART_MainPanel" Orientation="Horizontal"  HorizontalAlignment="Right">
+                
+                <TextBlock Text="Page  " VerticalAlignment="Center"/>
+                <!--CURRENT PAGE-->
+                <TextBlock Text="{Binding CurrentPage, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{TemplateBinding PrimaryColor}" FontSize="14" VerticalAlignment="Center"/>
+                <TextBlock Text="  of  " VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding TotalPages, RelativeSource={RelativeSource TemplatedParent}}" Foreground="{TemplateBinding PrimaryColor}" FontSize="14" VerticalAlignment="Center"/>
+
+                <!--JUMP TO SPECIFIC PAGE-->
+                <bc:PlainTextBox x:Name="PART_btn_jump" WaterMark="Go To" Style="{StaticResource internal_paginationTextBlock}" Margin="10,0">
+                    <bc:PlainTextBox.InputBindings>
+                        <KeyBinding CommandParameter="{Binding ElementName=PART_btn_jump,Path=Text}" Command="{x:Static NavigationCommands.GoToPage}" Key="Enter" />
+                    </bc:PlainTextBox.InputBindings>
+                </bc:PlainTextBox>
+                
+                <bc:Separator Size="1.5" Orientation="Vertical" Background="{StaticResource defContent}" Margin="5,0"/>
+                
+                <!--NAVIGATE BACK-->
+                <bc:LinkedText Text="Previous" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.PreviousPage}"/>
+                <!--NAVIGATE FORWARD-->
+                <bc:LinkedText Text="Next" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.NextPage}"/>
+
+                <bc:Separator Size="1.5" Orientation="Vertical" Background="{StaticResource defContent}" Margin="5,0"/>
+                <!--FIRST PAGE-->
+                <bc:LinkedText Text="First" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.FirstPage}" />
+                <!--LAST PAGE-->
+                <bc:LinkedText Text="Last" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.LastPage}" />
+
+            </StackPanel>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+            <Trigger Property="HideCounter" Value="True">
+                <Setter TargetName="PART_Counter" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <Style TargetType="{x:Type bc:Pagination}">
+        <Setter Property="Height" Value="{StaticResource defHeight}"/>
+        <Setter Property="Background" Value="CornflowerBlue"/>
+        <Setter Property="PrimaryColor" Value="IndianRed"/>
+        <Setter Property="Template" Value="{StaticResource internal_pagination_extended}"/>
+        <Style.Triggers>
+            <Trigger Property="Mode" Value="Simple">
+                <Setter Property="Template" Value="{StaticResource internal_pagination_simple}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

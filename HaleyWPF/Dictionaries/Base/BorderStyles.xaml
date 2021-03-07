@@ -1,0 +1,38 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+    <Style x:Key="BorderWithoutShadow" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush,RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="BorderThickness" Value="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius,RelativeSource={RelativeSource TemplatedParent}}"/>
+    </Style>
+    
+    <Style x:Key="BorderWithShadow" TargetType="{x:Type Border}" BasedOn="{StaticResource BorderWithoutShadow}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=ShadowOnlyOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="false">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect Color="{Binding Path=ShadowColor.Color,RelativeSource={RelativeSource TemplatedParent}}" BlurRadius="8" ShadowDepth="0">
+                        </DropShadowEffect>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"  Value="True" />
+                    <Condition Binding="{Binding Path=ShowShadow, RelativeSource={RelativeSource TemplatedParent}}" Value="True" />
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect Color="{Binding Path=ShadowColor.Color,RelativeSource={RelativeSource TemplatedParent}}" BlurRadius="8" ShadowDepth="0">
+                            </DropShadowEffect>
+                        </Setter.Value>
+                    </Setter>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
