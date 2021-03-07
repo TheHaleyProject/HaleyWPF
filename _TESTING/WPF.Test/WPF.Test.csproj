@@ -133,31 +133,86 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\_CORE_PROJECTS\HaleyEvents\HaleyEvents.csproj">
-      <Project>{6524cee1-4782-4361-8711-9444baf8bffb}</Project>
-      <Name>HaleyEvents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\_CORE_PROJECTS\HaleyExtensions\HaleyExtensions.csproj">
-      <Project>{ceeb0ddb-9c9c-44b9-8d62-72e36d646d89}</Project>
-      <Name>HaleyExtensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\_CORE_PROJECTS\HaleyHelpers\HaleyHelpers.csproj">
-      <Project>{d2ebcb6b-25ed-49a8-a243-f9f4376cf6a5}</Project>
-      <Name>HaleyHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\_CORE_PROJECTS\HaleyIOC\HaleyIOC.csproj">
-      <Project>{90c8aeef-ac11-4cc8-bd22-036ce3b8a2c1}</Project>
-      <Name>HaleyIOC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\_CORE_PROJECTS\HaleyMVVM\HaleyMVVM.csproj">
+	
+		<Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
+<Choose>
+    <When Condition="Exists($(HaleyExtensions))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyExtensions)\HaleyExtensions.csproj">
+			<Project>{ceeb0ddb-9c9c-44b9-8d62-72e36d646d89}</Project>
+          <Name>HaleyExtensions</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.Extensions" Version="2.0.1" />
+	 </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+<Choose>
+    <When Condition="Exists($(HaleyHelpers))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyHelpers)\HaleyHelpers.csproj">
+        <Project>{d2ebcb6b-25ed-49a8-a243-f9f4376cf6a5}</Project>
+          <Name>HaleyHelpers</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.Helpers" Version="2.0.0" />
+	 </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+<Choose>
+    <When Condition="Exists($(HaleyMVVM))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyMVVM)\HaleyMVVM.csproj">
       <Project>{bf38b439-322c-47c3-be24-22c6880ff797}</Project>
-      <Name>HaleyMVVM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\_CORE_PROJECTS\HaleyWPF\HaleyWPF.csproj">
+          <Name>HaleyMVVM</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.MVVM" Version="4.0.1" />
+	 </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+<Choose>
+    <When Condition="Exists($(HaleyWPF))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyWPF)\HaleyWPF.csproj">
       <Project>{28d1d0c8-2f7c-4f8c-b8f3-4324f35364e9}</Project>
-      <Name>HaleyWPF</Name>
-    </ProjectReference>
-  </ItemGroup>
+			
+          <Name>HaleyWPF</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.WPF" Version="2.0.6" />
+   </ItemGroup>
+    </Otherwise>
+</Choose>  
+
+<Choose>
+    <When Condition="Exists($(HaleyEvents))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyEvents)\HaleyEvents.csproj">
+          <Name>HaleyExtensions</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+     <ItemGroup>
+       <PackageReference Include="Haley.Events" Version="2.0.0" />
+   </ItemGroup>
+    </Otherwise>
+</Choose>  
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
