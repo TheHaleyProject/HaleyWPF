@@ -18,7 +18,7 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="8,0,0,0"/>
-        <Setter Property="Height" Value="{StaticResource defHeight}"/>
+        <Setter Property="Height" Value="Auto"/>
         <Setter Property="Margin" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
