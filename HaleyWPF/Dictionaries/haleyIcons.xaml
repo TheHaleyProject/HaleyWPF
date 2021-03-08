@@ -217,6 +217,11 @@
     <ImageSource x:Key="eye">pack://application:,,,/Haley.WPF;component/Images/eye.png</ImageSource>
     <ImageSource x:Key="eye_large">pack://application:,,,/Haley.WPF;component/Images/eye_large.png</ImageSource>
     <ImageSource x:Key="eye_medium">pack://application:,,,/Haley.WPF;component/Images/eye_medium.png</ImageSource>
-
+    <ImageSource x:Key="tick">pack://application:,,,/Haley.WPF;component/Images/tick.png</ImageSource>
+    <ImageSource x:Key="tick_large">pack://application:,,,/Haley.WPF;component/Images/tick_large.png</ImageSource>
+    <ImageSource x:Key="tick_medium">pack://application:,,,/Haley.WPF;component/Images/tick_medium.png</ImageSource>
+    <ImageSource x:Key="tick_sharp">pack://application:,,,/Haley.WPF;component/Images/tick_sharp.png</ImageSource>
+    <ImageSource x:Key="tick_sharp_large">pack://application:,,,/Haley.WPF;component/Images/tick_sharp_large.png</ImageSource>
+    <ImageSource x:Key="tick_sharp_medium">pack://application:,,,/Haley.WPF;component/Images/tick_sharp_medium.png</ImageSource>
 
 </ResourceDictionary>

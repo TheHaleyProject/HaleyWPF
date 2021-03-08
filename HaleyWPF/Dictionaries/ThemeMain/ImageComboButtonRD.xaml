@@ -32,9 +32,6 @@
                             <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=HoverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=PressedImage, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

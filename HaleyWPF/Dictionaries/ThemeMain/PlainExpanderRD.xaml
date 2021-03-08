@@ -116,7 +116,7 @@
                                 </Grid.ColumnDefinitions>
                             <!--HEADER ICON-->
                             <Viewbox x:Name="PART_IconHolder" Margin="4" >
-                                <bc:ImageButton x:Name="PART_Icon"  IsHitTestVisible="False" DefaultImage="{TemplateBinding Icon}" DefaultImageColor="{TemplateBinding IconDefColor}"/>
+                                    <bc:PlainImage x:Name="PART_Icon" DefaultImage="{TemplateBinding Icon}" DefaultImageColor="{TemplateBinding IconDefColor}" IsHitTestVisible="False"/>
                             </Viewbox>
                             
                             <!--HEADER TEXT-->
@@ -124,7 +124,7 @@
                             
                             <!--HEADER ARROW-->
                             <Viewbox x:Name="PART_ArrowHolder" Margin="4" Grid.Column="2">
-                                <bc:ImageButton x:Name="PART_Arrow"  IsHitTestVisible="False" DefaultImage="{TemplateBinding Arrow}" DefaultImageColor="{TemplateBinding ArrowDefColor}"/>
+                                <bc:PlainImage x:Name="PART_Arrow"  IsHitTestVisible="False" DefaultImage="{TemplateBinding Arrow}" DefaultImageColor="{TemplateBinding ArrowDefColor}"/>
                             </Viewbox>
                             </Grid>
                         </ToggleButton>

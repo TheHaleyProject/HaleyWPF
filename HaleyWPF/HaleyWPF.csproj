@@ -43,6 +43,15 @@
   </ItemGroup>
 	
   <ItemGroup>
+    <None Remove="Images\tick.png" />
+    <None Remove="Images\tick_large.png" />
+    <None Remove="Images\tick_medium.png" />
+    <None Remove="Images\tick_sharp.png" />
+    <None Remove="Images\tick_sharp_large.png" />
+    <None Remove="Images\tick_sharp_medium.png" />
+  </ItemGroup>
+	
+  <ItemGroup>
     <None Include="..\Haley.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -249,6 +258,12 @@
     <Resource Include="Images\stop.png" />
     <Resource Include="Images\stop_large.png" />
     <Resource Include="Images\stop_medium.png" />
+    <Resource Include="Images\tick.png" />
+    <Resource Include="Images\tick_large.png" />
+    <Resource Include="Images\tick_medium.png" />
+    <Resource Include="Images\tick_sharp.png" />
+    <Resource Include="Images\tick_sharp_large.png" />
+    <Resource Include="Images\tick_sharp_medium.png" />
     <Resource Include="Images\timer.png" />
     <Resource Include="Images\timer_large.png" />
     <Resource Include="Images\timer_medium.png" />
@@ -322,6 +337,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainImageRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionaries\ThemeMain\ImageButtonRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -357,6 +376,10 @@
     <Page Update="Dictionaries\ThemeMain\PlainTextBoxRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainCheckBoxRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\ThemeMain\SeparatorRD.xaml">
       <SubType>Designer</SubType>

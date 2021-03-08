@@ -7,9 +7,7 @@ namespace Haley.Abstractions
     {
         ImageSource DefaultImage { get; set; }
         ImageSource HoverImage { get; set; }
-        ImageSource PressedImage { get; set; }
         SolidColorBrush DefaultImageColor { get; set; }
         SolidColorBrush HoverImageColor { get; set; }
-        SolidColorBrush PressedImageColor { get; set; }
     }
 }

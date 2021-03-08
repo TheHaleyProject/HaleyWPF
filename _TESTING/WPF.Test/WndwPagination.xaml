@@ -17,10 +17,29 @@
                 <TextBlock Text="{Binding ElementName=pgMain,Path=CurrentPage}" FontSize="18" />
                 <TextBlock Text="{Binding ElementName=pgSimple,Path=CurrentPage}" FontSize="18" Margin="20,0"/>
             </WrapPanel>
-            <hly:PlainTextBox x:Name="username" Height="35" Width="180" CornerRadius="10" WaterMark="User Name" Margin="5" ShowShadow="True" ShadowColor="Red"/>
-            <hly:PlainPasswordBox x:Name="pwdbox" Height="35" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" ShowShadow="True" ShadowColor="Red"/>
-            <hly:PlainButton CommandParameter="{Binding ElementName=pwdbox}" Command="{Binding Cmd_Login}" Content="Button" Width="180"/>
-            <hly:ToggleButton  OffText="light"/>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <hly:PlainTextBox x:Name="username" Height="35" Width="180" CornerRadius="10" WaterMark="User Name" Margin="5" ShowShadow="True" ShadowColor="Red"/>
+                    <hly:PlainPasswordBox x:Name="pwdbox" Height="35" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" ShowShadow="True" ShadowColor="Red"/>
+                    <hly:PlainButton CommandParameter="{Binding ElementName=pwdbox}" Command="{Binding Cmd_Login}" Content="Button" Width="180"/>
+                    <hly:ToggleButton  OffText="light"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="White" Background="Green" TickBoxSize="5"/>
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="White" Background="Purple" TickBoxSize="16"/>
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="White" Background="Violet" TickBoxSize="25"/>
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="Black" Background="Yellow"/>
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="Black" Background="Yellow"/>
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="Black" Background="Yellow"/>
+                    
+                </StackPanel>
+            </Grid>
+           
             <!--<hly:PlainListView ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="400"  Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Hidden" CornerRadius="10" BorderThickness="0" BorderBrush="#33DE22D9" ItemHoverColor="#3301FFFF" ItemSelectedColor="#33DE22D9">
                 <hly:PlainListView.ItemsPanel>
                     <ItemsPanelTemplate>

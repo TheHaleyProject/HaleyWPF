@@ -11,8 +11,9 @@
     <SolidColorBrush x:Key="defLinkHover" Color="IndianRed"/>
     <SolidColorBrush x:Key="defOn" Color="#FF75B075"/>
     <SolidColorBrush x:Key="defOff" Color="#FFB07575"/> 
-    <SolidColorBrush x:Key="defHoverBackground" Color="#7ea0d6"/>
     <SolidColorBrush x:Key="defShadow" Color="#FF56B2F3"/>
-    
+    <SolidColorBrush x:Key="defHoverBackground" Color="#7ea0d6"/>
+    <SolidColorBrush x:Key="defHoverBorderBrush" Color="IndianRed"/>
+    <SolidColorBrush x:Key="defBackgroundSecondary" Color="#FF4797CF"/>
     
 </ResourceDictionary>
