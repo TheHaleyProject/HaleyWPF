@@ -190,7 +190,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="2.0.8" />
+        <PackageReference Include="Haley.WPF" Version="2.0.9" />
       </ItemGroup>
     </Otherwise>
   </Choose>

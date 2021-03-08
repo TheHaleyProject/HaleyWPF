@@ -30,10 +30,16 @@
                     <hly:ToggleButton  OffText="light"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type hly:PlainCheckBox}">
+                            <Setter Property="TickColor" Value="White"/>
+                            <Setter Property="Background" Value="#FF4D0BAD"/>
+                        </Style>
+                    </StackPanel.Resources>
                     <hly:PlainCheckBox HorizontalAlignment="Left" Content="Sheets" />
                     <hly:PlainCheckBox HorizontalAlignment="Left" Content="Rooms" />
                     <hly:PlainCheckBox HorizontalAlignment="Left" Content="Plan View" />
-                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Ceiling View"/>
+                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Ceiling View" />
                     
                 </StackPanel>
             </Grid>
