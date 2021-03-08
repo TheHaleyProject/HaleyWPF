@@ -22,8 +22,8 @@ using System.Windows.Markup;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("2.0.7.0")]
-[assembly: AssemblyFileVersion("2.0.7.0")]
+[assembly: AssemblyVersion("2.0.8.0")]
+[assembly: AssemblyFileVersion("2.0.8.0")]
 [assembly: Guid("FECEB4DE-F5CA-4CB0-A18A-C48FAF964F38")]
 [assembly: NeutralResourcesLanguage("en-GB")]
 
