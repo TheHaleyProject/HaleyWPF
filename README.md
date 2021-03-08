@@ -1,5 +1,5 @@
 # HaleyWPF
-Currently contains 12 User controls.
+Currently contains 14 User controls.
 
 1. Image button 
 2. Image Combo button
@@ -13,3 +13,5 @@ Currently contains 12 User controls.
 10. Plain Listview
 11. Toggle Button
 12. Linked Text
+13. Plain Image
+14. Plain CheckBox
