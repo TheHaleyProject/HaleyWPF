@@ -30,6 +30,7 @@
                     <hly:ToggleButton  OffText="light"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
+                    <hly:PlainCheckBox HorizontalAlignment="Left"/>
                     <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="White" Background="Green" TickBoxSize="5"/>
                     <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="White" Background="Purple" TickBoxSize="16"/>
                     <hly:PlainCheckBox HorizontalAlignment="Left" Content="Hello World"  TickColor="White" Background="Violet" TickBoxSize="25"/>

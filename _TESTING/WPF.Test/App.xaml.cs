@@ -9,14 +9,14 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            MainWindow2 _wndw2sd = new MainWindow2();
+            //MainWindow2 _wndw2sd = new MainWindow2();
 
 
-            MainWindow _wndwo = new MainWindow();
-            _wndwo.ShowDialog();
+            //MainWindow _wndwo = new MainWindow();
+            //_wndwo.ShowDialog();
 
-            MainWindow2 _wndw2 = new MainWindow2();
-            _wndw2.ShowDialog();
+            //MainWindow2 _wndw2 = new MainWindow2();
+            //_wndw2.ShowDialog();
 
             WndwPagination _wndw3 = new WndwPagination();
             _wndw3.ShowDialog();

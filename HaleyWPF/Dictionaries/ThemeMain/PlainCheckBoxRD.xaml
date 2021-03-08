@@ -8,7 +8,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:PlainCheckBox}">
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="Yellow"/>
         <Setter Property="BorderBrush" Value="{StaticResource defBorderBrush}"/>
         <Setter Property="HoverBorderBrush" Value="{StaticResource defHoverBorderBrush}"/>
         <Setter Property="HoverBorderThickness" Value="1"/>
@@ -27,11 +27,14 @@
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <!-- RECTANGLE BORDER BELOW-->
+                        <!-- BORDER HOLDING BACKGROUND-->
                         <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_rectangle" Background="{TemplateBinding Background}" CornerRadius="3" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0.1"/>
-                        <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_Border" Background="{x:Null}" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}"/>
-                        <!--Tick image-->
-                        <bc:PlainImage Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_checkbox_tick" DefaultImage="{StaticResource tick_sharp}" DefaultImageColor="{TemplateBinding TickColor}" Visibility="Collapsed" IsHitTestVisible="False"/>
+
+                        <!--BORDER HOLDING TICK IMAGE-->
+                        <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_Border" Background="{x:Null}" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <bc:PlainImage x:Name="PART_checkbox_tick" DefaultImage="{StaticResource tick_sharp}" DefaultImageColor="{TemplateBinding TickColor}" Visibility="Collapsed" IsHitTestVisible="False"/>
+                        </Border>
+                       
                         <!--Actual content presenter-->
                         <ContentPresenter x:Name="PART_content" Visibility="Collapsed" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
