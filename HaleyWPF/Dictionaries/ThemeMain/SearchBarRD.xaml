@@ -23,7 +23,7 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="{TemplateBinding Height}"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <ScrollViewer  x:Name="PART_ContentHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0">
                                 <ScrollViewer.InputBindings>
@@ -32,7 +32,10 @@
                             </ScrollViewer>
                             <ContentControl x:Name="WaterMarkContent" Content="{TemplateBinding WaterMark}" Visibility="Collapsed" IsHitTestVisible="False" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3" Margin="4,0"/>
 
-                            <bc:ImageButton Grid.Column="1" DefaultImage="{StaticResource search}" DefaultImageColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}"/>
+                            <Grid Grid.Column="1" Width="{TemplateBinding Height}" Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" ClipToBounds="True" >
+                                <bc:ImageButton  DefaultImage="{StaticResource search_medium}" DefaultImageColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
+                            </Grid>
+                           
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
