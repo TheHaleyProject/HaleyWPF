@@ -3,10 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
     xmlns:hly="http://schemas.hpod9.com/haley/mvvm"
-    xmlns:utils="clr-namespace:Haley.Utils">
+    xmlns:utils="clr-namespace:Haley.Utils"
+    xmlns:model="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_paginationTextBlock" TargetType="{x:Type bc:PlainTextBox}">
@@ -171,15 +172,15 @@
                         <KeyBinding CommandParameter="{Binding ElementName=PART_btn_jump,Path=Text}" Command="{x:Static NavigationCommands.GoToPage}" Key="Enter" />
                     </bc:PlainTextBox.InputBindings>
                 </bc:PlainTextBox>
-                
-                <bc:Separator Size="1.5" Orientation="Vertical" Background="{StaticResource defContent}" Margin="5,0"/>
+
+                <bc:Separator Size="1.5" Orientation="Vertical" Background="{DynamicResource defContent}" Margin="5,0"/>
                 
                 <!--NAVIGATE BACK-->
                 <bc:LinkedText Text="Previous" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.PreviousPage}"/>
                 <!--NAVIGATE FORWARD-->
                 <bc:LinkedText Text="Next" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.NextPage}"/>
 
-                <bc:Separator Size="1.5" Orientation="Vertical" Background="{StaticResource defContent}" Margin="5,0"/>
+                <bc:Separator Size="1.5" Orientation="Vertical" Background="{DynamicResource defContent}" Margin="5,0"/>
                 <!--FIRST PAGE-->
                 <bc:LinkedText Text="First" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.FirstPage}" />
                 <!--LAST PAGE-->

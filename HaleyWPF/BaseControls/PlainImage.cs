@@ -28,14 +28,14 @@ namespace Haley.WPF.BaseControls
 
             //DEFAULT IMAGE
             if (DefaultImage == null)
-            { DefaultImage = ResourceStore.getIcon(IconEnums.empty_image.ToString()); }
+            { DefaultImage = ResourceHelper.getIcon(IconEnums.empty_image.ToString()); }
             if (DefaultImageColor != null)
-            { DefaultImage = InternalHelper.changeColor(DefaultImage, DefaultImageColor); }
+            { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
 
             //HOVER IMAGE
             if (HoverImage == null) HoverImage = DefaultImage;
             if (HoverImageColor != null)
-            { HoverImage = InternalHelper.changeColor(HoverImage, HoverImageColor); }
+            { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
 
         }
 
@@ -74,7 +74,7 @@ namespace Haley.WPF.BaseControls
 
         private static void _defaultColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            InternalHelper.changeColor(nameof(DefaultImage), d, e);
+            ImageHelper.changeColor(nameof(DefaultImage), d, e);
         }
 
         public SolidColorBrush HoverImageColor
@@ -89,7 +89,7 @@ namespace Haley.WPF.BaseControls
 
         private static void _hoverColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            InternalHelper.changeColor(nameof(HoverImageColor), d, e);
+            ImageHelper.changeColor(nameof(HoverImageColor), d, e);
         }
 
         #endregion

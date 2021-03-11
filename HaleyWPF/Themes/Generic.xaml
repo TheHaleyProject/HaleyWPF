@@ -2,6 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     >
+    
+    <!--ALL THE DICTIONARIES BELOW ARE ADDED ONLY ONCE AND ARE DIRECTLY ASSOCIATED WITH THE CONTROLS. NONE OF THE BELOW MERGED DICTIOANRIES ARE(SHOULD BE) RD RELATED TO THEME OR COLORS OR SKINS-->
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainImageRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainTextBoxRD.xaml"/>

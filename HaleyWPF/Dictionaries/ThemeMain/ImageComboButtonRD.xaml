@@ -2,10 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:winEnum="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
-    xmlns:bc="clr-namespace:Haley.WPF.BaseControls">
+    xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
+    xmlns:model="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ImageComboButton}">

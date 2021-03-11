@@ -8,14 +8,14 @@
 		<Version>2.0.12</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
-		<Company>The Haley Project</Company>
+		<Company>TheHaleyProject</Company>
 		<Description>A simple WPF library with useful controls.</Description>
 		<PackageTags>WPF Haley CustomControls UILibrary</PackageTags>
 		<RepositoryUrl>https://github.com/rmsmech/HaleyWPF</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Added Tab Control</PackageReleaseNotes>
+		<PackageReleaseNotes>Updated Theme Loader Mechanism</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>2.0.9.0</AssemblyVersion>
 		<FileVersion>2.0.9.0</FileVersion>
@@ -377,7 +377,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\ThemeNormal.xaml">
+    <Page Update="Dictionaries\ThemeColors\ThemeDark.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\ThemeColors\ThemeNormal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

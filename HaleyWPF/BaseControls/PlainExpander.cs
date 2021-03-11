@@ -58,7 +58,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for Arrow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ArrowProperty =
-            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceStore.getIcon(IconEnums.arrow_down_rounded.ToString())));
+            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.getIcon(IconEnums.arrow_down_rounded.ToString())));
 
         public SolidColorBrush ArrowDefColor
         {
@@ -109,7 +109,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ShadowColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defShadow.ToString())));
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defShadow.ToString())));
         #endregion
 
         public CornerRadius CornerRadius
@@ -120,7 +120,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceStore.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
         public Brush HoverBackground
         {
@@ -130,6 +130,6 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defHoverBackground.ToString())));
+            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defHoverBackground.ToString())));
     }
 }

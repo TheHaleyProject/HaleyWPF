@@ -4,10 +4,11 @@
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
     xmlns:hlyMVVM="http://schemas.hpod9.com/haley/mvvm"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:utils="clr-namespace:Haley.Utils">
+    xmlns:utils="clr-namespace:Haley.Utils"
+    xmlns:model="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_collectionselector_plainlstvw" TargetType="{x:Type bc:PlainListView}">
@@ -24,7 +25,7 @@
     </Style>
 
     <Style TargetType="{x:Type bc:CollectionSelector}">
-        <Setter Property="BorderBrush" Value="{StaticResource defBorderBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ItemSelectedColor" Value="#4C1589E2"/>

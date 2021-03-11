@@ -1,26 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Haley.Utils;
+using System;
+using System.Collections.Concurrent;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Haley.Utils;
-using Haley.WPF.BaseControls;
-using Haley.Enums;
-
+using Haley.Models;
 
 namespace Haley.WPF
 {
-    internal static class InternalHelper
+    internal static class ImageHelper
     {
+        private static ConcurrentDictionary<ImageRequest, ImageSource> ImageCacheSource = new ConcurrentDictionary<ImageRequest, ImageSource>();
+
         /// <summary>
         /// Changes color
         /// </summary>
@@ -54,11 +45,20 @@ namespace Haley.WPF
 
         public static ImageSource changeColor(ImageSource source, SolidColorBrush brush)
         {
-            //TODO : AT THIS POINT INSTEAD OF CHANGING COLOR OF THE IMAGESOURCE USING IMAGE UTILS EVERYTIME, TRY TO ADD A CACHE WHERE THE IMAGESOURCE FOR A SPECIFIED SOLIDCOLOR BRUSH IS STORED AND RETRIEVED. SAVES PROCESSING AND MEMORY.
-
-            return ImageUtils.changeImageColor(source, brush);
-
-            //Cache based service to be added.
+            //FIRST LOADING IS DIRECT AND SUBSEQUENT ARE PREPARED USING CACHED BITMAP BY DOT NET. SO, NO NEED TO IMPLEMENT A SEPARATE CACHING SYSTEM.
+            //ImageRequest _request = new ImageRequest(source, brush);
+            ImageSource result = null;
+            //if (ImageCacheSource.ContainsKey(_request))
+            //{
+            //    ImageCacheSource.TryGetValue(_request, out result);
+            //}
+            //else
+            //{
+            //    result = ImageUtils.changeImageColor(source, brush);
+            //    ImageCacheSource.TryAdd(_request, result);
+            //}
+            result = ImageUtils.changeImageColor(source, brush);
+            return result;
         }
     }
 }

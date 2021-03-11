@@ -27,19 +27,19 @@ namespace Haley.WPF.BaseControls
 
             //Process Images
             if (DefaultImage == null)
-            { DefaultImage = ResourceStore.getIcon(IconEnums.empty_image.ToString()); }
+            { DefaultImage = ResourceHelper.getIcon(IconEnums.empty_image.ToString()); }
             if (HoverImage == null) HoverImage = DefaultImage;
             if (PressedImage == null) PressedImage = HoverImage;
 
             //Process Image Colors
             if (DefaultImageColor != null)
-            { DefaultImage = InternalHelper.changeColor(DefaultImage, DefaultImageColor); }
+            { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
 
             if (HoverImageColor != null)
-            { HoverImage = InternalHelper.changeColor(HoverImage, HoverImageColor); }
+            { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
 
             if (PressedImageColor != null)
-            { PressedImage = InternalHelper.changeColor(PressedImage, PressedImageColor); }
+            { PressedImage = ImageHelper.changeColor(PressedImage, PressedImageColor); }
         }
 
         #region Images
@@ -88,7 +88,7 @@ namespace Haley.WPF.BaseControls
 
         private static void _defaultColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            InternalHelper.changeColor(nameof(DefaultImage), d, e);
+            ImageHelper.changeColor(nameof(DefaultImage), d, e);
         }
 
         public SolidColorBrush HoverImageColor
@@ -103,7 +103,7 @@ namespace Haley.WPF.BaseControls
 
         private static void _hoverColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            InternalHelper.changeColor(nameof(HoverImageColor), d, e);
+            ImageHelper.changeColor(nameof(HoverImageColor), d, e);
         }
 
         public SolidColorBrush PressedImageColor
@@ -118,7 +118,7 @@ namespace Haley.WPF.BaseControls
 
         private static void _pressedColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            InternalHelper.changeColor(nameof(PressedImageColor), d, e);
+            ImageHelper.changeColor(nameof(PressedImageColor), d, e);
         }
         #endregion
     }

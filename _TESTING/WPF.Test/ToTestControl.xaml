@@ -7,16 +7,14 @@
                xmlns:hly="http://schemas.hpod9.com/haley/wpf"
               xmlns:hlyMVVM="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" 
-             hlyMVVM:ThemeAP.OldTheme="{Binding Path=old_theme, Source={x:Static local:GlobalData.Singleton},NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"
-    hlyMVVM:ThemeAP.ActiveTheme="{Binding Path=current_theme, Source={x:Static local:GlobalData.Singleton},NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}" >
-    <!--<UserControl.Resources>
+             d:DesignHeight="450" d:DesignWidth="800" hlyMVVM:ThemeAP.TriggerChange="True">
+    <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </UserControl.Resources>-->
+    </UserControl.Resources>
     <Grid Background="{DynamicResource scb_header}">
         <hly:ImageComboButton Height="70" Width="90" Text="From Control" ImageLocation="Top" DefaultImageColor="{DynamicResource button_hover}" HoverImageColor="#FF9413C2" DefaultImage="{StaticResource heart_shiny}"/>
     </Grid>

@@ -1,16 +1,17 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:bc="clr-namespace:Haley.WPF.BaseControls">
+    xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
+    xmlns:model="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type bc:PlainButton}">
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="{StaticResource defBackground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource defBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource defBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
         <Setter Property="Height" Value="{StaticResource defHeight}"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Template">

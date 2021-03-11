@@ -55,7 +55,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ShadowColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainTextBox), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defShadow.ToString())));
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainTextBox), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defShadow.ToString())));
 
         public CornerRadius CornerRadius
         {
@@ -65,6 +65,6 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainTextBox), new FrameworkPropertyMetadata(ResourceStore.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainTextBox), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
     }
 }

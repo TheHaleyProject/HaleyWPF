@@ -24,7 +24,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HoverForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverForegroundProperty =
-            DependencyProperty.Register(nameof(HoverForeground), typeof(Brush), typeof(LinkedText), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defLinkHover.ToString())));
+            DependencyProperty.Register(nameof(HoverForeground), typeof(Brush), typeof(LinkedText), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defLinkHover.ToString())));
 
         public string Text
         {

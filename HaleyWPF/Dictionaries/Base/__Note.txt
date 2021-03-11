@@ -1,0 +1,3 @@
+﻿All the styles inside Base directory will be added to haleyBase.xaml, which in turn is referred in ThemeMain (for user controls.) So, DO NOT ADD ANY STYLE TO BASE WHICH WILL USE A COLOR BASED ON THEME. IN CASE IF YOU DECIDE TO ADD ANY STYLE TO BASE DIRECTORY, ENSURE THAT SUCH CONTROLS WILL HAVE SAME COLOR IRRESPECTIVE OF THE THEME.
+
+Better option is to have the styles in Base but extend and replace colors in ThemeExtra or ThemeMain.

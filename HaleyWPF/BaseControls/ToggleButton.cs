@@ -85,7 +85,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ToggleButton), new FrameworkPropertyMetadata(ResourceStore.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ToggleButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
         public double SwitchWidth
         {
@@ -105,7 +105,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ColorON.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorONProperty =
-            DependencyProperty.Register(nameof(ColorON), typeof(Brush), typeof(ToggleButton), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defOn.ToString())));
+            DependencyProperty.Register(nameof(ColorON), typeof(Brush), typeof(ToggleButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defOn.ToString())));
 
         public Brush ColorOFF
         {
@@ -115,7 +115,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ColorOFF.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorOFFProperty =
-            DependencyProperty.Register(nameof(ColorOFF), typeof(Brush), typeof(ToggleButton), new PropertyMetadata(ResourceStore.getBrush(ColorEnums.defOff.ToString())));
+            DependencyProperty.Register(nameof(ColorOFF), typeof(Brush), typeof(ToggleButton), new PropertyMetadata(ResourceHelper.getBrush(ColorEnums.defOff.ToString())));
 
         public bool ShowShadow
         {
@@ -135,7 +135,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ShadowColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(ToggleButton), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defShadow.ToString())));
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(ToggleButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defShadow.ToString())));
 
         public bool ShadowOnlyOnMouseOver
         {

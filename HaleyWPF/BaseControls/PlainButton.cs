@@ -25,7 +25,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceStore.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
         public Brush HoverBackground
         {
@@ -35,7 +35,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defHoverBackground.ToString())));
+            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defHoverBackground.ToString())));
 
         public Brush HoverBorderBrush
         {
@@ -45,7 +45,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBorderBrushProperty =
-            DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defHoverBackground.ToString())));
+            DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defHoverBackground.ToString())));
 
         #region SHADOW
         public bool ShowShadow
@@ -66,7 +66,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ShadowColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceStore.getBrush(ColorEnums.defShadow.ToString())));
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defShadow.ToString())));
 
         public bool ShadowOnlyOnMouseOver
         {

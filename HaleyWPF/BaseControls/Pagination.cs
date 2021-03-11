@@ -99,7 +99,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(Pagination), new FrameworkPropertyMetadata(ResourceStore.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(Pagination), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
         public int ItemsCountTotal
         {

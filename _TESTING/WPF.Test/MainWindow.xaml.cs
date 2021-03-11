@@ -1,6 +1,8 @@
 ﻿using Haley.Models;
 using Haley.Utils;
 using System.Windows;
+using System;
+using Haley.Enums;
 
 namespace WPF.Test
 {
@@ -37,41 +39,52 @@ namespace WPF.Test
         private void PlainButton_Click_1(object sender, RoutedEventArgs e)
         {
             /*_changeTheme();*/ //DIRECTLY CHANGE.
-            GlobalData.Singleton.current_theme = _getTheme();
+            ThemeLoader.Singleton.changeTheme(_getTheme());
             //Old theme will be set by themeloader.
         }
 
         private Theme _getTheme()
         {
-
-            Theme activeTheme = new Theme() { sender = this };
+            var _lightTheme = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute);
+            var _darkTheme = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/ThemeDark.xaml", UriKind.RelativeOrAbsolute);
+            //var _base_dic = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml", UriKind.RelativeOrAbsolute);
+            Uri _base_dic = null;
+            Theme activeTheme = null;
             //Switch theme.
             switch (is_dark_theme)
             {
                 case true:
+                    activeTheme = new Theme(_lightTheme, _darkTheme, _base_dic);
                     is_dark_theme = false;
-                    activeTheme.base_dictionary_name = "DicRD";
-                    activeTheme.theme_to_replace = "ThemeDark";
-                    activeTheme.theme_PackURI = $@"pack://application:,,,/WPF.Test;component/Resources/ThemeLight.xaml";
                     break;
                 case false:
+                    activeTheme = new Theme(_darkTheme, _lightTheme, _base_dic);
                     is_dark_theme = true;
-                    activeTheme.base_dictionary_name = "DicRD";
-                    activeTheme.theme_to_replace = "ThemeLight";
-                    activeTheme.theme_PackURI = $@"pack://application:,,,/WPF.Test;component/Resources/ThemeDark.xaml";
                     break;
             }
             return activeTheme;
-            //this.Dispatcher.BeginInvoke(DispatcherPriority.Send, new Action(()=>
-            //{
-            //    ThemeLoader.changeTheme(this, activeTheme.theme_PackURI, activeTheme.theme_to_replace, activeTheme.base_dictionary_name);
-            //}));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var theme = _getTheme();
-            ThemeLoader.changeTheme(this, theme.theme_PackURI, theme.theme_to_replace, theme.base_dictionary_name);
+            ThemeLoader.Singleton.changeTheme(this, theme,Haley.Enums.SearchPriority.FrameworkElement);
+        }
+
+        private void PlainButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            var _currentmode = ThemeLoader.Singleton.current_internal_mode;
+            ThemeMode _newmode = ThemeMode.Dark;
+            switch(_currentmode)
+            { 
+                case ThemeMode.Dark:
+                    _newmode = ThemeMode.Normal;
+                    break;
+                case ThemeMode.Normal:
+                    _newmode = ThemeMode.Dark;
+                    break;
+            }
+            ThemeLoader.Singleton.changeInternalTheme(_newmode);
         }
     }
 }
