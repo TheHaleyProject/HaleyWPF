@@ -5,12 +5,12 @@ on:
     branches: [ master ]
     paths-ignore:
       - '**.md'
-      - '.gihub/workflows/**.yml'
-  pull_request:
-    branches: [ master ]
-    paths-ignore:
-      - '**.md'
-      - '.gihub/workflows/**.yml'
+      - '.github/workflows/**.yml'
+  #pull_request:
+    #branches: [ master ]
+    #paths-ignore:
+      #- '**.md'
+      #- '.github/workflows/**.yml'
 
 jobs:
 
