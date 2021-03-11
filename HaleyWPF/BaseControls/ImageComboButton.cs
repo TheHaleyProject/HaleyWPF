@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Haley.WPF.BaseControls
 {
@@ -41,7 +31,7 @@ namespace Haley.WPF.BaseControls
 
                 //In this case, Textbox holder should be the first child
                 _dock.Children.Clear();
-                _txtbx.SetValue(DockPanel.DockProperty, ImageLocation == Dock.Top? Dock.Bottom : Dock.Top); //Since we are using ImageLocation to specify Text location, we need to invert it.
+                _txtbx.SetValue(DockPanel.DockProperty, ImageLocation == Dock.Top ? Dock.Bottom : Dock.Top); //Since we are using ImageLocation to specify Text location, we need to invert it.
                 _dock.Children.Add(_txtbx);
                 _dock.Children.Add(_imagebox);
             }

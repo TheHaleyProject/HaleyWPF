@@ -1,31 +1,22 @@
-﻿using System;
+﻿using Haley.Abstractions;
+using Haley.Events;
+using Haley.Utils;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Haley.Abstractions;
-using Haley.Utils;
-using Haley.Enums;
-using System.Collections;
-using System.ComponentModel;
-using Haley.Events;
-using System.Collections.ObjectModel;
 
 
 namespace Haley.WPF.BaseControls
 {
     [TemplatePart(Name = UIESourceControl, Type = typeof(ListView))]
     [TemplatePart(Name = UIESelectionControl, Type = typeof(ListView))]
-    public class CollectionSelector : ItemsControl,ICornerRadius
+    public class CollectionSelector : ItemsControl, ICornerRadius
     {
         #region Attributes
         private const string UIESourceControl = "PART_lstvew_source";
@@ -36,7 +27,7 @@ namespace Haley.WPF.BaseControls
         #endregion
 
         #region Events
-        public static readonly RoutedEvent SelectionChangedEvent = EventManager.RegisterRoutedEvent(nameof(SelectionChanged), RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Pagination));
+        public static readonly RoutedEvent SelectionChangedEvent = EventManager.RegisterRoutedEvent(nameof(SelectionChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Pagination));
 
         public event RoutedEventHandler SelectionChanged
         {
@@ -50,7 +41,7 @@ namespace Haley.WPF.BaseControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CollectionSelector), new FrameworkPropertyMetadata(typeof(CollectionSelector)));
         }
 
-        public CollectionSelector() 
+        public CollectionSelector()
         {
             CommandBindings.Add(new CommandBinding(ComponentCommands.MoveRight, Execute_MoveRight));
             CommandBindings.Add(new CommandBinding(ComponentCommands.MoveLeft, Execute_MoveLeft));

@@ -357,6 +357,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Update="Dictionaries\ThemeMain\SearchBarRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionaries\ThemeMain\PlainTextBoxRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

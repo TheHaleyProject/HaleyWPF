@@ -1,20 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Haley.Utils;
+using System;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Security;
-using System.ComponentModel;
-using Haley.Utils;
 
 namespace Haley.WPF.BaseControls
 {
@@ -44,7 +36,7 @@ namespace Haley.WPF.BaseControls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PlainPasswordBox), new FrameworkPropertyMetadata(typeof(PlainPasswordBox)));
         }
-        public PlainPasswordBox() 
+        public PlainPasswordBox()
         {
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, Execute_show));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Hide, Execute_hide));
@@ -76,7 +68,7 @@ namespace Haley.WPF.BaseControls
             {
                 HasPassword = true;
             }
-            RaiseEvent(new RoutedEventArgs(PasswordChangedEvent,this)); //Raise the event and send this object. Then user can get the password from it.
+            RaiseEvent(new RoutedEventArgs(PasswordChangedEvent, this)); //Raise the event and send this object. Then user can get the password from it.
         }
         void Execute_show(object sender, ExecutedRoutedEventArgs e)
         {
@@ -102,8 +94,8 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HasPassword.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HasPasswordProperty =
-            DependencyProperty.Register(nameof(HasPassword), typeof(bool), typeof(PlainPasswordBox), new FrameworkPropertyMetadata(false,FrameworkPropertyMetadataOptions.NotDataBindable));
-        
+            DependencyProperty.Register(nameof(HasPassword), typeof(bool), typeof(PlainPasswordBox), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.NotDataBindable));
+
         public char PasswordChar
         {
             get { return (char)GetValue(PasswordCharProperty); }
