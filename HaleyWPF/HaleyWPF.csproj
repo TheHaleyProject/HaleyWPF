@@ -5,10 +5,10 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>2.0.11</Version>
-		<Authors>Lingam</Authors>
+		<Version>2.0.12</Version>
+		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
-		<Company>TheHaleyProject</Company>
+		<Company>The Haley Project</Company>
 		<Description>A simple WPF library with useful controls.</Description>
 		<PackageTags>WPF Haley CustomControls UILibrary</PackageTags>
 		<RepositoryUrl>https://github.com/rmsmech/HaleyWPF</RepositoryUrl>
