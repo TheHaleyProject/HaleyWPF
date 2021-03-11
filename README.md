@@ -1,3 +1,4 @@
+[![Nuget Publish](https://github.com/rmsmech/HaleyWPF/actions/workflows/dotnet-desktop.yml/badge.svg)](https://github.com/rmsmech/HaleyWPF/actions/workflows/dotnet-desktop.yml)
 # HaleyWPF
 Currently contains 14 User controls.
 
