@@ -23,5 +23,10 @@ namespace WPF.Test
             //    persons.Add((Person)item);
             //}
         }
+
+        private void SearchBar_SearchStarted(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

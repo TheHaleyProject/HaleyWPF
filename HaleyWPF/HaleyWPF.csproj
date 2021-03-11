@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>2.0.10</Version>
+		<Version>2.0.11</Version>
 		<Authors>Lingam</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -17,8 +17,8 @@
 		<Copyright>Haley @ 2020</Copyright>
 		<PackageReleaseNotes>Added Tab Control</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyVersion>2.0.9</AssemblyVersion>
-		<FileVersion>2.0.9</FileVersion>
+		<AssemblyVersion>2.0.9.0</AssemblyVersion>
+		<FileVersion>2.0.9.0</FileVersion>
 		<PackageIcon>Haley.png</PackageIcon>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -26,21 +26,14 @@
 		<AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
-	<PropertyGroup>
+	<!--<PropertyGroup>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	</PropertyGroup>
+	</PropertyGroup>-->
 	
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-	
-  <ItemGroup>
-    <Compile Remove="BaseControls\PropertyGrid\**" />
-    <EmbeddedResource Remove="BaseControls\PropertyGrid\**" />
-    <None Remove="BaseControls\PropertyGrid\**" />
-    <Page Remove="BaseControls\PropertyGrid\**" />
-  </ItemGroup>
 	
   <ItemGroup>
     <None Include="..\Haley.png">
@@ -364,6 +357,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Update="Dictionaries\ThemeMain\SearchBarRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionaries\ThemeMain\PlainTextBoxRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -389,6 +386,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+	
 <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
 <Choose>
     <When Condition="Exists($(HaleyExtensions))">

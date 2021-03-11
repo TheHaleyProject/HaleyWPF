@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Haley.Abstractions;
+using Haley.Enums;
+using Haley.Events;
+using Haley.Utils;
+using System;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Haley.Events;
-using Haley.Abstractions;
-using Haley.Utils;
-using Haley.Models;
-using Haley.Enums;
-using System.Collections.ObjectModel;
 
 namespace Haley.WPF.BaseControls
 {
@@ -45,7 +36,7 @@ namespace Haley.WPF.BaseControls
         #endregion
 
         #region Events
-        public static readonly RoutedEvent PageChangedEvent = EventManager.RegisterRoutedEvent(nameof(PageChanged), RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Pagination));
+        public static readonly RoutedEvent PageChangedEvent = EventManager.RegisterRoutedEvent(nameof(PageChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Pagination));
 
         public event RoutedEventHandler PageChanged
         {
@@ -118,7 +109,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ItemsCountTotal.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsCountTotalProperty =
-            DependencyProperty.Register(nameof(ItemsCountTotal), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(0,ItemsCountTotalPropertyChanged));
+            DependencyProperty.Register(nameof(ItemsCountTotal), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(0, ItemsCountTotalPropertyChanged));
 
         public int TotalPages
         {
@@ -138,7 +129,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ItemsCountPerPage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsCountPerPageProperty =
-            DependencyProperty.Register(nameof(ItemsCountPerPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(10,ItemsCountPerPagePropertyChanged));
+            DependencyProperty.Register(nameof(ItemsCountPerPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(10, ItemsCountPerPagePropertyChanged));
 
         public bool HideCounter
         {
@@ -158,7 +149,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for CurrentPage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentPageProperty =
-            DependencyProperty.Register(nameof(CurrentPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(1,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, CurrentPagePropertyChanged));
+            DependencyProperty.Register(nameof(CurrentPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, CurrentPagePropertyChanged));
 
         public Brush PrimaryColor
         {
@@ -233,7 +224,7 @@ namespace Haley.WPF.BaseControls
             {
                 this.SetCurrentValue(CurrentPageProperty, newindex);
                 //Then clear the textbox
-                _jumpBtn.Text = "";
+                _jumpBtn.Text = string.Empty;
             }
         }
 
@@ -292,7 +283,7 @@ namespace Haley.WPF.BaseControls
             if (remainder_items != 0)
             {
                 this.SetCurrentValue(TotalPagesProperty, TotalPages + 1);
-             //Increment by 1. Because, whatever the remainder is can be accommdaed in a single page.
+                //Increment by 1. Because, whatever the remainder is can be accommdaed in a single page.
             }
             this.SetCurrentValue(CurrentPageProperty, 1); //When current page is set, direct buttons are prepared.
 

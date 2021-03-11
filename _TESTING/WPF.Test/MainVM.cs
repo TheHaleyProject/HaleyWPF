@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Haley.WPF.BaseControls;
+using System;
 
 namespace WPF.Test
 {
@@ -21,6 +22,11 @@ namespace WPF.Test
         }
 
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
+        void _search(string obj)
+        {
+            //now we search
+        }
+        public ICommand Cmd_search => new DelegateCommand<string>(_search);
 
         private ObservableCollection<Person> _soemthing;
         public ObservableCollection<Person> something

@@ -1,32 +1,8 @@
-using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Markup;
 
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("HaleyWPF")]
-[assembly: AssemblyDescription("Contains some WPF controls & Helpers")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("TheHaleyProject")]
-[assembly: AssemblyProduct("HaleyWPF")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
-
-//Should assembly version be always same? is it accepted?
-[assembly: AssemblyVersion("2.0.9.0")]
-[assembly: AssemblyFileVersion("2.0.9.0")]
-[assembly: Guid("FECEB4DE-F5CA-4CB0-A18A-C48FAF964F38")]
-[assembly: NeutralResourcesLanguage("en-GB")]
+//[assembly: Guid("FECEB4DE-F5CA-4CB0-A18A-C48FAF964F38")]
+//[assembly: NeutralResourcesLanguage("en-GB")]
 
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located

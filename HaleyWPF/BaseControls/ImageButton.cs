@@ -1,25 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Haley.Abstractions;
-using Haley.Utils;
-using Haley.Models;
+﻿using Haley.Abstractions;
 using Haley.Enums;
+using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Media;
 
 namespace Haley.WPF.BaseControls
 {
-    public class ImageButton : PlainButton , IImageHolder
+    public class ImageButton : PlainButton, IImageHolder
     {
         #region Constructors
         static ImageButton()
@@ -42,7 +30,7 @@ namespace Haley.WPF.BaseControls
             { DefaultImage = ResourceStore.getIcon(IconEnums.empty_image.ToString()); }
             if (HoverImage == null) HoverImage = DefaultImage;
             if (PressedImage == null) PressedImage = HoverImage;
-            
+
             //Process Image Colors
             if (DefaultImageColor != null)
             { DefaultImage = InternalHelper.changeColor(DefaultImage, DefaultImageColor); }
