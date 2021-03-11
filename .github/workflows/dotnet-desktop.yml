@@ -1,12 +1,16 @@
-
-
-name: HaleyWPF-Core and Framework
+name: Nuget Publish
 
 on:
   push:
     branches: [ master ]
+    paths-ignore:
+      - '**.md'
+      - '.gihub/workflows/**.yml'
   pull_request:
     branches: [ master ]
+    paths-ignore:
+      - '**.md'
+      - '.gihub/workflows/**.yml'
 
 jobs:
 
