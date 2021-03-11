@@ -41,9 +41,9 @@ jobs:
       env:
         ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
-    # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
+    # Execute all unit tests in the solution (NO UNIT TESTS AT THE MOMENT)
+    #- name: Execute unit tests
+    # run: dotnet test
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
