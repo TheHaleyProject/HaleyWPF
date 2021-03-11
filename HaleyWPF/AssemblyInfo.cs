@@ -22,6 +22,7 @@ using System.Windows.Markup;
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
+//Should assembly version be always same? is it accepted?
 [assembly: AssemblyVersion("2.0.9.0")]
 [assembly: AssemblyFileVersion("2.0.9.0")]
 [assembly: Guid("FECEB4DE-F5CA-4CB0-A18A-C48FAF964F38")]
