@@ -46,10 +46,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel  Margin="20">
-                <TextBlock Text="Project Demo world" Style="{DynamicResource def_h1_Secondary}"/>
+                <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}"/>
                 <TextBlock Text="Topic 1 : Introduction" Style="{DynamicResource def_h2}"/>
-                <TextBlock Text="Hello.. My Name is lingam"  Style="{DynamicResource def_h3}"/>
-                <TextBlock Text="I Live in Dubai, UAE"  Style="{DynamicResource def_h4_Secondary}"/>
+                <TextBlock Text="Hello.. This is a test project"  Style="{DynamicResource def_h3}"/>
+                <TextBlock Text="I'm a sub title text"  Style="{DynamicResource def_h4_Secondary}"/>
                 <hw:PlainButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" ShowShadow="True" ShadowOnlyOnMouseOver="False"/>
              
                 <hw:PlainExpander Width="300" HorizontalAlignment="Left" CornerRadius="4">

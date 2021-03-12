@@ -39,6 +39,9 @@ namespace WPF.Test
                     ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Normal);
                     break;
                 case ThemeMode.Normal:
+                    ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Mild);
+                    break;
+                case ThemeMode.Mild:
                     ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Dark);
                     break;
             }
