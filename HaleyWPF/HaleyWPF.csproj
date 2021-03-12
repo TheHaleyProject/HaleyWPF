@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>2.0.13</Version>
+		<Version>2.0.14</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Added new themes</PackageReleaseNotes>
+		<PackageReleaseNotes>DisableColor Change Enabled</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>2.0.9.0</AssemblyVersion>
 		<FileVersion>2.0.9.0</FileVersion>
