@@ -34,7 +34,7 @@
             <hw:ImageComboButton DefaultImage="{StaticResource home_medium}" Text="Home"/>
             <hw:ImageComboButton DefaultImage="{StaticResource settings_simple_medium}" Text="Settings"/>
             <hw:ImageComboButton DefaultImage="{StaticResource eye_medium}" Text="View" />
-            <hw:ImageComboButton DefaultImage="{StaticResource save_medium}" Text="Save"/>
+            <hw:ImageComboButton DefaultImage="{StaticResource save_medium}" Text="Save" />
             <hw:ImageComboButton DefaultImage="{StaticResource copy_medium}" Text="Copy" />
             <hw:ImageComboButton DefaultImage="{StaticResource new_file_medium}" Text="New"/>
             <hw:ImageComboButton DefaultImage="{StaticResource calender_medium}" Text="Schedule"/>
@@ -45,6 +45,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            <hw:ImageButton Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" DefaultImage="Images/hippo_bliue.png" Height="30" Width="30" Margin="10" DisableColorChange="True"/>
             <StackPanel  Margin="20">
                 <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}"/>
                 <TextBlock Text="Topic 1 : Introduction" Style="{DynamicResource def_h2}"/>

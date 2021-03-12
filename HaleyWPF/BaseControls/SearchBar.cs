@@ -7,7 +7,7 @@ using Haley.Events;
 
 namespace Haley.WPF.BaseControls
 {
-    public class SearchBar : PlainTextBox
+    public class SearchBar : PlainTextBox, ICommandSource
     {
         #region Events
         public static readonly RoutedEvent SearchStartedEvent = EventManager.RegisterRoutedEvent(nameof(SearchStarted), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SearchBar));

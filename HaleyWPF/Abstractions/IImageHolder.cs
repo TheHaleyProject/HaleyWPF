@@ -3,7 +3,7 @@ using System.Windows.Media.Imaging;
 
 namespace Haley.Abstractions
 {
-    public interface IImageHolder
+    public interface IImageHolder : IDisableColorChange
     {
         ImageSource DefaultImage { get; set; }
         ImageSource HoverImage { get; set; }

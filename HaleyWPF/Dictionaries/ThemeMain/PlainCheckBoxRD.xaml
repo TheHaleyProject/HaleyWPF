@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <!-- BORDER HOLDING BACKGROUND-->
-                        <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_rectangle" Background="{TemplateBinding Background}" CornerRadius="3" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0.1"/>
+                        <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_rectangle" Background="{TemplateBinding Background}" CornerRadius="3" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0.4"/>
 
                         <!--BORDER HOLDING TICK IMAGE-->
                         <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_Border" Background="{x:Null}" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">

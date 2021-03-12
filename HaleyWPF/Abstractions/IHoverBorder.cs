@@ -3,9 +3,10 @@ using System.Windows;
 
 namespace Haley.Abstractions
 {
-    public interface IHoverBorder
+    public interface IHoverBase
     {
         Brush HoverBorderBrush { get; set; }
         Thickness HoverBorderThickness { get; set; }
+        Brush HoverBackground { get; set; }
     }
 }

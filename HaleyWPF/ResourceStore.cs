@@ -10,6 +10,7 @@ namespace Haley.WPF
     public static class ResourceHelper
     {
         public static CornerRadius cornerRadius = new CornerRadius(0.0);
+        public static Thickness borderThickness = new Thickness(1);
 
         private static CommonDictionary colorDictionary;
         private static List<CommonDictionary> iconDictionaries;

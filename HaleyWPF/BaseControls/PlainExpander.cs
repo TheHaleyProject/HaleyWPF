@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Haley.WPF.BaseControls
 {
-    public class PlainExpander : Expander, IShadow, ICornerRadius
+    public class PlainExpander : Expander, IShadow, ICornerRadius, IHoverBase
     {
         static PlainExpander()
         {
@@ -131,5 +131,25 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBackgroundProperty =
             DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
+
+        public Brush HoverBorderBrush
+        {
+            get { return (Brush)GetValue(HoverBorderBrushProperty); }
+            set { SetValue(HoverBorderBrushProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverBorderBrushProperty =
+            DependencyProperty.Register(nameof(HoverBorderBrush), typeof(Brush), typeof(PlainExpander), new PropertyMetadata(null));
+
+        public Thickness HoverBorderThickness
+        {
+            get { return (Thickness)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HoverBorderThickness.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            DependencyProperty.Register(nameof(HoverBorderThickness), typeof(Thickness), typeof(PlainExpander), new PropertyMetadata(ResourceHelper.borderThickness));
     }
 }

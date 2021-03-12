@@ -9,7 +9,7 @@ using System.Windows.Media;
 
 namespace Haley.WPF.BaseControls
 {
-    public class PlainListView : ListView, ICornerRadius
+    public class PlainListView : ListView, ICornerRadius, IItemsSelection
     {
         static PlainListView()
         {

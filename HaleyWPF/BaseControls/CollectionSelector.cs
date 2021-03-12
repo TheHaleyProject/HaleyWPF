@@ -16,7 +16,7 @@ namespace Haley.WPF.BaseControls
 {
     [TemplatePart(Name = UIESourceControl, Type = typeof(ListView))]
     [TemplatePart(Name = UIESelectionControl, Type = typeof(ListView))]
-    public class CollectionSelector : ItemsControl, ICornerRadius
+    public class CollectionSelector : ItemsControl, ICornerRadius, IItemsSelection
     {
         #region Attributes
         private const string UIESourceControl = "PART_lstvew_source";

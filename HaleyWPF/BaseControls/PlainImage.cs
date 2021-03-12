@@ -29,14 +29,15 @@ namespace Haley.WPF.BaseControls
             //DEFAULT IMAGE
             if (DefaultImage == null)
             { DefaultImage = ResourceHelper.getIcon(IconEnums.empty_image.ToString()); }
-            if (DefaultImageColor != null)
-            { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
-
-            //HOVER IMAGE
             if (HoverImage == null) HoverImage = DefaultImage;
-            if (HoverImageColor != null)
-            { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
-
+            
+            if (!DisableColorChange)
+            {
+                if (DefaultImageColor != null)
+                { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
+                if (HoverImageColor != null)
+                { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
+            }
         }
 
         #region Images
@@ -74,6 +75,8 @@ namespace Haley.WPF.BaseControls
 
         private static void _defaultColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var _disable = (bool)d.GetValue(DisableColorChangeProperty);
+            if (_disable) return;
             ImageHelper.changeColor(nameof(DefaultImage), d, e);
         }
 
@@ -89,9 +92,20 @@ namespace Haley.WPF.BaseControls
 
         private static void _hoverColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var _disable = (bool)d.GetValue(DisableColorChangeProperty);
+            if (_disable) return;
             ImageHelper.changeColor(nameof(HoverImageColor), d, e);
         }
 
         #endregion
+        public bool DisableColorChange
+        {
+            get { return (bool)GetValue(DisableColorChangeProperty); }
+            set { SetValue(DisableColorChangeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DisableColorChange.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DisableColorChangeProperty =
+            DependencyProperty.Register(nameof(DisableColorChange), typeof(bool), typeof(PlainImage), new PropertyMetadata(false));
     }
 }

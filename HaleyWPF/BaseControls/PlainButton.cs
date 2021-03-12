@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Haley.WPF.BaseControls
 {
-    public class PlainButton : Button, IShadow, ICornerRadius
+    public class PlainButton : Button, IShadow, ICornerRadius, IHoverBase
     {
         static PlainButton()
         {
@@ -16,6 +16,8 @@ namespace Haley.WPF.BaseControls
         }
 
         public PlainButton() { }
+
+        #region Corner Radius
 
         public CornerRadius CornerRadius
         {
@@ -26,7 +28,9 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
+        #endregion
 
+        #region Hover
         public Brush HoverBackground
         {
             get { return (Brush)GetValue(HoverBackgroundProperty); }
@@ -46,6 +50,17 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBorderBrushProperty =
             DependencyProperty.Register(nameof(HoverBorderBrush), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(null));
+
+        public Thickness HoverBorderThickness
+        {
+            get { return (Thickness)GetValue(HoverBorderThicknessProperty); }
+            set { SetValue(HoverBorderThicknessProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HoverBorderThickness.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HoverBorderThicknessProperty =
+            DependencyProperty.Register(nameof(HoverBorderThickness), typeof(Thickness), typeof(PlainButton), new PropertyMetadata(ResourceHelper.borderThickness));
+        #endregion
 
         public Brush PressedBackground
         {

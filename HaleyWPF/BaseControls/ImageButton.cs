@@ -31,15 +31,18 @@ namespace Haley.WPF.BaseControls
             if (HoverImage == null) HoverImage = DefaultImage;
             if (PressedImage == null) PressedImage = HoverImage;
 
-            //Process Image Colors
-            if (DefaultImageColor != null)
-            { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
+            if (!DisableColorChange)
+            {
+                //Process Image Colors
+                if (DefaultImageColor != null)
+                { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
 
-            if (HoverImageColor != null)
-            { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
+                if (HoverImageColor != null)
+                { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
 
-            if (PressedImageColor != null)
-            { PressedImage = ImageHelper.changeColor(PressedImage, PressedImageColor); }
+                if (PressedImageColor != null)
+                { PressedImage = ImageHelper.changeColor(PressedImage, PressedImageColor); }
+            }
         }
 
         #region Images
@@ -86,40 +89,55 @@ namespace Haley.WPF.BaseControls
         public static readonly DependencyProperty DefaultImageColorProperty =
             DependencyProperty.Register(nameof(DefaultImageColor), typeof(SolidColorBrush), typeof(ImageButton), new FrameworkPropertyMetadata(_defaultColorChanged));
 
-        private static void _defaultColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ImageHelper.changeColor(nameof(DefaultImage), d, e);
-        }
-
         public SolidColorBrush HoverImageColor
         {
             get { return (SolidColorBrush)GetValue(HoverImageColorProperty); }
             set { SetValue(HoverImageColorProperty, value); }
         }
-
         // Using a DependencyProperty as the backing store for HoverImageColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverImageColorProperty =
             DependencyProperty.Register(nameof(HoverImageColor), typeof(SolidColorBrush), typeof(ImageButton), new FrameworkPropertyMetadata(_hoverColorChanged));
-
-        private static void _hoverColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ImageHelper.changeColor(nameof(HoverImageColor), d, e);
-        }
 
         public SolidColorBrush PressedImageColor
         {
             get { return (SolidColorBrush)GetValue(PressedImageColorProperty); }
             set { SetValue(PressedImageColorProperty, value); }
         }
-
         // Using a DependencyProperty as the backing store for PressedImageColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PressedImageColorProperty =
             DependencyProperty.Register(nameof(PressedImageColor), typeof(SolidColorBrush), typeof(ImageButton), new FrameworkPropertyMetadata(_pressedColorChanged));
+        #endregion
 
+        public bool DisableColorChange
+        {
+            get { return (bool)GetValue(DisableColorChangeProperty); }
+            set { SetValue(DisableColorChangeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DisableColorChange.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DisableColorChangeProperty =
+            DependencyProperty.Register(nameof(DisableColorChange), typeof(bool), typeof(ImageButton), new PropertyMetadata(false));
+
+        #region Private Methods
+        private static void _hoverColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var _disable = (bool)d.GetValue(DisableColorChangeProperty);
+            if (_disable) return;
+            ImageHelper.changeColor(nameof(HoverImageColor), d, e);
+        }
         private static void _pressedColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var _disable = (bool)d.GetValue(DisableColorChangeProperty);
+            if (_disable) return;
             ImageHelper.changeColor(nameof(PressedImageColor), d, e);
         }
+        private static void _defaultColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var _disable = (bool)d.GetValue(DisableColorChangeProperty);
+            if (_disable) return;
+            ImageHelper.changeColor(nameof(DefaultImage), d, e);
+        }
+
         #endregion
     }
 }
