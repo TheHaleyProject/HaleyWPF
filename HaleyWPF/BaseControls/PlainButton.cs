@@ -35,7 +35,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defButtonHover.ToString())));
+            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(null));
 
         public Brush HoverBorderBrush
         {
@@ -45,7 +45,17 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBorderBrushProperty =
-            DependencyProperty.Register("HoverBorderBrush", typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defButtonHover.ToString())));
+            DependencyProperty.Register(nameof(HoverBorderBrush), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(null));
+
+        public Brush PressedBackground
+        {
+            get { return (Brush)GetValue(PressedBackgroundProperty); }
+            set { SetValue(PressedBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PressedBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PressedBackgroundProperty =
+            DependencyProperty.Register(nameof(PressedBackground), typeof(Brush), typeof(PlainButton), new PropertyMetadata(null));
 
         #region SHADOW
         public bool ShowShadow
@@ -66,7 +76,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ShadowColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(ResourceHelper.getBrush(ColorEnums.defShadow.ToString())));
+            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainButton), new FrameworkPropertyMetadata(null));
 
         public bool ShadowOnlyOnMouseOver
         {

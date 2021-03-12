@@ -1,0 +1,34 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:utils="clr-namespace:Haley.Utils">
+    <!--COMMON COLORS-->
+    <SolidColorBrush x:Key="defOn" Color="#FF5AA75A"/>
+    <SolidColorBrush x:Key="defOff" Color="#FFCB8888"/>
+
+    <!-- TEXT -->
+    <SolidColorBrush x:Key="defContent" Color="#FFE5E5E5"/>
+    <SolidColorBrush x:Key="defContentInverted" Color="#FF2F2F2F"/>
+    <SolidColorBrush x:Key="defLink" Color="#FF00FD8B"/>
+    <SolidColorBrush x:Key="defLinkHover" Color="#FFE6C26C"/>
+
+    <!-- BUTTONS -->
+    <SolidColorBrush x:Key="defButtonBackground" Color="#FF292F4E"/>
+    <SolidColorBrush x:Key="defButtonHover" Color="#FF405A7F"/>
+
+    <!-- BACKGROUNDS -->
+    <SolidColorBrush x:Key="defBackgroundPrimary" Color="#FF3B4B62"/>
+    <SolidColorBrush x:Key="defBackgroundSecondary" Color="#FF334054"/>
+    <SolidColorBrush x:Key="defBackgroundTertiary" Color="#FF2A3546"/>
+
+    <!-- BORDERS AND SHADOWS-->
+    <SolidColorBrush x:Key="defBorderBrush" Color="#B200D4FF"/>
+    <Color x:Key="defShadow">#B200D4FF</Color>
+    <!--SAME AS DEF SECONDARY-->
+
+    <!-- PRIMARY SPECIAL -->
+    <SolidColorBrush x:Key="defPrimary" Color="White"/>
+    <SolidColorBrush x:Key="defSecondary" Color="#FFFFF405"/>
+    <SolidColorBrush x:Key="defTertiary" Color="#FFB1AA0F"/>
+
+</ResourceDictionary>

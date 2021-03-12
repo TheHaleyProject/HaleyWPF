@@ -25,11 +25,13 @@
     </Style>
 
     <Style TargetType="{x:Type bc:CollectionSelector}">
+        <Setter Property="Background" Value="{DynamicResource defBackgroundPrimary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="ItemSelectedColor" Value="#4C1589E2"/>
-        <Setter Property="ItemHoverColor" Value="#4C676666"/>
+        <Setter Property="ItemSelectedColor" Value="{DynamicResource defButtonHover}"/>
+        <Setter Property="ItemHoverColor" Value="{DynamicResource defButtonHover}"/>
+        <Setter Property="IconColor" Value="{DynamicResource defPrimary}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="MinHeight" Value="150"/>
@@ -60,14 +62,14 @@
                             </Grid>
                             
                             <StackPanel Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <bc:ImageButton DefaultImage="{StaticResource arrow_down_sharp}" DefaultImageColor="{TemplateBinding ItemSelectedColor}" Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveRight}">
+                                <bc:ImageButton DefaultImage="{StaticResource arrow_down_sharp}" DefaultImageColor="{TemplateBinding IconColor}" Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveRight}">
                                     <bc:ImageButton.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform Angle="-90" />
                                         </TransformGroup>
                                     </bc:ImageButton.RenderTransform>
                                 </bc:ImageButton>
-                                <bc:ImageButton DefaultImage="{StaticResource arrow_down_sharp}" DefaultImageColor="{TemplateBinding ItemSelectedColor}"  Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveLeft}">
+                                <bc:ImageButton DefaultImage="{StaticResource arrow_down_sharp}" DefaultImageColor="{TemplateBinding IconColor}"  Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveLeft}">
                                     <bc:ImageButton.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform Angle="90" />

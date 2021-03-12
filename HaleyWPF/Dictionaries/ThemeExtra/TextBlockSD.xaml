@@ -1,0 +1,88 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
+    xmlns:model="clr-namespace:Haley.Models">
+
+    <ResourceDictionary.MergedDictionaries>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+  <!--#region H1-->
+    <Style x:Key="def_h1" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+
+    <Style x:Key="def_h1_inverted" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+
+    <Style x:Key="def_h1_Secondary" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region H2-->
+    <Style x:Key="def_h2" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+
+    <Style x:Key="def_h2_inverted" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+
+    <Style x:Key="def_h2_Secondary" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
+        <Setter Property="Margin" Value="0,5"/>
+    </Style>
+    <!--#endregion-->
+    
+    <!--#region H3-->
+    <Style x:Key="def_h3" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
+        <Setter Property="Margin" Value="0,3"/>
+    </Style>
+
+    <Style x:Key="def_h3_inverted" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
+        <Setter Property="Margin" Value="0,3"/>
+    </Style>
+
+    <Style x:Key="def_h3_Secondary" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
+        <Setter Property="Margin" Value="0,3"/>
+    </Style>
+    <!--#endregion-->
+    
+    <!--#region H4-->
+    <Style x:Key="def_h4" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
+    </Style>
+
+    <Style x:Key="def_h4_inverted" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
+    </Style>
+
+    <Style x:Key="def_h4_Secondary" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
+    </Style>
+    <!--#endregion-->
+   
+</ResourceDictionary>

@@ -12,14 +12,17 @@ namespace WPF.Test
             //MainWindow2 _wndw2sd = new MainWindow2();
 
 
-            MainWindow _wndwo = new MainWindow();
-            _wndwo.ShowDialog();
+            //MainWindow _wndwo = new MainWindow();
+            //_wndwo.ShowDialog();
 
             //MainWindow2 _wndw2 = new MainWindow2();
             //_wndw2.ShowDialog();
 
             //WndwPagination _wndw3 = new WndwPagination();
             //_wndw3.ShowDialog();
+
+            ThemeTEst wndw = new ThemeTEst();
+                wndw.ShowDialog();
 
 
         }

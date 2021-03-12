@@ -40,10 +40,8 @@
         <Setter Property="Margin" Value="3,0"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="{Binding Path=Height, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+        <Setter Property="HoverBorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
         <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="HoverBorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
-            </Trigger>
             <DataTrigger Value="true">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource MultiBindingEqualityCheck}">
@@ -56,6 +54,28 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="internal_pagination_plainbutton_extended" TargetType="{x:Type bc:PlainButton}" BasedOn="{StaticResource internal_pagination_plainbutton}">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="5,0"/>
+        <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="HoverBackground" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Style.Triggers>
+            <DataTrigger Value="true">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource MultiBindingEqualityCheck}">
+                        <Binding Path="CurrentPage" RelativeSource="{RelativeSource AncestorType={x:Type bc:Pagination}}"/>
+                        <Binding Path="Content" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter Property="Background" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
 
     <Style x:Key="internal_pagination_linkedtext" TargetType="{x:Type bc:LinkedText}">
         <Setter Property="Margin" Value="5,0"/>
@@ -92,7 +112,7 @@
                 </bc:ImageButton>
 
                 <!--START PAGE-->
-                <bc:PlainButton Width="50" Content="1" Margin="5,0" Background="{TemplateBinding PrimaryColor}" Foreground="White" BorderThickness="0" Style="{StaticResource internal_pagination_plainbutton}" Command="{x:Static NavigationCommands.FirstPage}"/>
+                <bc:PlainButton Content="1"  Style="{StaticResource internal_pagination_plainbutton_extended}" Command="{x:Static NavigationCommands.FirstPage}"/>
 
                 <!--MORE PAGE TURN OFF AT THE MOMENT. IDEALY THIS SHOULD CHANGE MOVE THE VISIBLE PAGES COUNT-->
                 <bc:PlainButton x:Name="PART_btn_more_left"  Content="..." Style="{StaticResource internal_pagination_plainbutton}" IsHitTestVisible="False"/>
@@ -116,7 +136,7 @@
                 <bc:PlainButton x:Name="PART_btn_more_right"  Content="..." Style="{StaticResource internal_pagination_plainbutton}" IsHitTestVisible="False"/>
 
                 <!--LAST PAGE-->
-                <bc:PlainButton x:Name="PART_btn_last" Width="50" Content="{TemplateBinding TotalPages}" Margin="5,0" Background="{TemplateBinding PrimaryColor}" Foreground="White" BorderThickness="0" Style="{StaticResource internal_pagination_plainbutton}" Command="{x:Static NavigationCommands.LastPage}"/>
+                <bc:PlainButton x:Name="PART_btn_last" Content="{TemplateBinding TotalPages}" Margin="5,0" Style="{StaticResource internal_pagination_plainbutton_extended}"  Command="{x:Static NavigationCommands.LastPage}"/>
 
                 <!--NAVIGATE FORWARD-->
                 <bc:ImageButton Style="{StaticResource internal_paginationImageButton}" RenderTransformOrigin="0.5,0.5" Command="{x:Static NavigationCommands.NextPage}">
@@ -200,8 +220,9 @@
     
     <Style TargetType="{x:Type bc:Pagination}">
         <Setter Property="Height" Value="{StaticResource defHeight}"/>
-        <Setter Property="Background" Value="CornflowerBlue"/>
-        <Setter Property="PrimaryColor" Value="IndianRed"/>
+        <Setter Property="Background" Value="{DynamicResource defPrimary}"/>
+        <Setter Property="PrimaryColor" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
         <Setter Property="Template" Value="{StaticResource internal_pagination_extended}"/>
         <Style.Triggers>
             <Trigger Property="Mode" Value="Simple">

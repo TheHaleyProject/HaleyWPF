@@ -10,8 +10,15 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ImageComboButton}">
+        <Setter Property="DefaultImageColor" Value="{DynamicResource defPrimary}"/>
+        <Setter Property="HoverImageColor" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="PressedImageColor" Value="{DynamicResource defTertiary}"/>
+        <Setter Property="HoverBackground" Value="{DynamicResource defButtonHover}"/>
+        <Setter Property="PressedBackground" Value="{DynamicResource defTertiary}"/>
+        <Setter Property="Background" Value="{DynamicResource defButtonBackground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
         <Setter Property="Cursor" Value="Hand"/>
-        <Setter Property="Height" Value="{StaticResource defHeight}"/>
+        <Setter Property="Height" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ImageComboButton}">
@@ -30,6 +37,7 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=HoverImage, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="PART_TextHolder" Property="Foreground" Value="{Binding Path=HoverImageColor, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=HoverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>

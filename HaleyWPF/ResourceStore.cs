@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using Haley.Models;
+using System.Collections.Generic;
 
 namespace Haley.WPF
 {
@@ -11,7 +12,7 @@ namespace Haley.WPF
         public static CornerRadius cornerRadius = new CornerRadius(0.0);
 
         private static CommonDictionary colorDictionary;
-        private static CommonDictionary iconDictionary;
+        private static List<CommonDictionary> iconDictionaries;
 
         public static SolidColorBrush getBrush(object resourceKey)
         {
@@ -30,15 +31,26 @@ namespace Haley.WPF
         }
         public static ImageSource getIcon(object resourceKey)
         {
-            if (iconDictionary == null)
+            if (iconDictionaries == null)
             {
-                iconDictionary = new CommonDictionary();
-                iconDictionary.Source = new Uri("pack://application:,,,/Haley.WPF;component/Dictionaries/haleyIcons.xaml",UriKind.RelativeOrAbsolute);
+                iconDictionaries = new List<CommonDictionary>();
+
+                var dic_01 = new CommonDictionary();
+                dic_01.Source = new Uri("pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons01.xaml",UriKind.RelativeOrAbsolute);
+                var dic_02 = new CommonDictionary();
+                dic_02.Source = new Uri("pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml", UriKind.RelativeOrAbsolute);
+
+                iconDictionaries.Add(dic_01);
+                iconDictionaries.Add(dic_02);
             }
-            if (iconDictionary.Contains(resourceKey))
+            foreach (var dic in iconDictionaries)
             {
-                return (ImageSource)iconDictionary[resourceKey];
+                if (dic.Contains(resourceKey))
+                {
+                    return (ImageSource)dic[resourceKey];
+                }
             }
+            
             return null;
         }
     }

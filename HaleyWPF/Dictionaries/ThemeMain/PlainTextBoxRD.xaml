@@ -9,8 +9,10 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type bc:PlainTextBox}">
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="{DynamicResource defBackgroundPrimary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="ShadowColor" Value="{DynamicResource defSecondary}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>

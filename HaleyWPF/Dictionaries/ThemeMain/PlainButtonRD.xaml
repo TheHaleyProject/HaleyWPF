@@ -10,8 +10,12 @@
     
     <Style TargetType="{x:Type bc:PlainButton}">
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="{DynamicResource defBackground}"/>
+        <Setter Property="Background" Value="{DynamicResource defButtonBackground}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
+        <Setter Property="HoverBackground" Value="{DynamicResource defButtonHover}"/>
+        <Setter Property="PressedBackground" Value="{DynamicResource defTertiary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="ShadowColor" Value="{DynamicResource defSecondary}"/>
         <Setter Property="Height" Value="{StaticResource defHeight}"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Template">
@@ -27,6 +31,9 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=HoverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=PressedBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -3,16 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:hly="http://schemas.hpod9.com/haley/wpf"
-         xmlns:hlyMVVM="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
         Title="WndwPagination" Height="800" Width="600">
     <Grid>
-        <StackPanel>
+        <StackPanel Background="{DynamicResource defBorderBrush}">
 
-            <hly:Pagination x:Name="pgMain" Margin="10" CornerRadius="3" ItemsCountTotal="120" ItemsCountPerPage="30" DirectButtonsCount="4" Height="30" CurrentPage="{Binding currentpage,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
-            <hly:Pagination x:Name="pgSimple" Margin="10" CornerRadius="3" ItemsCountTotal="120" ItemsCountPerPage="10" Mode="Simple" />
+            <hw:Pagination x:Name="pgMain" Margin="10" CornerRadius="3" ItemsCountTotal="120" ItemsCountPerPage="30" DirectButtonsCount="4" Height="30" CurrentPage="{Binding currentpage,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+            <hw:Pagination x:Name="pgSimple" Margin="10" CornerRadius="3" ItemsCountTotal="120" ItemsCountPerPage="10" Mode="Simple" />
             <WrapPanel HorizontalAlignment="Center">
                 <TextBlock Text="{Binding ElementName=pgMain,Path=CurrentPage}" FontSize="18" />
                 <TextBlock Text="{Binding ElementName=pgSimple,Path=CurrentPage}" FontSize="18" Margin="20,0"/>
@@ -24,61 +24,61 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel>
-                    <hly:PlainTextBox x:Name="username" Height="35" Width="180" CornerRadius="10" WaterMark="User Name" Margin="5" ShowShadow="True" ShadowColor="Red"/>
-                    <hly:PlainPasswordBox x:Name="pwdbox" Height="35" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" ShowShadow="True" ShadowColor="Red"/>
-                    <hly:PlainButton CommandParameter="{Binding ElementName=pwdbox}" Command="{Binding Cmd_Login}" Content="Button" Width="180"/>
-                    <hly:ToggleButton  OffText="light"/>
+                    <hw:PlainTextBox x:Name="username" Height="35" Width="180" CornerRadius="10" WaterMark="User Name" Margin="5" ShowShadow="True" ShadowColor="Red"/>
+                    <hw:PlainPasswordBox x:Name="pwdbox" Height="35" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" ShowShadow="True" ShadowColor="Red"/>
+                    <hw:PlainButton CommandParameter="{Binding ElementName=pwdbox}" Command="{Binding Cmd_Login}" Content="Button" Width="180"/>
+                    <hw:ToggleButton  OffText="light"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <StackPanel.Resources>
-                        <Style TargetType="{x:Type hly:PlainCheckBox}">
+                        <Style TargetType="{x:Type hw:PlainCheckBox}">
                             <Setter Property="TickColor" Value="White"/>
                             <Setter Property="Background" Value="#FF4D0BAD"/>
                         </Style>
                     </StackPanel.Resources>
-                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Sheets" />
-                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Rooms" />
-                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Plan View" />
-                    <hly:PlainCheckBox HorizontalAlignment="Left" Content="Ceiling View" />
-                    <hly:PlainImage DefaultImage="{StaticResource mobile_phone}" Height="30" Width="30" DefaultImageColor="IndianRed" HoverImageColor="#FF4D0BAD"/>
+                    <hw:PlainCheckBox HorizontalAlignment="Left" Content="Sheets" />
+                    <hw:PlainCheckBox HorizontalAlignment="Left" Content="Rooms" />
+                    <hw:PlainCheckBox HorizontalAlignment="Left" Content="Plan View" />
+                    <hw:PlainCheckBox HorizontalAlignment="Left" Content="Ceiling View" />
+                    <hw:PlainImage DefaultImage="{StaticResource mobile_phone}" Height="30" Width="30" DefaultImageColor="IndianRed" HoverImageColor="#FF4D0BAD"/>
                 </StackPanel>
             </Grid>
            
-            <!--<hly:PlainListView ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="400"  Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Hidden" CornerRadius="10" BorderThickness="0" BorderBrush="#33DE22D9" ItemHoverColor="#3301FFFF" ItemSelectedColor="#33DE22D9">
-                <hly:PlainListView.ItemsPanel>
+            <!--<hw:PlainListView ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="400"  Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Hidden" CornerRadius="10" BorderThickness="0" BorderBrush="#33DE22D9" ItemHoverColor="#3301FFFF" ItemSelectedColor="#33DE22D9">
+                <hw:PlainListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Margin="5" />
                     </ItemsPanelTemplate>
-                </hly:PlainListView.ItemsPanel>
-                <hly:PlainListView.ItemTemplate>
+                </hw:PlainListView.ItemsPanel>
+                <hw:PlainListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="20" Margin="2">
-                            <hly:ImageButton/>
+                            <hw:ImageButton/>
                             <TextBlock Text="{Binding Name}"/>
                             <TextBlock Text="-"/>
                             <TextBlock Text="{Binding Age}"/>
                         </StackPanel>
                     </DataTemplate>
-                </hly:PlainListView.ItemTemplate>
-            </hly:PlainListView>-->
-            <hly:SearchBar Height="30" WaterMark="Search for some components" CornerRadius="10" Width="300" Margin="15" ShowShadow="True" ShadowColor="Blue" CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" Command="{Binding Cmd_search}" SearchStarted="SearchBar_SearchStarted" />
-            <hly:CollectionSelector ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="400"  Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Hidden" CornerRadius="10" BorderThickness="0" BorderBrush="#33DE22D9" ItemHoverColor="#3301FFFF" ItemSelectedColor="#33DE22D9">
-                <hly:CollectionSelector.ItemsPanel>
+                </hw:PlainListView.ItemTemplate>
+            </hw:PlainListView>-->
+            <hw:SearchBar Height="30" WaterMark="Search for some components" CornerRadius="10" Width="300" Margin="15" ShowShadow="True" ShadowColor="Blue" CommandParameter="{Binding Text, RelativeSource={RelativeSource Self}}" Command="{Binding Cmd_search}" SearchStarted="SearchBar_SearchStarted" />
+            <hw:CollectionSelector ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="400"  Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Hidden" CornerRadius="10" BorderThickness="0" BorderBrush="#33DE22D9" ItemHoverColor="#3301FFFF" ItemSelectedColor="#33DE22D9">
+                <hw:CollectionSelector.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Margin="5" />
                     </ItemsPanelTemplate>
-                </hly:CollectionSelector.ItemsPanel>
-                <hly:CollectionSelector.ItemTemplate>
+                </hw:CollectionSelector.ItemsPanel>
+                <hw:CollectionSelector.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal" Height="20" Margin="2">
-                            <hly:ImageButton/>
+                            <hw:ImageButton/>
                             <TextBlock Text="{Binding Name}"/>
                             <TextBlock Text="-"/>
                             <TextBlock Text="{Binding Age}"/>
                         </StackPanel>
                     </DataTemplate>
-                </hly:CollectionSelector.ItemTemplate>
-            </hly:CollectionSelector>
+                </hw:CollectionSelector.ItemTemplate>
+            </hw:CollectionSelector>
         </StackPanel>
         
     </Grid>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using Haley.Models;
+using System.ComponentModel;
 
 namespace Haley.WPF
 {
@@ -20,34 +21,46 @@ namespace Haley.WPF
         /// <param name="e"></param>
         public static void changeColor(string propname, DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            //CHECK: Is New color value empty?
-            if (e.NewValue == null || d == null) return;
+            try
+            {
+                //CHECK: Is New color value empty?
+                if (e.NewValue == null || d == null) return;
 
-            //CHECK: Is new value is actually a SolidColorBrush?
-            var _newcolor = e.NewValue as SolidColorBrush;
-            if (_newcolor == null) return;
+                //CHECK: Is new value is actually a SolidColorBrush?
+                var _newcolor = e.NewValue as SolidColorBrush;
+                if (_newcolor == null) return;
 
-            //CHECK: Does the dependency object contain an actual property with the provided name?
-            var actual_propInfo = d.GetType().GetProperty(propname);
-            if (actual_propInfo == null) return;
+                //CHECK: Does the dependency object contain an actual property with the provided name?
+                var actual_propInfo = DependencyPropertyDescriptor.FromName(propname, d.GetType(), d.GetType());
+                //var actual_propInfo = d.GetType().GetProperty(propname); //WORKS FOR BOTH NORMAL AND DEPENDENCY OBJECTS.
+                if (actual_propInfo == null) return;
 
-            //CHECK: If property is found, then is it really an imagesource type?
-            ImageSource target_imagesource = actual_propInfo.GetValue(d) as ImageSource;
-            if (target_imagesource == null) return;
+                //CHECK: If property is found, then is it really an imagesource type?
+                ImageSource target_imagesource = actual_propInfo.GetValue(d) as ImageSource;
+                if (target_imagesource == null) return;
 
-            //If all okay change the color.
-            ImageSource modified_source = null;
+                //If all okay change the color.
+                //ImageSource modified_source = null;
 
-            modified_source = changeColor(target_imagesource, _newcolor);
-            if (modified_source != null)
-            { target_imagesource = modified_source; }
+                var modified_source = changeColor(target_imagesource, _newcolor);
+                if (modified_source != null)
+                {
+                    actual_propInfo.SetValue(d, modified_source);
+                    //var property = actual_propInfo.DependencyProperty; //TO GET THE PROPERTY DIRECTLY
+                    //d.SetValue(actual_propInfo, modified_source); //IF NORMAL PROPERTY
+                }
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
 
         public static ImageSource changeColor(ImageSource source, SolidColorBrush brush)
         {
             //FIRST LOADING IS DIRECT AND SUBSEQUENT ARE PREPARED USING CACHED BITMAP BY DOT NET. SO, NO NEED TO IMPLEMENT A SEPARATE CACHING SYSTEM.
             //ImageRequest _request = new ImageRequest(source, brush);
-            ImageSource result = null;
+            //ImageSource result = null;
             //if (ImageCacheSource.ContainsKey(_request))
             //{
             //    ImageCacheSource.TryGetValue(_request, out result);
@@ -57,8 +70,7 @@ namespace Haley.WPF
             //    result = ImageUtils.changeImageColor(source, brush);
             //    ImageCacheSource.TryAdd(_request, result);
             //}
-            result = ImageUtils.changeImageColor(source, brush);
-            return result;
+            return ImageUtils.changeImageColor(source, brush);
         }
     }
 }

@@ -205,6 +205,16 @@ namespace Haley.WPF.BaseControls
         public static readonly DependencyProperty ItemHoverColorProperty =
             DependencyProperty.Register(nameof(ItemHoverColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
 
+        public Brush IconColor
+        {
+            get { return (Brush)GetValue(IconColorProperty); }
+            set { SetValue(IconColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconColorProperty =
+            DependencyProperty.Register(nameof(IconColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
+
         public IEnumerable SelectedItems
         {
             get { return (IEnumerable)GetValue(SelectedItemsProperty); }

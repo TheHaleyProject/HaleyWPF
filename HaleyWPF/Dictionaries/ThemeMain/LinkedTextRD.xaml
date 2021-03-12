@@ -9,6 +9,7 @@
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type bc:LinkedText}">
         <Setter Property="Foreground" Value="{DynamicResource defLink}"/>
+        <Setter Property="HoverForeground" Value="{DynamicResource defLinkHover}"/>
         <Setter Property="TextDecorations" Value="underline"/>
         <Setter Property="Template">
             <Setter.Value>

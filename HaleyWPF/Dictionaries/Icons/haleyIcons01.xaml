@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--SET 01-->
     <ImageSource x:Key="arrow">pack://application:,,,/Haley.WPF;component/Images/arrow.png</ImageSource>
     <ImageSource x:Key="arrow_large">pack://application:,,,/Haley.WPF;component/Images/arrow_large.png</ImageSource>
     <ImageSource x:Key="arrow_medium">pack://application:,,,/Haley.WPF;component/Images/arrow_medium.png</ImageSource>
@@ -198,30 +200,4 @@
     <ImageSource x:Key="warning_triangle_medium">pack://application:,,,/Haley.WPF;component/Images/warning_triangle_medium.png</ImageSource>
     <ImageSource x:Key="wrong">pack://application:,,,/Haley.WPF;component/Images/wrong.png</ImageSource>
     <ImageSource x:Key="wrong_large">pack://application:,,,/Haley.WPF;component/Images/wrong_large.png</ImageSource>
-
-    <ImageSource x:Key="arrow_down_circle">pack://application:,,,/Haley.WPF;component/Images/arrow_down_circle.png</ImageSource>
-    <ImageSource x:Key="arrow_down_circle_large">pack://application:,,,/Haley.WPF;component/Images/arrow_down_circle_large.png</ImageSource>
-    <ImageSource x:Key="arrow_down_circle_medium">pack://application:,,,/Haley.WPF;component/Images/arrow_down_circle_medium.png</ImageSource>
-    <ImageSource x:Key="arrow_down_rounded">pack://application:,,,/Haley.WPF;component/Images/arrow_down_rounded.png</ImageSource>
-    <ImageSource x:Key="arrow_down_rounded_large">pack://application:,,,/Haley.WPF;component/Images/arrow_down_rounded_large.png</ImageSource>
-    <ImageSource x:Key="arrow_down_rounded_medium">pack://application:,,,/Haley.WPF;component/Images/arrow_down_rounded_medium.png</ImageSource>
-    <ImageSource x:Key="arrow_down_sharp">pack://application:,,,/Haley.WPF;component/Images/arrow_down_sharp.png</ImageSource>
-    <ImageSource x:Key="arrow_down_sharp_large">pack://application:,,,/Haley.WPF;component/Images/arrow_down_sharp_large.png</ImageSource>
-    <ImageSource x:Key="arrow_down_sharp_medium">pack://application:,,,/Haley.WPF;component/Images/arrow_down_sharp_medium.png</ImageSource>
-    <ImageSource x:Key="arrow_down_square">pack://application:,,,/Haley.WPF;component/Images/arrow_down_square.png</ImageSource>
-    <ImageSource x:Key="arrow_down_square_large">pack://application:,,,/Haley.WPF;component/Images/arrow_down_square_large.png</ImageSource>
-    <ImageSource x:Key="arrow_down_square_medium">pack://application:,,,/Haley.WPF;component/Images/arrow_down_square_medium.png</ImageSource>
-    <ImageSource x:Key="arrow_line">pack://application:,,,/Haley.WPF;component/Images/arrow_line.png</ImageSource>
-    <ImageSource x:Key="arrow_line_large">pack://application:,,,/Haley.WPF;component/Images/arrow_line_large.png</ImageSource>
-    <ImageSource x:Key="arrow_line_medium">pack://application:,,,/Haley.WPF;component/Images/arrow_line_medium.png</ImageSource>
-    <ImageSource x:Key="eye">pack://application:,,,/Haley.WPF;component/Images/eye.png</ImageSource>
-    <ImageSource x:Key="eye_large">pack://application:,,,/Haley.WPF;component/Images/eye_large.png</ImageSource>
-    <ImageSource x:Key="eye_medium">pack://application:,,,/Haley.WPF;component/Images/eye_medium.png</ImageSource>
-    <ImageSource x:Key="tick">pack://application:,,,/Haley.WPF;component/Images/tick.png</ImageSource>
-    <ImageSource x:Key="tick_large">pack://application:,,,/Haley.WPF;component/Images/tick_large.png</ImageSource>
-    <ImageSource x:Key="tick_medium">pack://application:,,,/Haley.WPF;component/Images/tick_medium.png</ImageSource>
-    <ImageSource x:Key="tick_sharp">pack://application:,,,/Haley.WPF;component/Images/tick_sharp.png</ImageSource>
-    <ImageSource x:Key="tick_sharp_large">pack://application:,,,/Haley.WPF;component/Images/tick_sharp_large.png</ImageSource>
-    <ImageSource x:Key="tick_sharp_medium">pack://application:,,,/Haley.WPF;component/Images/tick_sharp_medium.png</ImageSource>
-
 </ResourceDictionary>

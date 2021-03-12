@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>2.0.12</Version>
+		<Version>2.0.13</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Updated Theme Loader Mechanism</PackageReleaseNotes>
+		<PackageReleaseNotes>Added new themes</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>2.0.9.0</AssemblyVersion>
 		<FileVersion>2.0.9.0</FileVersion>
@@ -34,6 +34,90 @@
     <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="Images\calender.png" />
+    <None Remove="Images\calender_clock.png" />
+    <None Remove="Images\calender_clock_large.png" />
+    <None Remove="Images\calender_clock_medium.png" />
+    <None Remove="Images\calender_large.png" />
+    <None Remove="Images\calender_medium.png" />
+    <None Remove="Images\car.png" />
+    <None Remove="Images\cart.png" />
+    <None Remove="Images\cart_large.png" />
+    <None Remove="Images\cart_line.png" />
+    <None Remove="Images\cart_line_large.png" />
+    <None Remove="Images\cart_line_medium.png" />
+    <None Remove="Images\cart_medium.png" />
+    <None Remove="Images\car_2.png" />
+    <None Remove="Images\car_2_large.png" />
+    <None Remove="Images\car_2_medium.png" />
+    <None Remove="Images\car_large.png" />
+    <None Remove="Images\car_medium.png" />
+    <None Remove="Images\edit.png" />
+    <None Remove="Images\edit_large.png" />
+    <None Remove="Images\edit_medium.png" />
+    <None Remove="Images\firstaid.png" />
+    <None Remove="Images\firstaid_large.png" />
+    <None Remove="Images\firstaid_medium.png" />
+    <None Remove="Images\flag.png" />
+    <None Remove="Images\flag_large.png" />
+    <None Remove="Images\flag_medium.png" />
+    <None Remove="Images\flag_triangle.png" />
+    <None Remove="Images\flag_triangle_large.png" />
+    <None Remove="Images\flag_triangle_medium.png" />
+    <None Remove="Images\gift.png" />
+    <None Remove="Images\gift_large.png" />
+    <None Remove="Images\gift_medium.png" />
+    <None Remove="Images\globe.png" />
+    <None Remove="Images\globe_2.png" />
+    <None Remove="Images\globe_2_large.png" />
+    <None Remove="Images\globe_2_medium.png" />
+    <None Remove="Images\globe_large.png" />
+    <None Remove="Images\globe_medium.png" />
+    <None Remove="Images\globe_stand.png" />
+    <None Remove="Images\globe_stand_large.png" />
+    <None Remove="Images\globe_stand_medium.png" />
+    <None Remove="Images\home.png" />
+    <None Remove="Images\home_2.png" />
+    <None Remove="Images\home_2_large.png" />
+    <None Remove="Images\home_2_medium.png" />
+    <None Remove="Images\home_large.png" />
+    <None Remove="Images\home_medium.png" />
+    <None Remove="Images\medical.png" />
+    <None Remove="Images\medical_large.png" />
+    <None Remove="Images\medical_medium.png" />
+    <None Remove="Images\package.png" />
+    <None Remove="Images\package_large.png" />
+    <None Remove="Images\package_medium.png" />
+    <None Remove="Images\pen.png" />
+    <None Remove="Images\pen_large.png" />
+    <None Remove="Images\pen_medium.png" />
+    <None Remove="Images\plane.png" />
+    <None Remove="Images\plane_large.png" />
+    <None Remove="Images\plane_medium.png" />
+    <None Remove="Images\plane_moving.png" />
+    <None Remove="Images\plane_moving_large.png" />
+    <None Remove="Images\plane_moving_medium.png" />
+    <None Remove="Images\suitcase.png" />
+    <None Remove="Images\suitcase_large.png" />
+    <None Remove="Images\suitcase_medium.png" />
+    <None Remove="Images\touch.png" />
+    <None Remove="Images\touch_large.png" />
+    <None Remove="Images\touch_medium.png" />
+    <None Remove="Images\zoom_in.png" />
+    <None Remove="Images\zoom_in_large.png" />
+    <None Remove="Images\zoom_in_line.png" />
+    <None Remove="Images\zoom_in_line_large.png" />
+    <None Remove="Images\zoom_in_line_medium.png" />
+    <None Remove="Images\zoom_in_medium.png" />
+    <None Remove="Images\zoom_out.png" />
+    <None Remove="Images\zoom_out_large.png" />
+    <None Remove="Images\zoom_out_line.png" />
+    <None Remove="Images\zoom_out_line_large.png" />
+    <None Remove="Images\zoom_out_line_medium.png" />
+    <None Remove="Images\zoom_out_medium.png" />
+  </ItemGroup>
 	
   <ItemGroup>
     <None Include="..\Haley.png">
@@ -65,6 +149,12 @@
     <Resource Include="Images\arrow_line_large.png" />
     <Resource Include="Images\arrow_line_medium.png" />
     <Resource Include="Images\arrow_medium.png" />
+    <Resource Include="Images\calender.png" />
+    <Resource Include="Images\calender_clock.png" />
+    <Resource Include="Images\calender_clock_large.png" />
+    <Resource Include="Images\calender_clock_medium.png" />
+    <Resource Include="Images\calender_large.png" />
+    <Resource Include="Images\calender_medium.png" />
     <Resource Include="Images\camera.png" />
     <Resource Include="Images\camera_flat.png" />
     <Resource Include="Images\camera_flat_2.png" />
@@ -74,6 +164,18 @@
     <Resource Include="Images\camera_flat_medium.png" />
     <Resource Include="Images\camera_large.png" />
     <Resource Include="Images\camera_medium.png" />
+    <Resource Include="Images\car.png" />
+    <Resource Include="Images\cart.png" />
+    <Resource Include="Images\cart_large.png" />
+    <Resource Include="Images\cart_line.png" />
+    <Resource Include="Images\cart_line_large.png" />
+    <Resource Include="Images\cart_line_medium.png" />
+    <Resource Include="Images\cart_medium.png" />
+    <Resource Include="Images\car_2.png" />
+    <Resource Include="Images\car_2_large.png" />
+    <Resource Include="Images\car_2_medium.png" />
+    <Resource Include="Images\car_large.png" />
+    <Resource Include="Images\car_medium.png" />
     <Resource Include="Images\chat_double.png" />
     <Resource Include="Images\chat_double_large.png" />
     <Resource Include="Images\chat_double_medium.png" />
@@ -104,6 +206,9 @@
     <Resource Include="Images\dustbin.png" />
     <Resource Include="Images\dustbin_large.png" />
     <Resource Include="Images\dustbin_medium.png" />
+    <Resource Include="Images\edit.png" />
+    <Resource Include="Images\edit_large.png" />
+    <Resource Include="Images\edit_medium.png" />
     <Resource Include="Images\empty_image.png" />
     <Resource Include="Images\empty_image_large.png" />
     <Resource Include="Images\empty_image_medium.png" />
@@ -125,9 +230,30 @@
     <Resource Include="Images\filter.png" />
     <Resource Include="Images\filter_large.png" />
     <Resource Include="Images\filter_medium.png" />
+    <Resource Include="Images\firstaid.png" />
+    <Resource Include="Images\firstaid_large.png" />
+    <Resource Include="Images\firstaid_medium.png" />
+    <Resource Include="Images\flag.png" />
+    <Resource Include="Images\flag_large.png" />
+    <Resource Include="Images\flag_medium.png" />
+    <Resource Include="Images\flag_triangle.png" />
+    <Resource Include="Images\flag_triangle_large.png" />
+    <Resource Include="Images\flag_triangle_medium.png" />
     <Resource Include="Images\folder.png" />
     <Resource Include="Images\folder_large.png" />
     <Resource Include="Images\folder_medium.png" />
+    <Resource Include="Images\gift.png" />
+    <Resource Include="Images\gift_large.png" />
+    <Resource Include="Images\gift_medium.png" />
+    <Resource Include="Images\globe.png" />
+    <Resource Include="Images\globe_2.png" />
+    <Resource Include="Images\globe_2_large.png" />
+    <Resource Include="Images\globe_2_medium.png" />
+    <Resource Include="Images\globe_large.png" />
+    <Resource Include="Images\globe_medium.png" />
+    <Resource Include="Images\globe_stand.png" />
+    <Resource Include="Images\globe_stand_large.png" />
+    <Resource Include="Images\globe_stand_medium.png" />
     <Resource Include="Images\heart_line.png" />
     <Resource Include="Images\heart_line_large.png" />
     <Resource Include="Images\heart_line_medium.png" />
@@ -137,6 +263,12 @@
     <Resource Include="Images\heart_shiny.png" />
     <Resource Include="Images\heart_shiny_large.png" />
     <Resource Include="Images\heart_shiny_medium.png" />
+    <Resource Include="Images\home.png" />
+    <Resource Include="Images\home_2.png" />
+    <Resource Include="Images\home_2_large.png" />
+    <Resource Include="Images\home_2_medium.png" />
+    <Resource Include="Images\home_large.png" />
+    <Resource Include="Images\home_medium.png" />
     <Resource Include="Images\info_circle.png" />
     <Resource Include="Images\info_circle_large.png" />
     <Resource Include="Images\info_circle_medium.png" />
@@ -158,6 +290,9 @@
     <Resource Include="Images\maximize.png" />
     <Resource Include="Images\maximize_large.png" />
     <Resource Include="Images\maximize_medium.png" />
+    <Resource Include="Images\medical.png" />
+    <Resource Include="Images\medical_large.png" />
+    <Resource Include="Images\medical_medium.png" />
     <Resource Include="Images\microphone.png" />
     <Resource Include="Images\microphone_large.png" />
     <Resource Include="Images\microphone_medium.png" />
@@ -188,6 +323,12 @@
     <Resource Include="Images\new_file.png" />
     <Resource Include="Images\new_file_large.png" />
     <Resource Include="Images\new_file_medium.png" />
+    <Resource Include="Images\package.png" />
+    <Resource Include="Images\package_large.png" />
+    <Resource Include="Images\package_medium.png" />
+    <Resource Include="Images\pen.png" />
+    <Resource Include="Images\pen_large.png" />
+    <Resource Include="Images\pen_medium.png" />
     <Resource Include="Images\phone_circle.png" />
     <Resource Include="Images\phone_circle_large.png" />
     <Resource Include="Images\phone_circle_medium.png" />
@@ -197,6 +338,12 @@
     <Resource Include="Images\phone_plain.png" />
     <Resource Include="Images\phone_plain_large.png" />
     <Resource Include="Images\phone_plain_medium.png" />
+    <Resource Include="Images\plane.png" />
+    <Resource Include="Images\plane_large.png" />
+    <Resource Include="Images\plane_medium.png" />
+    <Resource Include="Images\plane_moving.png" />
+    <Resource Include="Images\plane_moving_large.png" />
+    <Resource Include="Images\plane_moving_medium.png" />
     <Resource Include="Images\play.png" />
     <Resource Include="Images\play_large.png" />
     <Resource Include="Images\play_medium.png" />
@@ -242,6 +389,9 @@
     <Resource Include="Images\stop.png" />
     <Resource Include="Images\stop_large.png" />
     <Resource Include="Images\stop_medium.png" />
+    <Resource Include="Images\suitcase.png" />
+    <Resource Include="Images\suitcase_large.png" />
+    <Resource Include="Images\suitcase_medium.png" />
     <Resource Include="Images\tick.png" />
     <Resource Include="Images\tick_large.png" />
     <Resource Include="Images\tick_medium.png" />
@@ -251,6 +401,9 @@
     <Resource Include="Images\timer.png" />
     <Resource Include="Images\timer_large.png" />
     <Resource Include="Images\timer_medium.png" />
+    <Resource Include="Images\touch.png" />
+    <Resource Include="Images\touch_large.png" />
+    <Resource Include="Images\touch_medium.png" />
     <Resource Include="Images\unknown_file.png" />
     <Resource Include="Images\unknown_file_large.png" />
     <Resource Include="Images\unknown_file_medium.png" />
@@ -269,6 +422,18 @@
     <Resource Include="Images\wrong.png" />
     <Resource Include="Images\wrong_large.png" />
     <Resource Include="Images\wrong_medium.png" />
+    <Resource Include="Images\zoom_in.png" />
+    <Resource Include="Images\zoom_in_large.png" />
+    <Resource Include="Images\zoom_in_line.png" />
+    <Resource Include="Images\zoom_in_line_large.png" />
+    <Resource Include="Images\zoom_in_line_medium.png" />
+    <Resource Include="Images\zoom_in_medium.png" />
+    <Resource Include="Images\zoom_out.png" />
+    <Resource Include="Images\zoom_out_large.png" />
+    <Resource Include="Images\zoom_out_line.png" />
+    <Resource Include="Images\zoom_out_line_large.png" />
+    <Resource Include="Images\zoom_out_line_medium.png" />
+    <Resource Include="Images\zoom_out_medium.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -297,7 +462,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\haleyIcons.xaml">
+    <Page Update="Dictionaries\Icons\haleyIcons02.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\Icons\haleyIcons01.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -312,6 +481,14 @@
     <Page Update="Dictionaries\haleyWPFConverters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeColors\ThemeMild.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\ThemeExtra\TextBlockSD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\ThemeExtra\ToggleButtonSD.xaml">
       <SubType>Designer</SubType>
@@ -432,7 +609,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="4.0.1" />
+       <PackageReference Include="Haley.MVVM" Version="4.0.3" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

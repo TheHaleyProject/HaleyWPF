@@ -60,6 +60,9 @@
     <Compile Include="MainWindow2.xaml.cs">
       <DependentUpon>MainWindow2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ThemeTEst.xaml.cs">
+      <DependentUpon>ThemeTEst.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ToTestControl.xaml.cs">
       <DependentUpon>ToTestControl.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ThemeTEst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ToTestControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
@@ -175,7 +185,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="4.0.1" />
+        <PackageReference Include="Haley.MVVM" Version="4.0.3" />
       </ItemGroup>
     </Otherwise>
   </Choose>

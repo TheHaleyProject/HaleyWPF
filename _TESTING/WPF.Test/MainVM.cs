@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Haley.WPF.BaseControls;
 using System;
+using Haley.Enums;
+using Haley.Utils;
 
 namespace WPF.Test
 {
@@ -27,6 +29,21 @@ namespace WPF.Test
             //now we search
         }
         public ICommand Cmd_search => new DelegateCommand<string>(_search);
+        void _changetheme()
+        {
+            ThemeMode _mode = ThemeLoader.Singleton.current_internal_mode;
+
+            switch(_mode)
+            {
+                case ThemeMode.Dark:
+                    ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Normal);
+                    break;
+                case ThemeMode.Normal:
+                    ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Dark);
+                    break;
+            }
+        }
+        public ICommand Cmd_changetheme => new DelegateCommand(_changetheme);
 
         private ObservableCollection<Person> _soemthing;
         public ObservableCollection<Person> something
