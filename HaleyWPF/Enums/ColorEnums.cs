@@ -14,7 +14,7 @@ namespace Haley.Enums
         defOn,
         defOff,
         defShadow,
-        defHoverBackground,
+        defButtonHover,
         defBackgroundSecondary,
         defHoverBorderBrush
     }
