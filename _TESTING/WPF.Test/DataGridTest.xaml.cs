@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WPF.Test
 {
     /// <summary>
-    /// Interaction logic for ThemeTest.xaml
+    /// Interaction logic for DataGridTest.xaml
     /// </summary>
-    public partial class ThemeTest : Window
+    public partial class DataGridTest : Window
     {
-        public ThemeTest()
+        public DataGridTest()
         {
             InitializeComponent();
             this.DataContext = new MainVM();

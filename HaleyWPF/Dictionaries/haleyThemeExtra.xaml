@@ -6,7 +6,7 @@
     <!-- this is a theme dictionary. so this will be registered or called only once. so no need to use common dictionary-->
     <ResourceDictionary.MergedDictionaries>
         <!--#region Themes-->
-        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeExtra/ToggleButtonSD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeExtra/PlainToggleButtonSD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeExtra/TextBlockSD.xaml"/>
         <!--#endregion-->
         

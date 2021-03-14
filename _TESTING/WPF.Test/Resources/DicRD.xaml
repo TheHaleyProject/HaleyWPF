@@ -6,5 +6,5 @@
             <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicSD.xaml"/>
         </ResourceDictionary.MergedDictionaries>
 
-    <ObjectDataProvider x:Key="GlobalData__" ObjectType="{x:Type data:GlobalData}" MethodName="getSingleton" />
+    <!--<ObjectDataProvider x:Key="GlobalData__" ObjectType="{x:Type data:GlobalData}" MethodName="getSingleton" />-->
 </ResourceDictionary>

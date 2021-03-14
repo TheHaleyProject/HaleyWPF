@@ -1,4 +1,4 @@
-﻿<Window x:Class="WPF.Test.ThemeTEst"
+﻿<Window x:Class="WPF.Test.ThemeTest"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         mc:Ignorable="d"
-        Title="ThemeTEst" Height="660" Width="900">
+        Title="ThemeTest" Height="660" Width="900">
     <Window.InputBindings>
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
     </Window.InputBindings>

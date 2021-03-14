@@ -36,6 +36,10 @@
   </PropertyGroup>
 	
   <ItemGroup>
+    <Compile Remove="BaseControls\PlainDataGrid.cs" />
+  </ItemGroup>
+	
+  <ItemGroup>
     <None Remove="Images\calender.png" />
     <None Remove="Images\calender_clock.png" />
     <None Remove="Images\calender_clock_large.png" />
@@ -117,6 +121,10 @@
     <None Remove="Images\zoom_out_line_large.png" />
     <None Remove="Images\zoom_out_line_medium.png" />
     <None Remove="Images\zoom_out_medium.png" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Page Remove="Dictionaries\ThemeMain\PlainDataGridRD.xaml" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -438,8 +446,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="GroupControls\Docker\" />
-    <Folder Include="GroupControls\RibbonManager\" />
+    <Folder Include="GroupControls\FlexiDock\" />
+    <Folder Include="GroupControls\FlexiRibbon\" />
+    <Folder Include="GroupControls\FlexiMenu\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -491,7 +500,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Dictionaries\ThemeExtra\ToggleButtonSD.xaml">
+    <Page Update="Dictionaries\ThemeExtra\PlainToggleButtonSD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -547,11 +556,15 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Dictionaries\ThemeMain\FlexiTabRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionaries\ThemeMain\SeparatorRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\ThemeMain\ToggleButtonRD.xaml">
+    <Page Update="Dictionaries\ThemeMain\PlainToggleButtonRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

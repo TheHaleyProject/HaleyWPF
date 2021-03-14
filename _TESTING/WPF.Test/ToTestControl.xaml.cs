@@ -10,6 +10,7 @@ namespace WPF.Test
         public ToTestControl()
         {
             InitializeComponent();
+            this.DataContext = new MainVM();
         }
     }
 }

@@ -18,7 +18,7 @@
         <Setter Property="CornerRadius" Value="{Binding Path=ActualHeight,Converter={StaticResource HalfValueConverter},RelativeSource={RelativeSource Self}}"/>
     </Style>
 
-    <Style x:Key="CircularToggleButton" TargetType="{x:Type bc:ToggleButton}">
+    <Style x:Key="CircularToggleButton" TargetType="{x:Type bc:PlainToggleButton}">
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
         <Setter Property="Template">

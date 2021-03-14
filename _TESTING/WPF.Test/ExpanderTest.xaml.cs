@@ -3,11 +3,11 @@
 namespace WPF.Test
 {
     /// <summary>
-    /// Interaction logic for MainWindow2.xaml
+    /// Interaction logic for ExpanderTest.xaml
     /// </summary>
-    public partial class MainWindow2 : Window
+    public partial class ExpanderTest : Window
     {
-        public MainWindow2()
+        public ExpanderTest()
         {
             InitializeComponent();
         }

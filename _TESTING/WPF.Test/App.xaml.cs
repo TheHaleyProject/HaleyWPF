@@ -9,21 +9,23 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //MainWindow2 _wndw2sd = new MainWindow2();
+            //ExpanderTest _wndw2sd = new ExpanderTest();
 
 
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
 
-            //MainWindow2 _wndw2 = new MainWindow2();
+            //ExpanderTest _wndw2 = new ExpanderTest();
             //_wndw2.ShowDialog();
 
             //WndwPagination _wndw3 = new WndwPagination();
             //_wndw3.ShowDialog();
 
-            ThemeTEst wndw = new ThemeTEst();
-                wndw.ShowDialog();
+            //ThemeTest wndw = new ThemeTest();
+            //    wndw.ShowDialog();
 
+            DataGridTest wnddgtest = new DataGridTest();
+                wnddgtest.ShowDialog();
 
         }
     }

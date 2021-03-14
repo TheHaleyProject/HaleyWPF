@@ -13,14 +13,20 @@
     <Style x:Key="internal_tglebtn_CommonBorder" TargetType="{x:Type Border}" BasedOn="{StaticResource BorderWithShadow}">
         <Style.Triggers>
             <!--When Value is true-->
-            <DataTrigger Binding="{Binding Status, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <Setter Property="Background" Value="{Binding Path=ColorON, RelativeSource={RelativeSource TemplatedParent}}"/>
             </DataTrigger>
 
             <!--When value is false-->
-            <DataTrigger Binding="{Binding Status, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource False}">
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource False}">
                 <Setter Property="Background" Value="{Binding Path=ColorOFF, RelativeSource={RelativeSource TemplatedParent}}"/>
             </DataTrigger>
+
+            <!--When value is null-->
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{x:Null}">
+                <Setter Property="Background" Value="{DynamicResource defBackgroundTertiary}"/>
+            </DataTrigger>
+
         </Style.Triggers>
     </Style>
 
@@ -30,15 +36,22 @@
             <DataTrigger Binding="{Binding ShowText, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
                 <Setter Property="Visibility" Value="Collapsed"/>
             </DataTrigger>
-            
-            <DataTrigger Binding="{Binding Status, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <Setter Property="Text" Value="{Binding Path=OnText, RelativeSource={RelativeSource TemplatedParent}}"/>
                 <Setter Property="Grid.Column" Value="0"/>
             </DataTrigger>
 
             <!--When Value is false-->
-            <DataTrigger Binding="{Binding Status, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource False}">
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource False}">
                 <Setter Property="Text" Value="{Binding Path=OffText, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter Property="Grid.Column" Value="1"/>
+            </DataTrigger>
+
+
+            <!--When Value is Null-->
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{x:Null}">
+                <Setter Property="Text" Value="--"/>
                 <Setter Property="Grid.Column" Value="1"/>
             </DataTrigger>
         </Style.Triggers>
@@ -48,15 +61,21 @@
         <Setter Property="Margin" Value="2"/>
         <Style.Triggers>
             <!--When Value is true-->
-            <DataTrigger Binding="{Binding Status, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
                 <Setter Property="HorizontalAlignment" Value="Right"/>
             </DataTrigger>
 
             <!--When value is false-->
-            <DataTrigger Binding="{Binding Status, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource False}">
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource False}">
                 <Setter Property="HorizontalAlignment" Value="Left"/>
             </DataTrigger>
 
+            <!--When value is false-->
+            <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{x:Null}">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </DataTrigger>
+
+            
             <DataTrigger Binding="{Binding EnlargeSwitchButton, RelativeSource={RelativeSource TemplatedParent}}" Value="{StaticResource True}">
                 <Setter Property="Margin" Value="-1"/>
             </DataTrigger>

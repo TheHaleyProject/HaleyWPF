@@ -26,6 +26,10 @@
     <Color x:Key="defShadow">#B200D4FF</Color>
     <!--SAME AS DEF SECONDARY-->
 
+    <!-- Items -->
+    <SolidColorBrush x:Key="defSelected" Color="#CC3CC1F3"/>
+    
+    
     <!-- PRIMARY SPECIAL -->
     <SolidColorBrush x:Key="defPrimary" Color="White"/>
     <SolidColorBrush x:Key="defSecondary" Color="#FFFFF405"/>

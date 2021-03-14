@@ -1,0 +1,78 @@
+﻿<Window x:Class="WPF.Test.DataGridTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.Test"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        mc:Ignorable="d"
+        Title="DataGridTest" Height="450" Width="800">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
+    </Window.InputBindings>
+    <!--<Grid>
+        --><!--<hw:PlainDataGrid Padding="2" ItemsSource="{Binding something,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>--><!--
+        <DataGrid Padding="2" ItemsSource="{Binding something,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>-->
+    <Grid Background="{DynamicResource defBackgroundPrimary}">
+
+        <Ribbon x:Name="Ribbon" SelectedIndex="0" Background="{DynamicResource defBackgroundSecondary}" BorderBrush="{DynamicResource defBorderBrush}" Foreground="{DynamicResource defContent}">
+            <!-- Help Pane, located at the right-hand side -->
+            <Ribbon.HelpPaneContent>
+                <RibbonButton SmallImageSource="{StaticResource info_circle}" />
+            </Ribbon.HelpPaneContent>
+            <!-- Quick Access Toolbar - located at the upper-left corner -->
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton x:Name ="Save" SmallImageSource="{StaticResource save}" />
+                    <RibbonSplitButton x:Name ="Undo" SmallImageSource="{StaticResource arrow}" >
+                        <RibbonSplitMenuItem Header="Undo action #1" />
+                        <RibbonSplitMenuItem Header="Undo action #2" />
+                        <RibbonSplitMenuItem Header="Undo action #3" />
+                    </RibbonSplitButton>
+                    <RibbonSplitButton x:Name="Redo" SmallImageSource="{StaticResource arrow_down_sharp}" >
+                        <RibbonSplitMenuItem Header="Redo action #1" />
+                        <RibbonSplitMenuItem Header="Redo action #2" />
+                    </RibbonSplitButton>
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <!-- Application Menu, located at the left-hand side (down arrow) -->
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F" Background="{DynamicResource defSecondary}">
+                    <RibbonApplicationMenuItem Header="Options" ImageSource="{StaticResource settings_double_spanner}" />
+                    <RibbonApplicationMenuItem Header="Exit" ImageSource="{StaticResource stop}" />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <!-- Ribbon Tab #1: Home -->
+            <RibbonTab Header="Home" KeyTip="H" Background="{DynamicResource defPrimary}" BorderBrush="Red" BorderThickness="2">
+                <!-- Home/Clipboard group-->
+                <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard" >
+                    <RibbonMenuButton LargeImageSource="{StaticResource package}" Label="Paste" KeyTip="V">
+                        <RibbonMenuItem ImageSource="{StaticResource gift}" Header="Keep Text Only" KeyTip="T"/>
+                        <RibbonMenuItem ImageSource="{StaticResource heart_line}" Header="Paste Special..." KeyTip="S"/>
+                    </RibbonMenuButton>
+                    <RibbonButton SmallImageSource="{StaticResource delete}" Label="Cut" KeyTip="X" />
+                    <RibbonButton SmallImageSource="{StaticResource copy}" Label="Copy" KeyTip="C" />
+                    <RibbonButton SmallImageSource="{StaticResource new_file}" Label="Format Painter" KeyTip="FP" />
+                </RibbonGroup>
+                <!-- Home/Colors group-->
+                <RibbonGroup x:Name="Color" Header="Colors">
+                    <RibbonRadioButton LargeImageSource="{StaticResource car}" Label="Red" KeyTip="R" IsChecked="True"/>
+                    <RibbonRadioButton LargeImageSource="{StaticResource calender}" Label="Green" KeyTip="G"/>
+                    <RibbonRadioButton LargeImageSource="{StaticResource plane}" Label="Blue" KeyTip="B"/>
+                </RibbonGroup>
+            </RibbonTab>
+            <!-- Ribbon Tab #2: Launch -->
+            <RibbonTab Header="Launch" KeyTip="L" Background="{DynamicResource defPrimary}">
+                <!-- Launch/Applications group-->
+                <RibbonGroup x:Name="DesktopApplication" Header="Desktop Applications">
+                </RibbonGroup>
+                <!-- Launch/Games group-->
+                <RibbonGroup x:Name="App" Header="Apps">
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        
+    </Grid>
+</Window>

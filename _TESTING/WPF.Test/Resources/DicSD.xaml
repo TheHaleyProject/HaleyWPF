@@ -3,5 +3,8 @@
                     xmlns:local="clr-namespace:WPF.Test.Resources">
         <ResourceDictionary.MergedDictionaries>
             <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/ThemeDark.xaml"/>
-        </ResourceDictionary.MergedDictionaries>
+        <!--<ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/MSDatagrid.xaml"/>-->
+    </ResourceDictionary.MergedDictionaries>
+
+    
 </ResourceDictionary>
