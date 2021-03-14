@@ -61,6 +61,12 @@
                             <Setter Property="Visibility" TargetName="PART_checkbox_tick" Value="Visible"/>
                             <Setter Property="Opacity" TargetName="PART_Checkbox_rectangle" Value="1"/>
                         </Trigger>
+                        
+                        <!--FOR BOOL? TYPES.-->
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <!--Don't show the tick but show the color-->
+                            <Setter Property="Opacity" TargetName="PART_Checkbox_rectangle" Value="1"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

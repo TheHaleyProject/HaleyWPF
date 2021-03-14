@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>3.0.0</Version>
+		<Version>3.0.1</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,10 +15,10 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Added references to Haley IOC to support MVVM</PackageReleaseNotes>
+		<PackageReleaseNotes>Fixed Checkbox intermediate status</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyVersion>2.0.9.0</AssemblyVersion>
-		<FileVersion>2.0.9.0</FileVersion>
+		<AssemblyVersion>3.0.0.0</AssemblyVersion>
+		<FileVersion>3.0.0.0</FileVersion>
 		<PackageIcon>Haley.png</PackageIcon>
 		<IncludeSymbols>true</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
