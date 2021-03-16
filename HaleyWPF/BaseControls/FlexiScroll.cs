@@ -3,13 +3,16 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using Haley.Abstractions;
+using System.Windows.Media;
+using Haley.Enums;
 
 namespace Haley.WPF.BaseControls
 {
     //[TemplatePart(Name = UIERepeatDown, Type = typeof(RepeatButton))]
     //[TemplatePart(Name = UIERepeatUp, Type = typeof(RepeatButton))]
     [TemplatePart(Name = UIERoot, Type = typeof(FrameworkElement))]
-    public class FlexiScroll : ScrollViewer
+    public class FlexiScroll : ScrollViewer, ICornerRadius
     {
         //private const string UIERepeatDown = "PART_RepeatDown";
         //private const string UIERepeatUp = "PART_RepeatUp";
@@ -39,6 +42,57 @@ namespace Haley.WPF.BaseControls
             _root = GetTemplateChild(UIERoot) as FrameworkElement;
             _associateExternalButtons();
         }
+
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.cornerRadius));
+
+        //public ImageSource Arrow
+        //{
+        //    get { return (ImageSource)GetValue(ArrowProperty); }
+        //    set { SetValue(ArrowProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for Arrow.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ArrowProperty =
+        //    DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.getIcon(IconEnums.arrow_line_medium.ToString())));
+
+        public Brush ThumbBackground
+        {
+            get { return (Brush)GetValue(ThumbBackgroundProperty); }
+            set { SetValue(ThumbBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ThumbBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ThumbBackgroundProperty =
+            DependencyProperty.Register(nameof(ThumbBackground), typeof(Brush), typeof(FlexiScroll), new PropertyMetadata(null));
+
+        public Brush TrackBackground
+        {
+            get { return (Brush)GetValue(TrackBackgroundProperty); }
+            set { SetValue(TrackBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TrackBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TrackBackgroundProperty =
+            DependencyProperty.Register(nameof(TrackBackground), typeof(Brush), typeof(FlexiScroll), new PropertyMetadata(null));
+
+        public Brush RepeatBackground
+        {
+            get { return (Brush)GetValue(RepeatBackgroundProperty); }
+            set { SetValue(RepeatBackgroundProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for RepeatBackground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RepeatBackgroundProperty =
+            DependencyProperty.Register(nameof(RepeatBackground), typeof(Brush), typeof(FlexiScroll), new PropertyMetadata(null));
+
         public double HorizontalScrollBarSize
         {
             get { return (double)GetValue(HorizontalScrollBarSizeProperty); }

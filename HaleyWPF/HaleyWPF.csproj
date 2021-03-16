@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>3.0.1</Version>
+		<Version>3.0.2</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Fixed Checkbox intermediate status</PackageReleaseNotes>
+		<PackageReleaseNotes>Added scroll bar and added more control improvements</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>

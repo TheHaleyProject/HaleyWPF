@@ -8,15 +8,20 @@
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
+    <Style x:Key="internal_flexiscroll_border" TargetType="{x:Type Border}">
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+    </Style>
+    
     <!--#region REPEAT BUTTONS AND THUMB-->
     <!--Thumb-->
     <Style x:Key="internal_flexiscroll_thumb" TargetType="{x:Type Thumb}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Margin" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
-                    <Border x:Name="thumb_border" Background="{DynamicResource def_scroll_thumb}" SnapsToDevicePixels="True" CornerRadius="3"/>
+                    <Border x:Name="thumb_border" Background="{Binding Path=ThumbBackground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}" Style="{StaticResource internal_flexiscroll_border}"/>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="thumb_border" Value="{DynamicResource def_button_hover}"/>
@@ -33,7 +38,7 @@
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Margin" Value="2"/>
-        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="Auto"/>
         <Setter Property="Content" Value="{x:Null}"/>
@@ -46,17 +51,20 @@
 
     <!--MAIN REPEAT BUTTONS-->
     <Style x:Key="internal_flexiscroll_mainrepeat_base" TargetType="{x:Type bc:ImageComboRepeatButton}">
-        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Focusable" Value="False"/>
-        <Setter Property="DefaultImage" Value="{StaticResource arrow_down_rounded}"/>
-        <Setter Property="Background" Value="{DynamicResource def_scroll_repeat}"/>
+        <Setter Property="Background" Value="{Binding Path=RepeatBackground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
         <Setter Property="BorderBrush" Value="{Binding Path=BorderBrush, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
         <Setter Property="BorderThickness" Value="{Binding Path=BorderThickness, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
         <Setter Property="Margin" Value="2"/>
+        <Setter Property="DefaultImage" Value="{StaticResource arrow_line_medium}"/>
+        <Setter Property="DefaultImageColor" Value="{DynamicResource def_primary}"/>
     </Style>
     
     <Style x:Key="internal_flexiscroll_up" TargetType="{x:Type bc:ImageComboRepeatButton}" BasedOn="{StaticResource internal_flexiscroll_mainrepeat_base}">
+        <Setter Property="Visibility" Value="{Binding Path=ShowVerticalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+        <Setter Property="Command" Value="{x:Static ScrollBar.LineUpCommand}"/>
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
         <Setter Property="RenderTransform">
             <Setter.Value>
@@ -68,6 +76,8 @@
     </Style>
 
     <Style x:Key="internal_flexiscroll_Left" TargetType="{x:Type bc:ImageComboRepeatButton}" BasedOn="{StaticResource internal_flexiscroll_mainrepeat_base}">
+        <Setter Property="Visibility" Value="{Binding Path=ShowHorizontalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+        <Setter Property="Command" Value="{x:Static ScrollBar.LineLeftCommand}"/>
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
         <Setter Property="RenderTransform">
             <Setter.Value>
@@ -79,6 +89,8 @@
     </Style>
 
     <Style x:Key="internal_flexiscroll_right" TargetType="{x:Type bc:ImageComboRepeatButton}" BasedOn="{StaticResource internal_flexiscroll_mainrepeat_base}">
+        <Setter Property="Visibility" Value="{Binding Path=ShowHorizontalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+        <Setter Property="Command" Value="{x:Static ScrollBar.LineRightCommand}"/>
         <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
         <Setter Property="RenderTransform">
             <Setter.Value>
@@ -89,22 +101,25 @@
         </Setter>
     </Style>
 
-    <Style x:Key="internal_flexiscroll_down" TargetType="{x:Type bc:ImageComboRepeatButton}" BasedOn="{StaticResource internal_flexiscroll_mainrepeat_base}"/>
+    <Style x:Key="internal_flexiscroll_down" TargetType="{x:Type bc:ImageComboRepeatButton}" BasedOn="{StaticResource internal_flexiscroll_mainrepeat_base}">
+        <Setter Property="Visibility" Value="{Binding Path=ShowVerticalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+        <Setter Property="Command" Value="{x:Static ScrollBar.LineDownCommand}"/>
+    </Style>
     
     <!--#endregion-->
     
   <!--#region SCROLL BARS-->
     <ControlTemplate x:Key="internal_flexi_verticalSbar" TargetType="{x:Type ScrollBar}">
-        <Grid Width="{Binding Path=VerticalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}">
+        <Grid x:Name="gridRoot" Width="{Binding Path=VerticalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="rowdef_01" Height="{Binding Path=VerticalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition x:Name="rowdef_02" Height="{Binding Path=VerticalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
             </Grid.RowDefinitions>
             <!--Actual Background Holder-->
-            <Border Grid.Row="1" CornerRadius="3" Margin="2" Background="{DynamicResource def_scroll_track}"/>
+            <Border Grid.Row="1" Style="{StaticResource internal_flexiscroll_border}" Background="{Binding Path=TrackBackground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
             <!--Button Up-->
-            <bc:ImageComboRepeatButton x:Name="btn_upleft" Command="{x:Static ScrollBar.LineUpCommand}" Style="{StaticResource internal_flexiscroll_up}" Visibility="{Binding Path=ShowVerticalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+            <bc:ImageComboRepeatButton x:Name="btn_up" Style="{StaticResource internal_flexiscroll_up}"/>
             <!--Track-->
             <Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="True">
                 <Track.DecreaseRepeatButton>
@@ -118,11 +133,11 @@
                 </Track.IncreaseRepeatButton>
             </Track>
             <!--Button Down-->
-            <bc:ImageComboRepeatButton x:Name="btn_downright" Grid.Row="2" Command="{x:Static ScrollBar.LineDownCommand}" Style="{StaticResource internal_flexiscroll_down}" Visibility="{Binding Path=ShowVerticalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+            <bc:ImageComboRepeatButton x:Name="btn_down" Grid.Row="2" Style="{StaticResource internal_flexiscroll_down}"/>
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}, Path=VerticalOffset}" Value="0">
-                <Setter TargetName="btn_upleft" Property="IsEnabled" Value="False"/>
+                <Setter TargetName="btn_up" Property="IsEnabled" Value="False"/>
             </DataTrigger>
             <DataTrigger Value="True">
                 <DataTrigger.Binding>
@@ -131,26 +146,37 @@
                         <Binding RelativeSource="{RelativeSource AncestorType={x:Type bc:FlexiScroll}}" Path="ScrollableHeight"/>
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter TargetName="btn_downright" Property="IsEnabled" Value="False"/>
+                <Setter TargetName="btn_down" Property="IsEnabled" Value="False"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}, Path=ShowVerticalButtons}" Value="false">
                 <Setter TargetName="rowdef_01" Property="Height" Value="Auto"/>
                 <Setter TargetName="rowdef_02" Property="Height" Value="Auto"/>
             </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName=gridRoot, Path=IsMouseOver}" Value="False"/>
+                    <Condition Binding="{Binding AutoHide, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="gridRoot" Property="Width" Value="10.0"/>
+                <Setter TargetName="btn_down" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="btn_up" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="rowdef_01" Property="Height" Value="Auto"/>
+                <Setter TargetName="rowdef_02" Property="Height" Value="Auto"/>
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <ControlTemplate x:Key="internal_flexi_horizontalSbar" TargetType="{x:Type ScrollBar}">
-        <Grid Height="{Binding Path=HorizontalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}">
+        <Grid x:Name="gridRoot" Height="{Binding Path=HorizontalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="coldef_01" Width="{Binding Path=HorizontalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition x:Name="coldef_02" Width="{Binding Path=HorizontalScrollBarSize, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
             </Grid.ColumnDefinitions>
             <!--Actual Background Holder-->
-            <Border Grid.Column="1" CornerRadius="3" Margin="2" Background="{DynamicResource def_scroll_track}"/>
+            <Border Grid.Column="1" Style="{StaticResource internal_flexiscroll_border}" Background="{Binding Path=TrackBackground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
             <!--Button Up-->
-            <bc:ImageComboRepeatButton x:Name="btn_upleft" Command="{x:Static ScrollBar.LineLeftCommand}" Style="{StaticResource internal_flexiscroll_Left}" Visibility="{Binding Path=ShowHorizontalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+            <bc:ImageComboRepeatButton x:Name="btn_left" Style="{StaticResource internal_flexiscroll_Left}"/>
             <!--Track-->
             <Track Name="PART_Track" Grid.Column="1" >
                 <Track.DecreaseRepeatButton>
@@ -164,11 +190,11 @@
                 </Track.IncreaseRepeatButton>
             </Track>
             <!--Button Down-->
-            <bc:ImageComboRepeatButton x:Name="btn_downright" Grid.Column="2" Command="{x:Static ScrollBar.LineRightCommand}" Style="{StaticResource internal_flexiscroll_right}" Visibility="{Binding Path=ShowHorizontalButtons,Converter={StaticResource BooltoVisibiliy}, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
+            <bc:ImageComboRepeatButton x:Name="btn_right" Grid.Column="2" Style="{StaticResource internal_flexiscroll_right}"/>
         </Grid>
         <ControlTemplate.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}, Path=HorizontalOffset}" Value="0">
-                <Setter TargetName="btn_upleft" Property="IsEnabled" Value="False"/>
+                <Setter TargetName="btn_left" Property="IsEnabled" Value="False"/>
             </DataTrigger>
             <DataTrigger Value="True">
                 <DataTrigger.Binding>
@@ -177,12 +203,23 @@
                         <Binding RelativeSource="{RelativeSource AncestorType={x:Type bc:FlexiScroll}}" Path="ScrollableWidth"/>
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter TargetName="btn_downright" Property="IsEnabled" Value="False"/>
+                <Setter TargetName="btn_right" Property="IsEnabled" Value="False"/>
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}, Path=ShowHorizontalButtons}" Value="false">
                 <Setter TargetName="coldef_01" Property="Width" Value="Auto"/>
                 <Setter TargetName="coldef_02" Property="Width" Value="Auto"/>
             </DataTrigger>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding ElementName=gridRoot, Path=IsMouseOver}" Value="False"/>
+                    <Condition Binding="{Binding AutoHide, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter TargetName="gridRoot" Property="Height" Value="10.0"/>
+                <Setter TargetName="btn_right" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="btn_left" Property="Visibility" Value="Collapsed"/>
+                <Setter TargetName="coldef_01" Property="Width" Value="Auto"/>
+                <Setter TargetName="coldef_02" Property="Width" Value="Auto"/>
+            </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
@@ -209,8 +246,13 @@
     <Style TargetType="{x:Type bc:FlexiScroll}">
         <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
         <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="CornerRadius" Value="2"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <!--<Setter Property="Arrow" Value="{DynamicResource arrow_line_medium}"/>-->
+        <Setter Property="ThumbBackground" Value="{DynamicResource def_scroll_thumb}"/>
+        <Setter Property="TrackBackground" Value="{DynamicResource def_scroll_track}"/>
+        <Setter Property="RepeatBackground" Value="{DynamicResource def_scroll_repeat}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:FlexiScroll}">
@@ -232,22 +274,6 @@
                             <Setter TargetName="PART_ScrollContentPresenter" Property="Grid.RowSpan" Value="2"/>
                             <Setter TargetName="PART_ScrollContentPresenter" Property="Grid.ColumnSpan" Value="2"/>
                         </Trigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=PART_VerticalScrollBar,Path=IsMouseOver}" Value="False"/>
-                                <Condition Binding="{Binding AutoHide, RelativeSource={RelativeSource Self}}" Value="True"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="VerticalScrollBarSize" Value="10.0"/>
-                            <Setter Property="ShowVerticalButtons" Value="False"/>
-                        </MultiDataTrigger>
-                        <MultiDataTrigger>
-                            <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding ElementName=PART_HorizontalScrollBar,Path=IsMouseOver}" Value="False"/>
-                                <Condition Binding="{Binding AutoHide, RelativeSource={RelativeSource Self}}" Value="True"/>
-                            </MultiDataTrigger.Conditions>
-                            <Setter Property="HorizontalScrollBarSize" Value="10.0"/>
-                            <Setter Property="ShowHorizontalButtons" Value="False"/>
-                        </MultiDataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

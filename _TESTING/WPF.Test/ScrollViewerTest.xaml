@@ -23,32 +23,38 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <RepeatButton x:Name="Goupbtn" Content="go up"/>
-        <hw:FlexiScroll Grid.Row="1" RepeatUp="{Binding ElementName=Goupbtn}" EnableOverLay="False" BorderThickness="0">
-                <StackPanel Width="400">
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                    <TextBox Height="40" Margin="5" Text="Hello"/>
-                </StackPanel>
+        <hw:FlexiScroll Grid.Row="1" EnableOverLay="False" AutoHide="True" ShowHorizontalButtons="False" RepeatUp="{Binding ElementName=Goupbtn}" BorderThickness="0" HorizontalScrollBarSize="15" CornerRadius="3" ThumbBackground="#B25B063B" >
+            <hw:FlexiScroll.TrackBackground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#330AF747" Offset="0"/>
+                    <GradientStop Color="#33B509ED" Offset="1"/>
+                </LinearGradientBrush>
+            </hw:FlexiScroll.TrackBackground>
+            <StackPanel Width="400">
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <TextBox Height="40" Margin="5" Text="Hello"/>
+            </StackPanel>
         </hw:FlexiScroll>
     </Grid>
 </Window>

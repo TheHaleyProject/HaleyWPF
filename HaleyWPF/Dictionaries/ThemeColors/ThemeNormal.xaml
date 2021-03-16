@@ -15,12 +15,12 @@
 
     <!-- BUTTONS -->
     <SolidColorBrush x:Key="def_button_background" Color="#FFE3E3E3"/>
-    <SolidColorBrush x:Key="def_button_hover" Color="#992C7AEC"/>
+    <SolidColorBrush x:Key="def_button_hover" Color="#664086ED"/>
 
     <!-- SCROLLBARS -->
-    <SolidColorBrush x:Key="def_scroll_thumb" Color="#B2474A4D"/>
-    <SolidColorBrush x:Key="def_scroll_repeat" Color="#CCE6E6E6"/>
-    <SolidColorBrush x:Key="def_scroll_track" Color="#33484D53"/>
+    <SolidColorBrush x:Key="def_scroll_thumb" Color="#B23D3F41"/>
+    <SolidColorBrush x:Key="def_scroll_repeat" Color="#CCE0E0E0"/>
+    <SolidColorBrush x:Key="def_scroll_track" Color="#3353575B"/>
 
     <!-- BACKGROUNDS -->
     <SolidColorBrush x:Key="def_background_primary" Color="White"/>
