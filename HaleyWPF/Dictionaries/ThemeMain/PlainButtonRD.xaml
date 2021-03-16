@@ -28,10 +28,14 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="DisableHover" Value="False"/>
+                            </MultiTrigger.Conditions>
                             <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=HoverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        </Trigger>
+                        </MultiTrigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=PressedBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>

@@ -12,20 +12,20 @@ using System.Windows.Media;
 
 namespace Haley.WPF.BaseControls
 {
-    [TemplatePart(Name = UIElementButtonJump, Type = typeof(TextBox))]
-    [TemplatePart(Name = UIElementMainPanel, Type = typeof(StackPanel))]
+    [TemplatePart(Name = UIEButtonJump, Type = typeof(TextBox))]
+    [TemplatePart(Name = UIEMainPanel, Type = typeof(StackPanel))]
     public class Pagination : Control, ICornerRadius
     {
         #region Attributes
-        //private const string UIElementButtonLeft = "PART_btn_left";
-        //private const string UIElementButtonRight = "PART_btn_right";
-        private const string UIElementButtonJump = "PART_btn_jump";
-        //private const string UIElementButtonFirst = "PART_btn_first";
-        //private const string UIElementButtonLast = "PART_btn_last";
-        private const string UIElementButtonMoreLeft = "PART_btn_more_left";
-        private const string UIElementButtonMoreRight = "PART_btn_more_right";
-        private const string UIElementMainPanel = "PART_MainPanel";
-        private const string UIElementDirectBtnsList = "PART_direct_btns";
+        //private const string UIEButtonLeft = "PART_btn_left";
+        //private const string UIEButtonRight = "PART_btn_right";
+        private const string UIEButtonJump = "PART_btn_jump";
+        //private const string UIEButtonFirst = "PART_btn_first";
+        //private const string UIEButtonLast = "PART_btn_last";
+        private const string UIEButtonMoreLeft = "PART_btn_more_left";
+        private const string UIEButtonMoreRight = "PART_btn_more_right";
+        private const string UIEMainPanel = "PART_MainPanel";
+        private const string UIEDirectBtnsList = "PART_direct_btns";
 
         private TextBox _jumpBtn;
         private StackPanel _mainPanel;
@@ -59,11 +59,11 @@ namespace Haley.WPF.BaseControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _jumpBtn = GetTemplateChild(UIElementButtonJump) as TextBox;
-            _mainPanel = GetTemplateChild(UIElementMainPanel) as StackPanel;
-            _btnMoreLeft = GetTemplateChild(UIElementButtonMoreLeft) as Button;
-            _btnMoreRight = GetTemplateChild(UIElementButtonMoreRight) as Button;
-            _itemsCtrlDirectButtons = GetTemplateChild(UIElementDirectBtnsList) as ItemsControl;
+            _jumpBtn = GetTemplateChild(UIEButtonJump) as TextBox;
+            _mainPanel = GetTemplateChild(UIEMainPanel) as StackPanel;
+            _btnMoreLeft = GetTemplateChild(UIEButtonMoreLeft) as Button;
+            _btnMoreRight = GetTemplateChild(UIEButtonMoreRight) as Button;
+            _itemsCtrlDirectButtons = GetTemplateChild(UIEDirectBtnsList) as ItemsControl;
             _setMainPanelVisibility();
             _prepareDirectButtons();
         }

@@ -54,7 +54,7 @@
                 <TextBlock Text="I'm a sub title text"  Style="{DynamicResource def_h4_Secondary}"/>
                 <StackPanel Orientation="Horizontal" Height="40">
                     <hw:PlainButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" ShowShadow="True" ShadowOnlyOnMouseOver="False" Command="{Binding Cmd_IncreaseCounter}"/>
-                    <hw:PlainRepeatButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" ShowShadow="True" ShadowOnlyOnMouseOver="False" Command="{Binding Cmd_IncreaseCounter}"/>
+                    <hw:ImageComboRepeatButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" ShowShadow="True" ShadowOnlyOnMouseOver="False" Command="{Binding Cmd_IncreaseCounter}"/>
                     <TextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}"/>
                 </StackPanel>
                 

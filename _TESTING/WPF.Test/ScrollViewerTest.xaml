@@ -18,33 +18,37 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <hw:FlexiScroll ScrollBarWidth="20" ShowRepeatButtons="False">
-            <StackPanel>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-                <TextBox Height="40" Margin="5" Text="Hello"/>
-
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <RepeatButton x:Name="Goupbtn" Content="go up"/>
+        <hw:FlexiScroll Grid.Row="1" RepeatUp="{Binding ElementName=Goupbtn}" EnableOverLay="False" BorderThickness="0">
+                <StackPanel Width="400">
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                    <TextBox Height="40" Margin="5" Text="Hello"/>
+                </StackPanel>
         </hw:FlexiScroll>
     </Grid>
 </Window>

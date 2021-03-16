@@ -6,8 +6,25 @@ using System.Windows.Controls.Primitives;
 
 namespace Haley.WPF.BaseControls
 {
+    //[TemplatePart(Name = UIERepeatDown, Type = typeof(RepeatButton))]
+    //[TemplatePart(Name = UIERepeatUp, Type = typeof(RepeatButton))]
+    [TemplatePart(Name = UIERoot, Type = typeof(FrameworkElement))]
     public class FlexiScroll : ScrollViewer
     {
+        //private const string UIERepeatDown = "PART_RepeatDown";
+        //private const string UIERepeatUp = "PART_RepeatUp";
+        //private const string UIETrack = "PART_Track";
+        private const string UIERoot = "PART_root";
+
+        //private RepeatButton _repeatUp;
+        //private RepeatButton _repeatDown;
+        //private Track _track;
+        private FrameworkElement _root;
+        private RoutedEventHandler _lineUp = null;
+        private RoutedEventHandler _lineDown = null;
+        private RoutedEventHandler _lineLeft = null;
+        private RoutedEventHandler _lineRight = null;
+
         static FlexiScroll()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlexiScroll), new FrameworkPropertyMetadata(typeof(FlexiScroll)));
@@ -15,26 +32,74 @@ namespace Haley.WPF.BaseControls
 
         public FlexiScroll() {}
 
-        public double ScrollBarWidth
+        public override void OnApplyTemplate()
         {
-            get { return (double)GetValue(ScrollBarWidthProperty); }
-            set { SetValue(ScrollBarWidthProperty, value); }
+            base.OnApplyTemplate();
+          
+            _root = GetTemplateChild(UIERoot) as FrameworkElement;
+            _associateExternalButtons();
+        }
+        public double HorizontalScrollBarSize
+        {
+            get { return (double)GetValue(HorizontalScrollBarSizeProperty); }
+            set { SetValue(HorizontalScrollBarSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ScrollBarWidth.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ScrollBarWidthProperty =
-            DependencyProperty.Register(nameof(ScrollBarWidth), typeof(double), typeof(FlexiScroll), new PropertyMetadata(25.0));
+        // Using a DependencyProperty as the backing store for HorizontalScrollBarSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HorizontalScrollBarSizeProperty =
+            DependencyProperty.Register(nameof(HorizontalScrollBarSize), typeof(double), typeof(FlexiScroll), new PropertyMetadata(25.0));
 
-        public bool ShowRepeatButtons
+        public double VerticalScrollBarSize
         {
-            get { return (bool)GetValue(ShowRepeatButtonsProperty); }
-            set { SetValue(ShowRepeatButtonsProperty, value); }
+            get { return (double)GetValue(VerticalScrollBarSizeProperty); }
+            set { SetValue(VerticalScrollBarSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowRepeatButtons.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShowRepeatButtonsProperty =
-            DependencyProperty.Register(nameof(ShowRepeatButtons), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
+        // Using a DependencyProperty as the backing store for VerticalScrollBarSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty VerticalScrollBarSizeProperty =
+            DependencyProperty.Register(nameof(VerticalScrollBarSize), typeof(double), typeof(FlexiScroll), new PropertyMetadata(25.0));
 
+        public bool ShowVerticalButtons
+        {
+            get { return (bool)GetValue(ShowVerticalButtonsProperty); }
+            set { SetValue(ShowVerticalButtonsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ShowVerticalButtons.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ShowVerticalButtonsProperty =
+            DependencyProperty.Register(nameof(ShowVerticalButtons), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
+
+        public bool ShowHorizontalButtons
+        {
+            get { return (bool)GetValue(ShowHorizontalButtonsProperty); }
+            set { SetValue(ShowHorizontalButtonsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ShowHorizontalButtons.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ShowHorizontalButtonsProperty =
+            DependencyProperty.Register(nameof(ShowHorizontalButtons), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
+
+        public bool EnableOverLay
+        {
+            get { return (bool)GetValue(EnableOverLayProperty); }
+            set { SetValue(EnableOverLayProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EnableOverLay.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EnableOverLayProperty =
+            DependencyProperty.Register(nameof(EnableOverLay), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
+
+        public bool AutoHide
+        {
+            get { return (bool)GetValue(AutoHideProperty); }
+            set { SetValue(AutoHideProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for AutoHide.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AutoHideProperty =
+            DependencyProperty.Register(nameof(AutoHide), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(false));
+
+        #region Repeat Buttons
         public RepeatButton RepeatUp
         {
             get { return (RepeatButton)GetValue(RepeatUpProperty); }
@@ -43,18 +108,90 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for RepeatUp.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RepeatUpProperty =
-            DependencyProperty.Register(nameof(RepeatUp), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null,propertyChangedCallback: RepeatUpPropertyChanged));
-        static void RepeatUpPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+            DependencyProperty.Register(nameof(RepeatUp), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
+
+        public RepeatButton RepeatDown
         {
-            FlexiScroll fs = d as FlexiScroll;
-            fs.RepeatUp.Click -= RepeatUp_Click;
-            fs.RepeatUp.Click += RepeatUp_Click;
+            get { return (RepeatButton)GetValue(RepeatDownProperty); }
+            set { SetValue(RepeatDownProperty, value); }
         }
 
-        private static void RepeatUp_Click(object sender, RoutedEventArgs e)
+        // Using a DependencyProperty as the backing store for RepeatDown.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RepeatDownProperty =
+            DependencyProperty.Register(nameof(RepeatDown), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
+
+        public RepeatButton RepeatLeft
         {
-            //On click get the repeat button from the scroll viewer and assign there
-            //ScrollBar.LineUpCommand.Execute(null,) //Should start at repeat button.
+            get { return (RepeatButton)GetValue(RepeatLeftProperty); }
+            set { SetValue(RepeatLeftProperty, value); }
         }
+
+        // Using a DependencyProperty as the backing store for RepeatLeft.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RepeatLeftProperty =
+            DependencyProperty.Register(nameof(RepeatLeft), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
+
+        public RepeatButton RepeatRight
+        {
+            get { return (RepeatButton)GetValue(RepeatRightProperty); }
+            set { SetValue(RepeatRightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for RepeatRight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RepeatRightProperty =
+            DependencyProperty.Register(nameof(RepeatRight), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
+
+        void _associateExternalButtons()
+        {
+            if (_root == null) return;
+         
+            //For repeat up
+            if (RepeatUp != null)
+            {
+                if (_lineUp == null)
+                {
+                    //Reason for using a private variable event handler is to ensure that we can unsubscribe and subscribe to same event.
+                    _lineUp = (sender, args) => { ScrollBar.LineUpCommand.Execute(null, _root); };
+                }
+                RepeatUp.Click -= _lineUp;
+                RepeatUp.Click += _lineUp;
+            }
+
+            //For repeat down
+            if (RepeatDown != null)
+            {
+                if (_lineDown == null)
+                {
+                    //Reason for using a private variable event handler is to ensure that we can unsubscribe and subscribe to same event.
+                    _lineDown = (sender, args) => { ScrollBar.LineDownCommand.Execute(null, _root); };
+                }
+                RepeatDown.Click -= _lineDown;
+                RepeatDown.Click += _lineDown;
+            }
+
+            //For repeat Left
+            if (RepeatLeft != null)
+            {
+                if (_lineLeft == null)
+                {
+                    //Reason for using a private variable event handler is to ensure that we can unsubscribe and subscribe to same event.
+                    _lineLeft = (sender, args) => { ScrollBar.LineLeftCommand.Execute(null, _root); };
+                }
+                RepeatLeft.Click -= _lineLeft;
+                RepeatLeft.Click += _lineLeft;
+            }
+
+            //For repeat Right
+            if (RepeatRight != null)
+            {
+                if (_lineRight == null)
+                {
+                    //Reason for using a private variable event handler is to ensure that we can unsubscribe and subscribe to same event.
+                    _lineRight = (sender, args) => { ScrollBar.LineRightCommand.Execute(null, _root); };
+                }
+                RepeatRight.Click -= _lineRight;
+                RepeatRight.Click += _lineRight;
+            }
+        }
+        #endregion
     }
 }

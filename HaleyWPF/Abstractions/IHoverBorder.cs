@@ -8,5 +8,6 @@ namespace Haley.Abstractions
         Brush HoverBorderBrush { get; set; }
         Thickness HoverBorderThickness { get; set; }
         Brush HoverBackground { get; set; }
+        bool DisableHover { get; set; }
     }
 }

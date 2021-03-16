@@ -49,6 +49,16 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBackgroundProperty =
             DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainCheckBox), new PropertyMetadata(null));
+
+        public bool DisableHover
+        {
+            get { return (bool)GetValue(DisableHoverProperty); }
+            set { SetValue(DisableHoverProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DisableHover.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DisableHoverProperty =
+            DependencyProperty.Register(nameof(DisableHover), typeof(bool), typeof(PlainCheckBox), new PropertyMetadata(false));
         #endregion
 
         public SolidColorBrush TickColor

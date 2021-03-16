@@ -60,6 +60,16 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for HoverBorderThickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverBorderThicknessProperty =
             DependencyProperty.Register(nameof(HoverBorderThickness), typeof(Thickness), typeof(PlainButton), new PropertyMetadata(ResourceHelper.borderThickness));
+
+        public bool DisableHover
+        {
+            get { return (bool)GetValue(DisableHoverProperty); }
+            set { SetValue(DisableHoverProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DisableHover.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DisableHoverProperty =
+            DependencyProperty.Register(nameof(DisableHover), typeof(bool), typeof(PlainButton), new PropertyMetadata(false));
         #endregion
 
         public Brush PressedBackground
