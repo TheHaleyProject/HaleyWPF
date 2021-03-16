@@ -24,7 +24,7 @@
 
             <!--When value is null-->
             <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource TemplatedParent}}" Value="{x:Null}">
-                <Setter Property="Background" Value="{DynamicResource defBackgroundTertiary}"/>
+                <Setter Property="Background" Value="{DynamicResource def_background_tertiary}"/>
             </DataTrigger>
 
         </Style.Triggers>

@@ -62,7 +62,7 @@
         <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="HoverBackground" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
         <Style.Triggers>
             <DataTrigger Value="true">
                 <DataTrigger.Binding>
@@ -193,14 +193,14 @@
                     </bc:PlainTextBox.InputBindings>
                 </bc:PlainTextBox>
 
-                <bc:Separator Size="1.5" Orientation="Vertical" Background="{DynamicResource defContent}" Margin="5,0"/>
+                <bc:Separator Size="1.5" Orientation="Vertical" Background="{DynamicResource def_content}" Margin="5,0"/>
                 
                 <!--NAVIGATE BACK-->
                 <bc:LinkedText Text="Previous" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.PreviousPage}"/>
                 <!--NAVIGATE FORWARD-->
                 <bc:LinkedText Text="Next" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.NextPage}"/>
 
-                <bc:Separator Size="1.5" Orientation="Vertical" Background="{DynamicResource defContent}" Margin="5,0"/>
+                <bc:Separator Size="1.5" Orientation="Vertical" Background="{DynamicResource def_content}" Margin="5,0"/>
                 <!--FIRST PAGE-->
                 <bc:LinkedText Text="First" Style="{StaticResource internal_pagination_linkedtext}" Command="{x:Static NavigationCommands.FirstPage}" />
                 <!--LAST PAGE-->
@@ -219,10 +219,10 @@
     </ControlTemplate>
     
     <Style TargetType="{x:Type bc:Pagination}">
-        <Setter Property="Height" Value="{StaticResource defHeight}"/>
-        <Setter Property="Background" Value="{DynamicResource defPrimary}"/>
-        <Setter Property="PrimaryColor" Value="{DynamicResource defSecondary}"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Height" Value="{StaticResource def_height}"/>
+        <Setter Property="Background" Value="{DynamicResource def_primary}"/>
+        <Setter Property="PrimaryColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Template" Value="{StaticResource internal_pagination_extended}"/>
         <Style.Triggers>
             <Trigger Property="Mode" Value="Simple">

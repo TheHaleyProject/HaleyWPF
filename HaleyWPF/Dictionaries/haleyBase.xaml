@@ -15,7 +15,6 @@
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons01.xaml"/>
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml"/>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyWPFConverters.xaml"/>
         <!--#endregion-->
      
         <!--#region Base Styles-->

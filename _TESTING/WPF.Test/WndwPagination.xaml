@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="WndwPagination" Height="800" Width="600">
     <Grid>
-        <StackPanel Background="{DynamicResource defBorderBrush}">
+        <StackPanel Background="{DynamicResource def_border_brush}">
 
             <hw:Pagination x:Name="pgMain" Margin="10" CornerRadius="3" ItemsCountTotal="120" ItemsCountPerPage="30" DirectButtonsCount="4" Height="30" CurrentPage="{Binding currentpage,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
             <hw:Pagination x:Name="pgSimple" Margin="10" CornerRadius="3" ItemsCountTotal="120" ItemsCountPerPage="10" Mode="Simple" />
@@ -27,7 +27,7 @@
                     <hw:PlainTextBox x:Name="username" Height="35" Width="180" CornerRadius="10" WaterMark="User Name" Margin="5" ShowShadow="True" ShadowColor="Red"/>
                     <hw:PlainPasswordBox x:Name="pwdbox" Height="35" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" ShowShadow="True" ShadowColor="Red"/>
                     <hw:PlainButton CommandParameter="{Binding ElementName=pwdbox}" Command="{Binding Cmd_Login}" Content="Button" Width="180"/>
-                    <hw:ToggleButton  OffText="light"/>
+                    <hw:PlainToggleButton  OffText="light"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1">
                     <StackPanel.Resources>

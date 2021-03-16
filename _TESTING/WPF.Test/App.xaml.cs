@@ -22,10 +22,13 @@ namespace WPF.Test
             //_wndw3.ShowDialog();
 
             //ThemeTest wndw = new ThemeTest();
-            //    wndw.ShowDialog();
+            //wndw.ShowDialog();
 
-            DataGridTest wnddgtest = new DataGridTest();
-                wnddgtest.ShowDialog();
+            ScrollViewerTest wndwscroll = new ScrollViewerTest();
+            wndwscroll.ShowDialog();
+
+            //DataGridTest wnddgtest = new DataGridTest();
+            //    wnddgtest.ShowDialog();
 
         }
     }

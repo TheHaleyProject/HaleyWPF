@@ -50,12 +50,12 @@
     </Style>
 
     <Style TargetType="{x:Type bc:PlainListView}">
-        <Setter Property="Background" Value="{DynamicResource defBackgroundSecondary}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Background" Value="{DynamicResource def_background_secondary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="ItemSelectedColor" Value="{DynamicResource defButtonHover}"/>
-        <Setter Property="ItemHoverColor" Value="{DynamicResource defButtonHover}"/>
+        <Setter Property="ItemSelectedColor" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="ItemHoverColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>

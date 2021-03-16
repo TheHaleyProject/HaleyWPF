@@ -10,8 +10,8 @@
     
     <Style TargetType="{x:Type bc:PlainImage}">
         <Setter Property="Background" Value="{x:Null}"/>
-        <Setter Property="DefaultImageColor" Value="{DynamicResource defPrimary}"/>
-        <Setter Property="HoverImageColor" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="DefaultImageColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="HoverImageColor" Value="{DynamicResource def_secondary}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:PlainImage}">

@@ -3,36 +3,36 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:utils="clr-namespace:Haley.Utils">
     <!--COMMON COLORS-->
-    <SolidColorBrush x:Key="defOn" Color="#FF5AA75A"/>
-    <SolidColorBrush x:Key="defOff" Color="#FFCB8888"/>
+    <SolidColorBrush x:Key="def_toggle_on" Color="#FF5AA75A"/>
+    <SolidColorBrush x:Key="def_toggle_off" Color="#FFCB8888"/>
 
     <!-- TEXT -->
-    <SolidColorBrush x:Key="defContent" Color="#FFE5E5E5"/>
-    <SolidColorBrush x:Key="defContentInverted" Color="#FF2F2F2F"/>
-    <SolidColorBrush x:Key="defLink" Color="#FF30AD2C"/>
-    <SolidColorBrush x:Key="defLinkHover" Color="IndianRed"/>
+    <SolidColorBrush x:Key="def_content" Color="#FFE5E5E5"/>
+    <SolidColorBrush x:Key="def_content_inverted" Color="#FF2F2F2F"/>
+    <SolidColorBrush x:Key="def_link" Color="#FF30AD2C"/>
+    <SolidColorBrush x:Key="def_link_hover" Color="IndianRed"/>
 
     <!-- BUTTONS -->
-    <SolidColorBrush x:Key="defButtonBackground" Color="#FF141419"/>
-    <SolidColorBrush x:Key="defButtonHover" Color="#99A4D9D4"/>
+    <SolidColorBrush x:Key="def_button_background" Color="#FF141419"/>
+    <SolidColorBrush x:Key="def_button_hover" Color="#99A4D9D4"/>
 
     <!-- BACKGROUNDS -->
-    <SolidColorBrush x:Key="defBackgroundPrimary" Color="#FF22232C"/>
-    <SolidColorBrush x:Key="defBackgroundSecondary" Color="#FF1B1C23"/>
-    <SolidColorBrush x:Key="defBackgroundTertiary" Color="#FF17181E"/>
+    <SolidColorBrush x:Key="def_background_primary" Color="#FF22232C"/>
+    <SolidColorBrush x:Key="def_background_secondary" Color="#FF1B1C23"/>
+    <SolidColorBrush x:Key="def_background_tertiary" Color="#FF17181E"/>
 
     <!-- BORDERS AND SHADOWS-->
-    <SolidColorBrush x:Key="defBorderBrush" Color="#B2CED3D4"/>
-    <Color x:Key="defShadow">#FF2C7AEC</Color>
+    <SolidColorBrush x:Key="def_border_brush" Color="#B2CED3D4"/>
+    <Color x:Key="def_shadow">#FF2C7AEC</Color>
     <!--SAME AS DEF SECONDARY-->
 
     <!-- Items -->
-    <SolidColorBrush x:Key="defSelected" Color="#CC3CC1F3"/>
+    <SolidColorBrush x:Key="def_item_selected" Color="#CC3CC1F3"/>
     
     <!-- PRIMARY SPECIAL -->
-    <SolidColorBrush x:Key="defPrimary" Color="#FFF1E7BB"/>
-    <SolidColorBrush x:Key="defSecondary" Color="#FF93D5CF"/>
-    <SolidColorBrush x:Key="defTertiary" Color="#FF3E9D94"/>
+    <SolidColorBrush x:Key="def_primary" Color="#FFF1E7BB"/>
+    <SolidColorBrush x:Key="def_secondary" Color="#FF93D5CF"/>
+    <SolidColorBrush x:Key="def_tertiary" Color="#FF3E9D94"/>
 
 
 </ResourceDictionary>

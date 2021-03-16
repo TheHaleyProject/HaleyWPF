@@ -10,19 +10,19 @@
 
   <!--#region H1-->
     <Style x:Key="def_h1" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
 
     <Style x:Key="def_h1_inverted" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
 
     <Style x:Key="def_h1_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
@@ -30,19 +30,19 @@
 
     <!--#region H2-->
     <Style x:Key="def_h2" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
 
     <Style x:Key="def_h2_inverted" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
 
     <Style x:Key="def_h2_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
@@ -50,19 +50,19 @@
     
     <!--#region H3-->
     <Style x:Key="def_h3" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
         <Setter Property="Margin" Value="0,3"/>
     </Style>
 
     <Style x:Key="def_h3_inverted" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
         <Setter Property="Margin" Value="0,3"/>
     </Style>
 
     <Style x:Key="def_h3_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
         <Setter Property="Margin" Value="0,3"/>
     </Style>
@@ -70,17 +70,17 @@
     
     <!--#region H4-->
     <Style x:Key="def_h4" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
     </Style>
 
     <Style x:Key="def_h4_inverted" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
     </Style>
 
     <Style x:Key="def_h4_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource defSecondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
     </Style>
     <!--#endregion-->

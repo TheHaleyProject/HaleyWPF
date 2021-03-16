@@ -3,37 +3,40 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:utils="clr-namespace:Haley.Utils">
 
-    <!--COMMON COLORS-->
-    <SolidColorBrush x:Key="defOn" Color="#FF75B075"/>
-    <SolidColorBrush x:Key="defOff" Color="#FFB07575"/>
+    <!--TOGGLE COLORS-->
+    <SolidColorBrush x:Key="def_toggle_on" Color="#FF75B075"/>
+    <SolidColorBrush x:Key="def_toggle_off" Color="#FFB07575"/>
 
     <!-- TEXT -->
-    <SolidColorBrush x:Key="defContent" Color="#FF424242"/>
-    <SolidColorBrush x:Key="defContentInverted" Color="White"/>
-    <SolidColorBrush x:Key="defLink" Color="#FF2A5896"/>
-    <SolidColorBrush x:Key="defLinkHover" Color="IndianRed"/>
+    <SolidColorBrush x:Key="def_content" Color="#FF424242"/>
+    <SolidColorBrush x:Key="def_content_inverted" Color="White"/>
+    <SolidColorBrush x:Key="def_link" Color="#FF2A5896"/>
+    <SolidColorBrush x:Key="def_link_hover" Color="IndianRed"/>
 
     <!-- BUTTONS -->
-    <SolidColorBrush x:Key="defButtonBackground" Color="#FFE3E3E3"/>
-    <SolidColorBrush x:Key="defButtonHover" Color="#992C7AEC"/>
+    <SolidColorBrush x:Key="def_button_background" Color="#FFE3E3E3"/>
+    <SolidColorBrush x:Key="def_button_hover" Color="#992C7AEC"/>
+
+    <!-- SCROLLBARS -->
+    <SolidColorBrush x:Key="def_scroll_thumb" Color="#B2474A4D"/>
+    <SolidColorBrush x:Key="def_scroll_repeat" Color="#CCE6E6E6"/>
+    <SolidColorBrush x:Key="def_scroll_track" Color="#33484D53"/>
 
     <!-- BACKGROUNDS -->
-    <SolidColorBrush x:Key="defBackgroundPrimary" Color="White"/>
-    <SolidColorBrush x:Key="defBackgroundSecondary" Color="#FFF8F8F8"/>
-    <SolidColorBrush x:Key="defBackgroundTertiary" Color="#FFEBEBEB"/>
+    <SolidColorBrush x:Key="def_background_primary" Color="White"/>
+    <SolidColorBrush x:Key="def_background_secondary" Color="#FFF8F8F8"/>
+    <SolidColorBrush x:Key="def_background_tertiary" Color="#FFEBEBEB"/>
 
     <!-- BORDERS AND SHADOWS-->
-    <SolidColorBrush x:Key="defBorderBrush" Color="#B25B5F60"/>
-    <Color x:Key="defShadow">#FF2C7AEC</Color> <!--SAME AS DEF SECONDARY-->
-
+    <SolidColorBrush x:Key="def_border_brush" Color="#B25B5F60"/>
+    <Color x:Key="def_shadow">#FF2C7AEC</Color> <!--SAME AS DEF SECONDARY-->
 
     <!-- Items -->
-    <SolidColorBrush x:Key="defSelected" Color="#CC3CC1F3"/>
-    
+    <SolidColorBrush x:Key="def_item_selected" Color="#CC3CC1F3"/>
     
     <!-- PRIMARY SPECIAL -->
-    <SolidColorBrush x:Key="defPrimary" Color="#FF2B2B2B"/>
-    <SolidColorBrush x:Key="defSecondary" Color="#FF2C7AEC"/>
-    <SolidColorBrush x:Key="defTertiary" Color="#FF2D5693"/>
+    <SolidColorBrush x:Key="def_primary" Color="#FF2B2B2B"/>
+    <SolidColorBrush x:Key="def_secondary" Color="#FF2C7AEC"/>
+    <SolidColorBrush x:Key="def_tertiary" Color="#FF2D5693"/>
 
 </ResourceDictionary>

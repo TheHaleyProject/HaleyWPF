@@ -19,20 +19,20 @@
             <hw:ImageButton Height="40" Width="40"  DefaultImage="{StaticResource refresh}"  DefaultImageColor="{DynamicResource scb_highlight}" HoverImageColor="Green"/>
             <hw:PlainButton Height="40" Width="120" HorizontalAlignment="Center"  CornerRadius="10" Content="Hello" Background="{DynamicResource scb_background2}"  Foreground="{DynamicResource scb_content}"  ShowShadow="True" ShadowColor="Pink" ShadowOnlyOnMouseOver="False"/>
             <Button Height="40" Width="120" HorizontalAlignment="Center"  Content="What" />
-            <hw:ImageComboButton Width="90" Height="30" Text="Hello" DefaultImage="{StaticResource chat_double}" ImageLocation="Left" Background="{DynamicResource scb_background2}" Foreground="{DynamicResource scb_content}" DefaultImageColor="{DynamicResource scb_content}"   BorderBrush="#FFA7A7A7" BorderThickness="1" CornerRadius="4" HoverBorderBrush="#FF35C91D" ShowShadow="True" ShadowColor="Blue" ShadowOnlyOnMouseOver="False" HoverImageColor="#FF3295ED" />
+            <hw:ImageComboButton Width="90" Height="30" Content="Hello" DefaultImage="{StaticResource chat_double}" ImageLocation="Left" Background="{DynamicResource scb_background2}" Foreground="{DynamicResource scb_content}" DefaultImageColor="{DynamicResource scb_content}"   BorderBrush="#FFA7A7A7" BorderThickness="1" CornerRadius="4" HoverBorderBrush="#FF35C91D" ShowShadow="True" ShadowColor="Blue" ShadowOnlyOnMouseOver="False" HoverImageColor="#FF3295ED" />
             <hw:PlainTextBox x:Name="pbox" Height="50" Width="120" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" ShadowColor="blue" ShowShadow="True" ShadowOnlyOnMouseOver="False" WaterMark="Enter user name"/>
             <TextBox Text="{Binding ElementName=pbox,Path=Text}" Height="50" Width="120" />
 
-            <hw:ToggleButton Height="30" Width="70" SwitchWidth="30" ShowShadow="True" ShadowColor="Blue" CornerRadius="8" Status="True"/>
-            <hw:ToggleButton Height="30" Width="70" SwitchWidth="30" ShowShadow="True" ShadowColor="Blue" CornerRadius="8" Status="True" ShowText="False"  Style="{StaticResource CircularToggleButton}" EnlargeSwitchButton="True"/>
-            <hw:ToggleButton ShowShadow="True" ShadowColor="Blue" CornerRadius="8" Status="False" OnText="Yes" OffText="No" Margin="3"/>
-            <hw:ToggleButton  ShowShadow="True" ShadowColor="Blue" Status="False" OnText="True" OffText="False"/>
+            <hw:PlainToggleButton Height="30" Width="70" SwitchWidth="30" ShowShadow="True" ShadowColor="Blue" CornerRadius="8" IsChecked="True"/>
+            <hw:PlainToggleButton Height="30" Width="70" SwitchWidth="30" ShowShadow="True" ShadowColor="Blue" CornerRadius="8" IsChecked="True" ShowText="False"  Style="{StaticResource CircularToggleButton}" EnlargeSwitchButton="True"/>
+            <hw:PlainToggleButton ShowShadow="True" ShadowColor="Blue" CornerRadius="8" IsChecked="{x:Null}" OnText="Yes" OffText="No" Margin="3"/>
+            <hw:PlainToggleButton  ShowShadow="True" ShadowColor="Blue" IsChecked="False" OnText="True" OffText="False"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="20">
-            <hw:ImageComboButton Height="70" Width="90" Text="Favourites" ImageLocation="Top" DefaultImageColor="{DynamicResource button_hover}" HoverImageColor="#FF9413C2" DefaultImage="{StaticResource heart_shiny}" HoverBackground="{x:Null}" Background="{x:Null}"/>
-            <hw:ImageComboButton Height="70" Width="180" Text="Favourites" ImageLocation="Bottom" DefaultImageColor="{DynamicResource scb_content}" HoverBackground="{x:Null}" Background="{x:Null}"/>
-            <hw:ImageComboButton Height="30" Width="120" Text="Favourites" ImageLocation="Left" DefaultImage="{StaticResource music}" HoverImage="{StaticResource music_cd}"  TextAlignment="Left" Background="{x:Null}"/>
-            <hw:ImageComboButton Height="30" Width="120" Text="Favourites" ImageLocation="Right" TextAlignment="Right"/>
+            <hw:ImageComboButton Height="70" Width="90" Content="Favourites" ImageLocation="Top" DefaultImageColor="{DynamicResource button_hover}" HoverImageColor="#FF9413C2" DefaultImage="{StaticResource heart_shiny}" HoverBackground="{x:Null}" Background="{x:Null}"/>
+            <hw:ImageComboButton Height="70" Width="180" Content="Favourites" ImageLocation="Bottom" DefaultImageColor="{DynamicResource scb_content}" HoverBackground="{x:Null}" Background="{x:Null}"/>
+            <hw:ImageComboButton Height="30" Width="120" Content="Favourites" ImageLocation="Left" DefaultImage="{StaticResource music}" HoverImage="{StaticResource music_cd}"  HorizontalContentAlignment="Left" Background="{x:Null}"/>
+            <hw:ImageComboButton Height="30" Width="120" Content="Favourites" ImageLocation="Right" HorizontalContentAlignment="Right"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="5">
             <hw:PlainButton Content="Switch Theme" Width="120" Height="30" CornerRadius="5" ShowShadow="True" ShadowColor="Blue" Click="PlainButton_Click_1" Margin="10"/>

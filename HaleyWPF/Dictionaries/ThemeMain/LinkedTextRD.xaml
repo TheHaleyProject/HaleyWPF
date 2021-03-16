@@ -8,8 +8,8 @@
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type bc:LinkedText}">
-        <Setter Property="Foreground" Value="{DynamicResource defLink}"/>
-        <Setter Property="HoverForeground" Value="{DynamicResource defLinkHover}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_link}"/>
+        <Setter Property="HoverForeground" Value="{DynamicResource def_link_hover}"/>
         <Setter Property="TextDecorations" Value="underline"/>
         <Setter Property="Template">
             <Setter.Value>

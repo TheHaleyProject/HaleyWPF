@@ -196,20 +196,20 @@
     </ControlTemplate>
 
     <Style TargetType="{x:Type bc:PlainExpander}">
-        <Setter Property="Background" Value="{DynamicResource defButtonBackground}"/>
-        <Setter Property="ContentBackground" Value="{DynamicResource defBackgroundSecondary}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
-        <Setter Property="HoverBackground" Value="{DynamicResource defButtonHover}"/>
-        <Setter Property="IconDefColor" Value="{DynamicResource defPrimary}"/>
-        <Setter Property="ArrowDefColor" Value="{DynamicResource defPrimary}"/>
-        <Setter Property="ShadowColor" Value="{DynamicResource defSecondary}"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
+        <Setter Property="ContentBackground" Value="{DynamicResource def_background_secondary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="HoverBackground" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="IconDefColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="ArrowDefColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="ShadowColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <!--Min Height / Min Width is used to define the height of the Expander header-->
-        <Setter Property="MinHeight" Value="{StaticResource defHeight}"/>
-        <Setter Property="MinWidth" Value="{StaticResource defHeight}"/>
+        <Setter Property="MinHeight" Value="{StaticResource def_height}"/>
+        <Setter Property="MinWidth" Value="{StaticResource def_height}"/>
         <Setter Property="Template" Value="{StaticResource internal_expander_Template}"/>
     </Style>
 </ResourceDictionary>

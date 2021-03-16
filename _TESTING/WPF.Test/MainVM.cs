@@ -10,6 +10,12 @@ namespace WPF.Test
 {
     public class MainVM : ChangeNotifier
     {
+        private int _counter;
+        public int counter
+        {
+            get { return _counter; }
+            set { SetProp(ref _counter, value); }
+        }
 
         void _login(PlainPasswordBox obj)
         {
@@ -24,11 +30,17 @@ namespace WPF.Test
         }
 
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
+        void _increaseCounter()
+        {
+            counter++;
+        }
+        public ICommand Cmd_IncreaseCounter => new DelegateCommand(_increaseCounter);
         void _search(string obj)
         {
             //now we search
         }
         public ICommand Cmd_search => new DelegateCommand<string>(_search);
+
         void _changetheme()
         {
             ThemeMode _mode = ThemeLoader.Singleton.current_internal_mode;

@@ -65,6 +65,9 @@
     <Compile Include="ExpanderTest.xaml.cs">
       <DependentUpon>ExpanderTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScrollViewerTest.xaml.cs">
+      <DependentUpon>ScrollViewerTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ThemeTest.xaml.cs">
       <DependentUpon>ThemeTest.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ThemeLight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ScrollViewerTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

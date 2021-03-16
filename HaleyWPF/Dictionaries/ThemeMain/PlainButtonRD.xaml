@@ -10,13 +10,13 @@
     
     <Style TargetType="{x:Type bc:PlainButton}">
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Background" Value="{DynamicResource defButtonBackground}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
-        <Setter Property="HoverBackground" Value="{DynamicResource defButtonHover}"/>
-        <Setter Property="PressedBackground" Value="{DynamicResource defTertiary}"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
-        <Setter Property="ShadowColor" Value="{DynamicResource defSecondary}"/>
-        <Setter Property="Height" Value="{StaticResource defHeight}"/>
+        <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="HoverBackground" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="PressedBackground" Value="{DynamicResource def_tertiary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="ShadowColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Height" Value="{StaticResource def_height}"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Template">
             <Setter.Value>

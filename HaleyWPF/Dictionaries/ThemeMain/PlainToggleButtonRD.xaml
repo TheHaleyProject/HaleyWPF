@@ -10,15 +10,15 @@
 
     <!--#region  DEFAULT-->
     <Style TargetType="{x:Type bc:PlainToggleButton}">
-        <Setter Property="Background" Value="{DynamicResource defButtonBackground}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContentInverted}"/>
-        <Setter Property="ShadowColor" Value="{DynamicResource defSecondary}"/>
-        <Setter Property="Height" Value="{StaticResource defHeight}"/>
+        <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
+        <Setter Property="ShadowColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Height" Value="{StaticResource def_height}"/>
         <Setter Property="Width" Value="70"/>
         <Setter Property="SwitchWidth" Value="30"/>
-        <Setter Property="ColorON" Value="{DynamicResource defOn}"/>
-        <Setter Property="ColorOFF" Value="{DynamicResource defOff}"/>
+        <Setter Property="ColorON" Value="{DynamicResource def_toggle_on}"/>
+        <Setter Property="ColorOFF" Value="{DynamicResource def_toggle_off}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:PlainToggleButton}">

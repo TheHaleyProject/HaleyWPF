@@ -25,13 +25,13 @@
     </Style>
 
     <Style TargetType="{x:Type bc:CollectionSelector}">
-        <Setter Property="Background" Value="{DynamicResource defBackgroundPrimary}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource defBorderBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource defContent}"/>
+        <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="ItemSelectedColor" Value="{DynamicResource defButtonHover}"/>
-        <Setter Property="ItemHoverColor" Value="{DynamicResource defButtonHover}"/>
-        <Setter Property="IconColor" Value="{DynamicResource defPrimary}"/>
+        <Setter Property="ItemSelectedColor" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="ItemHoverColor" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="IconColor" Value="{DynamicResource def_primary}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="MinHeight" Value="150"/>

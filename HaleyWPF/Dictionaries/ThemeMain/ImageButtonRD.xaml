@@ -9,9 +9,9 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ImageButton}">
-        <Setter Property="DefaultImageColor" Value="{DynamicResource defPrimary}"/>
-        <Setter Property="HoverImageColor" Value="{DynamicResource defSecondary}"/>
-        <Setter Property="PressedImageColor" Value="{DynamicResource defTertiary}"/>
+        <Setter Property="DefaultImageColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="HoverImageColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="PressedImageColor" Value="{DynamicResource def_tertiary}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>

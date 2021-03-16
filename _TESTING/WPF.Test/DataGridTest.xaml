@@ -15,9 +15,9 @@
         --><!--<hw:PlainDataGrid Padding="2" ItemsSource="{Binding something,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>--><!--
         <DataGrid Padding="2" ItemsSource="{Binding something,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>-->
-    <Grid Background="{DynamicResource defBackgroundPrimary}">
+    <Grid Background="{DynamicResource def_background_primary}">
 
-        <Ribbon x:Name="Ribbon" SelectedIndex="0" Background="{DynamicResource defBackgroundSecondary}" BorderBrush="{DynamicResource defBorderBrush}" Foreground="{DynamicResource defContent}">
+        <Ribbon x:Name="Ribbon" SelectedIndex="0" Background="{DynamicResource def_background_secondary}" BorderBrush="{DynamicResource def_border_brush}" Foreground="{DynamicResource def_content}">
             <!-- Help Pane, located at the right-hand side -->
             <Ribbon.HelpPaneContent>
                 <RibbonButton SmallImageSource="{StaticResource info_circle}" />
@@ -39,13 +39,13 @@
             </Ribbon.QuickAccessToolBar>
             <!-- Application Menu, located at the left-hand side (down arrow) -->
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu KeyTip="F" Background="{DynamicResource defSecondary}">
+                <RibbonApplicationMenu KeyTip="F" Background="{DynamicResource def_secondary}">
                     <RibbonApplicationMenuItem Header="Options" ImageSource="{StaticResource settings_double_spanner}" />
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="{StaticResource stop}" />
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <!-- Ribbon Tab #1: Home -->
-            <RibbonTab Header="Home" KeyTip="H" Background="{DynamicResource defPrimary}" BorderBrush="Red" BorderThickness="2">
+            <RibbonTab Header="Home" KeyTip="H" Background="{DynamicResource def_primary}" BorderBrush="Red" BorderThickness="2">
                 <!-- Home/Clipboard group-->
                 <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard" >
                     <RibbonMenuButton LargeImageSource="{StaticResource package}" Label="Paste" KeyTip="V">
@@ -64,7 +64,7 @@
                 </RibbonGroup>
             </RibbonTab>
             <!-- Ribbon Tab #2: Launch -->
-            <RibbonTab Header="Launch" KeyTip="L" Background="{DynamicResource defPrimary}">
+            <RibbonTab Header="Launch" KeyTip="L" Background="{DynamicResource def_primary}">
                 <!-- Launch/Applications group-->
                 <RibbonGroup x:Name="DesktopApplication" Header="Desktop Applications">
                 </RibbonGroup>

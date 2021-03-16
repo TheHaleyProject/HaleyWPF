@@ -21,32 +21,45 @@ namespace Haley.WPF.BaseControls
 
         public override void OnApplyTemplate()
         {
+            base.OnApplyTemplate();
             //Only in case of top or bottom, re arrange the dock children
+            _rearrangeDock();
+        }
+
+        private void _rearrangeDock()
+        {
+            //Try to get the template.
+            var _dock = GetTemplateChild("PART_maindock") as DockPanel;
+            var _imagebox = GetTemplateChild("PART_ImageViewBox") as Viewbox;
+            var _cntPrsntr = GetTemplateChild("PART_ContentHolder") as ContentPresenter;
+
+            if (_dock == null) return;
             if (ImageLocation == Dock.Top || ImageLocation == Dock.Bottom)
             {
-                //Try to get the template.
-                var _dock = GetTemplateChild("PART_maindock") as DockPanel;
-                var _imagebox = GetTemplateChild("PART_ImageViewBox") as Viewbox;
-                var _txtbx = GetTemplateChild("PART_TextHolder") as TextBlock;
-
                 //In this case, Textbox holder should be the first child
                 _dock.Children.Clear();
-                _txtbx.SetValue(DockPanel.DockProperty, ImageLocation == Dock.Top ? Dock.Bottom : Dock.Top); //Since we are using ImageLocation to specify Text location, we need to invert it.
-                _dock.Children.Add(_txtbx);
+                _cntPrsntr.SetValue(DockPanel.DockProperty, ImageLocation == Dock.Top ? Dock.Bottom : Dock.Top); //Since we are using ImageLocation to specify Text location, we need to invert it.
+                _dock.Children.Add(_cntPrsntr);
                 _dock.Children.Add(_imagebox);
             }
-            base.OnApplyTemplate();
+            else
+            {
+                //In this case, Textbox holder should be the first child
+                _dock.Children.Clear();
+                _imagebox.SetValue(DockPanel.DockProperty, ImageLocation);
+                _dock.Children.Add(_imagebox);
+                _dock.Children.Add(_cntPrsntr);
+            }
         }
 
-        public string Text
+        static void ImagLocationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
+            var imgCmbBtn = d as ImageComboButton;
+            if (imgCmbBtn != null)
+            {
+                imgCmbBtn._rearrangeDock();
+            }
         }
-
-        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register(nameof(Text), typeof(string), typeof(ImageComboButton), new FrameworkPropertyMetadata("Button"));
 
         public Dock ImageLocation
         {
@@ -56,16 +69,6 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ImageLocation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageLocationProperty =
-            DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ImageComboButton), new FrameworkPropertyMetadata(Dock.Top));
-
-        public TextAlignment TextAlignment
-        {
-            get { return (TextAlignment)GetValue(TextAlignmentProperty); }
-            set { SetValue(TextAlignmentProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for TextAlignment.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register(nameof(TextAlignment), typeof(TextAlignment), typeof(ImageComboButton), new PropertyMetadata(TextAlignment.Center));
+            DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ImageComboButton), new FrameworkPropertyMetadata(Dock.Top,propertyChangedCallback:ImagLocationPropertyChanged));
     }
 }

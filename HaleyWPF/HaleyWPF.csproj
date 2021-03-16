@@ -36,6 +36,13 @@
   </PropertyGroup>
 	
   <ItemGroup>
+    <Compile Remove="GroupControls\FlexiTab\**" />
+    <EmbeddedResource Remove="GroupControls\FlexiTab\**" />
+    <None Remove="GroupControls\FlexiTab\**" />
+    <Page Remove="GroupControls\FlexiTab\**" />
+  </ItemGroup>
+	
+  <ItemGroup>
     <Compile Remove="BaseControls\PlainDataGrid.cs" />
   </ItemGroup>
 	
@@ -124,6 +131,7 @@
   </ItemGroup>
 	
   <ItemGroup>
+    <Page Remove="Dictionaries\ThemeMain\FlexiTabRD.xaml" />
     <Page Remove="Dictionaries\ThemeMain\PlainDataGridRD.xaml" />
   </ItemGroup>
 	
@@ -488,10 +496,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\haleyWPFConverters.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Update="Dictionaries\ThemeColors\ThemeMild.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -507,6 +511,10 @@
     <Page Update="Dictionaries\ThemeMain\CollectionSelectorRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainRepeatButtonRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\ThemeMain\PlainImageRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
@@ -556,7 +564,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Dictionaries\ThemeMain\FlexiTabRD.xaml">
+    <Page Update="Dictionaries\ThemeMain\FlexiScrollRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

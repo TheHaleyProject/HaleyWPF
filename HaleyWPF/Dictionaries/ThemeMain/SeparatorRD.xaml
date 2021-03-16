@@ -21,7 +21,7 @@
     </ControlTemplate>
     
     <Style TargetType="{x:Type bc:Separator}">
-        <Setter Property="Background" Value="{DynamicResource defBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="Orientation" Value="Horizontal"/>
         <Setter Property="Template" Value="{StaticResource internal_separator_horizontal}"/>
         <Style.Triggers>

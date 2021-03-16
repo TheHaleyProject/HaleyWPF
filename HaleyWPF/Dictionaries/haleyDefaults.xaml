@@ -5,8 +5,8 @@
 
     <sys:Boolean x:Key="True">True</sys:Boolean>
     <sys:Boolean x:Key="False">False</sys:Boolean>
-    <sys:Double x:Key="defHeight">25.0</sys:Double>
-    <sys:Double x:Key="defWidth">60.0</sys:Double>
+    <sys:Double x:Key="def_height">25.0</sys:Double>
+    <sys:Double x:Key="def_width">60.0</sys:Double>
     <sys:Double x:Key="internal_h1_fontsize">20.0</sys:Double>
     <sys:Double x:Key="internal_h2_fontsize">18.0</sys:Double>
     <sys:Double x:Key="internal_h3_fontsize">14.0</sys:Double>
