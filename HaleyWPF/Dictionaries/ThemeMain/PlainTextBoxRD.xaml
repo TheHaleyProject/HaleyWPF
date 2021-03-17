@@ -9,7 +9,7 @@
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type bc:PlainTextBox}">
-        <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
+        <Setter Property="Background" Value="{DynamicResource def_background_secondary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="ShadowColor" Value="{DynamicResource def_secondary}"/>

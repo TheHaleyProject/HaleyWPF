@@ -7,8 +7,13 @@
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         mc:Ignorable="d"
-        Title="ScrollViewerTest" Height="300" Width="200" WindowStartupLocation="CenterScreen">
+        Title="ScrollViewerTest" Height="300" Width="600" WindowStartupLocation="CenterScreen">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
+    </Window.InputBindings>
+
     <Window.Resources>
+  
         <Style TargetType="{x:Type hw:ImageComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
             <Setter Property="Height" Value="90"/>
@@ -17,21 +22,15 @@
             <Setter Property="HoverBackground" Value="{x:Null}"/>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid Background="{DynamicResource def_background_primary}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <RepeatButton x:Name="Goupbtn" Content="go up"/>
-        <hw:FlexiScroll Grid.Row="1" EnableOverLay="False" AutoHide="True" ShowHorizontalButtons="False" RepeatUp="{Binding ElementName=Goupbtn}" BorderThickness="0" HorizontalScrollBarSize="15" CornerRadius="3" ThumbBackground="#B25B063B" >
-            <hw:FlexiScroll.TrackBackground>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#330AF747" Offset="0"/>
-                    <GradientStop Color="#33B509ED" Offset="1"/>
-                </LinearGradientBrush>
-            </hw:FlexiScroll.TrackBackground>
+        <RepeatButton x:Name="Goupbtn" Content="go up" Background="{DynamicResource def_button_background}" Foreground="{DynamicResource def_content}"/>
+        <hw:FlexiScroll Grid.Row="1" RepeatUp="{Binding ElementName=Goupbtn}" BorderThickness="0" CornerRadius="3" >
             <StackPanel Width="400">
-                <TextBox Height="40" Margin="5" Text="Hello"/>
+                <hw:PlainTextBox Height="40" Margin="5" Text="Hello"/>
                 <TextBox Height="40" Margin="5" Text="Hello"/>
                 <TextBox Height="40" Margin="5" Text="Hello"/>
                 <TextBox Height="40" Margin="5" Text="Hello"/>

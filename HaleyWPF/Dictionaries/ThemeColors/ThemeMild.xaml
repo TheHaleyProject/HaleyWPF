@@ -16,6 +16,11 @@
     <SolidColorBrush x:Key="def_button_background" Color="#FF292F4E"/>
     <SolidColorBrush x:Key="def_button_hover" Color="#FF405A7F"/>
 
+    <!-- SCROLLBARS -->
+    <SolidColorBrush x:Key="def_scroll_thumb" Color="WhiteSmoke"/>
+    <SolidColorBrush x:Key="def_scroll_repeat" Color="#FF8B8C93"/>
+    <SolidColorBrush x:Key="def_scroll_track" Color="#3FFFFFFF"/>
+
     <!-- BACKGROUNDS -->
     <SolidColorBrush x:Key="def_background_primary" Color="#FF3B4B62"/>
     <SolidColorBrush x:Key="def_background_secondary" Color="#FF334054"/>
