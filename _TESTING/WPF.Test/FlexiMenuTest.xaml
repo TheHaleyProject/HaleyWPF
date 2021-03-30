@@ -30,11 +30,14 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <!--Menu Toggle Button-->
+                <StackPanel>
+                    <hw:ImageToggleButton Icon="{StaticResource hamburger_combo}" />
+                    <hw:ImageToggleButton Icon="{StaticResource hamburger_dot}" />
+                    <hw:ImageToggleButton Icon="{StaticResource hamburger_square}" />
+
+                </StackPanel>
             </Grid>
-           
-            <hw:Pagination CornerRadius="5" Margin="10" Mode="Simple" DockPanel.Dock="Bottom" ItemsCountTotal="140" />
-            <hw:Pagination CornerRadius="5" Margin="10" DockPanel.Dock="Bottom" ItemsCountTotal="140" />
-            <hw:PlainButton Width="120"/>
+            <Grid/>
         </DockPanel>
     </Grid>
 </Window>
