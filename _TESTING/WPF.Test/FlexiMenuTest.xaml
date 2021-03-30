@@ -15,76 +15,84 @@
 
         <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
-            <Setter Property="Height" Value="Auto"/>
-            <Setter Property="Margin" Value="15,3"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="ImageLocation" Value="Left"/>
+            <Setter Property="VerticalContentAlignment" Value="Bottom"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="5,3"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="hw:Icon.HoverColor" Value="White"/>
-            <Setter Property="hw:Hover.Background" Value="#FF511380"/>
+            <Setter Property="hw:Icon.HoverColor" Value="#FF2E0A81"/>
+            <Setter Property="hw:Hover.Background" Value="#99318D8D"/>
+            <Setter Property="hw:Icon.DefaultColor" Value="#FFE9E9E9"/>
         </Style>
     </Window.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
-            <Grid DockPanel.Dock="Left" Width="200">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <!--Menu Toggle Button-->
-                <Grid Height="100" Background="#FF57887F" >
-                    <!--<Grid.Background>
+            <Border DockPanel.Dock="Left" BorderBrush="Gray" BorderThickness="1" Background="#FF242229">
+                <Grid DockPanel.Dock="Left" Width="200">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!--Menu Toggle Button-->
+                    <Grid Height="100" Background="#FF57887F" >
+                        <!--<Grid.Background>
                         <ImageBrush ImageSource="Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" />
                     </Grid.Background>-->
-                    <Grid Background="#990A0A0A" VerticalAlignment="Bottom" Height="Auto">
-                        <TextBlock Text="Project Management v1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="0,10" Foreground="White"/>
+                        <Grid Background="#990A0A0A" VerticalAlignment="Bottom" Height="Auto">
+                            <TextBlock Text="Project Management v1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="0,10" Foreground="White"/>
+                        </Grid>
+                        <hw:ImageToggleButton Icon="{StaticResource hamburger_square}" HorizontalAlignment="Right" VerticalAlignment="Top" ColorOFF="White" ColorON="White"/>
+                        <Border Height="35" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource internal_tglebtn_BorderCircular}" Background="#66000000">
+                            <Image Source="Images/hippo_bliue.png"  Margin="4"/>
+                        </Border>
                     </Grid>
-                    <hw:ImageToggleButton Icon="{StaticResource hamburger_square}" HorizontalAlignment="Right" VerticalAlignment="Top" ColorOFF="White" ColorON="White"/>
-                    <Border Height="35" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource internal_tglebtn_BorderCircular}" Background="#66000000">
-                        <Image Source="Images/hippo_bliue.png"  Margin="4"/>
-                    </Border>
-                </Grid>
-                <!--ACTUAL MENU-->
+                    <!--ACTUAL MENU-->
 
-                <Grid Grid.Row="1">
-                    <!--<Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <!--<Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>-->
-                    <hw:ComboRepeatButton x:Name="upButton" Height="25" Background="#33000000" hw:Icon.Default="{StaticResource arrow_line}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Panel.ZIndex="99">
-                        <hw:ComboRepeatButton.RenderTransform>
-                            <TransformGroup>
-                                <RotateTransform Angle="180"/>
-                            </TransformGroup>
-                        </hw:ComboRepeatButton.RenderTransform>
-                    </hw:ComboRepeatButton>
-                    <hw:ComboRepeatButton x:Name="downButton" Grid.Row="2" Height="25" Background="#33000000" hw:Icon.Default="{StaticResource arrow_line}" VerticalAlignment="Bottom" Panel.ZIndex="99"/>
+                        <hw:ComboRepeatButton x:Name="upButton" Height="25" Background="#339399A4" hw:Icon.Default="{StaticResource arrow_line}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Panel.ZIndex="99">
+                            <hw:ComboRepeatButton.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="180"/>
+                                </TransformGroup>
+                            </hw:ComboRepeatButton.RenderTransform>
+                        </hw:ComboRepeatButton>
+                        <hw:ComboRepeatButton x:Name="downButton" Grid.Row="2" Height="25" Background="#33000000" hw:Icon.Default="{StaticResource arrow_line}" VerticalAlignment="Bottom" Panel.ZIndex="99"/>
 
-                    <hw:FlexiScroll Grid.Row="1" CanContentScroll="True"  HorizontalScrollBarVisibility="Hidden" RepeatDown="{Binding ElementName=downButton}" RepeatUp="{Binding ElementName=upButton}" VerticalScrollBarVisibility="Hidden" Panel.ZIndex="1">
-                        <ListView  Style="{StaticResource CleanListView}">
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home 12"  hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource Nunito_Bold}" VerticalContentAlignment="Bottom" />
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource Roboto_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource OpenSans_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource Comforta_SemiBold}" VerticalContentAlignment="Bottom"/>
+                        <hw:FlexiScroll Grid.Row="1" CanContentScroll="True"  HorizontalScrollBarVisibility="Hidden" RepeatDown="{Binding ElementName=downButton}" RepeatUp="{Binding ElementName=upButton}" VerticalScrollBarVisibility="Hidden" Panel.ZIndex="1">
+                            <ListView  Style="{StaticResource CleanListView}">
+                                <hw:ComboButton   Content="Home 12"  hw:Icon.Default="{StaticResource home}"/>
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}" />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
 
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource  Lato_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource  Lato_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home 23" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource  Lato_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource  Lato_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource  Lato_Bold}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource  VarelaRound_Regular}" VerticalContentAlignment="Bottom"/>
-                            <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home 34" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource Montserrat_Bold}" VerticalContentAlignment="Bottom"/>
-                        </ListView>
-                    </hw:FlexiScroll>
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home 23" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home 34" hw:Icon.Default="{StaticResource home}"  />
+                            </ListView>
+                        </hw:FlexiScroll>
+                    </Grid>
+                    <hw:Separator Grid.Row="2" Size="3" Background="#B2AC07F9"/>
+                    <Grid Height="40" Grid.Row="3"/>
+                    <Grid Grid.Row="4" Margin="5">
+                        <TextBlock Text="Copyright 2021" Style="{StaticResource def_h4_Secondary}"/>
+                    </Grid>
                 </Grid>
-                <hw:Separator Grid.Row="2" Size="3" Background="#B2AC07F9"/>
-                <Grid Height="40" Grid.Row="3"/>
-                <Grid Grid.Row="4" Margin="5">
-                    <TextBlock Text="Copyright 2021" Style="{StaticResource def_h4_Secondary}"/>
-                </Grid>
-            </Grid>
+            </Border>
             <Grid/>
         </DockPanel>
     </Grid>
