@@ -69,5 +69,19 @@ namespace Haley.Models
         // Using a DependencyProperty as the backing store for BorderThickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BorderThicknessProperty =
             DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(Hover), new PropertyMetadata(ResourceHelper.borderThickness));
+
+        public static SolidColorBrush GetForeground(DependencyObject obj)
+        {
+            return (SolidColorBrush)obj.GetValue(ForegroundProperty);
+        }
+
+        public static void SetForeground(DependencyObject obj, SolidColorBrush value)
+        {
+            obj.SetValue(ForegroundProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for Foreground.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ForegroundProperty =
+            DependencyProperty.RegisterAttached("Foreground", typeof(SolidColorBrush), typeof(Hover), new PropertyMetadata(null));
     }
 }

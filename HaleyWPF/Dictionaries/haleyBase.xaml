@@ -13,6 +13,7 @@
         
         <!--#region Primary-->
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyFonts.xaml"/>
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons01.xaml"/>
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml"/>
         <!--#endregion-->

@@ -178,7 +178,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\aerial.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\hippo_bliue.png" />
   </ItemGroup>
@@ -239,7 +241,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="3.0.1" />
+        <PackageReference Include="Haley.WPF" Version="4.0.1" />
       </ItemGroup>
     </Otherwise>
   </Choose>

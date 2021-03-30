@@ -51,6 +51,36 @@
   </ItemGroup>
 	
   <ItemGroup>
+    <None Remove="Fonts\Comfortaa-Medium.ttf" />
+    <None Remove="Fonts\Comfortaa-Regular.ttf" />
+    <None Remove="Fonts\Comfortaa-SemiBold.ttf" />
+    <None Remove="Fonts\Lato-Bold.ttf" />
+    <None Remove="Fonts\Lato-Regular.ttf" />
+    <None Remove="Fonts\Lato-Thin.ttf" />
+    <None Remove="Fonts\Montserrat-Bold.ttf" />
+    <None Remove="Fonts\Montserrat-ExtraBold.ttf" />
+    <None Remove="Fonts\Montserrat-Medium.ttf" />
+    <None Remove="Fonts\Montserrat-Regular.ttf" />
+    <None Remove="Fonts\Montserrat-SemiBold.ttf" />
+    <None Remove="Fonts\Montserrat-Thin.ttf" />
+    <None Remove="Fonts\Nunito-Bold.ttf" />
+    <None Remove="Fonts\Nunito-Light.ttf" />
+    <None Remove="Fonts\Nunito-Regular.ttf" />
+    <None Remove="Fonts\Nunito-SemiBold.ttf" />
+    <None Remove="Fonts\OpenSans-Bold.ttf" />
+    <None Remove="Fonts\OpenSans-Light.ttf" />
+    <None Remove="Fonts\OpenSans-Regular.ttf" />
+    <None Remove="Fonts\OpenSans-SemiBold.ttf" />
+    <None Remove="Fonts\Raleway-Bold.ttf" />
+    <None Remove="Fonts\Raleway-Light.ttf" />
+    <None Remove="Fonts\Raleway-Medium.ttf" />
+    <None Remove="Fonts\Raleway-Regular.ttf" />
+    <None Remove="Fonts\Raleway-SemiBold.ttf" />
+    <None Remove="Fonts\Roboto-Bold.ttf" />
+    <None Remove="Fonts\Roboto-Medium.ttf" />
+    <None Remove="Fonts\Roboto-Regular.ttf" />
+    <None Remove="Fonts\Roboto-Thin.ttf" />
+    <None Remove="Fonts\VarelaRound-Regular.ttf" />
     <None Remove="Images\calender.png" />
     <None Remove="Images\calender_clock.png" />
     <None Remove="Images\calender_clock_large.png" />
@@ -164,6 +194,36 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Fonts\Comfortaa-Medium.ttf" />
+    <Resource Include="Fonts\Comfortaa-Regular.ttf" />
+    <Resource Include="Fonts\Comfortaa-SemiBold.ttf" />
+    <Resource Include="Fonts\Lato-Bold.ttf" />
+    <Resource Include="Fonts\Lato-Regular.ttf" />
+    <Resource Include="Fonts\Lato-Thin.ttf" />
+    <Resource Include="Fonts\Montserrat-Bold.ttf" />
+    <Resource Include="Fonts\Montserrat-ExtraBold.ttf" />
+    <Resource Include="Fonts\Montserrat-Medium.ttf" />
+    <Resource Include="Fonts\Montserrat-Regular.ttf" />
+    <Resource Include="Fonts\Montserrat-SemiBold.ttf" />
+    <Resource Include="Fonts\Montserrat-Thin.ttf" />
+    <Resource Include="Fonts\Nunito-Bold.ttf" />
+    <Resource Include="Fonts\Nunito-Light.ttf" />
+    <Resource Include="Fonts\Nunito-Regular.ttf" />
+    <Resource Include="Fonts\Nunito-SemiBold.ttf" />
+    <Resource Include="Fonts\OpenSans-Bold.ttf" />
+    <Resource Include="Fonts\OpenSans-Light.ttf" />
+    <Resource Include="Fonts\OpenSans-Regular.ttf" />
+    <Resource Include="Fonts\OpenSans-SemiBold.ttf" />
+    <Resource Include="Fonts\Raleway-Bold.ttf" />
+    <Resource Include="Fonts\Raleway-Light.ttf" />
+    <Resource Include="Fonts\Raleway-Medium.ttf" />
+    <Resource Include="Fonts\Raleway-Regular.ttf" />
+    <Resource Include="Fonts\Raleway-SemiBold.ttf" />
+    <Resource Include="Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Fonts\VarelaRound-Regular.ttf" />
     <Resource Include="Images\arrow.png" />
     <Resource Include="Images\arrow_down_circle.png" />
     <Resource Include="Images\arrow_down_circle_large.png" />
@@ -503,6 +563,10 @@
     <Page Update="Dictionaries\haleyBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\haleyFonts.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\haleyDefaults.xaml">
       <SubType>Designer</SubType>

@@ -20,15 +20,16 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ComboButton}">
-                    <Border x:Name="PART_BorderMain"  Style="{StaticResource BorderWithShadow}">
+                    <Border x:Name="PART_BorderMain" Style="{StaticResource BorderWithShadow}">
                             <DockPanel x:Name="PART_maindock">
                             <Viewbox x:Name="PART_ImageViewBox" Margin="3" DockPanel.Dock="{TemplateBinding ImageLocation}">
                                 <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" />
                             </Viewbox>
-                            <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3" TextBlock.Foreground="{DynamicResource def_content}"/>
+                            <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3" TextBlock.Foreground="{TemplateBinding Foreground}"/>
                         </DockPanel>
                     </Border>
                     <ControlTemplate.Triggers>
