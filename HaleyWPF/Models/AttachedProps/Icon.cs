@@ -14,10 +14,8 @@ namespace Haley.Models
 {
     public class Icon : Control
     {
-        internal bool IsPressEnabled { get; set; }
         public Icon() 
         { 
-            IsPressEnabled = true;
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Initiate, Execute_Initiate));
         }
 
@@ -34,6 +32,7 @@ namespace Haley.Models
             //Process Images
             if (GetDefault(sender) == null)
             { SetDefault(sender, ResourceHelper.getIcon(IconEnums.empty_image.ToString())); }
+
             if (GetHover(sender) == null) SetHover(sender, GetDefault(sender));
             if (GetPressed(sender) == null) SetPressed(sender, GetHover(sender));
 
@@ -44,7 +43,7 @@ namespace Haley.Models
                 { SetDefault(sender,ImageHelper.changeColor(GetDefault(sender), GetDefaultColor(sender))); }
 
                 if (GetHoverColor(sender) != null)
-                { SetHover(sender, ImageHelper.changeColor(GetHover(sender), GetHoverColor(sender))); }
+                    { SetHover(sender, ImageHelper.changeColor(GetHover(sender), GetHoverColor(sender))); }
 
                 if (GetPressedColor(sender) != null)
                 { SetPressed(sender, ImageHelper.changeColor(GetPressed(sender), GetPressedColor(sender))); }
@@ -168,8 +167,6 @@ namespace Haley.Models
         {
             var _disable = (bool)d.GetValue(DisableColorChangeProperty);
             if (_disable) return;
-            //var _canPress = (d as Icon).IsPressEnabled;
-            //if (_disable || !_canPress) return;
             ImageHelper.changeColor(PressedProperty, d, e);
         }
         private static void _defaultColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

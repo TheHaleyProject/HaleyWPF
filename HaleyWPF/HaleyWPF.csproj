@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>3.0.3</Version>
+		<Version>4.0.0</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Adjusted themes to match Flexi Scroll</PackageReleaseNotes>
+		<PackageReleaseNotes>Changes to the way icons are loaded. Implemented Attached properties for handling icons across all buttons. Modified few names. Added image toggle button.</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
@@ -563,6 +563,10 @@
     <Page Update="Dictionaries\ThemeMain\PlainPasswordBoxRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\ImageToggleButtonRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\ThemeMain\SearchBarRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>

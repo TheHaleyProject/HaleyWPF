@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Windows;
 using Haley.Models;
+using System.Windows.Controls;
 
 namespace Haley.WPF.BaseControls
 {
-    public class PlainImage : Icon
+    public class PlainImage : Control
     {
         #region Constructors
         static PlainImage()
@@ -15,14 +16,13 @@ namespace Haley.WPF.BaseControls
 
         public PlainImage()
         {
-            base.IsPressEnabled = false;
         }
         #endregion
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            base.IsPressEnabled = false;
+            Icon.InitiateImages(this);
         }
     }
 }

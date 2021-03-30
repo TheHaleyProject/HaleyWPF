@@ -57,7 +57,7 @@
                 <StackPanel Orientation="Horizontal" Height="40">
                     <hw:PlainButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
                     <hw:ComboRepeatButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4"  Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
-                    <TextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}"/>
+                    <hw:PlainTextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}" WaterMark=""/>
                 </StackPanel>
                 
              
@@ -69,10 +69,17 @@
                         <hw:PlainTextBox Height="30" Width="100" HorizontalAlignment="Left" CornerRadius="4"/>
                         <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5"/>
                         <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsChecked="True"/>
+                        <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsThreeState="True" Style="{StaticResource CircularToggleButton}" EnlargeSwitchButton="True"/>
                     </StackPanel>
                 </hw:PlainExpander>
                 <hw:LinkedText Text="What a world"/>
                 <hw:SearchBar CornerRadius="5" Height="30" Margin="10"/>
+                <StackPanel Orientation="Horizontal" Height="40">
+                    <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource microphone}" Height="Auto"/>
+                    <hw:ImageToggleButton IsChecked="{x:Null}" Icon="{StaticResource heart_plain}" Height="Auto"/>
+                    <hw:ImageToggleButton Icon="{StaticResource chat_single}" Height="Auto"/>
+
+                </StackPanel>
             </StackPanel>
             <hw:CollectionSelector Grid.Column="1" CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="300" VerticalAlignment="Top">
                 <hw:CollectionSelector.ItemsPanel>

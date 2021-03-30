@@ -21,24 +21,24 @@ namespace Haley.WPF.BaseControls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ToggleButtonBase), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
-        public Brush ColorON
+        public SolidColorBrush ColorON
         {
-            get { return (Brush)GetValue(ColorONProperty); }
+            get { return (SolidColorBrush)GetValue(ColorONProperty); }
             set { SetValue(ColorONProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ColorON.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorONProperty =
-            DependencyProperty.Register(nameof(ColorON), typeof(Brush), typeof(ToggleButtonBase), new FrameworkPropertyMetadata(null));
+            DependencyProperty.Register(nameof(ColorON), typeof(SolidColorBrush), typeof(ToggleButtonBase), new FrameworkPropertyMetadata(null));
 
-        public Brush ColorOFF
+        public SolidColorBrush ColorOFF
         {
-            get { return (Brush)GetValue(ColorOFFProperty); }
+            get { return (SolidColorBrush)GetValue(ColorOFFProperty); }
             set { SetValue(ColorOFFProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ColorOFF.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorOFFProperty =
-            DependencyProperty.Register(nameof(ColorOFF), typeof(Brush), typeof(ToggleButtonBase), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ColorOFF), typeof(SolidColorBrush), typeof(ToggleButtonBase), new PropertyMetadata(null));
     }
 }

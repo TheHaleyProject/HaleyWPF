@@ -19,6 +19,7 @@
     </Style>
 
     <Style x:Key="CircularToggleButton" TargetType="{x:Type bc:PlainToggleButton}">
+        <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="Template">
@@ -38,41 +39,7 @@
                             </Grid>
 
                             <!--Second item is the switch which will be moved left or light based on status-->
-                            <Border x:Name="switchBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}" Background="{DynamicResource defBackground}" Style="{StaticResource internal_tglebtn_SwitchCircular}"/>
-                        </Grid>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <!--For disabled status-->
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="0.5"/>
-                        </Trigger>
-
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="ImageToggleButton" TargetType="{x:Type bc:PlainToggleButton}">
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type bc:PlainToggleButton}">
-                    <!--Base border which lays at the bottom and covers whole length and will be filled with the color representing the status-->
-                    <Border x:Name="PART_BorderMain" Style="{StaticResource internal_tglebtn_CommonBorder}">
-                        <Grid x:Name="grdMain">
-                            <!--First item is a grid which covers whole length and is used for displaying the text. This sits above the Main border-->
-                            <Grid Margin="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="txtStatus" HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Style="{StaticResource internal_tglebtn_txtblckStyle}"/>
-                            </Grid>
-
-                            <!--Second item is the switch which will be moved left or light based on status-->
-                            <Border x:Name="switchBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}" Background="{DynamicResource defBackground}" Style="{StaticResource internal_tglebtn_SwitchCircular}"/>
+                            <Border x:Name="switchBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" Width="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}" Background="{TemplateBinding Background}" Style="{StaticResource internal_tglebtn_SwitchCircular}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
