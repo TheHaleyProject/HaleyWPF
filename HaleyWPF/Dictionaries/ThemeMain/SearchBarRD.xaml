@@ -2,18 +2,18 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
-    xmlns:model="clr-namespace:Haley.Models">
+    xmlns:ml="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <Style TargetType="{x:Type bc:SearchBar}">
         <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
             <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
             <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
-            <Setter Property="ShadowColor" Value="{DynamicResource def_secondary}"/>
-            <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -30,7 +30,7 @@
                             </Grid.ColumnDefinitions>
                             <!--Search Icon goes to the left-->
                             <Grid Width="{TemplateBinding Height}" Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" ClipToBounds="True" >
-                                <bc:ImageButton  DefaultImage="{StaticResource search_medium}" DefaultImageColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
+                                <bc:ImageButton  ml:Icon.Default="{StaticResource search_medium}" ml:Icon.DefaultColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
                             </Grid>
                             <!--Content and watermark goes to the right (column 1)-->
                             <ScrollViewer  x:Name="PART_ContentHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0" Grid.Column="1">

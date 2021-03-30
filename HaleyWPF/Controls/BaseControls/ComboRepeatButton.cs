@@ -1,23 +1,20 @@
-﻿using Haley.Abstractions;
-using Haley.Enums;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Controls.Primitives;
+using Haley.Models;
 
 namespace Haley.WPF.BaseControls
 {
-    public class ImageComboRepeatButton : ImageRepeatButton
+    public class ComboRepeatButton : ImageRepeatButton
     {
         #region Constructors
-        static ImageComboRepeatButton()
+        static ComboRepeatButton()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ImageComboRepeatButton), new FrameworkPropertyMetadata(typeof(ImageComboRepeatButton)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ComboRepeatButton), new FrameworkPropertyMetadata(typeof(ComboRepeatButton)));
         }
 
-        public ImageComboRepeatButton()
+        public ComboRepeatButton()
         {
 
         }
@@ -27,32 +24,11 @@ namespace Haley.WPF.BaseControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _processImages();
+            Icon.InitiateImages(this);
             //Only in case of top or bottom, re arrange the dock children
             _rearrangeDock();
         }
 
-        private void _processImages()
-        {
-            //Process Images
-            if (DefaultImage == null)
-            { DefaultImage = ResourceHelper.getIcon(IconEnums.empty_image.ToString()); }
-            if (HoverImage == null) HoverImage = DefaultImage;
-            if (PressedImage == null) PressedImage = HoverImage;
-
-            if (!DisableColorChange)
-            {
-                //Process Image Colors
-                if (DefaultImageColor != null)
-                { DefaultImage = ImageHelper.changeColor(DefaultImage, DefaultImageColor); }
-
-                if (HoverImageColor != null)
-                { HoverImage = ImageHelper.changeColor(HoverImage, HoverImageColor); }
-
-                if (PressedImageColor != null)
-                { PressedImage = ImageHelper.changeColor(PressedImage, PressedImageColor); }
-            }
-        }
         private void _rearrangeDock()
         {
             //Try to get the template.
@@ -82,7 +58,7 @@ namespace Haley.WPF.BaseControls
 
         static void ImagLocationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var imgRepeat = d as ImageComboRepeatButton;
+            var imgRepeat = d as ComboRepeatButton;
             if (imgRepeat != null)
             {
                 imgRepeat._rearrangeDock();
@@ -97,6 +73,6 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ImageLocation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageLocationProperty =
-            DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ImageComboRepeatButton), new FrameworkPropertyMetadata(Dock.Top,propertyChangedCallback:ImagLocationPropertyChanged));
+            DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ComboRepeatButton), new FrameworkPropertyMetadata(Dock.Top, propertyChangedCallback: ImagLocationPropertyChanged));
     }
 }

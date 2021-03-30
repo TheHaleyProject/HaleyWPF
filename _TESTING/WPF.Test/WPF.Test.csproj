@@ -57,13 +57,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataGridTest.xaml.cs">
-      <DependentUpon>DataGridTest.xaml</DependentUpon>
+    <Compile Include="ExpanderTest.xaml.cs">
+      <DependentUpon>ExpanderTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlexiMenuTest.xaml.cs">
+      <DependentUpon>FlexiMenuTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalData.cs" />
     <Compile Include="MainVM.cs" />
-    <Compile Include="ExpanderTest.xaml.cs">
-      <DependentUpon>ExpanderTest.xaml</DependentUpon>
+    <Compile Include="RibbonTest.xaml.cs">
+      <DependentUpon>RibbonTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="ScrollViewerTest.xaml.cs">
       <DependentUpon>ScrollViewerTest.xaml</DependentUpon>
@@ -74,28 +77,27 @@
     <Compile Include="ToTestControl.xaml.cs">
       <DependentUpon>ToTestControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowTheme.xaml.cs">
+      <DependentUpon>WindowTheme.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WndwPagination.xaml.cs">
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
-    <Page Include="DataGridTest.xaml">
+    <Page Include="ExpanderTest.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="FlexiMenuTest.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="ExpanderTest.xaml">
+    <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Resources\DicRD.xaml">
       <SubType>Designer</SubType>
@@ -121,24 +123,36 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RibbonTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
     <Page Include="ScrollViewerTest.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="ThemeTest.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="ToTestControl.xaml">
       <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="WindowTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="WndwPagination.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -210,7 +224,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="4.0.4" />
+        <PackageReference Include="Haley.MVVM" Version="4.0.5" />
       </ItemGroup>
     </Otherwise>
   </Choose>

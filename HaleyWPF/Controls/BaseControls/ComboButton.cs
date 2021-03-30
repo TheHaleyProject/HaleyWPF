@@ -1,19 +1,21 @@
-﻿using System;
+﻿using Haley.Abstractions;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Haley.Models;
 
 namespace Haley.WPF.BaseControls
 {
-    public class ImageComboButton : ImageButton
+    public class ComboButton : PlainButton
     {
         #region Constructors
-        static ImageComboButton()
+        static ComboButton()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ImageComboButton), new FrameworkPropertyMetadata(typeof(ImageComboButton)));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ComboButton), new FrameworkPropertyMetadata(typeof(ComboButton)));
         }
 
-        public ImageComboButton()
+        public ComboButton()
         {
 
         }
@@ -22,7 +24,7 @@ namespace Haley.WPF.BaseControls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            //Only in case of top or bottom, re arrange the dock children
+            Icon.InitiateImages(this);
             _rearrangeDock();
         }
 
@@ -54,7 +56,7 @@ namespace Haley.WPF.BaseControls
 
         static void ImagLocationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var imgCmbBtn = d as ImageComboButton;
+            var imgCmbBtn = d as ComboButton;
             if (imgCmbBtn != null)
             {
                 imgCmbBtn._rearrangeDock();
@@ -69,6 +71,6 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ImageLocation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageLocationProperty =
-            DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ImageComboButton), new FrameworkPropertyMetadata(Dock.Top,propertyChangedCallback:ImagLocationPropertyChanged));
+            DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ComboButton), new FrameworkPropertyMetadata(Dock.Top, propertyChangedCallback: ImagLocationPropertyChanged));
     }
 }

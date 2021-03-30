@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Haley.Enums
 {
-   public enum PaginationMode
+    public enum PaginationMode
     {
         Simple,
         Extended

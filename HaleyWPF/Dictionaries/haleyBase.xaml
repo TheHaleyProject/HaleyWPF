@@ -5,7 +5,7 @@
     xmlns:model="clr-namespace:Haley.Models">
 
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeColors/ThemeMild.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeColors/ThemeNormal.xaml"/>
         
         <model:CommonDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
 

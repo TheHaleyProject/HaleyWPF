@@ -28,11 +28,11 @@ namespace WPF.Test
             int _green = string.IsNullOrEmpty(greenValue.Text) ? 0 : int.Parse(greenValue.Text);
             int _blue = string.IsNullOrEmpty(blueValue.Text) ? 0 : int.Parse(blueValue.Text);
 
-            var _source = imgeChanger.DefaultImage;
+            var _source = Haley.Models.Icon.GetDefault(imgeChanger);
 
             var _imageinfo = ImageUtils.getImageInfo(_source);
             var _newsource = ImageUtils.changeImageColor(_imageinfo, _red, _green, _blue);
-            imgeChanger.DefaultImage = _newsource;
+            Haley.Models.Icon.SetDefault(imgeChanger, _newsource);
 
         }
 

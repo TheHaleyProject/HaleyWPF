@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Haley.WPF.BaseControls
 {
-    public class PlainExpander : Expander, IShadow, ICornerRadius, IHoverBase
+    public class PlainExpander : Expander, ICornerRadius
     {
         static PlainExpander()
         {
@@ -80,38 +80,6 @@ namespace Haley.WPF.BaseControls
         public static readonly DependencyProperty ContentBackgroundProperty =
             DependencyProperty.Register(nameof(ContentBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
 
-        #region Shadow
-        public bool ShadowOnlyOnMouseOver
-        {
-            get { return (bool)GetValue(ShadowOnlyOnMouseOverProperty); }
-            set { SetValue(ShadowOnlyOnMouseOverProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ShadowOnlyOnMouseOver.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShadowOnlyOnMouseOverProperty =
-            DependencyProperty.Register(nameof(ShadowOnlyOnMouseOver), typeof(bool), typeof(PlainExpander), new PropertyMetadata(true));
-
-        public bool ShowShadow
-        {
-            get { return (bool)GetValue(ShowShadowProperty); }
-            set { SetValue(ShowShadowProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ShowShadow.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShowShadowProperty =
-            DependencyProperty.Register(nameof(ShowShadow), typeof(bool), typeof(PlainExpander), new FrameworkPropertyMetadata(false));
-
-        public Brush ShadowColor
-        {
-            get { return (Brush)GetValue(ShadowColorProperty); }
-            set { SetValue(ShadowColorProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ShadowColor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShadowColorProperty =
-            DependencyProperty.Register(nameof(ShadowColor), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
-        #endregion
-
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
@@ -121,45 +89,5 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
-
-        public Brush HoverBackground
-        {
-            get { return (Brush)GetValue(HoverBackgroundProperty); }
-            set { SetValue(HoverBackgroundProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HoverBackground.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HoverBackgroundProperty =
-            DependencyProperty.Register(nameof(HoverBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
-
-        public Brush HoverBorderBrush
-        {
-            get { return (Brush)GetValue(HoverBorderBrushProperty); }
-            set { SetValue(HoverBorderBrushProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HoverBorderBrush.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HoverBorderBrushProperty =
-            DependencyProperty.Register(nameof(HoverBorderBrush), typeof(Brush), typeof(PlainExpander), new PropertyMetadata(null));
-
-        public Thickness HoverBorderThickness
-        {
-            get { return (Thickness)GetValue(HoverBorderThicknessProperty); }
-            set { SetValue(HoverBorderThicknessProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HoverBorderThickness.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HoverBorderThicknessProperty =
-            DependencyProperty.Register(nameof(HoverBorderThickness), typeof(Thickness), typeof(PlainExpander), new PropertyMetadata(ResourceHelper.borderThickness));
-
-        public bool DisableHover
-        {
-            get { return (bool)GetValue(DisableHoverProperty); }
-            set { SetValue(DisableHoverProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for DisableHover.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty DisableHoverProperty =
-            DependencyProperty.Register(nameof(DisableHover), typeof(bool), typeof(PlainExpander), new PropertyMetadata(false));
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WPF.Test
 {
     /// <summary>
-    /// Interaction logic for DataGridTest.xaml
+    /// Interaction logic for FlexiMenuTest.xaml
     /// </summary>
-    public partial class DataGridTest : Window
+    public partial class FlexiMenuTest : Window
     {
-        public DataGridTest()
+        public FlexiMenuTest()
         {
             InitializeComponent();
             this.DataContext = new MainVM();

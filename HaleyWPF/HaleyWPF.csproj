@@ -36,14 +36,18 @@
   </PropertyGroup>
 	
   <ItemGroup>
-    <Compile Remove="GroupControls\FlexiTab\**" />
-    <EmbeddedResource Remove="GroupControls\FlexiTab\**" />
-    <None Remove="GroupControls\FlexiTab\**" />
-    <Page Remove="GroupControls\FlexiTab\**" />
+    <Compile Remove="Controls\GroupControls\FlexiTab\**" />
+    <Compile Remove="Controls\GroupControls\FlexiTab\**" />
+    <EmbeddedResource Remove="Controls\GroupControls\FlexiTab\**" />
+    <EmbeddedResource Remove="Controls\GroupControls\FlexiTab\**" />
+    <None Remove="Controls\GroupControls\FlexiTab\**" />
+    <None Remove="Controls\GroupControls\FlexiTab\**" />
+    <Page Remove="Controls\GroupControls\FlexiTab\**" />
+    <Page Remove="Controls\GroupControls\FlexiTab\**" />
   </ItemGroup>
 	
   <ItemGroup>
-    <Compile Remove="BaseControls\PlainDataGrid.cs" />
+    <Compile Remove="Controls\BaseControls\PlainDataGrid.cs" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -454,9 +458,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="GroupControls\FlexiDock\" />
-    <Folder Include="GroupControls\FlexiRibbon\" />
-    <Folder Include="GroupControls\FlexiMenu\" />
+    <Folder Include="Controls\GroupControls\FlexiDock\" />
+    <Folder Include="Controls\GroupControls\FlexiRibbon\" />
+    <Folder Include="Controls\GroupControls\FlexiMenu\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -516,7 +520,7 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Dictionaries\ThemeMain\ImageComboRepeatButtonRD.xaml">
+    <Page Update="Dictionaries\ThemeMain\ComboRepeatButtonRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
@@ -532,7 +536,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\ThemeMain\ImageComboButtonRD.xaml">
+    <Page Update="Dictionaries\ThemeMain\ComboButtonRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -639,7 +643,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="4.0.4" />
+       <PackageReference Include="Haley.MVVM" Version="4.0.5" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

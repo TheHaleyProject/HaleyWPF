@@ -3,17 +3,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:winEnum="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
-    xmlns:model="clr-namespace:Haley.Models">
-    
+    xmlns:ml="clr-namespace:Haley.Models">
+
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
-    <Style TargetType="{x:Type bc:ImageComboRepeatButton}">
-        <Setter Property="DefaultImageColor" Value="{DynamicResource def_primary}"/>
-        <Setter Property="HoverImageColor" Value="{DynamicResource def_secondary}"/>
-        <Setter Property="PressedImageColor" Value="{DynamicResource def_tertiary}"/>
-        <Setter Property="HoverBackground" Value="{DynamicResource def_button_hover}"/>
+    <Style TargetType="{x:Type bc:ComboRepeatButton}">
+        <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="ml:Icon.PressedColor" Value="{DynamicResource def_tertiary}"/>
+        <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="PressedBackground" Value="{DynamicResource def_tertiary}"/>
         <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
@@ -21,11 +21,11 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type bc:ImageComboRepeatButton}">
+                <ControlTemplate TargetType="{x:Type bc:ComboRepeatButton}">
                     <Border x:Name="PART_BorderMain"  Style="{StaticResource BorderWithShadow}">
                             <DockPanel x:Name="PART_maindock">
                             <Viewbox x:Name="PART_ImageViewBox" Margin="3" DockPanel.Dock="{TemplateBinding ImageLocation}">
-                                <Image x:Name="PART_ImageHolder" Source="{TemplateBinding DefaultImage}" Stretch="UniformToFill" StretchDirection="Both" />
+                                <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" />
                             </Viewbox>
                             <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3"/>
                         </DockPanel>
@@ -35,13 +35,13 @@
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=HoverImage, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter Property="Foreground" Value="{Binding Path=HoverImageColor, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=HoverBackground, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=HoverBorderBrush, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="Foreground" Value="{Binding Path=(ml:Icon.HoverColor), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=(ml:Hover.BorderBrush), RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=PressedImage, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Pressed), RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter Property="ImageLocation" Value="Bottom"/>

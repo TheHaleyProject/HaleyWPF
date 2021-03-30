@@ -2,13 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
-    xmlns:hlyMVVM="http://schemas.hpod9.com/haley/mvvm"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:utils="clr-namespace:Haley.Utils"
-    xmlns:model="clr-namespace:Haley.Models">
+    xmlns:ul="clr-namespace:Haley.Utils"
+    xmlns:ml="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_collectionselector_plainlstvw" TargetType="{x:Type bc:PlainListView}">
@@ -57,19 +57,19 @@
                                 <bc:PlainListView x:Name="PART_lstvew_source" Style="{StaticResource internal_collectionselector_plainlstvw}" ItemsSource="{TemplateBinding ItemsSource}"  Grid.Row="1"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="2">
                                     <bc:LinkedText Text="Select All" TurnOffTextDecorations="True" CommandParameter="Source" Command="{x:Static ApplicationCommands.SelectAll}"/>
-                                    <bc:LinkedText Text="Highlight Selected" TurnOffTextDecorations="True" Command="{x:Static utils:AdditionalCommands.Highlight }" Margin="10,0"/>
+                                    <bc:LinkedText Text="Highlight Selected" TurnOffTextDecorations="True" Command="{x:Static ul:AdditionalCommands.Highlight }" Margin="10,0"/>
                                 </StackPanel>
                             </Grid>
                             
                             <StackPanel Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <bc:ImageButton DefaultImage="{StaticResource arrow_down_sharp}" DefaultImageColor="{TemplateBinding IconColor}" Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveRight}">
-                                    <bc:ImageButton.RenderTransform>
+                                <bc:ImageButton  Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveRight}" ml:Icon.Default="{StaticResource arrow_down_sharp}" ml:Icon.DefaultColor="{TemplateBinding IconColor}">
+                                <bc:ImageButton.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform Angle="-90" />
                                         </TransformGroup>
                                     </bc:ImageButton.RenderTransform>
                                 </bc:ImageButton>
-                                <bc:ImageButton DefaultImage="{StaticResource arrow_down_sharp}" DefaultImageColor="{TemplateBinding IconColor}"  Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveLeft}">
+                                <bc:ImageButton   Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveLeft}"  ml:Icon.Default="{StaticResource arrow_down_sharp}" ml:Icon.DefaultColor="{TemplateBinding IconColor}">
                                     <bc:ImageButton.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform Angle="90" />

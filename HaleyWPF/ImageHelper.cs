@@ -1,11 +1,11 @@
-﻿using Haley.Utils;
+﻿using Haley.Models;
+using Haley.Utils;
 using System;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
-using Haley.Models;
-using System.ComponentModel;
 
 namespace Haley.WPF
 {
@@ -23,6 +23,47 @@ namespace Haley.WPF
         {
             try
             {
+                Func<DependencyPropertyDescriptor> _getDescriptor = () => { return DependencyPropertyDescriptor.FromName(propname, d.GetType(),d.GetType()); };
+
+                changeColor(_getDescriptor, d, e);
+                
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Changes color
+        /// </summary>
+        /// <param name="propname">Property name of the ImageSource</param>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        public static void changeColor(DependencyProperty prop, DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            try
+            {
+                Func<DependencyPropertyDescriptor> _getDescriptor = () => { return DependencyPropertyDescriptor.FromProperty(prop, d.GetType()); };
+
+                changeColor(_getDescriptor, d, e);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Changes color
+        /// </summary>
+        /// <param name="propname">Property name of the ImageSource</param>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        public static void changeColor(Func<DependencyPropertyDescriptor> descriptorDelgate, DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            try
+            {
                 //CHECK: Is New color value empty?
                 if (e.NewValue == null || d == null) return;
 
@@ -31,7 +72,7 @@ namespace Haley.WPF
                 if (_newcolor == null) return;
 
                 //CHECK: Does the dependency object contain an actual property with the provided name?
-                var actual_propInfo = DependencyPropertyDescriptor.FromName(propname, d.GetType(), d.GetType());
+                var actual_propInfo = descriptorDelgate.Invoke();
                 //var actual_propInfo = d.GetType().GetProperty(propname); //WORKS FOR BOTH NORMAL AND DEPENDENCY OBJECTS.
                 if (actual_propInfo == null) return;
 

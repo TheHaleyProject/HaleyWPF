@@ -2,22 +2,23 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
-     xmlns:model="clr-namespace:Haley.Models">
+     xmlns:ml="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:PlainCheckBox}">
         <Setter Property="Background" Value="{DynamicResource def_secondary}"/>
         <Setter Property="TickColor" Value="{DynamicResource def_content_inverted}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
-        <Setter Property="HoverBorderBrush" Value="{DynamicResource defHoverBorderBrush}"/>
+        <!--<Setter Property="HoverBorderBrush" Value="{DynamicResource defHoverBorderBrush}"/>-->
+        <!--<Setter Property="HoverBorderThickness" Value="1"/>-->
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
-        <Setter Property="HoverBorderThickness" Value="1"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="ml:Hover.Background" Value="{DynamicResource defHoverBorderBrush}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Padding" Value="8,0,0,0"/>
         <Setter Property="Height" Value="Auto"/>
@@ -35,7 +36,7 @@
 
                         <!--BORDER HOLDING TICK IMAGE-->
                         <Border Height="{TemplateBinding TickBoxSize}" Width="{TemplateBinding TickBoxSize}" x:Name="PART_Checkbox_Border" Background="{x:Null}" CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <bc:PlainImage x:Name="PART_checkbox_tick" DefaultImage="{StaticResource tick_sharp}" DefaultImageColor="{TemplateBinding TickColor}" Visibility="Collapsed" IsHitTestVisible="False"/>
+                            <bc:PlainImage x:Name="PART_checkbox_tick" Default="{StaticResource tick_sharp}" DefaultColor="{TemplateBinding TickColor}" Visibility="Collapsed" IsHitTestVisible="False"/>
                         </Border>
                        
                         <!--Actual content presenter-->
@@ -50,8 +51,8 @@
                         </Trigger>
                         <!--MOUSE OVER-->
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="BorderBrush" TargetName="PART_Checkbox_Border" Value="{Binding HoverBorderBrush,RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter Property="BorderThickness" TargetName="PART_Checkbox_Border" Value="{Binding HoverBorderThickness,RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderBrush" TargetName="PART_Checkbox_Border" Value="{Binding Path=(ml:Hover.BorderBrush),RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="BorderThickness" TargetName="PART_Checkbox_Border" Value="{Binding Path=(ml:Hover.BorderThickness),RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter Property="Visibility" TargetName="PART_checkbox_tick" Value="Visible"/>
                             <Setter Property="Opacity" TargetName="PART_Checkbox_rectangle" Value="0.6"/>
                             <Setter Property="Opacity" TargetName="PART_checkbox_tick" Value="0.6"/>

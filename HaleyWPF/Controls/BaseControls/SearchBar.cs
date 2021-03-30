@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Haley.Events;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using Haley.Events;
 
 namespace Haley.WPF.BaseControls
 {

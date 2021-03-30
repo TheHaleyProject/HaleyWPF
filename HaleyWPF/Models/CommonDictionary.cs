@@ -1,14 +1,12 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Windows;
-using System.Windows.Media;
-using System.Collections.Concurrent;
-using System.ComponentModel;
 
 
 namespace Haley.Models
 {
-    public class CommonDictionary:ResourceDictionary
+    public class CommonDictionary : ResourceDictionary
     {
         public CommonDictionary() { }//need a new constructor
 
@@ -22,18 +20,18 @@ namespace Haley.Models
 
         public new Uri Source
         {
-            get 
-            { 
+            get
+            {
                 //if (IsInDesignMode)
                 //{
                 //    return base.Source;
                 //}
-                return _source; 
+                return _source;
             }
-            set 
+            set
             {
                 if (value == null) return;
-                
+
                 //if (IsInDesignMode)
                 //{
                 //    base.Source = value;
@@ -56,7 +54,7 @@ namespace Haley.Models
                 //And finally, we assign the source value to this resource dictionary.
                 //We are also adding the value to the source to generate the dictionary
                 base.Source = value;
-                _source = value; 
+                _source = value;
             }
         }
 

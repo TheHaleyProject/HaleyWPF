@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:ml="clr-namespace:Haley.Models"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
    
     <Style x:Key="BorderWithoutShadow" TargetType="{x:Type Border}">
@@ -11,10 +12,10 @@
     
     <Style x:Key="BorderWithShadow" TargetType="{x:Type Border}" BasedOn="{StaticResource BorderWithoutShadow}">
         <Style.Triggers>
-            <DataTrigger Binding="{Binding Path=ShadowOnlyOnMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="false">
+            <DataTrigger Binding="{Binding Path=(ml:Shadow.OnlyOnMouseOver), RelativeSource={RelativeSource TemplatedParent}}" Value="false">
                 <Setter Property="Effect">
                     <Setter.Value>
-                        <DropShadowEffect Color="{Binding Path=ShadowColor.Color,RelativeSource={RelativeSource TemplatedParent}}" BlurRadius="8" ShadowDepth="0">
+                        <DropShadowEffect Color="{Binding Path=(ml:Shadow.Color).Color,RelativeSource={RelativeSource TemplatedParent}}" BlurRadius="8" ShadowDepth="0">
                         </DropShadowEffect>
                     </Setter.Value>
                 </Setter>
@@ -22,12 +23,12 @@
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
                     <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"  Value="True" />
-                    <Condition Binding="{Binding Path=ShowShadow, RelativeSource={RelativeSource TemplatedParent}}" Value="True" />
+                    <Condition Binding="{Binding Path=(ml:Shadow.IsEnabled), RelativeSource={RelativeSource TemplatedParent}}" Value="True" />
                 </MultiDataTrigger.Conditions>
                 <MultiDataTrigger.Setters>
                     <Setter Property="Effect">
                         <Setter.Value>
-                            <DropShadowEffect Color="{Binding Path=ShadowColor.Color,RelativeSource={RelativeSource TemplatedParent}}" BlurRadius="8" ShadowDepth="0">
+                            <DropShadowEffect Color="{Binding Path=(ml:Shadow.Color).Color,RelativeSource={RelativeSource TemplatedParent}}" BlurRadius="8" ShadowDepth="0">
                             </DropShadowEffect>
                         </Setter.Value>
                     </Setter>

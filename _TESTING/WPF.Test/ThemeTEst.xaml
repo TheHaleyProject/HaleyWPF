@@ -12,13 +12,13 @@
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
     </Window.InputBindings>
     <Window.Resources>
-        
-        <Style TargetType="{x:Type hw:ImageComboButton}">
+
+        <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
             <Setter Property="Height" Value="Auto"/>
             <Setter Property="Margin" Value="15,3"/>
             <Setter Property="Background" Value="{x:Null}"/>
-            <Setter Property="HoverBackground" Value="{x:Null}"/>
+            <Setter Property="hw:Hover.Background" Value="{x:Null}"/>
         </Style>
     </Window.Resources>
     <Grid Background="{DynamicResource def_background_primary}">
@@ -31,30 +31,32 @@
             <UniformGrid.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="{DynamicResource def_shadow}" BlurRadius="10"/>
             </UniformGrid.Effect>
-            <hw:ImageComboButton DefaultImage="{StaticResource home_medium}" Content="Home"/>
-            <hw:ImageComboButton DefaultImage="{StaticResource settings_simple_medium}" Content="Settings"/>
-            <hw:ImageComboButton DefaultImage="{StaticResource eye_medium}" Content="View" />
-            <hw:ImageComboButton DefaultImage="{StaticResource save_medium}" Content="Save" />
-            <hw:ImageComboButton DefaultImage="{StaticResource copy_medium}" Content="Copy" />
-            <hw:ImageComboButton DefaultImage="{StaticResource new_file_medium}" Content="New"/>
-            <hw:ImageComboButton DefaultImage="{StaticResource calender_medium}" Content="Schedule"/>
-            <hw:ImageComboButton DefaultImage="{StaticResource info_circle_medium}" Content="Info"/>
-            <hw:ImageComboButton DefaultImage="{StaticResource info_circle_medium}" ImageLocation="Left"/>
+            <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home_medium}"/>
+            <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource settings_simple_medium}"/>
+            <hw:ComboButton Content="View" hw:Icon.Default="{StaticResource eye_medium}"/>
+
+            <hw:ComboButton Content="Save" hw:Icon.Default="{StaticResource save_medium}"/>
+            <hw:ComboButton Content="Copy" hw:Icon.Default="{StaticResource copy_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource new_file_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource calender_medium}"/>
+
+            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle_medium}"/>
         </UniformGrid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <hw:ImageButton Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" DefaultImage="Images/hippo_bliue.png" Height="30" Width="30" Margin="10" DisableColorChange="True"/>
+            <hw:ImageButton Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" hw:Icon.Default="Images/hippo_bliue.png" Height="30" Width="30" Margin="10" hw:Icon.DisableColorChange="True"/>
             <StackPanel  Margin="20">
                 <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}"/>
                 <TextBlock Text="Topic 1 : Introduction" Style="{DynamicResource def_h2}"/>
                 <TextBlock Text="Hello.. This is a test project"  Style="{DynamicResource def_h3}"/>
                 <TextBlock Text="I'm a sub title text"  Style="{DynamicResource def_h4_Secondary}"/>
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <hw:PlainButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" ShowShadow="True" ShadowOnlyOnMouseOver="False" Command="{Binding Cmd_IncreaseCounter}"/>
-                    <hw:ImageComboRepeatButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" ShowShadow="True" ShadowOnlyOnMouseOver="False" Command="{Binding Cmd_IncreaseCounter}"/>
+                    <hw:PlainButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
+                    <hw:ComboRepeatButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4"  Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
                     <TextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}"/>
                 </StackPanel>
                 
@@ -63,8 +65,8 @@
                     <StackPanel>
                         <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello" />
                         <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello"/>
-                        <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello"/>
-                        <hw:PlainTextBox ShowShadow="True" Height="30" Width="100" HorizontalAlignment="Left" CornerRadius="4"/>
+                        <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello" />
+                        <hw:PlainTextBox Height="30" Width="100" HorizontalAlignment="Left" CornerRadius="4"/>
                         <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5"/>
                         <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsChecked="True"/>
                     </StackPanel>

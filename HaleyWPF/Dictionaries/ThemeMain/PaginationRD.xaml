@@ -3,11 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
     xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
-    xmlns:utils="clr-namespace:Haley.Utils"
-    xmlns:model="clr-namespace:Haley.Models">
+    xmlns:ul="clr-namespace:Haley.Utils"
+    xmlns:ml="clr-namespace:Haley.Models">
     
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_paginationTextBlock" TargetType="{x:Type bc:PlainTextBox}">
@@ -26,9 +26,9 @@
     </Style>
 
     <Style x:Key="internal_paginationImageButton" TargetType="{x:Type bc:ImageButton}">
-        <Setter Property="DefaultImage" Value="{StaticResource arrow_down_rounded}"/>
-        <Setter Property="DefaultImageColor" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-        <Setter Property="HoverImageColor" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:Icon.Default" Value="{StaticResource arrow_down_rounded}"/>
+        <Setter Property="ml:Icon.DefaultColor" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:Icon.HoverColor" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="Margin" Value="5,0"/>
     </Style>
 
@@ -40,7 +40,7 @@
         <Setter Property="Margin" Value="3,0"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="{Binding Path=Height, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
-        <Setter Property="HoverBorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
+        <Setter Property="ml:Hover.BorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource AncestorType={x:Type bc:Pagination}}}"/>
         <Style.Triggers>
             <DataTrigger Value="true">
                 <DataTrigger.Binding>
@@ -60,7 +60,7 @@
         <Setter Property="Width" Value="50"/>
         <Setter Property="Margin" Value="5,0"/>
         <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
-        <Setter Property="HoverBackground" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:Hover.Background" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
         <Style.Triggers>
@@ -94,7 +94,7 @@
                 <TextBlock Text="Items : " VerticalAlignment="Center"/>
                 <bc:PlainTextBox x:Name="counttbx" WaterMark="Count" Style="{StaticResource internal_paginationTextBlock}">
                     <bc:PlainTextBox.InputBindings>
-                        <KeyBinding CommandParameter="{Binding ElementName=counttbx,Path=Text}" Command="{x:Static utils:AdditionalCommands.ChangeCount}" Key="Enter" />
+                        <KeyBinding CommandParameter="{Binding ElementName=counttbx,Path=Text}" Command="{x:Static ul:AdditionalCommands.ChangeCount}" Key="Enter" />
                     </bc:PlainTextBox.InputBindings>
                 </bc:PlainTextBox>
             </StackPanel>
@@ -172,7 +172,7 @@
                 <TextBlock Text="Items : " VerticalAlignment="Center"/>
                 <bc:PlainTextBox x:Name="counttbx" WaterMark="Count" Style="{StaticResource internal_paginationTextBlock}">
                     <bc:PlainTextBox.InputBindings>
-                        <KeyBinding CommandParameter="{Binding ElementName=counttbx,Path=Text}" Command="{x:Static utils:AdditionalCommands.ChangeCount}" Key="Enter" />
+                        <KeyBinding CommandParameter="{Binding ElementName=counttbx,Path=Text}" Command="{x:Static ul:AdditionalCommands.ChangeCount}" Key="Enter" />
                     </bc:PlainTextBox.InputBindings>
                 </bc:PlainTextBox>
             </StackPanel>

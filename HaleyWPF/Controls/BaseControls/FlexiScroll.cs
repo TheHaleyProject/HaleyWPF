@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Haley.Abstractions;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using Haley.Abstractions;
 using System.Windows.Media;
-using Haley.Enums;
 
 namespace Haley.WPF.BaseControls
 {
@@ -33,12 +32,12 @@ namespace Haley.WPF.BaseControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlexiScroll), new FrameworkPropertyMetadata(typeof(FlexiScroll)));
         }
 
-        public FlexiScroll() {}
+        public FlexiScroll() { }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-          
+
             _root = GetTemplateChild(UIERoot) as FrameworkElement;
             _associateExternalButtons();
         }
@@ -197,7 +196,7 @@ namespace Haley.WPF.BaseControls
         void _associateExternalButtons()
         {
             if (_root == null) return;
-         
+
             //For repeat up
             if (RepeatUp != null)
             {

@@ -14,12 +14,12 @@
 
     <Window.Resources>
   
-        <Style TargetType="{x:Type hw:ImageComboButton}">
+        <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
             <Setter Property="Height" Value="90"/>
             <Setter Property="Margin" Value="15,3"/>
             <Setter Property="Background" Value="{x:Null}"/>
-            <Setter Property="HoverBackground" Value="{x:Null}"/>
+            <Setter Property="hw:Hover.Background" Value="{x:Null}"/>
         </Style>
     </Window.Resources>
     <Grid Background="{DynamicResource def_background_primary}">

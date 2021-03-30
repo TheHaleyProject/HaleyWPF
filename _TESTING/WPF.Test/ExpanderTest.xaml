@@ -8,17 +8,23 @@
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
         Title="ExpanderTest" Height="500" Width="400">
+    <Window.Resources>
+        <Style TargetType="hw:PlainExpander">
+            <Setter Property="hw:Shadow.IsEnabled" Value="True"/>
+            <Setter Property="hw:Shadow.Color" Value="Green"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
        
-            <hw:PlainExpander Header="Down" VerticalAlignment="Top" CornerRadius="10" IsEnabled="True" Margin="20" BorderBrush="Gray" BorderThickness="1" MinHeight="30" ShowShadow="True" ShadowColor="Green"  IconDefColor="IndianRed"  Icon="{StaticResource chat_single}">
-                <Grid Margin="20">
+            <hw:PlainExpander Header="Down" VerticalAlignment="Top" CornerRadius="10" IsEnabled="True" Margin="20" BorderBrush="Gray" BorderThickness="1" MinHeight="30" IconDefColor="IndianRed"  Icon="{StaticResource chat_single}">
+            <Grid Margin="20">
                     <StackPanel >
                         <TextBlock Text="What"/>
-                        <hw:ImageButton DefaultImage="{StaticResource arrow}" Height="20" Width="20" DefaultImageColor="Yellow"/>
+                    <hw:ImageButton hw:Icon.Default="{StaticResource arrow}" Height="20" Width="20" hw:Icon.DefaultColor="Yellow"/>
                     </StackPanel>
                 </Grid>
 
@@ -34,11 +40,11 @@
             </hw:PlainExpander>-->
         
       
-            <hw:PlainExpander Header="RIGHT" VerticalAlignment="Top" CornerRadius="10" Margin="20" BorderBrush="Gray" BorderThickness="1" ShowShadow="True" ShadowColor="Green"  IconDefColor="IndianRed" ContentBackground="LightPink" ExpandDirection="Right" Grid.Row="1" MinWidth="30" IsExpanded="False" MinHeight="120" Icon="{StaticResource arrow_down_rounded}">
-                <Grid Margin="20" Width="120">
+            <hw:PlainExpander Header="RIGHT" VerticalAlignment="Top" CornerRadius="10" Margin="20" BorderBrush="Gray" BorderThickness="1"  IconDefColor="IndianRed" ContentBackground="LightPink" ExpandDirection="Right" Grid.Row="1" MinWidth="30" IsExpanded="False" MinHeight="120" Icon="{StaticResource arrow_down_rounded}">
+            <Grid Margin="20" Width="120">
                     <StackPanel >
                         <TextBlock Text="What"/>
-                        <hw:ImageButton DefaultImage="{StaticResource arrow}" Height="20" Width="20" DefaultImageColor="Yellow"/>
+                    <hw:ImageButton hw:Icon.Default="{StaticResource arrow}" Height="20" Width="20" hw:Icon.DefaultColor="Yellow"/>
                     </StackPanel>
                 </Grid>
             </hw:PlainExpander>
