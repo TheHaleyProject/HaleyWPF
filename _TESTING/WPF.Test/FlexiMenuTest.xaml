@@ -24,20 +24,26 @@
     </Window.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
-            <Grid DockPanel.Dock="Left" Width="120">
+            <Grid DockPanel.Dock="Left" Width="200">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <!--Menu Toggle Button-->
-                <Grid Height="80">
-                    <Image Source="Images/aerial.jpg" Opacity="0.5" Stretch="Fill">
-                        <Image.Effect>
-                            <BlurEffect Radius="3"/>
-                        </Image.Effect>
-                    </Image>
+                <Grid Height="100" Background="#FF57887F" >
+                    <!--<Grid.Background>
+                        <ImageBrush ImageSource="Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" />
+                    </Grid.Background>-->
+                    <Grid Background="#990A0A0A" VerticalAlignment="Bottom" Height="Auto">
+                        <TextBlock Text="Project Management v1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="0,10" Foreground="White"/>
+                    </Grid>
                     <hw:ImageToggleButton Icon="{StaticResource hamburger_square}" HorizontalAlignment="Right" VerticalAlignment="Top" ColorOFF="White" ColorON="White"/>
+                    <Border Height="35" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource internal_tglebtn_BorderCircular}" Background="#66000000">
+                        <Image Source="Images/hippo_bliue.png"  Margin="4"/>
+                    </Border>
                 </Grid>
                 <!--ACTUAL MENU-->
 
@@ -55,7 +61,7 @@
                         </hw:ComboRepeatButton.RenderTransform>
                     </hw:ComboRepeatButton>
                     <hw:ComboRepeatButton x:Name="downButton" Grid.Row="2" Height="25" Background="#33000000" hw:Icon.Default="{StaticResource arrow_line}" VerticalAlignment="Bottom" Panel.ZIndex="99"/>
-                    
+
                     <hw:FlexiScroll Grid.Row="1" CanContentScroll="True"  HorizontalScrollBarVisibility="Hidden" RepeatDown="{Binding ElementName=downButton}" RepeatUp="{Binding ElementName=upButton}" VerticalScrollBarVisibility="Hidden" Panel.ZIndex="1">
                         <ListView  Style="{StaticResource CleanListView}">
                             <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home 12"  hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource Nunito_Bold}" VerticalContentAlignment="Bottom" />
@@ -72,11 +78,12 @@
                             <hw:ComboButton ImageLocation="Left" Height="30" Margin="5" Content="Home 34" hw:Icon.Default="{StaticResource home}"  HorizontalContentAlignment="Left" FontSize="14" FontFamily="{StaticResource Montserrat_Bold}" VerticalContentAlignment="Bottom"/>
                         </ListView>
                     </hw:FlexiScroll>
-
-                    
                 </Grid>
-                
-                
+                <hw:Separator Grid.Row="2" Size="3" Background="#B2AC07F9"/>
+                <Grid Height="40" Grid.Row="3"/>
+                <Grid Grid.Row="4" Margin="5">
+                    <TextBlock Text="Copyright 2021" Style="{StaticResource def_h4_Secondary}"/>
+                </Grid>
             </Grid>
             <Grid/>
         </DockPanel>
