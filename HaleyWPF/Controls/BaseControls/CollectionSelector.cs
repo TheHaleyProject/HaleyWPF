@@ -22,6 +22,7 @@ namespace Haley.WPF.BaseControls
         private const string UIESourceControl = "PART_lstvew_source";
         private const string UIESelectionControl = "PART_lstvew_selection";
 
+        private bool _collectionChanging = false;
         private ListView _sourceControl;
         private ListView _selectionControl;
         #endregion
@@ -72,9 +73,9 @@ namespace Haley.WPF.BaseControls
             //Get existing selected items.
             IList oldvalues = new List<object>();
 
-            if (SelectedItems != null)
+            if (SourceSelectedItems != null)
             {
-                foreach (var item in SelectedItems)
+                foreach (var item in SourceSelectedItems)
                 {
                     oldvalues.Add(item);
                 }
@@ -88,7 +89,7 @@ namespace Haley.WPF.BaseControls
                 }
             }
 
-            SelectedItems = oldvalues;
+            SourceSelectedItems = oldvalues;
             //Clear selection.
             _sourceControl.SelectedItems.Clear();
             RaiseSelectionChanged();
@@ -106,9 +107,9 @@ namespace Haley.WPF.BaseControls
             }
             //Get existing selected items.
             IList oldvalues = new List<object>();
-            if (SelectedItems != null)
+            if (SourceSelectedItems != null)
             {
-                foreach (var item in SelectedItems)
+                foreach (var item in SourceSelectedItems)
                 {
                     oldvalues.Add(item);
                 }
@@ -123,14 +124,14 @@ namespace Haley.WPF.BaseControls
                 }
             }
 
-            SelectedItems = newvalues;
+            SourceSelectedItems = newvalues;
             //Clear selection.
             _selectionControl.SelectedItems.Clear();
             RaiseSelectionChanged();
         }
         void RaiseSelectionChanged()
         {
-            RaiseEvent(new UIRoutedEventArgs<IEnumerable>(SelectionChangedEvent, this) { value = SelectedItems });
+            RaiseEvent(new UIRoutedEventArgs<IEnumerable>(SelectionChangedEvent, this) { value = SourceSelectedItems });
         }
         void Execute_SelectAll(object sender, ExecutedRoutedEventArgs e)
         {
@@ -148,8 +149,8 @@ namespace Haley.WPF.BaseControls
             //Get all selected items
             //Get selected items in Selection Host
             IList _tohighlight = new List<object>();
-            if (SelectedItems == null) return;
-            foreach (var item in SelectedItems)
+            if (SourceSelectedItems == null) return;
+            foreach (var item in SourceSelectedItems)
             {
                 _tohighlight.Add(item);
             }
@@ -160,18 +161,56 @@ namespace Haley.WPF.BaseControls
                 _sourceControl.SelectedItems.Add(item);
             }
         }
-        static void SelectedItemsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        static void SourceSelectedItemsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            CollectionSelector col_sel = d as CollectionSelector;
-            if (col_sel == null) return;
+            CollectionSelector _selector = d as CollectionSelector;
+            if (_selector == null) return;
+            if (_selector._collectionChanging) return;
             //Use this value, create a list and bind to the choosen items.
             IList _choosenlist = new ObservableCollection<object>();
-            foreach (var item in col_sel.SelectedItems)
+            foreach (var item in _selector.SourceSelectedItems)
             {
                 _choosenlist.Add(item);
             }
-            col_sel.SetCurrentValue(ChoosenItemsProperty, _choosenlist);
+            _selector.SetCurrentValue(SelectedItemsProperty, _choosenlist);
         }
+        static void SelectedItemsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            try
+            {
+                //The selected items of this collection selector is base selected items.
+                CollectionSelector selector = d as CollectionSelector;
+                //Get selected items of primary listview and add it to the itemssource of the secondary
+                if (selector == null || selector._sourceControl == null || selector._selectionControl == null || e.NewValue == null || selector.Items == null) return;
+
+                //Get only available predefined items.
+                IList newlist = new List<object>();
+                foreach (var item in e.NewValue as IList<object>)
+                {
+                    if (selector.Items.Contains(item))
+                    {
+                        //Ensure that this new item is present in the itemssource
+                        newlist.Add(item);
+                    }
+                }
+
+                selector._collectionChanging = true;
+                //Now that we have got the new values (that are actually a part of the itemssource), we do not need to validate anyfurther. Since this data is coming from viewmodel or code-behind, we directly set them.
+                selector.SourceSelectedItems = newlist;
+                //Clear selection.
+                selector._sourceControl.SelectedItems.Clear();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                CollectionSelector selector = d as CollectionSelector;
+                selector._collectionChanging = false;
+            }
+        }
+
         #endregion
 
         #region Properties
@@ -215,28 +254,28 @@ namespace Haley.WPF.BaseControls
         public static readonly DependencyProperty IconColorProperty =
             DependencyProperty.Register(nameof(IconColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
 
-        public IEnumerable SelectedItems
+        public IEnumerable SourceSelectedItems
         {
-            get { return (IEnumerable)GetValue(SelectedItemsProperty); }
+            get { return (IEnumerable)GetValue(SourceSelectedItemsProperty); }
+            set { SetValue(SourceSelectedItemsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SourceSelectedItems.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SourceSelectedItemsProperty =
+            DependencyProperty.Register(nameof(SourceSelectedItems), typeof(IEnumerable), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IEnumerable), FrameworkPropertyMetadataOptions.NotDataBindable, SourceSelectedItemsPropertyChanged));
+
+        /// <summary>
+        /// Always bind observablecollection<Object>. Else it will return null.
+        /// </summary>
+        public IList SelectedItems
+        {
+            get { return (IList)GetValue(SelectedItemsProperty); }
             set { SetValue(SelectedItemsProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for SelectedItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedItemsProperty =
-            DependencyProperty.Register(nameof(SelectedItems), typeof(IEnumerable), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IEnumerable), FrameworkPropertyMetadataOptions.NotDataBindable, SelectedItemsPropertyChanged));
-
-        /// <summary>
-        /// Always bind observablecollection<Object>. Else it will return null.
-        /// </summary>
-        public IList ChoosenItems
-        {
-            get { return (IList)GetValue(ChoosenItemsProperty); }
-            set { SetValue(ChoosenItemsProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ChoosenItems.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ChoosenItemsProperty =
-            DependencyProperty.Register(nameof(ChoosenItems), typeof(IList), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IList), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            DependencyProperty.Register(nameof(SelectedItems), typeof(IList), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IList), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, new PropertyChangedCallback(SelectedItemsPropertyChanged)));
         #endregion
 
     }

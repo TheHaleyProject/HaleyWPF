@@ -74,5 +74,15 @@ namespace Haley.WPF.BaseControls
         // Using a DependencyProperty as the backing store for ImageLocation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ImageLocationProperty =
             DependencyProperty.Register(nameof(ImageLocation), typeof(Dock), typeof(ComboRepeatButton), new FrameworkPropertyMetadata(Dock.Top, propertyChangedCallback: ImagLocationPropertyChanged));
+
+        public bool HideContent
+        {
+            get { return (bool)GetValue(HideContentProperty); }
+            set { SetValue(HideContentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HideContent.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HideContentProperty =
+            DependencyProperty.Register(nameof(HideContent), typeof(bool), typeof(ComboRepeatButton), new PropertyMetadata(false));
     }
 }

@@ -81,23 +81,43 @@
 
                 </StackPanel>
             </StackPanel>
-            <hw:CollectionSelector Grid.Column="1" CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" ChoosenItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="300" VerticalAlignment="Top">
-                <hw:CollectionSelector.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel Margin="5" />
-                    </ItemsPanelTemplate>
-                </hw:CollectionSelector.ItemsPanel>
-                <hw:CollectionSelector.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Height="20" Margin="2">
-                            <hw:ImageButton/>
-                            <TextBlock Text="{Binding Name}"/>
-                            <TextBlock Text="-"/>
-                            <TextBlock Text="{Binding Age}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </hw:CollectionSelector.ItemTemplate>
-            </hw:CollectionSelector>
+            <StackPanel Grid.Column="1">
+                <hw:CollectionSelector Grid.Column="1" CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top">
+                    <hw:CollectionSelector.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Margin="5" />
+                        </ItemsPanelTemplate>
+                    </hw:CollectionSelector.ItemsPanel>
+                    <hw:CollectionSelector.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="20" Margin="2">
+                                <hw:ImageButton/>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="-"/>
+                                <TextBlock Text="{Binding Age}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </hw:CollectionSelector.ItemTemplate>
+                </hw:CollectionSelector>
+                <hw:PlainListView CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top">
+                    <hw:PlainListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Margin="5" />
+                        </ItemsPanelTemplate>
+                    </hw:PlainListView.ItemsPanel>
+                    <hw:PlainListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Height="20" Margin="2">
+                                <hw:ImageButton/>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="-"/>
+                                <TextBlock Text="{Binding Age}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </hw:PlainListView.ItemTemplate>
+                </hw:PlainListView>
+            </StackPanel>
+            
         </Grid>
         
         <hw:Pagination Grid.Row="3" Margin="5" ItemsCountPerPage="10" ItemsCountTotal="200" CornerRadius="5"/>

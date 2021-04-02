@@ -49,6 +49,12 @@
                             <Setter Property="ImageLocation" Value="Bottom"/>
                             <Setter Property="Visibility" TargetName="PART_ContentHolder" Value="Collapsed"/>
                         </Trigger>
+                        <Trigger Property="HideContent" Value="True">
+                            <Setter Property="ImageLocation" Value="Bottom"/>
+                            <Setter Property="Visibility" TargetName="PART_ContentHolder" Value="Collapsed"/>
+                            <Setter Property="ml:Hover.Background" Value="{x:Null}"/>
+                            <Setter Property="Background" Value="{x:Null}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

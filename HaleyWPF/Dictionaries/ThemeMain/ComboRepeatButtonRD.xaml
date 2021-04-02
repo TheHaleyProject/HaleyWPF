@@ -16,9 +16,11 @@
         <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="PressedBackground" Value="{DynamicResource def_tertiary}"/>
         <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
-        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Height" Value="Auto"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ComboRepeatButton}">
@@ -27,7 +29,7 @@
                             <Viewbox x:Name="PART_ImageViewBox" Margin="3" DockPanel.Dock="{TemplateBinding ImageLocation}">
                                 <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" />
                             </Viewbox>
-                            <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3"/>
+                            <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3" TextBlock.Foreground="{TemplateBinding Foreground}"/>
                         </DockPanel>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -36,9 +38,9 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter Property="Foreground" Value="{Binding Path=(ml:Icon.HoverColor), RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=(ml:Hover.BorderBrush), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter TargetName="PART_ContentHolder" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>
+                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.Background)}"/>
+                            <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.BorderBrush)}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Pressed), RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -46,6 +48,12 @@
                         <Trigger Property="Content" Value="{x:Null}">
                             <Setter Property="ImageLocation" Value="Bottom"/>
                             <Setter Property="Visibility" TargetName="PART_ContentHolder" Value="Collapsed"/>
+                        </Trigger>
+                        <Trigger Property="HideContent" Value="True">
+                            <Setter Property="ImageLocation" Value="Bottom"/>
+                            <Setter Property="Visibility" TargetName="PART_ContentHolder" Value="Collapsed"/>
+                            <Setter Property="ml:Hover.Background" Value="{x:Null}"/>
+                            <Setter Property="Background" Value="{x:Null}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

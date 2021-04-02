@@ -24,11 +24,11 @@ namespace WPF.Test
             //ThemeTest wndw = new ThemeTest();
             //wndw.ShowDialog();
 
-            //ScrollViewerTest wndwscroll = new ScrollViewerTest();
-            //wndwscroll.ShowDialog();
+            ScrollViewerTest wndwscroll = new ScrollViewerTest();
+            wndwscroll.ShowDialog();
 
-            FlexiMenuTest wndwFlexiTst = new FlexiMenuTest();
-            wndwFlexiTst.ShowDialog();
+            //FlexiMenuTest wndwFlexiTst = new FlexiMenuTest();
+            //wndwFlexiTst.ShowDialog();
 
             //RibbonTest wnddgtest = new RibbonTest();
             //    wnddgtest.ShowDialog();

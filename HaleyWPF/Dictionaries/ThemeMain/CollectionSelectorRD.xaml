@@ -85,7 +85,7 @@
                                     <RowDefinition Height="25"/>
                                 </Grid.RowDefinitions>
                                 <TextBlock Text="Selected Items" VerticalAlignment="Center"/>
-                                <bc:PlainListView x:Name="PART_lstvew_selection" Style="{StaticResource internal_collectionselector_plainlstvw}" ItemsSource="{TemplateBinding SelectedItems}" Grid.Row="1"/>
+                                <bc:PlainListView x:Name="PART_lstvew_selection" Style="{StaticResource internal_collectionselector_plainlstvw}" ItemsSource="{TemplateBinding SourceSelectedItems}" Grid.Row="1"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="2">
                                     <bc:LinkedText Text="Select All" TurnOffTextDecorations="True" CommandParameter="Target" Command="{x:Static ApplicationCommands.SelectAll}"/>
                                 </StackPanel>

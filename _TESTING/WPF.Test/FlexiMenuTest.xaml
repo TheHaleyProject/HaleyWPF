@@ -12,7 +12,6 @@
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
     </Window.InputBindings>
     <Window.Resources>
-
         <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
             <Setter Property="Height" Value="30"/>
@@ -72,17 +71,17 @@
                         <hw:FlexiScroll Grid.Row="1" CanContentScroll="True"  HorizontalScrollBarVisibility="Hidden" RepeatDown="{Binding ElementName=downButton}" RepeatUp="{Binding ElementName=upButton}" VerticalScrollBarVisibility="Hidden" Panel.ZIndex="1">
                             <ListView  Style="{StaticResource CleanListView}">
                                 <hw:ComboButton   Content="Home 12"  hw:Icon.Default="{StaticResource home}"/>
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}" />
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home}" HideContent="True"/>
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource medical}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource car_medium}"  />
 
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home 23" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource home}"  />
-                                <hw:ComboButton   Content="Home 34" hw:Icon.Default="{StaticResource home}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource delete}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource  chat_double}"  />
+                                <hw:ComboButton   Content="Home 23" hw:Icon.Default="{StaticResource  flag}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource  clock}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource  pen_medium}"  />
+                                <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource  tick}"  />
+                                <hw:ComboButton   Content="Home 34" hw:Icon.Default="{StaticResource  save}"  />
                             </ListView>
                         </hw:FlexiScroll>
                     </Grid>

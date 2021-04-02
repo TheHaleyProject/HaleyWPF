@@ -95,6 +95,9 @@ namespace WPF.Test
             something = hello;
             selecteditems = null;
             choosenitems = new ObservableCollection<Person>();
+            selecteditems = new ObservableCollection<object>();
+            selecteditems.Add(hello[0]);
+            selecteditems.Add(hello[3]);
         }
     }
 
