@@ -181,7 +181,7 @@ namespace Haley.WPF.BaseControls
                 //The selected items of this collection selector is base selected items.
                 CollectionSelector selector = d as CollectionSelector;
                 //Get selected items of primary listview and add it to the itemssource of the secondary
-                if (selector == null || selector._sourceControl == null || selector._selectionControl == null || e.NewValue == null || selector.Items == null) return;
+                if (selector == null || e.NewValue == null || selector.Items == null) return;
 
                 //Get only available predefined items.
                 IList newlist = new List<object>();
@@ -198,7 +198,10 @@ namespace Haley.WPF.BaseControls
                 //Now that we have got the new values (that are actually a part of the itemssource), we do not need to validate anyfurther. Since this data is coming from viewmodel or code-behind, we directly set them.
                 selector.SourceSelectedItems = newlist;
                 //Clear selection.
-                selector._sourceControl.SelectedItems.Clear();
+                if (selector._sourceControl != null)
+                {
+                    selector._sourceControl.SelectedItems.Clear();
+                }
             }
             catch (Exception ex)
             {
