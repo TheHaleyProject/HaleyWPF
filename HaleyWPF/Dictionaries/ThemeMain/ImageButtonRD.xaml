@@ -21,9 +21,16 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
-                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}"  Value="True" />
+                                <!--NOTE: WE ARE USING TEMPLATED PARENT'S DISABLE HOVER-->
+                                <Condition Binding="{Binding Path=(ml:Hover.IsEnabled), RelativeSource={RelativeSource Self}}" Value="True" />
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Pressed), RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>

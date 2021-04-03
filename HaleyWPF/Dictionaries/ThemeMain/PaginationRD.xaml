@@ -54,7 +54,6 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
-
     <Style x:Key="internal_pagination_plainbutton_extended" TargetType="{x:Type bc:PlainButton}" BasedOn="{StaticResource internal_pagination_plainbutton}">
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="50"/>

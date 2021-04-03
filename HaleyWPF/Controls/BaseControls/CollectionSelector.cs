@@ -267,6 +267,26 @@ namespace Haley.WPF.BaseControls
         public static readonly DependencyProperty SourceSelectedItemsProperty =
             DependencyProperty.Register(nameof(SourceSelectedItems), typeof(IEnumerable), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IEnumerable), FrameworkPropertyMetadataOptions.NotDataBindable, SourceSelectedItemsPropertyChanged));
 
+        public string TitleSource
+        {
+            get { return (string)GetValue(TitleSourceProperty); }
+            set { SetValue(TitleSourceProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TitleSource.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleSourceProperty =
+            DependencyProperty.Register(nameof(TitleSource), typeof(string), typeof(CollectionSelector), new PropertyMetadata("Items Source"));
+
+        public string TitleSelection
+        {
+            get { return (string)GetValue(TitleSelectionProperty); }
+            set { SetValue(TitleSelectionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TitleSelection.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleSelectionProperty =
+            DependencyProperty.Register(nameof(TitleSelection), typeof(string), typeof(CollectionSelector), new PropertyMetadata("Selected Items"));
+
         /// <summary>
         /// Always bind observablecollection<Object>. Else it will return null.
         /// </summary>
