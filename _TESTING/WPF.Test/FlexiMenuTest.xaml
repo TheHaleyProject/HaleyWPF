@@ -39,10 +39,10 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <!--Menu Toggle Button-->
-                    <Grid Height="100" Background="#FF57887F" >
-                        <!--<Grid.Background>
+                    <Grid Height="100">
+                        <Grid.Background>
                         <ImageBrush ImageSource="Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" />
-                    </Grid.Background>-->
+                    </Grid.Background>
                         <Grid Background="#990A0A0A" VerticalAlignment="Bottom" Height="Auto">
                             <TextBlock Text="Project Management v1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="0,10" Foreground="White"/>
                         </Grid>

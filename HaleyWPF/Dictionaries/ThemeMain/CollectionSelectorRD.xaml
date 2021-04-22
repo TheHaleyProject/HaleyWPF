@@ -31,7 +31,7 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ItemSelectedColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ItemHoverColor" Value="{DynamicResource def_button_hover}"/>
-        <Setter Property="IconColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="IconColor" Value="{DynamicResource def_accent_primary}"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="MinHeight" Value="150"/>

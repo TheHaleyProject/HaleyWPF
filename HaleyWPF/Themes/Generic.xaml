@@ -11,7 +11,7 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainPasswordBoxRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/SeparatorRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainCheckBoxRD.xaml"/>
-        
+
         <!--#region BUTTONS-->
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/LinkedTextRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainButtonRD.xaml"/>
@@ -23,7 +23,7 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainToggleButtonRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ImageToggleButtonRD.xaml"/>
         <!--#endregion-->
-        
+
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainExpanderRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PaginationRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainListViewRD.xaml"/>
@@ -32,5 +32,4 @@
         <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiTabRD.xaml"/>-->
 
     </ResourceDictionary.MergedDictionaries>
-
 </ResourceDictionary>

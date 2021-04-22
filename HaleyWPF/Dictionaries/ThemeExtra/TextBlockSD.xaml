@@ -21,7 +21,7 @@
     </Style>
 
     <Style x:Key="def_h1_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h1_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
@@ -41,7 +41,7 @@
     </Style>
 
     <Style x:Key="def_h2_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h2_fontsize}"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
@@ -61,7 +61,7 @@
     </Style>
 
     <Style x:Key="def_h3_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h3_fontsize}"/>
         <Setter Property="Margin" Value="0,3"/>
     </Style>
@@ -79,7 +79,7 @@
     </Style>
 
     <Style x:Key="def_h4_Secondary" TargetType="{x:Type TextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="FontSize" Value="{StaticResource internal_h4_fontsize}"/>
     </Style>
     <!--#endregion-->

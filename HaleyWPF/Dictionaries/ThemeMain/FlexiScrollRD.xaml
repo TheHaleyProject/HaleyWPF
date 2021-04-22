@@ -59,7 +59,7 @@
         <Setter Property="BorderThickness" Value="{Binding Path=BorderThickness, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
         <Setter Property="Margin" Value="2"/>
         <Setter Property="ml:Icon.Default" Value="{StaticResource arrow_line_medium}"/>
-        <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}"/>
     </Style>
     
     <Style x:Key="internal_flexiscroll_up" TargetType="{x:Type bc:ComboRepeatButton}" BasedOn="{StaticResource internal_flexiscroll_mainrepeat_base}">

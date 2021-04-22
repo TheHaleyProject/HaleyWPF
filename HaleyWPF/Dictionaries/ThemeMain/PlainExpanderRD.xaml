@@ -200,9 +200,9 @@
         <Setter Property="ContentBackground" Value="{DynamicResource def_background_secondary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
-        <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_secondary}"/>
-        <Setter Property="IconDefColor" Value="{DynamicResource def_primary}"/>
-        <Setter Property="ArrowDefColor" Value="{DynamicResource def_primary}"/>
+        <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_accent_secondary}"/>
+        <Setter Property="IconDefColor" Value="{DynamicResource def_accent_primary}"/>
+        <Setter Property="ArrowDefColor" Value="{DynamicResource def_accent_primary}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />

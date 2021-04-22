@@ -1,0 +1,16 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
+    xmlns:gc="clr-namespace:Haley.WPF.Controls.GroupControls" 
+    xmlns:ml="clr-namespace:Haley.Models">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    
+    <Style TargetType="{x:Type gc:FlexiMenu}">
+        
+       
+    </Style>
+</ResourceDictionary>

@@ -13,7 +13,7 @@
         <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
-        <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="Height" Value="{StaticResource def_height}"/>
         <Setter Property="Width" Value="70"/>
         <Setter Property="SwitchWidth" Value="30"/>

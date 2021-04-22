@@ -39,13 +39,13 @@
             </Ribbon.QuickAccessToolBar>
             <!-- Application Menu, located at the left-hand side (down arrow) -->
             <Ribbon.ApplicationMenu>
-                <RibbonApplicationMenu KeyTip="F" Background="{DynamicResource def_secondary}">
+                <RibbonApplicationMenu KeyTip="F" Background="{DynamicResource def_accent_secondary}">
                     <RibbonApplicationMenuItem Header="Options" ImageSource="{StaticResource settings_double_spanner}" />
                     <RibbonApplicationMenuItem Header="Exit" ImageSource="{StaticResource stop}" />
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <!-- Ribbon Tab #1: Home -->
-            <RibbonTab Header="Home" KeyTip="H" Background="{DynamicResource def_primary}" BorderBrush="Red" BorderThickness="2">
+            <RibbonTab Header="Home" KeyTip="H" Background="{DynamicResource def_accent_primary}" BorderBrush="Red" BorderThickness="2">
                 <!-- Home/Clipboard group-->
                 <RibbonGroup x:Name="ClipboardGroup" Header="Clipboard" >
                     <RibbonMenuButton LargeImageSource="{StaticResource package}" Label="Paste" KeyTip="V">
@@ -64,7 +64,7 @@
                 </RibbonGroup>
             </RibbonTab>
             <!-- Ribbon Tab #2: Launch -->
-            <RibbonTab Header="Launch" KeyTip="L" Background="{DynamicResource def_primary}">
+            <RibbonTab Header="Launch" KeyTip="L" Background="{DynamicResource def_accent_primary}">
                 <!-- Launch/Applications group-->
                 <RibbonGroup x:Name="DesktopApplication" Header="Desktop Applications">
                 </RibbonGroup>

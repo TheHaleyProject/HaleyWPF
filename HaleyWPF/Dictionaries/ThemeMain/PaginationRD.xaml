@@ -219,8 +219,8 @@
     
     <Style TargetType="{x:Type bc:Pagination}">
         <Setter Property="Height" Value="{StaticResource def_height}"/>
-        <Setter Property="Background" Value="{DynamicResource def_primary}"/>
-        <Setter Property="PrimaryColor" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Background" Value="{DynamicResource def_accent_primary}"/>
+        <Setter Property="PrimaryColor" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Template" Value="{StaticResource internal_pagination_extended}"/>
         <Style.Triggers>

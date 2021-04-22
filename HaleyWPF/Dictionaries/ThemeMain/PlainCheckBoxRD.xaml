@@ -9,7 +9,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:PlainCheckBox}">
-        <Setter Property="Background" Value="{DynamicResource def_secondary}"/>
+        <Setter Property="Background" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="TickColor" Value="{DynamicResource def_content_inverted}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <!--<Setter Property="HoverBorderBrush" Value="{DynamicResource defHoverBorderBrush}"/>-->

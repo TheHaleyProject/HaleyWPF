@@ -9,9 +9,9 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ImageButton}">
-        <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_primary}"/>
-        <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_secondary}"/>
-        <Setter Property="ml:Icon.PressedColor" Value="{DynamicResource def_tertiary}"/>
+        <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}"/>
+        <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}"/>
+        <Setter Property="ml:Icon.PressedColor" Value="{DynamicResource def_accent_tertiary}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>

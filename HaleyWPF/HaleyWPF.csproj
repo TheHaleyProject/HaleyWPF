@@ -544,7 +544,6 @@
   <ItemGroup>
     <Folder Include="Controls\GroupControls\FlexiDock\" />
     <Folder Include="Controls\GroupControls\FlexiRibbon\" />
-    <Folder Include="Controls\GroupControls\FlexiMenu\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -603,6 +602,10 @@
     <Page Update="Dictionaries\ThemeMain\CollectionSelectorRD.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\FlexiMenuRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\ThemeMain\ImageRepeatButtonRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>

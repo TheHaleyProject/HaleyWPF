@@ -36,8 +36,8 @@
     
     
     <!-- PRIMARY SPECIAL -->
-    <SolidColorBrush x:Key="def_primary" Color="White"/>
-    <SolidColorBrush x:Key="def_secondary" Color="#FFFFF405"/>
-    <SolidColorBrush x:Key="def_tertiary" Color="#FFB1AA0F"/>
+    <SolidColorBrush x:Key="def_accent_primary" Color="White"/>
+    <SolidColorBrush x:Key="def_accent_secondary" Color="#FFFFF405"/>
+    <SolidColorBrush x:Key="def_accent_tertiary" Color="#FFB1AA0F"/>
 
 </ResourceDictionary>

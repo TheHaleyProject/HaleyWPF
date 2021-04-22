@@ -35,9 +35,9 @@
     <SolidColorBrush x:Key="def_item_selected" Color="#CC3CC1F3"/>
     
     <!-- PRIMARY SPECIAL -->
-    <SolidColorBrush x:Key="def_primary" Color="#FFF1E7BB"/>
-    <SolidColorBrush x:Key="def_secondary" Color="#FF93D5CF"/>
-    <SolidColorBrush x:Key="def_tertiary" Color="#FF3E9D94"/>
+    <SolidColorBrush x:Key="def_accent_primary" Color="#FFF1E7BB"/>
+    <SolidColorBrush x:Key="def_accent_secondary" Color="#FF93D5CF"/>
+    <SolidColorBrush x:Key="def_accent_tertiary" Color="#FF3E9D94"/>
 
 
 </ResourceDictionary>

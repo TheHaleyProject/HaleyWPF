@@ -13,6 +13,44 @@
     </Window.InputBindings>
     <Window.Resources>
 
+        <!--COMMON COLORS-->
+        <SolidColorBrush x:Key="def_toggle_on" Color="#FF5AA75A"/>
+        <SolidColorBrush x:Key="def_toggle_off" Color="#FFCB8888"/>
+
+        <!-- TEXT -->
+        <SolidColorBrush x:Key="def_content" Color="#FF4F4F4F"/>
+        <SolidColorBrush x:Key="def_content_inverted" Color="White"/>
+        <SolidColorBrush x:Key="def_link" Color="#FF126B96"/>
+        <SolidColorBrush x:Key="def_link_hover" Color="#FFE6C26C"/>
+
+        <!-- BUTTONS -->
+        <SolidColorBrush x:Key="def_button_background" Color="White"/>
+        <SolidColorBrush x:Key="def_button_hover" Color="#FF405A7F"/>
+
+        <!-- SCROLLBARS -->
+        <SolidColorBrush x:Key="def_scroll_thumb" Color="WhiteSmoke"/>
+        <SolidColorBrush x:Key="def_scroll_repeat" Color="#FF8B8C93"/>
+        <SolidColorBrush x:Key="def_scroll_track" Color="#3FFFFFFF"/>
+
+        <!-- BACKGROUNDS -->
+        <SolidColorBrush x:Key="def_background_primary" Color="#FF989C9E"/>
+        <SolidColorBrush x:Key="def_background_secondary" Color="#FF848B8E"/>
+        <SolidColorBrush x:Key="def_background_tertiary" Color="#FF7A8387"/>
+
+        <!-- BORDERS AND SHADOWS-->
+        <SolidColorBrush x:Key="def_border_brush" Color="#B26C5151"/>
+        <Color x:Key="def_shadow">#FF007280</Color>
+        <!--SAME AS DEF SECONDARY-->
+
+        <!-- Items -->
+        <SolidColorBrush x:Key="def_item_selected" Color="#CC3CC1F3"/>
+
+
+        <!-- PRIMARY SPECIAL -->
+        <SolidColorBrush x:Key="def_accent_primary" Color="#FF396972"/>
+        <SolidColorBrush x:Key="def_accent_secondary" Color="Purple"/>
+        <SolidColorBrush x:Key="def_accent_tertiary" Color="#FFB1AA0F"/>
+
         <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
             <Setter Property="Height" Value="Auto"/>
