@@ -17,7 +17,7 @@
         <!--The Corners should be circular. A simple converter to divide the Actual height by 2 and set as corner radius.-->
         <Setter Property="CornerRadius" Value="{Binding Path=ActualHeight,Converter={StaticResource HalfValue},RelativeSource={RelativeSource Self}}"/>
     </Style>
-
+    
     <Style x:Key="CircularToggleButton" TargetType="{x:Type bc:PlainToggleButton}">
         <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
         <Setter Property="BorderThickness" Value="1"/>

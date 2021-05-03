@@ -57,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\WelcomeView.xaml.cs">
+      <DependentUpon>WelcomeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExpanderTest.xaml.cs">
       <DependentUpon>ExpanderTest.xaml</DependentUpon>
     </Compile>
@@ -65,6 +68,9 @@
     </Compile>
     <Compile Include="GlobalData.cs" />
     <Compile Include="MainVM.cs" />
+    <Compile Include="NewFlexiMenu.xaml.cs">
+      <DependentUpon>NewFlexiMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RibbonTest.xaml.cs">
       <DependentUpon>RibbonTest.xaml</DependentUpon>
     </Compile>
@@ -83,6 +89,10 @@
     <Compile Include="WndwPagination.xaml.cs">
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\WelcomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExpanderTest.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
@@ -98,6 +108,10 @@
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="NewFlexiMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\DicRD.xaml">
       <SubType>Designer</SubType>

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Test"
-         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         mc:Ignorable="d"
         Title="FlexiMenuTest" Height="450" Width="800">
@@ -71,10 +71,9 @@
                         <hw:FlexiScroll Grid.Row="1" CanContentScroll="True"  HorizontalScrollBarVisibility="Hidden" RepeatDown="{Binding ElementName=downButton}" RepeatUp="{Binding ElementName=upButton}" VerticalScrollBarVisibility="Hidden" Panel.ZIndex="1">
                             <ListView  Style="{StaticResource CleanListView}">
                                 <hw:ComboButton   Content="Home 12"  hw:Icon.Default="{StaticResource home}"/>
-                                <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home}" HideContent="True"/>
+                                <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home}"/>
                                 <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource medical}"  />
                                 <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource car_medium}"  />
-
                                 <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource delete}"  />
                                 <hw:ComboButton   Content="Home" hw:Icon.Default="{StaticResource  chat_double}"  />
                                 <hw:ComboButton   Content="Home 23" hw:Icon.Default="{StaticResource  flag}"  />

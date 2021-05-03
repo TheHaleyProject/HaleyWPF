@@ -28,7 +28,9 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PaginationRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainListViewRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/CollectionSelectorRD.xaml"/>
+        
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiScrollRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiMenuRD.xaml"/>
         <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiTabRD.xaml"/>-->
 
     </ResourceDictionary.MergedDictionaries>

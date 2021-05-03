@@ -21,8 +21,8 @@ namespace WPF.Test
             //WndwPagination _wndw3 = new WndwPagination();
             //_wndw3.ShowDialog();
 
-            ThemeTest wndw = new ThemeTest();
-            wndw.ShowDialog();
+            //ThemeTest wndw = new ThemeTest();
+            //wndw.ShowDialog();
 
             //ScrollViewerTest wndwscroll = new ScrollViewerTest();
             //wndwscroll.ShowDialog();
@@ -32,6 +32,9 @@ namespace WPF.Test
 
             //RibbonTest wnddgtest = new RibbonTest();
             //    wnddgtest.ShowDialog();
+
+            NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
+            flexiNewMenuTest.ShowDialog();
 
         }
     }
