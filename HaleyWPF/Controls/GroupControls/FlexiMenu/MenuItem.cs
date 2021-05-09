@@ -22,8 +22,10 @@ namespace Haley.WPF.GroupControls
      /// </summary>
     public class MenuItem : DependencyObject, IMenuItem
     {
+        public string Id { get; private set; }
+
         public MenuItem()
-        {  }
+        { Id = Guid.NewGuid().ToString(); }
         public ICommand Command
         {
             get { return (ICommand)GetValue(CommandProperty); }

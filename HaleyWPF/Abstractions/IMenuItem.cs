@@ -19,6 +19,7 @@ namespace Haley.Abstractions
 {
     public interface IMenuItem
     {
+        string Id { get; }
         ICommand Command { get; set; }
 
         object CommandParameter { get; set; }

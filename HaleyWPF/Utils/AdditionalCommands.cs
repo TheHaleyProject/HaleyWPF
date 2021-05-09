@@ -11,5 +11,7 @@ namespace Haley.Utils
         public readonly static RoutedUICommand Show = new RoutedUICommand("To show something", nameof(Show), typeof(AdditionalCommands));
         public readonly static RoutedUICommand Hide = new RoutedUICommand("To Hide something", nameof(Hide), typeof(AdditionalCommands));
         public readonly static RoutedUICommand Initiate = new RoutedUICommand("To Initiate something", nameof(Initiate), typeof(AdditionalCommands));
+        public readonly static RoutedUICommand ExecuteAction = new RoutedUICommand("To execute some action", nameof(ExecuteAction), typeof(AdditionalCommands));
+        public readonly static RoutedUICommand Toggle = new RoutedUICommand("To Toggle some object", nameof(Toggle), typeof(AdditionalCommands));
     }
 }

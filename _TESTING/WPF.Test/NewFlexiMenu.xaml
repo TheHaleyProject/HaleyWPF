@@ -10,14 +10,24 @@
         mc:Ignorable="d"
         Title="NewFlexiMenu" Height="450" Width="800">
     <Grid>
-        <hw:FlexiMenu>
+        <hw:FlexiMenu HeaderLabel="Haley Test project" Logo="Images/hippo_bliue.png" Location="Right">
+            <hw:FlexiMenu.HeaderBackGround>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FFCDE01F" Offset="1"/>
+                </LinearGradientBrush>
+            </hw:FlexiMenu.HeaderBackGround>
+
+            <!--Add Menu buttons-->
             <hw:FlexiMenu.MenuItems>
-                <hw:MenuItem Action="ShowLocalView">
+                <hw:MenuItem Action="ShowLocalView" hw:Icon.Default="{StaticResource home}" Label="Home">
                     <hw:MenuItem.View>
                         <ctrl:WelcomeView/>
                     </hw:MenuItem.View>
                 </hw:MenuItem>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource print}" hw:Icon.Hover="{StaticResource arrow}"  Label="Hello Machan" />
             </hw:FlexiMenu.MenuItems>
+            <!--Add Option Buttons like logout, login-->
             <hw:FlexiMenu.OptionItems>
                 <hw:MenuItem Action="RaiseCommand" Label="Log Out" hw:Icon.Default="{StaticResource mobile_phone}"/>
             </hw:FlexiMenu.OptionItems>
