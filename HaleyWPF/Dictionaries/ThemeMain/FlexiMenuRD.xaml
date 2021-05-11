@@ -5,11 +5,10 @@
     xmlns:enums="clr-namespace:Haley.Enums"
     xmlns:gc="clr-namespace:Haley.WPF.GroupControls"
     xmlns:mdl="clr-namespace:Haley.Models"
-    xmlns:ml="clr-namespace:Haley.Models"
     xmlns:ul="clr-namespace:Haley.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
+        <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
@@ -31,6 +30,7 @@
             </DataTrigger>
             <DataTrigger Value="{x:Static enums:DockLocation.Right}" Binding="{Binding Location, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}">
                 <Setter Property="ImageLocation" Value="Right" />
+                <Setter Property="HorizontalContentAlignment" Value="Right"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -50,6 +50,12 @@
                             BorderThickness="1"
                             DockPanel.Dock="Left" 
                             Width="{Binding MenuBarWidth, RelativeSource={RelativeSource TemplatedParent}}">
+                            <Border.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Toggle Dock" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                    <MenuItem/>
+                                </ContextMenu>
+                            </Border.ContextMenu>
                             <Grid Width="Auto">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -98,16 +104,16 @@
                                         VerticalAlignment="Top"
                                         ColorOFF="White"
                                         ColorON="White"
-                                        Icon="{StaticResource hamburger_square}" Grid.Row="0" Height="30" Width="30" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                        Icon="{StaticResource hamburger_square}" Grid.Row="0" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
 
                                 <!--ACTUAL MENU-->
 
                                 <Grid Grid.Row="1">
-                                    <!--<Grid.RowDefinitions>
+                                    <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>-->
+                    </Grid.RowDefinitions>
                                     <bc:ComboRepeatButton
                                         x:Name="upButton"
                                         Height="25"
@@ -166,8 +172,15 @@
                                 </Grid>
                             </Grid>
                         </Border>
-                        <ContentControl />
-                        <Grid />
+                        <Grid>
+                            <ContentControl x:Name="PART_MainContentArea"/>
+                            <Grid x:Name="PART_messageHolder" MinHeight="40" Height="Auto"  VerticalAlignment="Top" Background="#D820354E" Visibility="Collapsed">
+                                <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                                <Viewbox HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Height="30" Width="30"> 
+                                    <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="White"/>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
                     </DockPanel>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Location" Value="Right">

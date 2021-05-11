@@ -8,14 +8,16 @@
         xmlns:local="clr-namespace:WPF.Test"
         xmlns:ctrl="clr-namespace:WPF.Test.Controls"
         mc:Ignorable="d"
-        Title="NewFlexiMenu" Height="450" Width="800">
-    <Grid>
-        <hw:FlexiMenu HeaderLabel="Haley Test project" Logo="Images/hippo_bliue.png" Location="Right">
-            <hw:FlexiMenu.HeaderBackGround>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FFCDE01F" Offset="1"/>
-                </LinearGradientBrush>
+        Title="NewFlexiMenu" Height="450" Width="1000">
+    <Grid x:Name="grdMain">
+        <hw:FlexiMenu x:Name="flexiMain" HeaderLabel="Haley Test project" Logo="Images/hippo_bliue.png" Location="Left">
+            
+            <hw:FlexiMenu.Resources>
+                <hw:BindingProxy x:Key="proxy" DataContext="{Binding}"/>
+            </hw:FlexiMenu.Resources>
+            
+        <hw:FlexiMenu.HeaderBackGround>
+                <ImageBrush ImageSource="Images/aerial.jpg" Stretch="UniformToFill" TileMode="Tile"/>
             </hw:FlexiMenu.HeaderBackGround>
 
             <!--Add Menu buttons-->
@@ -25,7 +27,9 @@
                         <ctrl:WelcomeView/>
                     </hw:MenuItem.View>
                 </hw:MenuItem>
-                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource print}" hw:Icon.Hover="{StaticResource arrow}"  Label="Hello Machan" />
+                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource arrow}"  Label="Container View" ContainerKey="whataworld"/>
+                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource plane}"  Label="Container View 2" ContainerKey="localDemoKey"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="This is from FlexiMenu 2" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy}}"/>
             </hw:FlexiMenu.MenuItems>
             <!--Add Option Buttons like logout, login-->
             <hw:FlexiMenu.OptionItems>

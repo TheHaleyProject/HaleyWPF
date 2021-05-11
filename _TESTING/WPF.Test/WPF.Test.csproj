@@ -57,6 +57,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\LocalView2.xaml.cs">
+      <DependentUpon>LocalView2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
@@ -77,18 +80,24 @@
     <Compile Include="ScrollViewerTest.xaml.cs">
       <DependentUpon>ScrollViewerTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SubVM.cs" />
     <Compile Include="ThemeTest.xaml.cs">
       <DependentUpon>ThemeTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToTestControl.xaml.cs">
       <DependentUpon>ToTestControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VerificationConverter.cs" />
     <Compile Include="WindowTheme.xaml.cs">
       <DependentUpon>WindowTheme.xaml</DependentUpon>
     </Compile>
     <Compile Include="WndwPagination.xaml.cs">
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\LocalView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\WelcomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,7 +249,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="4.0.5" />
+        <PackageReference Include="Haley.MVVM" Version="4.0.7" />
       </ItemGroup>
     </Otherwise>
   </Choose>

@@ -1,4 +1,11 @@
-﻿using System.Windows;
+﻿using Haley.Abstractions;
+using Haley.Enums;
+using Haley.Events;
+using Haley.Models;
+using Haley.MVVM;
+using Haley.Utils;
+using System.Windows;
+using WPF.Test.Controls;
 
 namespace WPF.Test
 {
@@ -9,6 +16,7 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            ContainerRegistrations();
             //ExpanderTest _wndw2sd = new ExpanderTest();
 
 
@@ -36,6 +44,11 @@ namespace WPF.Test
             NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
             flexiNewMenuTest.ShowDialog();
 
+        }
+
+        private void ContainerRegistrations()
+        {
+            var _key = ContainerStore.Singleton.controls.register<SubVM, LocalView2>(key: "localDemoKey", mode: RegisterMode.Transient);
         }
     }
 }

@@ -5,11 +5,15 @@ using Haley.WPF.BaseControls;
 using System;
 using Haley.Enums;
 using Haley.Utils;
+using Haley.Abstractions;
+using Haley.IOC;
+using Haley.MVVM;
 
 namespace WPF.Test
 {
     public class MainVM : ChangeNotifier
     {
+        private IDialogService _dialogService;
         private int _counter;
         public int counter
         {
@@ -30,6 +34,18 @@ namespace WPF.Test
         }
 
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
+        void _localNotify(string obj)
+        {
+           if (_dialogService == null)
+            {
+                _dialogService = ContainerStore.Singleton.DI.Resolve<IDialogService>();
+            }
+
+            if (_dialogService == null) return;
+
+            _dialogService.send("Command Initiated", obj);
+        }
+        public ICommand Cmd_Notify => new DelegateCommand<string>(_localNotify);
         void _increaseCounter()
         {
             counter++;

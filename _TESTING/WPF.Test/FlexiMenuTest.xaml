@@ -91,7 +91,14 @@
                     </Grid>
                 </Grid>
             </Border>
-            <Grid/>
+            <Grid Background="#FF6A7E96">
+                <Grid x:Name="PART_messageHolder" MinHeight="40" Height="Auto"  VerticalAlignment="Top" Background="#D820354E" >
+                    <TextBlock x:Name="PART_message" Text="What a message" VerticalAlignment="Center" Margin="5" Foreground="White"/>
+                    <Viewbox HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Height="35" Width="35">
+                        <hw:ImageButton hw:Icon.Default="{StaticResource stop}" />
+                    </Viewbox>
+                </Grid>
+            </Grid>
         </DockPanel>
     </Grid>
 </Window>

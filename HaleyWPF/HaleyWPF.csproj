@@ -738,7 +738,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="4.0.5" />
+       <PackageReference Include="Haley.MVVM" Version="4.0.7" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

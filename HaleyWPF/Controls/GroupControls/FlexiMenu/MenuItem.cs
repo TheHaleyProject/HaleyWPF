@@ -34,7 +34,7 @@ namespace Haley.WPF.GroupControls
 
         // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(MenuItem), new PropertyMetadata(default(ICommand)));
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(MenuItem), new FrameworkPropertyMetadata(default(ICommand)));
 
         public object CommandParameter
         {
@@ -44,7 +44,7 @@ namespace Haley.WPF.GroupControls
 
         // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(MenuItem), new PropertyMetadata(default(object)));
+            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(MenuItem), new FrameworkPropertyMetadata(default(object)));
 
         public string Label
         {
@@ -54,7 +54,7 @@ namespace Haley.WPF.GroupControls
 
         // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register(nameof(Label), typeof(string), typeof(MenuItem), new PropertyMetadata(defaultValue: "Button"));
+            DependencyProperty.Register(nameof(Label), typeof(string), typeof(MenuItem), new FrameworkPropertyMetadata(defaultValue: "Button"));
 
         public MenuAction Action
         {
@@ -84,6 +84,26 @@ namespace Haley.WPF.GroupControls
 
         // Using a DependencyProperty as the backing store for ContainerKey.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContainerKeyProperty =
-            DependencyProperty.Register(nameof(ContainerKey), typeof(string), typeof(MenuItem), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(ContainerKey), typeof(string), typeof(MenuItem), new FrameworkPropertyMetadata(null));
+
+        public bool IgnoreLocalContainer
+        {
+            get { return (bool)GetValue(IgnoreLocalContainerProperty); }
+            set { SetValue(IgnoreLocalContainerProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IgnoreLocalContainer.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IgnoreLocalContainerProperty =
+            DependencyProperty.Register(nameof(IgnoreLocalContainer), typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
+
+        public bool IgnoreGlobalContainer
+        {
+            get { return (bool)GetValue(IgnoreGlobalContainerProperty); }
+            set { SetValue(IgnoreGlobalContainerProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IgnoreGlobalContainer.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IgnoreGlobalContainerProperty =
+            DependencyProperty.Register(nameof(IgnoreGlobalContainer), typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
     }
 }

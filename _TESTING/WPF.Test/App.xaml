@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <local:VerificationConverter x:Key="verfiyConv"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
