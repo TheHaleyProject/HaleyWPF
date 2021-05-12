@@ -10,13 +10,13 @@
         mc:Ignorable="d"
         Title="NewFlexiMenu" Height="450" Width="1000">
     <Grid x:Name="grdMain">
-        <hw:FlexiMenu x:Name="flexiMain" HeaderLabel="Haley Test project" Logo="Images/hippo_bliue.png" Location="Left">
-            
+        <hw:FlexiMenu x:Name="flexiMain" HeaderLabel="Haley Test project" Logo="Images/hippo_bliue.png" Location="Left" FontSize="13" Foreground="Black" FontFamily="{StaticResource Montserrat_Medium}" HeaderRegionHeight="150" Background="#FFF7F5F5" hw:Icon.DefaultColor="Purple">
+
             <hw:FlexiMenu.Resources>
                 <hw:BindingProxy x:Key="proxy" DataContext="{Binding}"/>
             </hw:FlexiMenu.Resources>
-            
-        <hw:FlexiMenu.HeaderBackGround>
+
+            <hw:FlexiMenu.HeaderBackGround>
                 <ImageBrush ImageSource="Images/aerial.jpg" Stretch="UniformToFill" TileMode="Tile"/>
             </hw:FlexiMenu.HeaderBackGround>
 

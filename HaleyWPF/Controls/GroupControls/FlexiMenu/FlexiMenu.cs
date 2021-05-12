@@ -31,9 +31,7 @@ namespace Haley.WPF.GroupControls
         private const string UIEMessage = "PART_message";
 
         private static double _headerRegionHeight = Convert.ToDouble(100);
-        private static double _optionRegionHeight = Convert.ToDouble(150);
         private static double _menuItemHeight = Convert.ToDouble(30);
-        private static double _optionItemHeight = Convert.ToDouble(30);
         private static double _menuBarWidth = Convert.ToDouble(250);
         #endregion
 
@@ -143,26 +141,6 @@ namespace Haley.WPF.GroupControls
         // Using a DependencyProperty as the backing store for MenuItemHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuItemHeightProperty =
             DependencyProperty.Register(nameof(MenuItemHeight), typeof(double), typeof(FlexiMenu), new PropertyMetadata(_menuItemHeight));
-
-        public double OptionItemHeight
-        {
-            get { return (double)GetValue(OptionItemHeightProperty); }
-            set { SetValue(OptionItemHeightProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for OptionItemHeight.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty OptionItemHeightProperty =
-            DependencyProperty.Register(nameof(OptionItemHeight), typeof(double), typeof(FlexiMenu), new PropertyMetadata(_optionItemHeight));
-
-        public double OptionRegionHeight
-        {
-            get { return (double)GetValue(OptionRegionHeightProperty); }
-            set { SetValue(OptionRegionHeightProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for OptionRegionHeight.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty OptionRegionHeightProperty =
-            DependencyProperty.Register(nameof(OptionRegionHeight), typeof(double), typeof(FlexiMenu), new PropertyMetadata(_optionRegionHeight));
 
         public double MenuBarWidth
         {
