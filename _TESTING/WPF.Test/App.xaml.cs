@@ -19,7 +19,6 @@ namespace WPF.Test
             ContainerRegistrations();
             //ExpanderTest _wndw2sd = new ExpanderTest();
 
-
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
 
@@ -39,7 +38,7 @@ namespace WPF.Test
             //wndwFlexiTst.ShowDialog();
 
             //RibbonTest wnddgtest = new RibbonTest();
-            //    wnddgtest.ShowDialog();
+            //wnddgtest.ShowDialog();
 
             NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
             flexiNewMenuTest.ShowDialog();
@@ -48,7 +47,7 @@ namespace WPF.Test
 
         private void ContainerRegistrations()
         {
-            var _key = ContainerStore.Singleton.controls.register<SubVM, LocalView2>(key: "localDemoKey", mode: RegisterMode.Transient);
+            var _key = ContainerStore.Singleton.controls.register<MainVM, LocalView2>(key: "localDemoKey", mode: RegisterMode.Transient);
         }
     }
 }

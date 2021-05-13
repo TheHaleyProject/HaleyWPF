@@ -9,17 +9,44 @@
         xmlns:ctrl="clr-namespace:WPF.Test.Controls"
         mc:Ignorable="d"
         Title="NewFlexiMenu" Height="450" Width="1000">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
+    </Window.InputBindings>
+   
     <Grid x:Name="grdMain">
-        <hw:FlexiMenu x:Name="flexiMain" HeaderLabel="Haley Test project" Logo="Images/hippo_bliue.png" Location="Left" FontSize="13" Foreground="Black" FontFamily="{StaticResource Montserrat_Medium}" HeaderRegionHeight="150" Background="#FFF7F5F5" hw:Icon.DefaultColor="Purple">
+        <hw:FlexiMenu x:Name="flexiMain" Location="Left" FontSize="12" FontFamily="{StaticResource Lato_Regular}" HeaderRegionHeight="150">
+
+            <!--welcome view-->
+            <hw:FlexiMenu.WelcomeView>
+                <ctrl:VanakkamView/>
+            </hw:FlexiMenu.WelcomeView>
 
             <hw:FlexiMenu.Resources>
                 <hw:BindingProxy x:Key="proxy" DataContext="{Binding}"/>
             </hw:FlexiMenu.Resources>
 
-            <hw:FlexiMenu.HeaderBackGround>
-                <ImageBrush ImageSource="Images/aerial.jpg" Stretch="UniformToFill" TileMode="Tile"/>
-            </hw:FlexiMenu.HeaderBackGround>
+            <!--Header Template-->
+            <hw:FlexiMenu.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.Background>
+                            <ImageBrush ImageSource="Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" Opacity="0.8"/>
+                        </Grid.Background>
+                        
+                        <Grid Background="#FF3A3333" VerticalAlignment="Bottom" Height="Auto" Opacity="0.7">
+                            <TextBlock Text="Project Management v1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="0,10" Foreground="White"/>
+                        </Grid>
+                        
+                        <Border Height="35" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource internal_tglebtn_BorderCircular}" Background="#66000000">
+                            <Image Source="Images/hippo_bliue.png"  Margin="4"/>
+                        </Border>
 
+                        <Border Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Top" Background="White" Margin="3"/>
+
+                    </Grid>
+                </DataTemplate>
+            </hw:FlexiMenu.HeaderTemplate>
+            
             <!--Add Menu buttons-->
             <hw:FlexiMenu.MenuItems>
                 <hw:MenuItem Action="ShowLocalView" hw:Icon.Default="{StaticResource home}" Label="Home">

@@ -43,7 +43,7 @@
                         <Grid.Background>
                         <ImageBrush ImageSource="Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" />
                     </Grid.Background>
-                        <Grid Background="#990A0A0A" VerticalAlignment="Bottom" Height="Auto">
+                        <Grid Background="#99A63333" VerticalAlignment="Bottom" Height="Auto">
                             <TextBlock Text="Project Management v1.0" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="0,10" Foreground="White"/>
                         </Grid>
                         <hw:ImageToggleButton Icon="{StaticResource hamburger_square}" HorizontalAlignment="Right" VerticalAlignment="Top" ColorOFF="White" ColorON="White"/>
@@ -91,13 +91,23 @@
                     </Grid>
                 </Grid>
             </Border>
-            <Grid Background="#FF6A7E96">
-                <Grid x:Name="PART_messageHolder" MinHeight="40" Height="Auto"  VerticalAlignment="Top" Background="#D820354E" >
-                    <TextBlock x:Name="PART_message" Text="What a message" VerticalAlignment="Center" Margin="5" Foreground="White"/>
-                    <Viewbox HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Height="35" Width="35">
-                        <hw:ImageButton hw:Icon.Default="{StaticResource stop}" hw:Icon.DefaultColor="White" />
-                    </Viewbox>
-                </Grid>
+            <Grid Background="#FF627388">
+                
+                <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="10"/>
+                    </Border.Effect>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FFC2FAC2" TextWrapping="WrapWithOverflow"/>
+                        <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
+                            <hw:ImageButton hw:Icon.Default="{StaticResource stop}" hw:Icon.DefaultColor="White" />
+                        </Viewbox>
+                    </Grid>
+                </Border>
             </Grid>
         </DockPanel>
     </Grid>

@@ -11,7 +11,7 @@ using Haley.MVVM;
 
 namespace WPF.Test
 {
-    public class MainVM : ChangeNotifier
+    public class MainVM : ChangeNotifier, IHaleyControlVM
     {
         private IDialogService _dialogService;
         private int _counter;

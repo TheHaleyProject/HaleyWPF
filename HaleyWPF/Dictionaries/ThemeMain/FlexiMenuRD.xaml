@@ -26,8 +26,9 @@
         <Style.Triggers>
             <DataTrigger Value="False" Binding="{Binding IsMenuBarOpen, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}">
                 <Setter Property="HideContent" Value="True"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="Height" Value="30" />
+                <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
             </DataTrigger>
             <DataTrigger Value="{x:Static enums:DockLocation.Right}" Binding="{Binding Location, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}">
                 <Setter Property="ImageLocation" Value="Right" />
@@ -37,12 +38,12 @@
     </Style>
 
     <Style TargetType="{x:Type gc:FlexiMenu}">
-        <Setter Property="mdl:Hover.Background" Value="#99318D8D" />
-        <Setter Property="mdl:Icon.DefaultColor" Value="#FFE9E9E9" />
-        <Setter Property="mdl:Icon.HoverColor" Value="#FF2E0A81" />
-        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
-        <Setter Property="Background" Value="#FF242229"/>
-        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="mdl:Hover.Background" Value="{DynamicResource def_fleximenu_hoverbg}" />
+        <Setter Property="mdl:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}" />
+        <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_fleximenu_icon_hover}" />
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="Background" Value="{DynamicResource def_fleximenu_bg}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -75,36 +76,8 @@
 
                                 <!--#region HEADER-->
                                 <!--(GRID-1) MENU HEADER & LOGO-->
-                                <Grid x:Name="PART_headerRegion"
-                                    Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Background="{Binding HeaderBackGround, RelativeSource={RelativeSource TemplatedParent}}"
-                                    Visibility="{Binding ShowHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy}}">
-
-                                    <!--Header Label Holder-->
-                                    <Grid
-                                        Height="Auto"
-                                        VerticalAlignment="Bottom"
-                                        Background="#990A0A0A">
-                                        <TextBlock
-                                            Margin="0,10"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Bottom"
-                                            Foreground="{TemplateBinding Foreground}"
-                                            Text="{Binding HeaderLabel, RelativeSource={RelativeSource TemplatedParent}}"
-                                            TextAlignment="Center"
-                                            TextWrapping="WrapWithOverflow" />
-                                    </Grid>
-
-<!--Header Logo Holder-->
-                                    <Border
-                                        Width="35"
-                                        Height="35"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Top"
-                                        Background="#66000000"
-                                        Style="{StaticResource internal_tglebtn_BorderCircular}">
-                                        <Image Source="{Binding Logo, RelativeSource={RelativeSource TemplatedParent}}"  Margin="4"/>
-                                    </Border>
+                                <Grid x:Name="PART_headerRegion" Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding ShowHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy}}">
+                                    <ContentControl x:Name="PART_header"/>
                                 </Grid>
 
                                 <!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.-->
@@ -113,7 +86,7 @@
                                         VerticalAlignment="Top"
                                         ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                         ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        Icon="{StaticResource hamburger_square}" Grid.Row="0" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" Margin="0,5"/>
+                                        Icon="{StaticResource hamburger_square}" Grid.Row="0" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" Margin="5"/>
 
                                 <!--#endregion-->
 
@@ -213,14 +186,23 @@
                             </Grid>
                         </Border>
                         
-                        <Grid>
+                        <Grid TextBlock.Foreground="{DynamicResource def_content}">
                             <ContentControl x:Name="PART_MainContentArea"/>
-                            <Grid x:Name="PART_messageHolder" MinHeight="40" Height="Auto"  VerticalAlignment="Top" Background="#D820354E" Visibility="Collapsed">
-                                <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="White"/>
-                                <Viewbox HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top" Height="30" Width="30"> 
-                                    <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="White"/>
-                                </Viewbox>
-                            </Grid>
+                            <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10" Visibility="Collapsed">
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="4"/>
+                                </Border.Effect>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="30"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FFC2FAC2" TextWrapping="WrapWithOverflow" FontSize="10"/>
+                                    <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
+                                        <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="White"/>
+                                    </Viewbox>
+                                </Grid>
+                            </Border>
                         </Grid>
                     </DockPanel>
                     <ControlTemplate.Triggers>

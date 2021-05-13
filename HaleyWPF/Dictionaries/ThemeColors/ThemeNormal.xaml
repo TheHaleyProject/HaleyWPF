@@ -40,7 +40,8 @@
     <SolidColorBrush x:Key="def_accent_tertiary" Color="#FF2D5693"/>
     
     <!--Flexi Menu-->
-    <SolidColorBrush x:Key="def_fleximenu_background" Color="#FF2B2B2B"/>
-    <SolidColorBrush x:Key="def_fleximenu_icon" Color="#FF2C7AEC"/>
-    <SolidColorBrush x:Key="def_fleximenu_icon_hover" Color="#FF2D5693"/>
+    <SolidColorBrush x:Key="def_fleximenu_bg" Color="#FFE0DEDE"/>
+    <SolidColorBrush x:Key="def_fleximenu_hoverbg" Color="#993D89BF"/>
+    <SolidColorBrush x:Key="def_fleximenu_icon_hover" Color="#FFEEEEEE"/>
+
 </ResourceDictionary>

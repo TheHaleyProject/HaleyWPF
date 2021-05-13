@@ -29,6 +29,7 @@ namespace Haley.WPF.GroupControls
         private const string UIEMainContentHolder = "PART_MainContentArea";
         private const string UIEMessageHolder = "PART_messageHolder";
         private const string UIEMessage = "PART_message";
+        private const string UIEHeaderHolder = "PART_header";
 
         private static double _headerRegionHeight = Convert.ToDouble(100);
         private static double _menuItemHeight = Convert.ToDouble(30);
@@ -37,8 +38,9 @@ namespace Haley.WPF.GroupControls
 
         #region UIElements
         private ContentControl _mainContentHolder;
-        private Grid _messageHolder;
+        private FrameworkElement _messageHolder;
         private TextBlock _message;
+        private ContentControl _headerHolder;
         #endregion
 
         #region Constructors
@@ -47,9 +49,9 @@ namespace Haley.WPF.GroupControls
             //For both menuitems and option items, we do not directly allow the items to raise the command. When the button is clicked, we raise an application command which will be handled in this class and corresponding action will be taken.
             this.MenuItems = new ObservableCollection<MenuItem>();
             this.OptionItems = new ObservableCollection<MenuItem>();
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, ProcessAction));
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, ToggleMenuBar));
-            CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, CloseMessage));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _processAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, _toggleMenuBar));
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
         }
 
         static FlexiMenu()
@@ -59,6 +61,17 @@ namespace Haley.WPF.GroupControls
         #endregion
 
         #region Properties
+
+        public UserControl WelcomeView
+        {
+            get { return (UserControl)GetValue(WelcomeViewProperty); }
+            set { SetValue(WelcomeViewProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for WelcomeView.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WelcomeViewProperty =
+            DependencyProperty.Register(nameof(WelcomeView), typeof(UserControl), typeof(FlexiMenu), new PropertyMetadata(null));
+
         public ObservableCollection<MenuItem> MenuItems
         {
             get { return (ObservableCollection<MenuItem>)GetValue(MenuItemsProperty); }
@@ -155,26 +168,6 @@ namespace Haley.WPF.GroupControls
         #endregion
 
         #region Header Region
-        public string HeaderLabel
-        {
-            get { return (string)GetValue(HeaderLabelProperty); }
-            set { SetValue(HeaderLabelProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for HeaderLabel.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderLabelProperty =
-            DependencyProperty.Register(nameof(HeaderLabel), typeof(string), typeof(FlexiMenu), new PropertyMetadata("Project Header"));
-
-        public ImageSource Logo
-        {
-            get { return (ImageSource)GetValue(LogoProperty); }
-            set { SetValue(LogoProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Logo.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LogoProperty =
-            DependencyProperty.Register(nameof(Logo), typeof(ImageSource), typeof(FlexiMenu), new PropertyMetadata(null));
-
         public bool ShowHeaderRegion
         {
             get { return (bool)GetValue(ShowHeaderRegionProperty); }
@@ -185,15 +178,15 @@ namespace Haley.WPF.GroupControls
         public static readonly DependencyProperty ShowHeaderRegionProperty =
             DependencyProperty.Register(nameof(ShowHeaderRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
 
-        public Brush HeaderBackGround
+        public DataTemplate HeaderTemplate
         {
-            get { return (Brush)GetValue(HeaderBackGroundProperty); }
-            set { SetValue(HeaderBackGroundProperty, value); }
+            get { return (DataTemplate)GetValue(HeaderTemplateProperty); }
+            set { SetValue(HeaderTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderBackGround.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HeaderBackGroundProperty =
-            DependencyProperty.Register(nameof(HeaderBackGround), typeof(Brush), typeof(FlexiMenu), new PropertyMetadata(null));
+        // Using a DependencyProperty as the backing store for HeaderTemplate.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderTemplateProperty =
+            DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,propertyChangedCallback:HeaderTemplatePropertyChanged));
         #endregion
         #endregion
 
@@ -205,14 +198,22 @@ namespace Haley.WPF.GroupControls
             var ops = this.OptionItems;
 
             _mainContentHolder = GetTemplateChild(UIEMainContentHolder) as ContentControl;
-            _messageHolder = GetTemplateChild(UIEMessageHolder) as Grid;
+            _messageHolder = GetTemplateChild(UIEMessageHolder) as FrameworkElement;
             _message = GetTemplateChild(UIEMessage) as TextBlock;
+            _headerHolder = GetTemplateChild(UIEHeaderHolder) as ContentControl;
+
+            //Set Welcome view if not null
+            if(WelcomeView != null)
+            {
+                _mainContentHolder.Content = WelcomeView;
+            }
+            _changeHeader();
         }
 
         #endregion
 
         #region Private Methods
-        void ProcessAction(object sender, ExecutedRoutedEventArgs e)
+        void _processAction(object sender, ExecutedRoutedEventArgs e)
         {
             //First close any previous message
             _closeMessage();
@@ -235,10 +236,10 @@ namespace Haley.WPF.GroupControls
             switch(_targetItem.Action)
             {
                 case MenuAction.RaiseCommand:
-                    ExecuteCommand(_targetItem); //Raise the command and send parameter along with it.
+                    _executeCommand(_targetItem); //Raise the command and send parameter along with it.
                     break;
                 case MenuAction.ShowContainerView:
-                    SetContainerView(_targetItem);
+                    _setContainerView(_targetItem);
                     break;
                 case MenuAction.ShowLocalView:
                     if (_mainContentHolder != null && _targetItem.View != null)
@@ -248,8 +249,7 @@ namespace Haley.WPF.GroupControls
                     break;
             }
         }
-
-        void ExecuteCommand(MenuItem item)
+        void _executeCommand(MenuItem item)
         {
             switch (item.Command)
             {
@@ -260,8 +260,7 @@ namespace Haley.WPF.GroupControls
                     break;
             }
         }
-
-        void SetContainerView(MenuItem item)
+        void _setContainerView(MenuItem item)
         {
             try
             {
@@ -304,20 +303,22 @@ namespace Haley.WPF.GroupControls
                 }
                 else
                 {
-                    //Set the error as message
-                    _message.Text = $@"Unable to set view for container key - {item.ContainerKey}. Check if key is correct";
-                    _messageHolder.Visibility = Visibility.Visible;
+                    _setMessage($@"Unable to set view for container key - {item.ContainerKey}. Check if key is correct");
                 }
             }
             catch (Exception ex)
             {
-                //Set the error as message
-                _message.Text = ex.ToString();
-                _messageHolder.Visibility = Visibility.Visible;
+                _setMessage(ex.ToString());
             }
         }
-
-        void ToggleMenuBar(object sender, ExecutedRoutedEventArgs e)
+        void _setMessage(string message)
+        {
+            if (_messageHolder == null) return;
+            //Set the error as message
+            _message.Text = message;
+            _messageHolder.Visibility = Visibility.Visible;
+        }
+        void _toggleMenuBar(object sender, ExecutedRoutedEventArgs e)
         {
             string _param = e.Parameter as string;
             if (_param == null) return;
@@ -334,17 +335,34 @@ namespace Haley.WPF.GroupControls
                     break;
             }
         }
-        void CloseMessage(object sender, ExecutedRoutedEventArgs e)
+        void _closeMessage(object sender, ExecutedRoutedEventArgs e)
         {
             _closeMessage();  
         }
-
         void _closeMessage()
         {
             //hide the message display.
             if (_messageHolder != null)
             {
                 _messageHolder.Visibility = Visibility.Collapsed;
+            }
+        }
+        static void HeaderTemplatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            FlexiMenu flexiobj = d as FlexiMenu;
+            if (flexiobj == null) return;
+            flexiobj._changeHeader();
+        }
+        void _changeHeader()
+        {
+            if (_headerHolder == null) return;
+
+            _headerHolder.ContentTemplate = HeaderTemplate;
+
+            if (HeaderTemplate == null)
+            {
+                //We also hide the header
+                this.SetCurrentValue(ShowHeaderRegionProperty, false);
             }
         }
         #endregion

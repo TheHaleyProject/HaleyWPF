@@ -60,6 +60,9 @@
     <Compile Include="Controls\LocalView2.xaml.cs">
       <DependentUpon>LocalView2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\VanakkamView.xaml.cs">
+      <DependentUpon>VanakkamView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
     <Page Include="Controls\LocalView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\VanakkamView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
