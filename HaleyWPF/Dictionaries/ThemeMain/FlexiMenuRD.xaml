@@ -60,7 +60,6 @@
                             <Border.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Toggle Dock" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
-                                    <MenuItem/>
                                 </ContextMenu>
                             </Border.ContextMenu>
                             

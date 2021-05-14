@@ -91,9 +91,9 @@
                     </Grid>
                 </Grid>
             </Border>
-            <Grid Background="#FF627388">
+            <Grid Background="#FF324862">
                 
-                <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10">
+                <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF2F3542" Margin="15" CornerRadius="10">
                     <Border.Effect>
                         <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="10"/>
                     </Border.Effect>
