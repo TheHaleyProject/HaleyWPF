@@ -7,6 +7,7 @@ using Haley.Utils;
 using System.Windows;
 using WPF.Test.Controls;
 using Haley.WPF.BaseControls;
+using System.Collections.ObjectModel;
 using System.Windows.Media;
 
 namespace WPF.Test
@@ -18,7 +19,7 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //ContainerRegistrations();
+            ContainerRegistrations();
             //ExpanderTest _wndw2sd = new ExpanderTest();
 
             //MainWindow _wndwo = new MainWindow();
@@ -44,6 +45,7 @@ namespace WPF.Test
 
             //NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
             //flexiNewMenuTest.ShowDialog();
+
             notificationTest();
         }
 
@@ -66,10 +68,32 @@ namespace WPF.Test
             //_ds.ShowDialog("MyGoodness", "Warning, you are going to die at 90", NotificationIcon.Warning);
             //var _data = _ds.ShowDialog("Confirm", "Do you know that you are an idiot", mode: DialogMode.Confirmation);
             //var _data2 = _ds.ShowDialog("Name", "please write your name ", NotificationIcon.Error, DialogMode.GetInput);
+            var _res =_ds.ShowDialog("Send toast", "Should send a toast?", NotificationIcon.Warning, DialogMode.Confirmation);
+            if (_res.DialogResult.Value)
+            {
+                _ds.SendToast("Proceed", "User Requested to send toast",NotificationIcon.Success);
+            }
+            else
+            {
+                _ds.SendToast("Abort", "User denied sending toast",NotificationIcon.Error);
+            }
 
-            _ds.SendToast("Processing Error 1", "Error while doing this");
-            _ds.SendToast("Processing Error asdfe", "Errorasdfa  while doing this asdfaewadasdf");
-            //_ds.SendToast("Processing Error2", "Error while doing this");
+            var res = _ds.ShowContainerView<LocalView2>("Test View");
+            var vmobj = res.ContainerViewModel;
+
+
+            MainVM _vm = new MainVM();
+            _vm.something = new ObservableCollection<Person>();
+
+            _vm.something.Add(new Person("Johnson and Johnson", 45));
+            _vm.something.Add(new Person("Lux", 35));
+            _vm.something.Add(new Person("Medimix",15));
+            _vm.something.Add(new Person("Cinthol", 145));
+            _vm.something.Add(new Person("Lifebouy", 63));
+
+            var _jesh = _ds.ShowContainerView<LocalView2>("Now new view", _vm);
+            var vmjesh = _jesh.ContainerViewModel;
+                //_ds.SendToast("Processing Error2", "Error while doing this");
             //_ds.SendToast("Processing Error 3", "Error while doing this");
             //_ds.SendToast("Processing Error 3", "Error while doing this");
             //_ds.SendToast("Processing Erro 5 r", "Error while doing this");
@@ -78,7 +102,7 @@ namespace WPF.Test
 
         private void ContainerRegistrations()
         {
-            var _key = ContainerStore.Singleton.controls.register<MainVM, LocalView2>(key: "localDemoKey", mode: RegisterMode.Transient);
+            var _key = ContainerStore.Singleton.controls.register<MainVM, LocalView2>(mode: RegisterMode.Transient);
         }
     }
 }
