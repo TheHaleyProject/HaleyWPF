@@ -68,6 +68,7 @@ namespace WPF.Test
             //var _data2 = _ds.ShowDialog("Name", "please write your name ", NotificationIcon.Error, DialogMode.GetInput);
 
             _ds.SendToast("Processing Error 1", "Error while doing this");
+            _ds.SendToast("Processing Error asdfe", "Errorasdfa  while doing this asdfaewadasdf");
             //_ds.SendToast("Processing Error2", "Error while doing this");
             //_ds.SendToast("Processing Error 3", "Error while doing this");
             //_ds.SendToast("Processing Error 3", "Error while doing this");
