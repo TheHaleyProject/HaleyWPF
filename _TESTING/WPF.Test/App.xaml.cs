@@ -9,6 +9,8 @@ using WPF.Test.Controls;
 using Haley.WPF.BaseControls;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
+using System.Windows.Threading;
+using System;
 
 namespace WPF.Test
 {
@@ -46,7 +48,17 @@ namespace WPF.Test
             //NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
             //flexiNewMenuTest.ShowDialog();
 
-            notificationTest();
+            //notificationTest();
+
+            var mw = Application.Current.MainWindow;
+            if (mw == null)
+            {
+                //First invoke.
+                mw = new Window(); //Dummy initiation
+            }
+
+            NotificationTest _wndwNotification = new NotificationTest();
+            _wndwNotification.ShowDialog();
         }
 
 
@@ -68,14 +80,26 @@ namespace WPF.Test
             //_ds.ShowDialog("MyGoodness", "Warning, you are going to die at 90", NotificationIcon.Warning);
             //var _data = _ds.ShowDialog("Confirm", "Do you know that you are an idiot", mode: DialogMode.Confirmation);
             //var _data2 = _ds.ShowDialog("Name", "please write your name ", NotificationIcon.Error, DialogMode.GetInput);
-            var _res =_ds.ShowDialog("Send toast", "Should send a toast?", NotificationIcon.Warning, DialogMode.Confirmation);
-            if (_res.DialogResult.Value)
+            //var _res =_ds.ShowDialog("Send toast", "Should send a toast?", NotificationIcon.Warning, DialogMode.Confirmation);
+            //if (_res.DialogResult.Value)
+            //{
+            //    Application.Current.Dispatcher.BeginInvoke(new Action(() => { _ds.SendToast("Proceed", "User Requested to send toast", NotificationIcon.Success); }), DispatcherPriority.Send);
+
+            //}
+            //else
+            //{
+            //    _ds.SendToast("Abort", "User denied sending toast",NotificationIcon.Error);
+            //}
+
+            Random _rndm = new Random();
+            Type _nIcon = typeof(NotificationIcon);
+            var _values =  _nIcon.GetEnumValues();
+
+            for (int i = 0; i < 30; i++)
             {
-                _ds.SendToast("Proceed", "User Requested to send toast",NotificationIcon.Success);
-            }
-            else
-            {
-                _ds.SendToast("Abort", "User denied sending toast",NotificationIcon.Error);
+                var _iconInt = _rndm.Next(_values.Length);
+                NotificationIcon _icon  = (NotificationIcon)_values.GetValue(_iconInt);
+                _ds.SendToast("Test", $@"Current number is {i}", _icon);
             }
 
             var res = _ds.ShowContainerView<LocalView2>("Test View");

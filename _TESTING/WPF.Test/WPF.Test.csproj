@@ -78,6 +78,9 @@
     <Compile Include="NewFlexiMenu.xaml.cs">
       <DependentUpon>NewFlexiMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotificationTest.xaml.cs">
+      <DependentUpon>NotificationTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RibbonTest.xaml.cs">
       <DependentUpon>RibbonTest.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="NewFlexiMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotificationTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,7 +264,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="5.0.0" />
+        <PackageReference Include="Haley.MVVM" Version="5.0.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -272,7 +279,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="4.0.1" />
+        <PackageReference Include="Haley.WPF" Version="4.0.8" />
       </ItemGroup>
     </Otherwise>
   </Choose>

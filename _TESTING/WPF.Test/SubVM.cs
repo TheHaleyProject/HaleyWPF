@@ -12,8 +12,9 @@ using System.Threading.Tasks;
 
 namespace WPF.Test
 {
-    public class SubVM:ChangeNotifier, IHaleyControlVM
+    public class SubVM:ChangeNotifier, IHaleyVM
     {
+        public event EventHandler<FrameClosingEventArgs> OnWindowsClosed;
 
         private string _displayMessage;
         public string DisplayMessage

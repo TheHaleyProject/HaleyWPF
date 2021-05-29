@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>4.0.8</Version>
+		<Version>4.0.8.1</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Implemented FlexiMenu</PackageReleaseNotes>
+		<PackageReleaseNotes>Updated references</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
@@ -36,12 +36,16 @@
   </PropertyGroup>
 	
   <ItemGroup>
+    <Compile Remove="Controls\GroupControls\FlexiLogIn\**" />
     <Compile Remove="Controls\GroupControls\FlexiTab\**" />
     <Compile Remove="Controls\GroupControls\FlexiTab\**" />
+    <EmbeddedResource Remove="Controls\GroupControls\FlexiLogIn\**" />
     <EmbeddedResource Remove="Controls\GroupControls\FlexiTab\**" />
     <EmbeddedResource Remove="Controls\GroupControls\FlexiTab\**" />
+    <None Remove="Controls\GroupControls\FlexiLogIn\**" />
     <None Remove="Controls\GroupControls\FlexiTab\**" />
     <None Remove="Controls\GroupControls\FlexiTab\**" />
+    <Page Remove="Controls\GroupControls\FlexiLogIn\**" />
     <Page Remove="Controls\GroupControls\FlexiTab\**" />
     <Page Remove="Controls\GroupControls\FlexiTab\**" />
   </ItemGroup>
@@ -738,7 +742,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="5.0.0" />
+       <PackageReference Include="Haley.MVVM" Version="5.0.2" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
