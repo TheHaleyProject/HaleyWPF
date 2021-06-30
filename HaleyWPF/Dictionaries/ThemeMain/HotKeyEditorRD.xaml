@@ -24,7 +24,7 @@
                 <ControlTemplate TargetType="{x:Type bc:HotKeyEditor}">
                     <Border Style="{StaticResource BorderWithShadow}">
                         <Grid>
-                            <ContentControl x:Name="HotKeyContent" Content="{TemplateBinding HotKey}" Visibility="Visible" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0" />
+                            <ContentControl x:Name="HotKeyContent" Content="{TemplateBinding HotKey}" Visibility="Visible" Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0" />
                             <ContentControl x:Name="WaterMarkContent" Content="{TemplateBinding WaterMark}" Visibility="Collapsed" IsHitTestVisible="False" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Grid>
                     </Border>
