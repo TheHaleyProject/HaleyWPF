@@ -78,8 +78,8 @@
                     <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource microphone}" Height="Auto"/>
                     <hw:ImageToggleButton IsChecked="{x:Null}" Icon="{StaticResource heart_plain}" Height="Auto"/>
                     <hw:ImageToggleButton Icon="{StaticResource chat_single}" Height="Auto"/>
-
                 </StackPanel>
+                <hw:HotKeyEditor CornerRadius="5" Height="30"/>
             </StackPanel>
             <StackPanel Grid.Column="1">
                 <hw:CollectionSelector Grid.Column="1" CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" TitleSelection="Selected Employees" TitleSource="Company Employees">

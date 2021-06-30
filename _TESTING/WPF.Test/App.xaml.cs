@@ -21,7 +21,7 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ContainerRegistrations();
+            //ContainerRegistrations(); //For notification test
             //ExpanderTest _wndw2sd = new ExpanderTest();
 
             //MainWindow _wndwo = new MainWindow();
@@ -33,8 +33,8 @@ namespace WPF.Test
             //WndwPagination _wndw3 = new WndwPagination();
             //_wndw3.ShowDialog();
 
-            //ThemeTest wndw = new ThemeTest();
-            //wndw.ShowDialog();
+            ThemeTest wndw = new ThemeTest();
+            wndw.ShowDialog();
 
             //ScrollViewerTest wndwscroll = new ScrollViewerTest();
             //wndwscroll.ShowDialog();
@@ -50,15 +50,15 @@ namespace WPF.Test
 
             //notificationTest();
 
-            var mw = Application.Current.MainWindow;
-            if (mw == null)
-            {
-                //First invoke.
-                mw = new Window(); //Dummy initiation
-            }
+            //var mw = Application.Current.MainWindow;
+            //if (mw == null)
+            //{
+            //    //First invoke.
+            //    mw = new Window(); //Dummy initiation
+            //}
 
-            NotificationTest _wndwNotification = new NotificationTest();
-            _wndwNotification.ShowDialog();
+            //NotificationTest _wndwNotification = new NotificationTest();
+            //_wndwNotification.ShowDialog();
         }
 
 
