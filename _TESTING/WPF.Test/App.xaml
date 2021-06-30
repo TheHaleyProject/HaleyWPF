@@ -2,13 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WPF.Test"
-             xmlns:hly="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+             xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
              Startup="Application_Startup">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
+                <hw:CommonDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
+                <hw:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
+                <hw:CommonDictionary Source="pack://application:,,,/Haley.WPF.Fonts;component/Dictionaries/haleyFonts.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <local:VerificationConverter x:Key="verfiyConv"/>
         </ResourceDictionary>

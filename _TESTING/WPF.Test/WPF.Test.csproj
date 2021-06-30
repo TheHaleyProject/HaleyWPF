@@ -249,7 +249,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Helpers" Version="2.0.0" />
+        <PackageReference Include="Haley.Helpers" Version="2.0.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -279,7 +279,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="4.0.8" />
+        <PackageReference Include="Haley.WPF" Version="4.0.11" />
       </ItemGroup>
     </Otherwise>
   </Choose>

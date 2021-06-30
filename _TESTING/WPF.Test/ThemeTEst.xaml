@@ -50,7 +50,7 @@
             </Grid.ColumnDefinitions>
             <hw:ImageButton Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" hw:Icon.Default="Images/hippo_bliue.png" Height="30" Width="30" Margin="10" hw:Icon.DisableColorChange="True"/>
             <StackPanel  Margin="20">
-                <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}"/>
+                <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}" FontFamily="{StaticResource Montserrat_ExtraBold}"/>
                 <TextBlock Text="Topic 1 : Introduction" Style="{DynamicResource def_h2}"/>
                 <TextBlock Text="Hello.. This is a test project"  Style="{DynamicResource def_h3}"/>
                 <TextBlock Text="I'm a sub title text"  Style="{DynamicResource def_h4_Secondary}"/>
