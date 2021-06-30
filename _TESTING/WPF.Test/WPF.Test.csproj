@@ -284,6 +284,23 @@
     </Otherwise>
   </Choose>
   <Choose>
+    <When Condition="Exists($(HaleyWPFFonts))">
+      <ItemGroup>
+        <ProjectReference Include="..\..\..\HaleyWPFFonts\HaleyWPFFonts\HaleyWPFFonts.csproj">
+          <Project>{05804a25-49b3-45e3-af8d-9a1c310e993f}</Project>
+          <Name>HaleyWPFFonts</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Haley.WPF.Fonts">
+          <Version>1.0.1</Version>
+        </PackageReference>
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <Choose>
     <When Condition="Exists($(HaleyEvents))">
       <ItemGroup>
         <ProjectReference Include="$(HaleyEvents)\HaleyEvents.csproj">

@@ -1,5 +1,6 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <HaleyWPF>$(SolutionDir)HaleyWPF</HaleyWPF>
+    <HaleyWPFFonts>$(SolutionDir)/../HaleyWPFFonts</HaleyWPFFonts>
   </PropertyGroup>
 </Project>
