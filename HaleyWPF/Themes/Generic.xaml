@@ -33,7 +33,7 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiMenuRD.xaml"/>
         <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiTabRD.xaml"/>-->
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/HotKeyEditorRD.xaml"/>
-        
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/IncrementerRD.xaml"/>
 
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
