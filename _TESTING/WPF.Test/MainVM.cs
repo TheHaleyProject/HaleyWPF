@@ -44,7 +44,7 @@ namespace WPF.Test
 
             if (_dialogService == null) return;
 
-            _dialogService.send("Command Initiated", obj);
+            _dialogService.Info("Command Initiated", obj);
         }
         public ICommand Cmd_Notify => new DelegateCommand<string>(_localNotify);
         void _increaseCounter()
@@ -93,7 +93,7 @@ namespace WPF.Test
 
         private ObservableCollection<Person> _choosentiems;
 
-        public event EventHandler<FrameClosingEventArgs> OnWindowsClosed;
+        public event EventHandler<FrameClosingEventArgs> OnViewClosed;
 
         public ObservableCollection<Person> choosenitems
         {

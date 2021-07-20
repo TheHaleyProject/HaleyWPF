@@ -93,15 +93,15 @@ namespace Haley.WPF.GroupControls
             DependencyProperty.Register(nameof(OptionItems), typeof(ObservableCollection<MenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
 
-        public IHaleyUIContainer<IHaleyControlVM, IHaleyControl> LocalContainer
+        public IHaleyUIContainer<IHaleyVM, UserControl> LocalContainer
         {
-            get { return (IHaleyUIContainer<IHaleyControlVM, IHaleyControl>)GetValue(LocalContainerProperty); }
+            get { return (IHaleyUIContainer<IHaleyVM, UserControl>)GetValue(LocalContainerProperty); }
             set { SetValue(LocalContainerProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for LocalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LocalContainerProperty =
-            DependencyProperty.Register(nameof(LocalContainer), typeof(IHaleyUIContainer<IHaleyControlVM, IHaleyControl>), typeof(FlexiMenu), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(LocalContainer), typeof(IHaleyUIContainer<IHaleyVM, UserControl>), typeof(FlexiMenu), new PropertyMetadata(null));
 
         public string FootNote
         {
@@ -283,7 +283,7 @@ namespace Haley.WPF.GroupControls
                 {
                     if (LocalContainer.ContainsKey(item.ContainerKey))
                     {
-                        _targetView = (UserControl)LocalContainer.generateView(item.ContainerKey);
+                        _targetView = LocalContainer.generateView(item.ContainerKey);
                     }
                 }
 
@@ -292,7 +292,7 @@ namespace Haley.WPF.GroupControls
                 {
                     if (_globalContainer.ContainsKey(item.ContainerKey))
                     {
-                        _targetView = (UserControl)_globalContainer.generateView(item.ContainerKey);
+                        _targetView = _globalContainer.generateView(item.ContainerKey);
                     }
                 }
 

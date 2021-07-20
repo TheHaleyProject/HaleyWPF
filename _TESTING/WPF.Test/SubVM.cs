@@ -14,7 +14,7 @@ namespace WPF.Test
 {
     public class SubVM:ChangeNotifier, IHaleyVM
     {
-        public event EventHandler<FrameClosingEventArgs> OnWindowsClosed;
+        public event EventHandler<FrameClosingEventArgs> OnViewClosed;
 
         private string _displayMessage;
         public string DisplayMessage

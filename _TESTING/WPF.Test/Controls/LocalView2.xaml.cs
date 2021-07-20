@@ -24,7 +24,7 @@ namespace WPF.Test.Controls
     /// <summary>
     /// Interaction logic for LocalView2.xaml
     /// </summary>
-    public partial class LocalView2 : UserControl, IHaleyControl
+    public partial class LocalView2 : UserControl
     {
         public LocalView2()
         {
