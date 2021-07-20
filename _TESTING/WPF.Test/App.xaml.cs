@@ -126,7 +126,7 @@ namespace WPF.Test
 
         private void ContainerRegistrations()
         {
-            var _key = ContainerStore.Singleton.Controls.register<MainVM, LocalView2>(mode: RegisterMode.Transient);
+            var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>(mode: RegisterMode.Transient);
         }
     }
 }
