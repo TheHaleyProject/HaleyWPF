@@ -93,15 +93,15 @@ namespace Haley.WPF.GroupControls
             DependencyProperty.Register(nameof(OptionItems), typeof(ObservableCollection<MenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
 
-        public IHaleyUIContainer<IHaleyVM, UserControl> LocalContainer
+        public IUIContainerBase<IHaleyVM, UserControl> LocalContainer
         {
-            get { return (IHaleyUIContainer<IHaleyVM, UserControl>)GetValue(LocalContainerProperty); }
+            get { return (IUIContainerBase<IHaleyVM, UserControl>)GetValue(LocalContainerProperty); }
             set { SetValue(LocalContainerProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for LocalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LocalContainerProperty =
-            DependencyProperty.Register(nameof(LocalContainer), typeof(IHaleyUIContainer<IHaleyVM, UserControl>), typeof(FlexiMenu), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(LocalContainer), typeof(IUIContainerBase<IHaleyVM, UserControl>), typeof(FlexiMenu), new PropertyMetadata(null));
 
         public string FootNote
         {
@@ -276,14 +276,14 @@ namespace Haley.WPF.GroupControls
                 //Check the menu item to find which container to use.
                 UserControl _targetView = null;
 
-                var _globalContainer = ContainerStore.Singleton.controls;
+                var _globalContainer = ContainerStore.Singleton.Controls;
 
                 //PRIORITY 1 : If local container is present, then try to find the view. 
                 if (_targetView == null && !item.IgnoreLocalContainer && LocalContainer != null)
                 {
                     if (LocalContainer.ContainsKey(item.ContainerKey))
                     {
-                        _targetView = LocalContainer.generateView(item.ContainerKey);
+                        _targetView = LocalContainer.GenerateView(item.ContainerKey);
                     }
                 }
 
@@ -292,7 +292,7 @@ namespace Haley.WPF.GroupControls
                 {
                     if (_globalContainer.ContainsKey(item.ContainerKey))
                     {
-                        _targetView = _globalContainer.generateView(item.ContainerKey);
+                        _targetView = _globalContainer.GenerateView(item.ContainerKey);
                     }
                 }
 

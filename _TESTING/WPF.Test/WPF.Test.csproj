@@ -223,6 +223,9 @@
   <ItemGroup>
     <Resource Include="Images\hippo_bliue.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UITests\" />
+  </ItemGroup>
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
     <When Condition="Exists($(HaleyExtensions))">
@@ -265,7 +268,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.0.0-prelease" />
+        <PackageReference Include="Haley.MVVM" Version="6.0.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -280,7 +283,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="4.0.12" />
+        <PackageReference Include="Haley.WPF" Version="5.0.0-prerelease" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -313,6 +316,21 @@
     <Otherwise>
       <ItemGroup>
         <PackageReference Include="Haley.Events" Version="2.0.2" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <Choose>
+    <When Condition="Exists($(HaleyIOC))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyIOC)\HaleyIOC.csproj">
+          <Project>{49570684-db73-4c40-89ee-009b9f0bb91b}</Project>
+          <Name>HaleyIOC</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Haley.IOC" Version="3.0.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>

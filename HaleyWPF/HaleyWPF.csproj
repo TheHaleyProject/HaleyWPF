@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.0.0-prerelease</Version>
+		<Version>5.0.0</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -163,7 +163,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.IOC" Version="2.0.2" />
+    <PackageReference Include="Haley.IOC" Version="3.0.0" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
   </ItemGroup>
 
@@ -686,7 +686,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.0.0-prelease" />
+       <PackageReference Include="Haley.MVVM" Version="6.0.0" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
