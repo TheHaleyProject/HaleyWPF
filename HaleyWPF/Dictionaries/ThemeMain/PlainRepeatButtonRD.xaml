@@ -31,10 +31,12 @@
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
-                                <Condition Binding="{Binding Path=(ml:Hover.IsEnabled), RelativeSource={RelativeSource TemplatedParent}}" Value="True"/>
+                                <Condition Binding="{Binding Path=(ml:Hover.IsEnabled), RelativeSource={RelativeSource Self}}" Value="True"/>
                             </MultiDataTrigger.Conditions>
-                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=(ml:Hover.BorderBrush), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <MultiDataTrigger.Setters>
+                                <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=(ml:Hover.BorderBrush), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=PressedBackground, RelativeSource={RelativeSource TemplatedParent}}"/>

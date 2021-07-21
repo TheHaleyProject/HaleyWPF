@@ -157,11 +157,13 @@
                     <Condition Binding="{Binding ElementName=gridRoot, Path=IsMouseOver}" Value="False"/>
                     <Condition Binding="{Binding AutoHide, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}" Value="True"/>
                 </MultiDataTrigger.Conditions>
-                <Setter TargetName="gridRoot" Property="Width" Value="10.0"/>
-                <Setter TargetName="btn_down" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="btn_up" Property="Visibility" Value="Collapsed"/>
-                <Setter TargetName="rowdef_01" Property="Height" Value="Auto"/>
-                <Setter TargetName="rowdef_02" Property="Height" Value="Auto"/>
+                <MultiDataTrigger.Setters>
+                    <Setter TargetName="gridRoot" Property="Width" Value="10.0"/>
+                    <Setter TargetName="btn_down" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="btn_up" Property="Visibility" Value="Collapsed"/>
+                    <Setter TargetName="rowdef_01" Property="Height" Value="Auto"/>
+                    <Setter TargetName="rowdef_02" Property="Height" Value="Auto"/>
+                </MultiDataTrigger.Setters>
             </MultiDataTrigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

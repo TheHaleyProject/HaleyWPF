@@ -106,7 +106,7 @@
                         </DataTemplate>
                     </hw:CollectionSelector.ItemTemplate>
                 </hw:CollectionSelector>
-                <hw:PlainListView CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top">
+                <hw:PlainListView CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" ControlAreaVisibility="Visible">
                     <hw:PlainListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Margin="5" />

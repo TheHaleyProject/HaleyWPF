@@ -43,7 +43,7 @@
                         <Grid Margin="5">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="60"/>
+                                <ColumnDefinition Width="40"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             
@@ -62,14 +62,14 @@
                             </Grid>
                             
                             <StackPanel Grid.Column="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
-                                <bc:ImageButton  Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveRight}" ml:Icon.Default="{StaticResource arrow_down_sharp}" ml:Icon.DefaultColor="{TemplateBinding IconColor}">
+                                <bc:ImageButton  Width="25" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveRight}" ml:Icon.Default="{StaticResource arrow_down_rounded}" ml:Icon.DefaultColor="{TemplateBinding IconColor}">
                                 <bc:ImageButton.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform Angle="-90" />
                                         </TransformGroup>
                                     </bc:ImageButton.RenderTransform>
                                 </bc:ImageButton>
-                                <bc:ImageButton   Width="30" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveLeft}"  ml:Icon.Default="{StaticResource arrow_down_sharp}" ml:Icon.DefaultColor="{TemplateBinding IconColor}">
+                                <bc:ImageButton   Width="25" RenderTransformOrigin="0.5,0.5" Command="{x:Static ComponentCommands.MoveLeft}"  ml:Icon.Default="{StaticResource arrow_down_rounded}" ml:Icon.DefaultColor="{TemplateBinding IconColor}">
                                     <bc:ImageButton.RenderTransform>
                                         <TransformGroup>
                                             <RotateTransform Angle="90" />

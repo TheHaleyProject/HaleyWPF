@@ -60,11 +60,22 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:PlainListView}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
-                        <bc:FlexiScroll Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" EnableOverLay="False" AutoHide="True" VerticalScrollBarSize="20" HorizontalScrollBarSize="20">
-                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                        </bc:FlexiScroll>
-                    </Border>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" EnableOverLay="False" AutoHide="True" VerticalScrollBarSize="20" HorizontalScrollBarSize="20">
+                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </bc:FlexiScroll>
+                        </Border>
+                        <StackPanel Grid.Row="1" Height="25" Orientation="Horizontal" Visibility="{TemplateBinding ControlAreaVisibility}" Margin="15,5">
+                            <bc:LinkedText Text="Select All" CommandParameter="{StaticResource True}" Command="{x:Static ApplicationCommands.SelectAll}"/>
+                            <bc:LinkedText Text="UnSelect All" Margin="15,0" CommandParameter="{StaticResource False}" Command="{x:Static ApplicationCommands.SelectAll}"/>
+                        </StackPanel>
+                    </Grid>
+                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.4"/>

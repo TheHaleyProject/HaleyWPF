@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 
 namespace Haley.WPF.BaseControls
 {
@@ -24,6 +25,7 @@ namespace Haley.WPF.BaseControls
         public PlainListView()
         {
             collectionChanging = false;
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.SelectAll, ExecuteSelectAll));
         }
 
         public override void OnApplyTemplate()
@@ -36,6 +38,17 @@ namespace Haley.WPF.BaseControls
         //{
         //    RaiseEvent(new UIRoutedEventArgs<IEnumerable>(SelectionChangedEvent, this) { value = SourceSelectedItems });
         //}
+
+        public Visibility ControlAreaVisibility
+        {
+            get { return (Visibility)GetValue(ControlAreaVisibilityProperty); }
+            set { SetValue(ControlAreaVisibilityProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ControlAreaVisibility.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ControlAreaVisibilityProperty =
+            DependencyProperty.Register(nameof(ControlAreaVisibility), typeof(Visibility), typeof(PlainListView), new PropertyMetadata(Visibility.Collapsed));
+
 
         public CornerRadius CornerRadius
         {
@@ -91,7 +104,23 @@ namespace Haley.WPF.BaseControls
             {
                 choosen.Add(item);
             }
-            this.SetCurrentValue(SelectedItemsProperty, choosen);
+        }
+        void ExecuteSelectAll(object sender, ExecutedRoutedEventArgs e)
+        {
+            //Select or unselect all
+            if (e.Parameter is bool shouldSelectAll)
+            {
+                if(shouldSelectAll)
+                {
+                    //Select all
+                    this.SelectAll();
+                }
+                else
+                {
+                    //Unselect all
+                    this.UnselectAll();
+                }
+            }
         }
         static void SelectedItemsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
