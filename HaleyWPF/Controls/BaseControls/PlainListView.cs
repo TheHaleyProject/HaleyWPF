@@ -104,6 +104,7 @@ namespace Haley.WPF.BaseControls
             {
                 choosen.Add(item);
             }
+            this.SetCurrentValue(SelectedItemsProperty, choosen);
         }
         void ExecuteSelectAll(object sender, ExecutedRoutedEventArgs e)
         {
@@ -113,12 +114,12 @@ namespace Haley.WPF.BaseControls
                 if(shouldSelectAll)
                 {
                     //Select all
-                    this.SelectAll();
+                    base.SelectAll();
                 }
                 else
                 {
                     //Unselect all
-                    this.UnselectAll();
+                    base.UnselectAll();
                 }
             }
         }
