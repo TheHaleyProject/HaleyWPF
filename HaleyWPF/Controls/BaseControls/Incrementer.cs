@@ -9,6 +9,7 @@ using Haley.Enums;
 using Haley.Models;
 using System.Text.RegularExpressions;
 
+
 namespace Haley.WPF.BaseControls
 {
     public class Incrementer : TextBox, ICornerRadius

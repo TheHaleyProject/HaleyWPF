@@ -31,6 +31,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="{TemplateBinding Height, Converter={StaticResource HalfValue}}"/>
+                                <ColumnDefinition Width="4"/>
                             </Grid.ColumnDefinitions>
                             <ScrollViewer  x:Name="PART_ContentHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0"/>
                             <Grid Grid.Column="1">
