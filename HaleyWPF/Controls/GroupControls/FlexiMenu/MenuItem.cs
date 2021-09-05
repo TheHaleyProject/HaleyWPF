@@ -115,5 +115,10 @@ namespace Haley.WPF.GroupControls
         // Using a DependencyProperty as the backing store for IgnoreGlobalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IgnoreGlobalContainerProperty =
             DependencyProperty.Register(nameof(IgnoreGlobalContainer), typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
+
+        public override string ToString()
+        {
+            return this.Id;
+        }
     }
 }

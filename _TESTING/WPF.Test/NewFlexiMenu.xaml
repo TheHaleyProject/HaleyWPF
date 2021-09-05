@@ -14,16 +14,16 @@
     </Window.InputBindings>
    
     <Grid x:Name="grdMain">
-        <hw:FlexiMenu x:Name="flexiMain" Location="Left" FontSize="12" FontFamily="{StaticResource Lato_Regular}" HeaderRegionHeight="150">
+        <hw:FlexiMenu x:Name="flexiMain" DataContext="{Binding}" Location="Left" FontSize="12" FontFamily="{StaticResource Lato_Regular}" HeaderRegionHeight="150" >
 
             <!--welcome view-->
             <hw:FlexiMenu.WelcomeView>
                 <ctrl:VanakkamView/>
             </hw:FlexiMenu.WelcomeView>
 
-            <!--<hw:FlexiMenu.Resources>
-                <hw:BindingProxy x:Key="proxy" DataContext="{Binding}"/>
-            </hw:FlexiMenu.Resources>-->
+            <hw:FlexiMenu.Resources>
+                <hw:BindingProxy x:Key="proxy2" DataContext="{Binding}"/>
+            </hw:FlexiMenu.Resources>
 
             <!--Header Template-->
             <hw:FlexiMenu.HeaderTemplate>
@@ -56,8 +56,9 @@
                 </hw:MenuItem>
                 <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource arrow}"  Label="Container View" ContainerKey="whataworld"/>
                 <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource plane}"  Label="Container View 2" ContainerKey="localdemokey"/>
-                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="This is from FlexiMenu 2" CommandName="Cmd_Notify"/>
-                <!--<hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="This is from FlexiMenu 2" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy}}"/>-->
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="{Binding DataContext.proxymessageholder,Source={StaticResource proxy}}" CommandName="Cmd_Notify"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource camera}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding DataContext.Cmd_Notify,Source={StaticResource proxy}}"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource camera}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy2}}"/>
             </hw:FlexiMenu.MenuItems>
             <!--Add Option Buttons like logout, login-->
             <hw:FlexiMenu.OptionItems>

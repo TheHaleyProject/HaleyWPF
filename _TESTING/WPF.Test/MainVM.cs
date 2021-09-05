@@ -22,6 +22,13 @@ namespace WPF.Test
             set { SetProp(ref _counter, value); }
         }
 
+        private string _proxymessageholder;
+        public string proxymessageholder
+        {
+            get { return _proxymessageholder; }
+            set { SetProp(ref _proxymessageholder, value); }
+        }
+
         void _login(PlainPasswordBox obj)
         {
             currentpage = 0;
@@ -117,6 +124,7 @@ namespace WPF.Test
             selecteditems = new ObservableCollection<object>();
             selecteditems.Add(hello[0]);
             selecteditems.Add(hello[3]);
+            proxymessageholder = "New test from proxy binding. Success";
         }
     }
 

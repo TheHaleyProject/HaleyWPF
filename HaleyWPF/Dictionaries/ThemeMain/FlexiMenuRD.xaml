@@ -34,6 +34,17 @@
                 <Setter Property="ImageLocation" Value="Right" />
                 <Setter Property="HorizontalContentAlignment" Value="Right"/>
             </DataTrigger>
+           
+            <DataTrigger Value="True">
+                <DataTrigger.Binding>
+                    <MultiBinding Converter="{StaticResource MultiBindingEqualityCheck}">
+                        <!--As of now, multibinding equality check converter only checks the string values.-->
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type gc:FlexiMenu}}" Path="ActiveMenu"/>
+                        <Binding RelativeSource="{RelativeSource Self}" Path="Tag"/>
+                    </MultiBinding>
+                </DataTrigger.Binding>
+                <Setter Property="Background" Value="{Binding SelectedMenuColor, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}"/>
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
@@ -44,6 +55,7 @@
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Background" Value="{DynamicResource def_fleximenu_bg}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="SelectedMenuColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -75,7 +87,7 @@
 
                                 <!--#region HEADER-->
                                 <!--(GRID-1) MENU HEADER & LOGO-->
-                                <Grid x:Name="PART_headerRegion" Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding ShowHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy}}">
+                                <Grid x:Name="PART_headerRegion" Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding HideHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
                                     <ContentControl x:Name="PART_header"/>
                                 </Grid>
 
@@ -137,16 +149,16 @@
                                         HorizontalScrollBarVisibility="Hidden"
                                         RepeatDown="{Binding ElementName=downButton}"
                                         RepeatUp="{Binding ElementName=upButton}"
-                                        VerticalScrollBarVisibility="Hidden">
-                                        <ListView x:Name="PART_MenuSource" Style="{StaticResource CleanListView}" ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource TemplatedParent}}">
-                                            <ListView.ItemTemplate>
+                                        VerticalScrollBarVisibility="Hidden" Visibility="{Binding HideMenuRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                        <bc:PlainListView x:Name="PART_MenuSource" ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource TemplatedParent}}" SelectionMode="Single" Style="{StaticResource CleanListView}">
+                                            <bc:PlainListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ExecuteAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ExecuteAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}" Tag="{Binding}"/>
                                                 </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
+                                            </bc:PlainListView.ItemTemplate>
+                                        </bc:PlainListView>
                                     </bc:FlexiScroll>
                                 </Grid>
                                 <!--#endregion-->
@@ -165,13 +177,13 @@
                                         Panel.ZIndex="1"
                                         CanContentScroll="True"
                                         HorizontalScrollBarVisibility="Hidden"
-                                        VerticalScrollBarVisibility="Hidden">
-                                        <ListView x:Name="PART_OptionSource" Style="{StaticResource CleanListView}" ItemsSource="{Binding OptionItems, RelativeSource={RelativeSource TemplatedParent}}">
+                                        VerticalScrollBarVisibility="Hidden" Visibility="{Binding HideOptionsRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                        <ListView x:Name="PART_OptionSource" Style="{StaticResource CleanListView}" ItemsSource="{Binding OptionItems, RelativeSource={RelativeSource TemplatedParent}}" SelectionMode="Single">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ExecuteAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ExecuteAction2}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>

@@ -11,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Haley.WPF.GroupControls
 {
@@ -43,12 +44,13 @@ namespace Haley.WPF.GroupControls
             //For both menuitems and option items, we do not directly allow the items to raise the command. When the button is clicked, we raise an application command which will be handled in this class and corresponding action will be taken.
             this.MenuItems = new ObservableCollection<MenuItem>();
             this.OptionItems = new ObservableCollection<MenuItem>();
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _processAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _processMenuAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction2, _processOptionsAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, _toggleMenuBar));
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
             _addProxyResource();
-
         }
+
 
         static FlexiMenu()
         {
@@ -57,6 +59,25 @@ namespace Haley.WPF.GroupControls
         #endregion
 
         #region Properties
+        public Brush SelectedMenuColor
+        {
+            get { return (Brush)GetValue(SelectedMenuColorProperty); }
+            set { SetValue(SelectedMenuColorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ItemSelectedColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedMenuColorProperty =
+            DependencyProperty.Register(nameof(SelectedMenuColor), typeof(Brush), typeof(FlexiMenu), new PropertyMetadata(null));
+
+        public MenuItem ActiveMenu
+        {
+            get { return (MenuItem)GetValue(ActiveMenuProperty); }
+            set { SetValue(ActiveMenuProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ActiveMenu.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ActiveMenuProperty =
+            DependencyProperty.Register(nameof(ActiveMenu), typeof(MenuItem), typeof(FlexiMenu), new FrameworkPropertyMetadata(null));
 
         public UserControl WelcomeView
         {
@@ -164,15 +185,35 @@ namespace Haley.WPF.GroupControls
         #endregion
 
         #region Header Region
-        public bool ShowHeaderRegion
+        public bool HideHeaderRegion
         {
-            get { return (bool)GetValue(ShowHeaderRegionProperty); }
-            set { SetValue(ShowHeaderRegionProperty, value); }
+            get { return (bool)GetValue(HideHeaderRegionProperty); }
+            set { SetValue(HideHeaderRegionProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for ShowHeaderRegion.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ShowHeaderRegionProperty =
-            DependencyProperty.Register(nameof(ShowHeaderRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
+        public static readonly DependencyProperty HideHeaderRegionProperty =
+            DependencyProperty.Register(nameof(HideHeaderRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
+
+        public bool HideMenuRegion
+        {
+            get { return (bool)GetValue(HideMenuRegionProperty); }
+            set { SetValue(HideMenuRegionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HideMenuRegion.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HideMenuRegionProperty =
+            DependencyProperty.Register(nameof(HideMenuRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
+
+        public bool HideOptionsRegion
+        {
+            get { return (bool)GetValue(HideOptionsRegionProperty); }
+            set { SetValue(HideOptionsRegionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HideOptionsRegion.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HideOptionsRegionProperty =
+            DependencyProperty.Register(nameof(HideOptionsRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
         public DataTemplate HeaderTemplate
         {
@@ -188,17 +229,23 @@ namespace Haley.WPF.GroupControls
 
         private void _addProxyResource()
         {
-            //Create binding
-            var bp = new BindingProxy(); //The proxy to hold the datacontext
-            Binding _dcbinding = new Binding("ProxyDCBinding");
-            _dcbinding.Source = this.DataContext; //Source dtatacontext
-            BindingOperations.SetBinding(bp, DataContextProperty, _dcbinding); //Binding operation.
-
-            //Add resources
-            this.Resources.Add("proxy", bp);
+            if (! this.Resources.Contains("proxy"))
+            {
+                //Create binding
+                var bp = new BindingProxy(); //The proxy to hold the datacontext
+                Binding _dcbinding = new Binding();
+                //_dcbinding.Source = this.DataContext; //Source dtatacontext
+                _dcbinding.NotifyOnSourceUpdated = true;
+                _dcbinding.NotifyOnTargetUpdated = true;
+                _dcbinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                BindingOperations.SetBinding(bp, BindingProxy.DataContextProperty, _dcbinding); //Binding operation.
+                //Add resources
+                this.Resources.Add("proxy", bp);
+            }
         }
 
         #region Overridden Methods
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -221,7 +268,16 @@ namespace Haley.WPF.GroupControls
         #endregion
 
         #region Private Methods
-        void _processAction(object sender, ExecutedRoutedEventArgs e)
+        void _processMenuAction(object sender, ExecutedRoutedEventArgs e)
+        {
+            _processAction(sender, e, true);
+        }
+        void _processOptionsAction(object sender, ExecutedRoutedEventArgs e)
+        {
+            _processAction(sender, e, false);
+        }
+
+        void _processAction(object sender, ExecutedRoutedEventArgs e,bool isMenu)
         {
             //First close any previous message
             _closeMessage();
@@ -230,11 +286,20 @@ namespace Haley.WPF.GroupControls
             var _inputitem = e.Parameter as MenuItem;
             if (_inputitem == null) return;
 
-            var _targetItem = MenuItems.FirstOrDefault(p => p.Id == _inputitem.Id && p.Label == _inputitem.Label);
+            MenuItem _targetItem = null;
 
-            if (_targetItem == null)
+            if(isMenu)
             {
-                _targetItem = OptionItems.FirstOrDefault(p => p.Id == _inputitem.Id && p.Label == _inputitem.Label);
+                _targetItem = MenuItems.FirstOrDefault(p => p.Id == _inputitem.Id);
+                if (_targetItem.Action != MenuAction.RaiseCommand)
+                {
+                    //Because usually, raising command will only be used for showing dialog or performing actions like signing out, exporting, printing etc. So, we need not highlight that
+                    ActiveMenu = _targetItem; //this is actualy set so that it can be used for highlighting.
+                }
+            }
+            else
+            {
+                _targetItem = OptionItems.FirstOrDefault(p => p.Id == _inputitem.Id );
             }
 
             //Even after this, we are not able to get the target item, return.
@@ -282,6 +347,7 @@ namespace Haley.WPF.GroupControls
         }
         void _executeCommand(MenuItem item)
         {
+            var dc = this.DataContext;
             //if command is null, try to check if we can process a new command with the help of command name.
             var _command = item.Command;
             if (_command == null && !string.IsNullOrWhiteSpace(item.CommandName))
@@ -294,7 +360,13 @@ namespace Haley.WPF.GroupControls
             {
                 _command.Execute(item.CommandParameter);
             }
-            return;
+            else
+            {
+                //Set the error as message
+                _message.Text = $@"Command is null. Cannot proceed.";
+                _messageHolder.Visibility = Visibility.Visible;
+                return;
+            }
         }
         void _setContainerView(MenuItem item)
         {
@@ -398,9 +470,10 @@ namespace Haley.WPF.GroupControls
             if (HeaderTemplate == null)
             {
                 //We also hide the header
-                this.SetCurrentValue(ShowHeaderRegionProperty, false);
+                this.SetCurrentValue(HideHeaderRegionProperty, false);
             }
         }
+        
         #endregion
     }
 }
