@@ -21,8 +21,15 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //ContainerRegistrations(); //For notification test
+            ContainerRegistrations(); //For notification test
             //ExpanderTest _wndw2sd = new ExpanderTest();
+
+            var mw = Application.Current.MainWindow;
+            if (mw == null)
+            {
+                //First invoke.
+                mw = new Window(); //Dummy initiation
+            }
 
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
@@ -33,8 +40,8 @@ namespace WPF.Test
             //WndwPagination _wndw3 = new WndwPagination();
             //_wndw3.ShowDialog();
 
-            ThemeTest wndw = new ThemeTest();
-            wndw.ShowDialog();
+            //ThemeTest wndw = new ThemeTest();
+            //wndw.ShowDialog();
 
             //ScrollViewerTest wndwscroll = new ScrollViewerTest();
             //wndwscroll.ShowDialog();
@@ -45,8 +52,8 @@ namespace WPF.Test
             //RibbonTest wnddgtest = new RibbonTest();
             //wnddgtest.ShowDialog();
 
-            //NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
-            //flexiNewMenuTest.ShowDialog();
+            NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
+            flexiNewMenuTest.ShowDialog();
 
             //notificationTest();
 
@@ -126,7 +133,7 @@ namespace WPF.Test
 
         private void ContainerRegistrations()
         {
-            var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>(mode: RegisterMode.Transient);
+            var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>("localdemokey", mode: RegisterMode.Transient);
         }
     }
 }

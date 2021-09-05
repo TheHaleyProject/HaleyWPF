@@ -21,9 +21,9 @@
                 <ctrl:VanakkamView/>
             </hw:FlexiMenu.WelcomeView>
 
-            <hw:FlexiMenu.Resources>
+            <!--<hw:FlexiMenu.Resources>
                 <hw:BindingProxy x:Key="proxy" DataContext="{Binding}"/>
-            </hw:FlexiMenu.Resources>
+            </hw:FlexiMenu.Resources>-->
 
             <!--Header Template-->
             <hw:FlexiMenu.HeaderTemplate>
@@ -55,8 +55,9 @@
                     </hw:MenuItem.View>
                 </hw:MenuItem>
                 <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource arrow}"  Label="Container View" ContainerKey="whataworld"/>
-                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource plane}"  Label="Container View 2" ContainerKey="localDemoKey"/>
-                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="This is from FlexiMenu 2" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy}}"/>
+                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource plane}"  Label="Container View 2" ContainerKey="localdemokey"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="This is from FlexiMenu 2" CommandName="Cmd_Notify"/>
+                <!--<hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="This is from FlexiMenu 2" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy}}"/>-->
             </hw:FlexiMenu.MenuItems>
             <!--Add Option Buttons like logout, login-->
             <hw:FlexiMenu.OptionItems>

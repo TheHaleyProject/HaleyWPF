@@ -12,7 +12,7 @@ using Haley.Events;
 
 namespace WPF.Test
 {
-    public class MainVM : ChangeNotifier, IHaleyVM
+    public class MainVM :BaseVM
     {
         private IDialogService _dialogService;
         private int _counter;
@@ -93,7 +93,6 @@ namespace WPF.Test
 
         private ObservableCollection<Person> _choosentiems;
 
-        public event EventHandler<FrameClosingEventArgs> OnViewClosed;
 
         public ObservableCollection<Person> choosenitems
         {

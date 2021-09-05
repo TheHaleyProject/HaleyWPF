@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Haley.Abstractions;
+using Haley.Enums;
+using Haley.Models;
+using Haley.MVVM;
+using Haley.Utils;
+using System;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Haley.Abstractions;
-using System.Collections.ObjectModel;
-using Haley.Utils;
-using Haley.Enums;
-using Haley.MVVM;
 
 namespace Haley.WPF.GroupControls
 {
-     /// <summary>
-     /// Fleximenu for both left/right and topbottom docking.s
-     /// </summary>
+    /// <summary>
+    /// Fleximenu for both left/right and topbottom docking.s
+    /// </summary>
     public class FlexiMenu : Control
     {
         #region Attributes
@@ -52,6 +46,8 @@ namespace Haley.WPF.GroupControls
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _processAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, _toggleMenuBar));
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
+            _addProxyResource();
+
         }
 
         static FlexiMenu()
@@ -186,9 +182,21 @@ namespace Haley.WPF.GroupControls
 
         // Using a DependencyProperty as the backing store for HeaderTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderTemplateProperty =
-            DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,propertyChangedCallback:HeaderTemplatePropertyChanged));
+            DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, propertyChangedCallback: HeaderTemplatePropertyChanged));
         #endregion
         #endregion
+
+        private void _addProxyResource()
+        {
+            //Create binding
+            var bp = new BindingProxy(); //The proxy to hold the datacontext
+            Binding _dcbinding = new Binding("ProxyDCBinding");
+            _dcbinding.Source = this.DataContext; //Source dtatacontext
+            BindingOperations.SetBinding(bp, DataContextProperty, _dcbinding); //Binding operation.
+
+            //Add resources
+            this.Resources.Add("proxy", bp);
+        }
 
         #region Overridden Methods
         public override void OnApplyTemplate()
@@ -203,7 +211,7 @@ namespace Haley.WPF.GroupControls
             _headerHolder = GetTemplateChild(UIEHeaderHolder) as ContentControl;
 
             //Set Welcome view if not null
-            if(WelcomeView != null)
+            if (WelcomeView != null)
             {
                 _mainContentHolder.Content = WelcomeView;
             }
@@ -220,20 +228,20 @@ namespace Haley.WPF.GroupControls
 
             //Send in the menu item as the parameter. Use that to fetch the target from the menuitem list or option item list and process the action.
             var _inputitem = e.Parameter as MenuItem;
-            if (_inputitem == null) return; 
+            if (_inputitem == null) return;
 
             var _targetItem = MenuItems.FirstOrDefault(p => p.Id == _inputitem.Id && p.Label == _inputitem.Label);
 
-            if (_targetItem==null)
+            if (_targetItem == null)
             {
                 _targetItem = OptionItems.FirstOrDefault(p => p.Id == _inputitem.Id && p.Label == _inputitem.Label);
             }
 
             //Even after this, we are not able to get the target item, return.
-            if (_targetItem == null) return; 
+            if (_targetItem == null) return;
 
             //Now, based on the target item, process the action.
-            switch(_targetItem.Action)
+            switch (_targetItem.Action)
             {
                 case MenuAction.RaiseCommand:
                     _executeCommand(_targetItem); //Raise the command and send parameter along with it.
@@ -249,16 +257,44 @@ namespace Haley.WPF.GroupControls
                     break;
             }
         }
+
+        ICommand _getCommand(string cmdName)
+        {
+            ICommand resultCmd = null;
+            object dataContext = this.DataContext;//FlexiMenu's datacontext.
+            if (dataContext != null)
+            {
+                PropertyInfo commandPropertyInfo = dataContext
+                    .GetType()
+                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                    .FirstOrDefault(
+                        p =>
+                        typeof(ICommand).IsAssignableFrom(p.PropertyType) &&
+                        string.Equals(p.Name, cmdName, StringComparison.Ordinal)
+                    );
+
+                if (commandPropertyInfo != null)
+                {
+                    resultCmd = (ICommand)commandPropertyInfo.GetValue(dataContext, null);
+                }
+            }
+            return resultCmd;
+        }
         void _executeCommand(MenuItem item)
         {
-            switch (item.Command)
+            //if command is null, try to check if we can process a new command with the help of command name.
+            var _command = item.Command;
+            if (_command == null && !string.IsNullOrWhiteSpace(item.CommandName))
             {
-                case null:
-                    return;
-                default:
-                    item.Command.Execute(item.CommandParameter);
-                    break;
+                //Try to get using the command name.
+                _command = _getCommand(item.CommandName);
             }
+
+            if (_command != null)
+            {
+                _command.Execute(item.CommandParameter);
+            }
+            return;
         }
         void _setContainerView(MenuItem item)
         {
@@ -322,7 +358,7 @@ namespace Haley.WPF.GroupControls
         {
             string _param = e.Parameter as string;
             if (_param == null) return;
-            switch(_param)
+            switch (_param)
             {
                 case "Width":
                     //Toggle the menu bar width
@@ -337,7 +373,7 @@ namespace Haley.WPF.GroupControls
         }
         void _closeMessage(object sender, ExecutedRoutedEventArgs e)
         {
-            _closeMessage();  
+            _closeMessage();
         }
         void _closeMessage()
         {

@@ -36,6 +36,16 @@ namespace Haley.WPF.GroupControls
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(MenuItem), new FrameworkPropertyMetadata(default(ICommand)));
 
+        public string CommandName
+        {
+            get { return (string)GetValue(CommandNameProperty); }
+            set { SetValue(CommandNameProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CommandName.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CommandNameProperty =
+            DependencyProperty.Register(nameof(CommandName), typeof(string), typeof(MenuItem), new PropertyMetadata(null));
+
         public object CommandParameter
         {
             get { return GetValue(CommandParameterProperty); }
