@@ -2,6 +2,7 @@
 using Haley.Enums;
 using Haley.Events;
 using Haley.Utils;
+using Haley.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -70,6 +71,15 @@ namespace Haley.WPF.BaseControls
         #endregion
 
         #region Properties
+        public ICommand PageChangeCommand
+        {
+            get { return (ICommand)GetValue(PageChangeCommandProperty); }
+            set { SetValue(PageChangeCommandProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PageChangeCommand.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PageChangeCommandProperty =
+            DependencyProperty.Register(nameof(PageChangeCommand), typeof(ICommand), typeof(Pagination), new PropertyMetadata(default(ICommand)));
 
         public PaginationMode Mode
         {
@@ -129,7 +139,7 @@ namespace Haley.WPF.BaseControls
 
         // Using a DependencyProperty as the backing store for ItemsCountPerPage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsCountPerPageProperty =
-            DependencyProperty.Register(nameof(ItemsCountPerPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(10, ItemsCountPerPagePropertyChanged));
+            DependencyProperty.Register(nameof(ItemsCountPerPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(10, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, ItemsCountPerPagePropertyChanged, coerceValueCallback: CoerceItemsCount));
 
         public bool HideCounter
         {
@@ -163,6 +173,14 @@ namespace Haley.WPF.BaseControls
         #endregion
 
         #region Command Methods
+        static object CoerceItemsCount(DependencyObject d, object baseValue)
+        {
+            //Items count per page should be atleast 1.
+            var _pagObj = d as Pagination;
+            int _actual = (int)baseValue;
+            if (_actual < 1) return 1;
+            return baseValue;
+        }
         private static void ItemsCountPerPagePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Pagination pg = d as Pagination;
@@ -180,7 +198,7 @@ namespace Haley.WPF.BaseControls
                 pg._validateCurrentPage();
                 pg._prepareDirectButtons();
                 //Then raise the event 
-                pg.RaiseEvent(new UIRoutedEventArgs<int>(PageChangedEvent, pg) { value = pg.CurrentPage });
+                pg._raisePageChangedEvent();
             }
         }
         private static void ItemsCountTotalPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -254,6 +272,16 @@ namespace Haley.WPF.BaseControls
         #endregion
 
         #region Helper Methods
+        void _raisePageChangedEvent()
+        {
+            RaiseEvent(new UIRoutedEventArgs<int>(PageChangedEvent, this) { value = CurrentPage });
+            //Also Invoke the command.
+            if (PageChangeCommand != null)
+            {
+                PaginationData _data = new PaginationData() { CurrentPage = CurrentPage, ItemsPerPage = ItemsCountPerPage, TotalItems = ItemsCountTotal, TotalPages = TotalPages };
+                PageChangeCommand.Execute(_data);
+            }
+        }
         void _validateCurrentPage()
         {
             //Current page should be above zero. 
@@ -279,13 +307,22 @@ namespace Haley.WPF.BaseControls
             //Get the remainder after dividing
             Math.DivRem(ItemsCountTotal, ItemsCountPerPage, out remainder_items);
             var _tot_pages = ItemsCountTotal / ItemsCountPerPage;
+            if (_tot_pages < 1)
+            {
+                _tot_pages = 1; //We need atleast one page.
+                //In this case, also check the remainder items (because it is possible that the ItemsCountPerpage is greater than ItemsActualCount , then dision will give all the itemscount as remainder.
+                //In this case, remainder should be zero
+                remainder_items = 0;
+            }
             this.SetCurrentValue(TotalPagesProperty, _tot_pages);
             if (remainder_items != 0)
             {
                 this.SetCurrentValue(TotalPagesProperty, TotalPages + 1);
                 //Increment by 1. Because, whatever the remainder is can be accommdaed in a single page.
             }
-            this.SetCurrentValue(CurrentPageProperty, 1); //When current page is set, direct buttons are prepared.
+            this.SetCurrentValue(CurrentPageProperty, 0); //When current page is set, direct buttons are prepared.
+            //Reason for setting zero instead of 1 is that, we need to initiate a property change. If we already have the current page at 1, then proeprty change is not initiated. in this way, we set it to 0 and then during validation we again set it to 1.
+            //this.SetCurrentValue(CurrentPageProperty, 1); 
 
             _setMainPanelVisibility(); //check and set ui visibilities.
             _prepareDirectButtons();
@@ -295,7 +332,7 @@ namespace Haley.WPF.BaseControls
             //CHECK IF MAIN PANEL NEEDS TO BE SHOWN OR NOT..
             if (_mainPanel == null) return;
 
-            if (TotalPages == 1)
+            if (TotalPages < 2)
             {
                 _mainPanel.Visibility = Visibility.Collapsed; //If pages is just one, then better hide the main panel. If visibility is set directly, then it will affect whole pagination control
             }

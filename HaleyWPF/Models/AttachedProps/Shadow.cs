@@ -56,6 +56,20 @@ namespace Haley.Models
         public static readonly DependencyProperty OnlyOnMouseOverProperty =
             DependencyProperty.RegisterAttached("OnlyOnMouseOver", typeof(bool), typeof(Shadow), new PropertyMetadata(true));
 
+        public static double GetBlurRadius(DependencyObject obj)
+        {
+            return (double)obj.GetValue(BlurRadiusProperty);
+        }
+
+        public static void SetBlurRadius(DependencyObject obj, double value)
+        {
+            obj.SetValue(BlurRadiusProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for BlurRadius.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty BlurRadiusProperty =
+            DependencyProperty.RegisterAttached("BlurRadius", typeof(double), typeof(Shadow), new PropertyMetadata(4.0));
+
         #endregion
     }
 }

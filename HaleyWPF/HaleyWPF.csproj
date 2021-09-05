@@ -5,13 +5,13 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.0.4</Version>
+		<Version>5.0.5</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
 		<Description>A simple WPF library with useful controls for all project types.</Description>
 		<PackageTags>WPF Haley CustomControls UILibrary</PackageTags>
-		<RepositoryUrl>https://github.com/rmsmech/HaleyWPF</RepositoryUrl>
+		<RepositoryUrl>https://github.com/TheHaleyProject/HaleyWPF</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
@@ -163,7 +163,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.IOC" Version="3.0.1" />
+    <PackageReference Include="Haley.IOC" Version="3.0.2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
   </ItemGroup>
 
@@ -656,7 +656,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Extensions" Version="2.0.1" />
+       <PackageReference Include="Haley.Extensions" Version="2.0.2" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -671,7 +671,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Helpers" Version="2.0.2" />
+       <PackageReference Include="Haley.Helpers" Version="2.0.3" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -686,7 +686,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.0.2" />
+       <PackageReference Include="Haley.MVVM" Version="6.0.3" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

@@ -18,6 +18,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="BorderBrush" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="hm:InputAP.Constraint" Value="Integer"/>
+        <Setter Property="hm:InputAP.AllowNegative" Value="false"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
@@ -223,6 +224,7 @@
         <Setter Property="PrimaryColor" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Template" Value="{StaticResource internal_pagination_extended}"/>
+        <Setter Property="Visibility" Value="Visible"/>
         <Style.Triggers>
             <Trigger Property="Mode" Value="Simple">
                 <Setter Property="Template" Value="{StaticResource internal_pagination_simple}"/>
