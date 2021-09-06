@@ -8,4 +8,10 @@ namespace Haley.Enums
         Extended
     }
 
+    public enum CardMode
+    {
+        Simple,
+        Flyer,
+        Professional
+    }
 }

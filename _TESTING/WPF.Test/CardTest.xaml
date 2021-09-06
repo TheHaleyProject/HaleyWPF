@@ -8,7 +8,23 @@
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
         Title="CardTest" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <WrapPanel>
+        <!--<hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="200" hw:Icon.Default="{StaticResource home}" HeaderHeight="20" hw:Icon.DefaultColor="White" HeaderAlignment="Left"/>
+        <hw:PlainCard Margin="30" Height="150" Width="200" hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="White" HeaderHeight="45"/>
+        <hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="200" hw:Icon.Default="{StaticResource rupee}" HeaderHeight="50" hw:Icon.DefaultColor="White" HeaderAlignment="Right"/>-->
+        <hw:PlainCard Margin="30" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional">
+            <Viewbox Margin="25">
+                <TextBlock Text="4,85,00" Foreground="Gray"/>
+            </Viewbox>
+        </hw:PlainCard>
+        <hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Left" Mode="Flyer" SubHeader="whaaaa" HeaderBackground="Green" Background="LightYellow" HeaderHeight="190">
+            <Viewbox>
+                <TextBlock Text="4,85,00" Foreground="Gray"/>
+            </Viewbox>
+        </hw:PlainCard>
+        <hw:PlainCard Margin="30" CornerRadius="10" Height="160" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" HeaderHeight="70"/>
+        <hw:PlainCard Margin="30" Height="150" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Flyer" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" />
+        <hw:PlainCard Margin="30" Height="150" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" Background="LightYellow"/>
+        <hw:PlainCard Margin="30" CornerRadius="10" Height="190" Width="320" hw:Icon.Default="{StaticResource car_2_medium}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />
+    </WrapPanel>
 </Window>

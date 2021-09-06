@@ -22,6 +22,7 @@ namespace WPF.Test
         public CardTest()
         {
             InitializeComponent();
+            this.DataContext = new MainVM();
         }
     }
 }

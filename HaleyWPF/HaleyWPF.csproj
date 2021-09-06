@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.0.7.1</Version>
+		<Version>5.0.8</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Fleximenu enhancement</PackageReleaseNotes>
+		<PackageReleaseNotes>Plain cards , Icons &amp; FlexiMenu updated</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
@@ -44,6 +44,10 @@
     <None Remove="Controls\FlexiTab\**" />
     <Page Remove="Controls\FlexiLogIn\**" />
     <Page Remove="Controls\FlexiTab\**" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Compile Remove="Controls\PlainDataGrid.cs" />
   </ItemGroup>
 	
   <ItemGroup>
