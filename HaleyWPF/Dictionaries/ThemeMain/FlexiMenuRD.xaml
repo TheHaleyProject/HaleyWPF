@@ -1,9 +1,8 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:bc="clr-namespace:Haley.WPF.BaseControls"
+    xmlns:bc="clr-namespace:Haley.WPF.Controls"
     xmlns:enums="clr-namespace:Haley.Enums"
-    xmlns:gc="clr-namespace:Haley.WPF.GroupControls"
     xmlns:mdl="clr-namespace:Haley.Models"
     xmlns:ul="clr-namespace:Haley.Utils">
 
@@ -12,43 +11,44 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
-        <Setter Property="Height" Value="{Binding Path=MenuItemHeight, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}" />
+        <Setter Property="Height" Value="{Binding Path=MenuItemHeight, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="ImageLocation" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="5" />
-        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}" />
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="mdl:Icon.HoverColor" Value="{Binding Path=(mdl:Icon.HoverColor), RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}" />
-        <Setter Property="mdl:Hover.Background" Value="{Binding Path=(mdl:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}" />
-        <Setter Property="mdl:Icon.DefaultColor" Value="{Binding Path=(mdl:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}" />
+        <Setter Property="mdl:Icon.HoverColor" Value="{Binding Path=(mdl:Icon.HoverColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="mdl:Hover.Background" Value="{Binding Path=(mdl:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="mdl:Icon.DefaultColor" Value="{Binding Path=(mdl:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        
         <Setter Property="HideContent" Value="False" />
         <Style.Triggers>
-            <DataTrigger Value="False" Binding="{Binding IsMenuBarOpen, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}">
+            <DataTrigger Value="False" Binding="{Binding IsMenuBarOpen, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}">
                 <Setter Property="HideContent" Value="True"/>
                 <Setter Property="Height" Value="30" />
                 <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </DataTrigger>
-            <DataTrigger Value="{x:Static enums:DockLocation.Right}" Binding="{Binding Location, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}">
+            <DataTrigger Value="{x:Static enums:Alignment.Right}" Binding="{Binding MenuItemsAlignment, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}">
                 <Setter Property="ImageLocation" Value="Right" />
-                <Setter Property="HorizontalContentAlignment" Value="Right"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
             </DataTrigger>
            
             <DataTrigger Value="True">
                 <DataTrigger.Binding>
                     <MultiBinding Converter="{StaticResource MultiBindingEqualityCheck}">
                         <!--As of now, multibinding equality check converter only checks the string values.-->
-                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type gc:FlexiMenu}}" Path="ActiveMenu"/>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type bc:FlexiMenu}}" Path="ActiveMenu"/>
                         <Binding RelativeSource="{RelativeSource Self}" Path="Tag"/>
                     </MultiBinding>
                 </DataTrigger.Binding>
-                <Setter Property="Background" Value="{Binding SelectedMenuColor, RelativeSource={RelativeSource AncestorType={x:Type gc:FlexiMenu}}}"/>
+                <Setter Property="Background" Value="{Binding SelectedMenuColor, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <Style TargetType="{x:Type gc:FlexiMenu}">
+    <Style TargetType="{x:Type bc:FlexiMenu}">
         <Setter Property="mdl:Hover.Background" Value="{DynamicResource def_fleximenu_hoverbg}" />
         <Setter Property="mdl:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}" />
         <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_fleximenu_icon_hover}" />
@@ -56,10 +56,11 @@
         <Setter Property="Background" Value="{DynamicResource def_fleximenu_bg}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="SelectedMenuColor" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="ToggleIcon" Value="{StaticResource hamburger_square}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type gc:FlexiMenu}">
+                <ControlTemplate TargetType="{x:Type bc:FlexiMenu}">
                     <DockPanel LastChildFill="True">
                         <Border
                             x:Name="PART_brderMain"
@@ -71,7 +72,8 @@
                             
                             <Border.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Toggle Dock" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                    <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                    <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
                             
@@ -97,7 +99,7 @@
                                         VerticalAlignment="Top"
                                         ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                         ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        Icon="{StaticResource hamburger_square}" Grid.Row="0" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" Margin="5"/>
+                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Grid.Row="0" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" Margin="5"/>
 
                                 <!--#endregion-->
 
@@ -201,7 +203,7 @@
                             <ContentControl x:Name="PART_MainContentArea"/>
                             <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10" Visibility="Collapsed">
                                 <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="4"/>
+                                    <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="2"/>
                                 </Border.Effect>
                                 <Grid>
                                     <Grid.ColumnDefinitions>

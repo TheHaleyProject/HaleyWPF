@@ -59,6 +59,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CardTest.xaml.cs">
+      <DependentUpon>CardTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LocalView2.xaml.cs">
       <DependentUpon>LocalView2.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,10 @@
     <Compile Include="WndwPagination.xaml.cs">
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
+    <Page Include="CardTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\LocalView2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

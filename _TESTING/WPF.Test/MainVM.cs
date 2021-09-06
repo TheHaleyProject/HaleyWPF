@@ -1,7 +1,7 @@
 ﻿using Haley.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Haley.WPF.BaseControls;
+using Haley.WPF.Controls;
 using System;
 using Haley.Enums;
 using Haley.Utils;

@@ -6,7 +6,7 @@ using Haley.MVVM;
 using Haley.Utils;
 using System.Windows;
 using WPF.Test.Controls;
-using Haley.WPF.BaseControls;
+using Haley.WPF.Controls;
 using System.Collections.ObjectModel;
 using System.Windows.Media;
 using System.Windows.Threading;
