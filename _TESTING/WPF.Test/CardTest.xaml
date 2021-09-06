@@ -12,7 +12,19 @@
         <!--<hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="200" hw:Icon.Default="{StaticResource home}" HeaderHeight="20" hw:Icon.DefaultColor="White" HeaderAlignment="Left"/>
         <hw:PlainCard Margin="30" Height="150" Width="200" hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="White" HeaderHeight="45"/>
         <hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="200" hw:Icon.Default="{StaticResource rupee}" HeaderHeight="50" hw:Icon.DefaultColor="White" HeaderAlignment="Right"/>-->
-        <hw:PlainCard Margin="30" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional">
+        <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional" ShowSubHeader="False">
+            <Viewbox Margin="25">
+                <TextBlock Text="4,85,00" Foreground="Gray"/>
+            </Viewbox>
+        </hw:PlainCard>
+
+        <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" Header="Senguttuvan" SubHeader="AI Manager" HeaderAlignment="Center" Mode="Professional" ShowIcon="False">
+            <Viewbox Margin="25">
+                <TextBlock Text="4,85,00" Foreground="Gray"/>
+            </Viewbox>
+        </hw:PlainCard>
+
+        <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional">
             <Viewbox Margin="25">
                 <TextBlock Text="4,85,00" Foreground="Gray"/>
             </Viewbox>

@@ -78,12 +78,13 @@
                 </Grid>
                 
                 <!--Header-->
-                <Grid Grid.Row="1" Height="55" x:Name="actual_grid_header">
+                <Grid Grid.Row="1" Height="60" x:Name="actual_grid_header">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="3"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="16" Margin="15,0"/>
+                    <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="18" Margin="15,0"/>
                     <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="12" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
                 </Grid>
             </Grid>
@@ -106,26 +107,27 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!--Flyer & Content-->
+                <!--Content-->
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.35*" MaxWidth="100"/>
+                        <ColumnDefinition x:Name="coldefImage" Width="0.35*" MaxWidth="150"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Viewbox>
+                    <Viewbox Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
                         <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
                     </Viewbox>
                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1"/>
                 </Grid>
 
                 <!--Header-->
-                <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}" MinHeight="55" Grid.Row="1" VerticalAlignment="Bottom">
+                <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}" MinHeight="60" Grid.Row="1" VerticalAlignment="Bottom">
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="3"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="16" Margin="15,0"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="18" Margin="15,0"/>
                         <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="12" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
                     </Grid>
                 </Border>
@@ -138,6 +140,9 @@
             </Trigger>
             <Trigger Property="ShowHeader" Value="False">
                 <Setter TargetName="PART_HeaderHolder" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="ShowIcon" Value="False">
+                <Setter TargetName="coldefImage" Property="Width" Value="0.0"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
