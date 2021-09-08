@@ -24,5 +24,10 @@ namespace WPF.Test
             InitializeComponent();
             this.DataContext = new MainVM();
         }
+
+        private void PlainCard_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

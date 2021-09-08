@@ -19,30 +19,32 @@
     </Style>
      
     <ControlTemplate x:Key="internal_plaincard_simple" TargetType="{x:Type bc:PlainCard}">
-        <Border Style="{StaticResource BorderWithShadow}"  >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="5"/>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Column="1" Width="{Binding ElementName=PART_HeaderHolder,Path=ActualHeight}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}"> 
-                            <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="5" ml:Hover.IsEnabled="False"/> 
+        <Grid>
+            <Border Style="{StaticResource BorderWithShadow}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1" Width="{Binding ElementName=PART_HeaderHolder,Path=ActualHeight}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                                <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="5" ml:Hover.IsEnabled="False"/>
+                            </Grid>
+                            <Grid Margin="2,0" HorizontalAlignment="{TemplateBinding HeaderAlignment}" Style="{StaticResource internal_plaincard_grid}">
+                                    <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}"/>
+                            </Grid>
                         </Grid>
-                        <Grid Margin="2,0" HorizontalAlignment="{TemplateBinding HeaderAlignment}" Style="{StaticResource internal_plaincard_grid}">
-                            <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="15" />
-                        </Grid>
-                    </Grid>
-                </Border>
-                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Row="1"/>
-            </Grid>
-        </Border>
+                    </Border>
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+        </Grid>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" Value="0.5"/>
@@ -54,40 +56,47 @@
     </ControlTemplate>
      
     <ControlTemplate x:Key="internal_plaincard_flyer" TargetType="{x:Type bc:PlainCard}">
-        <Border Style="{StaticResource BorderWithShadow}"  >
+        <Border Style="{StaticResource BorderWithShadow}">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="10"/>
-                </Grid.RowDefinitions>
-                
-                <!--Flyer & Content-->
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}" Width="55" MinHeight="55" Grid.Column="1" VerticalAlignment="Top">
-                        <Viewbox VerticalAlignment="Bottom" Height="{Binding ElementName=PART_HeaderHolder,Path=ActualWidth}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
-                            <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
-                        </Viewbox>
-                    </Border>
-                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="2"/>
-                </Grid>
-                
-                <!--Header-->
-                <Grid Grid.Row="1" Height="60" x:Name="actual_grid_header">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="3"/>
+                        <RowDefinition Height="10"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="18" Margin="15,0"/>
-                    <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="12" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
+
+                    <!--Content-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--Below grid is just a place holder for the flyer.-->
+                        <Grid Width="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Grid.Column="1"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="2" />
+                    </Grid>
+
+                    <!--Header-->
+                    <Grid Grid.Row="1" Height="{TemplateBinding HeaderHeight}" x:Name="actual_grid_header" MinHeight="40" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="5"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}" Margin="15,0"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1" TextWrapping="Wrap"/>
+                    </Grid>
                 </Grid>
+
+                <!--Flyer-->
+                <Border x:Name="PART_FlyerHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding FlyerHeight}" Width="{TemplateBinding FlyerWidth}" MinHeight="50" MinWidth="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0">
+                    <Viewbox VerticalAlignment="Bottom" Height="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                        <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
+                    </Viewbox>
+                </Border>
             </Grid>
+            
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsEnabled" Value="False">
@@ -120,15 +129,15 @@
                 </Grid>
 
                 <!--Header-->
-                <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}" MinHeight="60" Grid.Row="1" VerticalAlignment="Bottom">
+                <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}" MinHeight="50" Grid.Row="1" VerticalAlignment="Bottom">
                     <Grid >
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="3"/>
+                            <RowDefinition Height="5"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="18" Margin="15,0"/>
-                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="12" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}" Margin="15,0"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
                     </Grid>
                 </Border>
                 
@@ -142,7 +151,7 @@
                 <Setter TargetName="PART_HeaderHolder" Property="Visibility" Value="Collapsed"/>
             </Trigger>
             <Trigger Property="ShowIcon" Value="False">
-                <Setter TargetName="coldefImage" Property="Width" Value="0.0"/>
+                <Setter TargetName="coldefImage" Property="Width" Value="Auto"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>

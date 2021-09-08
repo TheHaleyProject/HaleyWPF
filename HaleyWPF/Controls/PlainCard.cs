@@ -11,14 +11,18 @@ using Haley.Enums;
 namespace Haley.WPF.Controls
 {
     [TemplatePart(Name = UIEHeaderControl, Type = typeof(Border))]
+    [TemplatePart(Name = UIEFlyerControl, Type = typeof(Border))]
     public class PlainCard : ContentControl
     {
         public const string UIEHeaderControl = "PART_HeaderHolder";
+        public const string UIEFlyerControl = "PART_FlyerHolder";
 
         private Border _headerborder;
+        private Border _flyerBorder;
         static PlainCard()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PlainCard), new FrameworkPropertyMetadata(typeof(PlainCard)));
+            
         }
 
 
@@ -28,26 +32,37 @@ namespace Haley.WPF.Controls
         {
             base.OnApplyTemplate();
             _headerborder = GetTemplateChild(UIEHeaderControl) as Border;
+            _flyerBorder = GetTemplateChild(UIEFlyerControl) as Border;
             _setHeaderCornerRadius();
         }
 
         private void _setHeaderCornerRadius()
         {
-            if (CornerRadius != null && _headerborder != null)
+            try
             {
-                switch (Mode)
+                if (CornerRadius != null)
                 {
-                    case CardMode.Simple:
-                        _headerborder.CornerRadius = new CornerRadius(CornerRadius.TopLeft, CornerRadius.TopRight, 0.0, 0.0);
-                        break;
-                    case CardMode.Flyer:
-                    case CardMode.Professional:
-                        _headerborder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
-                        break;
-                    default:
-                        break;
+                    switch (Mode)
+                    {
+                        case CardMode.Simple:
+                            //Change the header border
+                            if (_headerborder == null) return;
+                            _headerborder.CornerRadius = new CornerRadius(CornerRadius.TopLeft, CornerRadius.TopRight, 0.0, 0.0);
+                            break;
+                        case CardMode.Flyer:
+                            if (_flyerBorder == null) return;
+                            //Change the flyer border.
+                            _flyerBorder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
+                            break;
+                        case CardMode.Professional:
+                            if (_headerborder == null) return;
+                            _headerborder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
+                            break;
+                    }
                 }
-                
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -69,7 +84,7 @@ namespace Haley.WPF.Controls
 
         // Using a DependencyProperty as the backing store for SubHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SubHeaderProperty =
-            DependencyProperty.Register(nameof(SubHeader), typeof(string), typeof(PlainCard), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(SubHeader), typeof(string), typeof(PlainCard), new PropertyMetadata("Sub Header"));
 
         public HorizontalAlignment HeaderAlignment
         {
@@ -91,6 +106,27 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty ShowIconProperty =
             DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(PlainCard), new PropertyMetadata(true));
 
+
+
+        public double FlyerHeight
+        {
+            get { return (double)GetValue(FlyerHeightProperty); }
+            set { SetValue(FlyerHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FlyerHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FlyerHeightProperty =
+            DependencyProperty.Register(nameof(FlyerHeight), typeof(double), typeof(PlainCard), new PropertyMetadata(60.0));
+
+        public double FlyerWidth
+        {
+            get { return (double)GetValue(FlyerWidthProperty); }
+            set { SetValue(FlyerWidthProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for FlyerWidth.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FlyerWidthProperty =
+            DependencyProperty.Register(nameof(FlyerWidth), typeof(double), typeof(PlainCard), new PropertyMetadata(60.0));
 
         public CornerRadius CornerRadius
         {
@@ -130,6 +166,30 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty ShowSubHeaderProperty =
             DependencyProperty.Register(nameof(ShowSubHeader), typeof(bool), typeof(PlainCard), new PropertyMetadata(true));
 
+
+
+        public double HeaderFontSize
+        {
+            get { return (double)GetValue(HeaderFontSizeProperty); }
+            set { SetValue(HeaderFontSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HeaderFontSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HeaderFontSizeProperty =
+            DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(PlainCard), new PropertyMetadata(20.0));
+
+        public double SubHeaderFontSize
+        {
+            get { return (double)GetValue(SubHeaderFontSizeProperty); }
+            set { SetValue(SubHeaderFontSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SubHeaderFontSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SubHeaderFontSizeProperty =
+            DependencyProperty.Register(nameof(SubHeaderFontSize), typeof(double), typeof(PlainCard), new PropertyMetadata(14.0));
+
+
+
         public double HeaderHeight
         {
             get { return (double)GetValue(HeaderHeightProperty); }
@@ -140,11 +200,13 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty HeaderHeightProperty =
             DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(PlainCard), new FrameworkPropertyMetadata(30.0,null,coerceValueCallback:coerceHeight));
 
+
+
         static object coerceHeight(DependencyObject d, object baseValue)
         {
             double _actual = (double)baseValue;
             var _pcard = d as PlainCard;
-            if (_actual < 30.0) return 30.0; //For flyer, this should be minimum 55
+            if (_actual < 30.0) return 30.0; 
             if ((2 * _actual) > _pcard.Height) return (_pcard.Height/2);
             return baseValue;
         }
