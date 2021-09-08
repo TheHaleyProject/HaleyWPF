@@ -29,5 +29,10 @@ namespace WPF.Test
         {
 
         }
+
+        private void Badge_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }

@@ -14,4 +14,10 @@ namespace Haley.Enums
         Flyer,
         Professional
     }
+
+    public enum BadgeShape
+    {
+        Ellipse,
+        Rectangle,
+    }
 }
