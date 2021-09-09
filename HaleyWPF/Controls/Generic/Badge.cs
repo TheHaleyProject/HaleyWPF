@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Haley.Enums;
 using Haley.Abstractions;
+using Haley.Models;
 
 namespace Haley.WPF.Controls
 {
@@ -190,26 +191,54 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
 
-        public double X
+        //public double X
+        //{
+        //    get { return (double)GetValue(XProperty); }
+        //    set { SetValue(XProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for LengthX.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty XProperty =
+        //    DependencyProperty.Register(nameof(X), typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
+
+        //public double Y
+        //{
+        //    get { return (double)GetValue(YProperty); }
+        //    set { SetValue(YProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for LengthY.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty YProperty =
+        //    DependencyProperty.Register(nameof(Y), typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
+
+        public Size Size
         {
-            get { return (double)GetValue(XProperty); }
-            set { SetValue(XProperty, value); }
+            get { return (Size)GetValue(SizeProperty); }
+            set { SetValue(SizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LengthX.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty XProperty =
-            DependencyProperty.Register(nameof(X), typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
+        // Using a DependencyProperty as the backing store for Size.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SizeProperty =
+            DependencyProperty.Register("Size", typeof(Size), typeof(Badge), new PropertyMetadata(new Size(), propertyChangedCallback: badgeValueChanged));
 
-        public double Y
+        public double MarginX
         {
-            get { return (double)GetValue(YProperty); }
-            set { SetValue(YProperty, value); }
+            get { return (double)GetValue(MarginXProperty); }
+            set { SetValue(MarginXProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LengthY.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty YProperty =
-            DependencyProperty.Register(nameof(Y), typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
+        // Using a DependencyProperty as the backing store for MarginX.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MarginXProperty =
+            DependencyProperty.Register("MarginX", typeof(double), typeof(Badge), new PropertyMetadata(0.0));
+        public double MarginY
+        {
+            get { return (double)GetValue(MarginYProperty); }
+            set { SetValue(MarginYProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for MarginY.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MarginYProperty =
+            DependencyProperty.Register("MarginY", typeof(double), typeof(Badge), new PropertyMetadata(0.0));
         public override string ToString()
         {
             return this.Id;

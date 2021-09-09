@@ -151,15 +151,15 @@ namespace Haley.Models
         {
             //Get X value
             double _x = 30.0; 
-            if (_badge.X > 1)
+            if (_badge.Size.Width > 1)
             {
-                _x = _badge.X;
+                _x = _badge.Size.Width;
             }
 
             double _y = 0.0;
-            if (_badge.Y > 1)
+            if (_badge.Size.Height > 1)
             {
-                _y = _badge.Y;
+                _y = _badge.Size.Height;
             }
             else
             {
@@ -220,6 +220,9 @@ namespace Haley.Models
                     _newOrigin = Origin; //The actual point is considered the center.
                     break;
             }
+
+            //Add margin to the neworigin
+                _newOrigin = new Point(_newOrigin.X + _badge.MarginX, _newOrigin.Y + _badge.MarginY);
             return _newOrigin;
         }
 
@@ -306,10 +309,6 @@ namespace Haley.Models
                     _drawRectangle(drawingContext);
                     break;
             }
-
-           
-
-            
         }
     }
 }

@@ -73,19 +73,20 @@ namespace Haley.Models
             {
                 //Adorner layer is created only after the element is loaded. So we wait until it is loaded.
                 element.Loaded += Element_Loaded;
-                element.Unloaded += Element_Unloaded;
+                //Don't subscribe to unload that breaks things.
+                //element.Unloaded += Element_Unloaded;
             }
         }
 
-        private static void Element_Unloaded(object sender, RoutedEventArgs e)
-        {
-            if (sender is FrameworkElement element)
-            {
-                element.Loaded -= Element_Loaded;
-                element.Unloaded -= Element_Unloaded;
-                var _badge = element.GetValue(BadgeProperty) as Badge;
-                _badge.ValueChanged -= _badge_ValueChanged;
-            }
-        }
+        //private static void Element_Unloaded(object sender, RoutedEventArgs e)
+        //{
+        //    if (sender is FrameworkElement element)
+        //    {
+        //        element.Loaded -= Element_Loaded;
+        //        element.Unloaded -= Element_Unloaded;
+        //        var _badge = element.GetValue(BadgeProperty) as Badge;
+        //        _badge.ValueChanged -= _badge_ValueChanged;
+        //    }
+        //}
     }
 }

@@ -22,17 +22,17 @@
     <WrapPanel Margin="30">
         <Button Content="{Binding counter}" >
             <hw:BadgeSetter.Badge>
-                <hw:Badge Kind="Success" Alignment="TopRight" Shape="Rectangle" Label="{Binding Path=DataContext.counter,ElementName=wndwMain}"   CornerRadius="15"/>
+                <hw:Badge Kind="Success" Alignment="TopRight" Shape="Rectangle" Label="{Binding Path=DataContext.counter,ElementName=wndwMain}"   CornerRadius="15" MarginX="-30" MarginY="20"/>
             </hw:BadgeSetter.Badge>
         </Button>
         <Button>
             <hw:BadgeSetter.Badge>
-                <hw:Badge Kind="Warning" Label="99+" IsVisible="{Binding IsVisible}" />
+                <hw:Badge Kind="Warning" Label="99+" IsVisible="{Binding IsVisible}" Size="30,18"/>
             </hw:BadgeSetter.Badge>
         </Button>
         <Button>
             <hw:BadgeSetter.Badge>
-                <hw:Badge Kind="Warning" Shape="Rectangle" Label="33asdfa" IsVisible="{Binding IsVisible}">
+                <hw:Badge Kind="Warning" Shape="Rectangle" Label="33asdfa" IsVisible="{Binding IsVisible}" >
                     <hw:Badge.CustomShape>
                         <Grid Background="Purple" Height="20" Width="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="-10">
                             <TextBlock Text="{Binding counter}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
