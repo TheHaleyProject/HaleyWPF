@@ -55,8 +55,11 @@ namespace WPF.Test
             //NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
             //flexiNewMenuTest.ShowDialog();
 
-            CardTest cardtestnew = new CardTest();
-            cardtestnew.ShowDialog();
+            //CardTest cardtestnew = new CardTest();
+            //cardtestnew.ShowDialog();
+
+            BadgeTesting badgetst = new BadgeTesting();
+            badgetst.ShowDialog();
 
             //notificationTest();
 

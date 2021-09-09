@@ -20,4 +20,34 @@ namespace Haley.Enums
         Ellipse,
         Rectangle,
     }
+
+    public enum BadgeType
+    {
+        Success,
+        Info,
+        Warning,
+        Error
+    }
+
+    public enum BadgeAlignment
+    {
+        TopRight,
+        TopLeft,
+        BottomLeft,
+        BottomRight,
+        TopCenter,
+        BottomCenter,
+        LeftCenter,
+        RightCenter,
+        Center
+    }
+
+    public enum BadgeAnchor
+    {
+        Center,
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight
+    }
 }

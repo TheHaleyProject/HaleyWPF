@@ -26,21 +26,17 @@
 
         <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional" ShowIcon="False" HeaderFontSize="25">
             <hw:BadgeSetter.Badge>
-                <hw:Badge CommandName="hello" Foreground="White" Background="Blue" FontSize="16" >
-                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="30" Background="Green" CornerRadius="10" Margin="-10">
-                        <TextBlock Text="54" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </hw:Badge>
+                <hw:Badge CommandName="hello"/>
             </hw:BadgeSetter.Badge>
             <Viewbox Margin="25">
                 <TextBlock Text="Badge" Foreground="Gray"/>
             </Viewbox>
         </hw:PlainCard>
         
-        <hw:PlainCard Margin="30" CornerRadius="10" Height="180" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Right" Mode="Flyer" SubHeader="whaaaa" HeaderBackground="Green" Background="LightYellow" HeaderHeight="190" FlyerWidth="70" FlyerHeight="90" MouseDoubleClick="PlainCard_MouseDoubleClick">
+        <hw:PlainCard Margin="30" CornerRadius="10" Height="180" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Right" Mode="Flyer" SubHeader="whaaaa" HeaderBackground="Green" Background="#B2CABF26" HeaderHeight="190" FlyerWidth="70" FlyerHeight="90" >
             <Grid>
                 <Viewbox >
-                    <TextBlock Text="4,85,00" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="4,85,00" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Viewbox>
             </Grid>
         </hw:PlainCard>

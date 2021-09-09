@@ -34,6 +34,13 @@ namespace WPF.Test
             currentpage = 0;
         }
 
+        private bool _isVisible;
+        public bool IsVisible
+        {
+            get { return _isVisible; }
+            set { SetProp(ref _isVisible, value); }
+        }
+
         private int _currentpage;
         public int currentpage
         {
@@ -42,6 +49,13 @@ namespace WPF.Test
         }
 
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
+
+        public ICommand Cmd_Toggle => new DelegateCommand(_toggle);
+        void _toggle()
+        {
+            IsVisible = !IsVisible;
+        }
+
         void _localNotify(string obj)
         {
            if (_dialogService == null)
@@ -125,6 +139,7 @@ namespace WPF.Test
             selecteditems.Add(hello[0]);
             selecteditems.Add(hello[3]);
             proxymessageholder = "New test from proxy binding. Success";
+            IsVisible = false;
         }
     }
 

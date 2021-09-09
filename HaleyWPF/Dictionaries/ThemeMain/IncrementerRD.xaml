@@ -54,6 +54,9 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
+                        <!--<Trigger Property="MouseLeave" Value="True">
+                            <Setter Property="FocusManager.FocusedElement" Value="{Binding PART_ContentHost}"/>
+                        </Trigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
