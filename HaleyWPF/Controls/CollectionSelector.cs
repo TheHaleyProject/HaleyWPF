@@ -10,21 +10,27 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Collections.Specialized;
 
 
 namespace Haley.WPF.Controls
 {
     [TemplatePart(Name = UIESourceControl, Type = typeof(ListView))]
     [TemplatePart(Name = UIESelectionControl, Type = typeof(ListView))]
+    [TemplatePart(Name = UIEFilteredSource, Type = typeof(ListView))]
     public class CollectionSelector : ItemsControl, ICornerRadius, IItemsSelection
     {
         #region Attributes
         private const string UIESourceControl = "PART_lstvew_source";
         private const string UIESelectionControl = "PART_lstvew_selection";
+        private const string UIEFilteredSource = "PART_lstvew_filtered";
+        private const string UIECheckBoxHide = "PART_cbx_hide";
 
         private bool _collectionChanging = false;
         private ListView _sourceControl;
         private ListView _selectionControl;
+        private ListView _filteredControl;
+        private CheckBox _hideCheckbox;
         #endregion
 
         #region Events
@@ -51,12 +57,92 @@ namespace Haley.WPF.Controls
         }
 
         #region Methods
+        //protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue)
+        //{
+        //    base.OnItemsSourceChanged(oldValue, newValue);
+        //    //Assign this value to the filtered source.
+        //    this.SetCurrentValue(FilteredItemsSourceProperty, newValue);
+        //}
+        protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
+        {
+            base.OnItemsChanged(e);
+            _filterSelected();
+        }
+
+        private void _filterSelected()
+        {
+            if (_sourceControl == null) return;
+
+            if (_filteredControl == null)
+            {
+                _sourceControl.Visibility = Visibility.Visible;
+                return;
+            }
+            //Filter (if needed).
+            if (HideSelected && SelectedItems != null && SelectedItems?.Count > 0)
+            {
+                IList _filtered = new List<object>();
+                //If SelectedItems
+                foreach (var item in ItemsSource)
+                {
+                    if (!SelectedItems.Contains(item))
+                    {
+                        _filtered.Add(item);
+                    }
+                }
+                _filteredControl.ItemsSource = _filtered;
+                _sourceControl.SelectedItems.Clear(); //Clear it.
+                _sourceControl.Visibility = Visibility.Collapsed;
+                _filteredControl.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                _filteredControl.ItemsSource = null;
+                _sourceControl.Visibility = Visibility.Visible;
+                _filteredControl.Visibility = Visibility.Collapsed;
+            }
+        }
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
             _sourceControl = GetTemplateChild(UIESourceControl) as ListView;
             _selectionControl = GetTemplateChild(UIESelectionControl) as ListView;
+            _filteredControl = GetTemplateChild(UIEFilteredSource) as ListView;
+            _hideCheckbox = GetTemplateChild(UIECheckBoxHide) as CheckBox;
+
+            if (_hideCheckbox != null)
+            {
+                _hideCheckbox.Checked += _hideCheckbox_Checked;
+                _hideCheckbox.Unchecked += _hideCheckbox_Unchecked;
+            }
+
+            if (_filteredControl != null)
+            {
+                _filteredControl.SelectionChanged += _filteredControl_SelectionChanged;
+            }
         }
+
+        private void _filteredControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //Whenever we select something , we also set it in sourcecontrol
+            foreach (var item in e.AddedItems)
+            {
+                _sourceControl.SelectedItems.Add(item);
+            }
+        }
+
+        private void _hideCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            this.SetCurrentValue(HideSelectedProperty, false);
+            _filterSelected();
+        }
+
+        private void _hideCheckbox_Checked(object sender, RoutedEventArgs e)
+        {
+            this.SetCurrentValue(HideSelectedProperty, true);
+            _filterSelected();
+        }
+
         void Execute_MoveRight(object sender, ExecutedRoutedEventArgs e)
         {
             //Get selected items of primary listview and add it to the itemssource of the secondary
@@ -131,6 +217,8 @@ namespace Haley.WPF.Controls
         }
         void RaiseSelectionChanged()
         {
+            //Before raising, filter for visual changes.
+            _filterSelected();
             RaiseEvent(new UIRoutedEventArgs<IEnumerable>(SelectionChangedEvent, this) { value = SourceSelectedItems });
         }
         void Execute_SelectAll(object sender, ExecutedRoutedEventArgs e)
@@ -213,10 +301,36 @@ namespace Haley.WPF.Controls
                 selector._collectionChanging = false;
             }
         }
+        static void HideSelectedPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is CollectionSelector colsel)
+            {
+                colsel._setCheckState();
+            }
+        }
+
+        private void _setCheckState()
+        {
+            if (_hideCheckbox != null && _hideCheckbox.IsChecked != HideSelected)
+            {
+                _hideCheckbox.IsChecked = HideSelected;
+            }
+        }
 
         #endregion
 
         #region Properties
+
+        public bool HideSelected
+        {
+            get { return (bool)GetValue(HideSelectedProperty); }
+            set { SetValue(HideSelectedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for HideSelected.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty HideSelectedProperty =
+            DependencyProperty.Register(nameof(HideSelected), typeof(bool), typeof(CollectionSelector), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: HideSelectedPropertyChanged));
+
         public CornerRadius CornerRadius
         {
             get { return (CornerRadius)GetValue(CornerRadiusProperty); }
