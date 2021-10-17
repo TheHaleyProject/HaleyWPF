@@ -61,6 +61,21 @@ namespace Haley.WPF.Controls
 
         #region Properties
 
+        #region RibbonBar
+        public object RibbonBar
+        {
+            get { return (object)GetValue(RibbonBarProperty); }
+            set { SetValue(RibbonBarProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for RibbonBar.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RibbonBarProperty =
+            DependencyProperty.Register("RibbonBar", typeof(object), typeof(FlexiMenu), new PropertyMetadata(null));
+
+        
+
+        #endregion
+
         public ImageSource ToggleIcon
         {
             get { return (ImageSource)GetValue(ToggleIconProperty); }

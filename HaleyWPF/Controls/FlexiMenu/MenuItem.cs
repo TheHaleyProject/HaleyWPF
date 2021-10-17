@@ -20,52 +20,10 @@ namespace Haley.WPF.Controls
      /// <summary>
      /// Fleximenu for both left/right and topbottom docking.s
      /// </summary>
-    public class MenuItem : DependencyObject, IMenuItem
+    public class MenuItem : CommandMenuItem, IMenuItem
     {
-        public string Id { get; private set; }
-
-        public MenuItem()
-        { Id = Guid.NewGuid().ToString(); }
-        public ICommand Command
-        {
-            get { return (ICommand)GetValue(CommandProperty); }
-            set { SetValue(CommandProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(MenuItem), new FrameworkPropertyMetadata(default(ICommand)));
-
-        public string CommandName
-        {
-            get { return (string)GetValue(CommandNameProperty); }
-            set { SetValue(CommandNameProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CommandName.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CommandNameProperty =
-            DependencyProperty.Register(nameof(CommandName), typeof(string), typeof(MenuItem), new PropertyMetadata(null));
-
-        public object CommandParameter
-        {
-            get { return GetValue(CommandParameterProperty); }
-            set { SetValue(CommandParameterProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(MenuItem), new FrameworkPropertyMetadata(default(object)));
-
-        public string Label
-        {
-            get { return (string)GetValue(LabelProperty); }
-            set { SetValue(LabelProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty LabelProperty =
-            DependencyProperty.Register(nameof(Label), typeof(string), typeof(MenuItem), new FrameworkPropertyMetadata(defaultValue: "Button"));
-
+        public MenuItem(){ }
+        
         public MenuAction Action
         {
             get { return (MenuAction)GetValue(ActionProperty); }
@@ -115,10 +73,5 @@ namespace Haley.WPF.Controls
         // Using a DependencyProperty as the backing store for IgnoreGlobalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IgnoreGlobalContainerProperty =
             DependencyProperty.Register(nameof(IgnoreGlobalContainer), typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
-
-        public override string ToString()
-        {
-            return this.Id;
-        }
     }
 }

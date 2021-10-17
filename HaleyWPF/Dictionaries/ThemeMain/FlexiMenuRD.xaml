@@ -198,24 +198,42 @@
                                 </Grid>
                             </Grid>
                         </Border>
-                        
-                        <Grid TextBlock.Foreground="{DynamicResource def_content}">
-                            <ContentControl x:Name="PART_MainContentArea"/>
-                            <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10" Visibility="Collapsed">
-                                <Border.Effect>
-                                    <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="2"/>
-                                </Border.Effect>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="30"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FFC2FAC2" TextWrapping="WrapWithOverflow" FontSize="10"/>
-                                    <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
-                                        <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="White"/>
-                                    </Viewbox>
+                        <Grid>
+                            <Grid TextBlock.Foreground="{DynamicResource def_content}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!--`Fixed Command Region Overlay holder-->
+                                <Grid/>
+
+                                <!--View Region-->
+                                <Grid Grid.Row="1">
+                                    <ContentControl x:Name="PART_MainContentArea"/>
+                                    <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10" Visibility="Collapsed">
+                                        <Border.Effect>
+                                            <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="2"/>
+                                        </Border.Effect>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="30"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FFC2FAC2" TextWrapping="WrapWithOverflow" FontSize="10"/>
+                                            <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
+                                                <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="White"/>
+                                            </Viewbox>
+                                        </Grid>
+                                    </Border>
                                 </Grid>
-                            </Border>
+                            </Grid>
+                            
+                            <!--Fixed Command Region Display-->
+
+                            <Grid>
+                                
+                            </Grid>
                         </Grid>
                     </DockPanel>
                     <ControlTemplate.Triggers>
