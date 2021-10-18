@@ -8,6 +8,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
+        <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
@@ -74,6 +75,8 @@
                                 <ContextMenu>
                                     <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
                                     <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                    <MenuItem Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}"/>
+                                    <MenuItem Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
                             
@@ -200,16 +203,6 @@
                         </Border>
                         <Grid>
                             <Grid TextBlock.Foreground="{DynamicResource def_content}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <!--`Fixed Command Region Overlay holder-->
-                                <Grid/>
-
-                                <!--View Region-->
-                                <Grid Grid.Row="1">
                                     <ContentControl x:Name="PART_MainContentArea"/>
                                     <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10" Visibility="Collapsed">
                                         <Border.Effect>
@@ -226,14 +219,12 @@
                                             </Viewbox>
                                         </Grid>
                                     </Border>
-                                </Grid>
                             </Grid>
                             
-                            <!--Fixed Command Region Display-->
-
-                            <Grid>
-                                
-                            </Grid>
+                            <!--Floating Panel Display-->
+                            <Canvas x:Name="PART_FloatingPanelHolderCanvas" >
+                                <ContentControl x:Name="PART_FloatingPanel" Height="Auto" Width="Auto" MinHeight="50" MinWidth="50" Canvas.Top="100" Canvas.Left="100" Style="{StaticResource FloatingPanel}" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}"/>
+                            </Canvas>
                         </Grid>
                     </DockPanel>
                     <ControlTemplate.Triggers>

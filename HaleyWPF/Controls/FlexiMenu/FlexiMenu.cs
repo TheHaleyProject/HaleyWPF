@@ -25,6 +25,8 @@ namespace Haley.WPF.Controls
         private const string UIEMessageHolder = "PART_messageHolder";
         private const string UIEMessage = "PART_message";
         private const string UIEHeaderHolder = "PART_header";
+        private const string UIEFloatingPanel = "PART_FloatingPanel";
+        private const string UIEFloatingPanelCanvas = "PART_FloatingPanelHolderCanvas";
 
         private static double _headerRegionHeight = Convert.ToDouble(100);
         private static double _menuItemHeight = Convert.ToDouble(30);
@@ -36,6 +38,8 @@ namespace Haley.WPF.Controls
         private FrameworkElement _messageHolder;
         private TextBlock _message;
         private ContentControl _headerHolder;
+        private ContentControl _floatingPanel;
+        private Canvas _floatingPanelHolderCanvas;
         #endregion
 
         #region Constructors
@@ -43,13 +47,15 @@ namespace Haley.WPF.Controls
         {
             //For both menuitems and option items, we do not directly allow the items to raise the command. When the button is clicked, we raise an application command which will be handled in this class and corresponding action will be taken.
             this.MenuItems = new ObservableCollection<MenuItem>();
-            this.OptionItems = new ObservableCollection<MenuItem>();
+            this.OptionItems = new ObservableCollection<CommandMenuItem>();
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _processMenuAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction2, _processOptionsAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, _toggleMenuBar));
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.Reset , _resetFloatingPanel));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, _changeFloatingPanelVisibility));
             _addProxyResource();
-            IControlContainer v;
+            //IControlContainer v;
         }
 
 
@@ -61,19 +67,26 @@ namespace Haley.WPF.Controls
 
         #region Properties
 
-        #region RibbonBar
-        public object RibbonBar
+        #region FloatingPanel
+
+        public object FloatingPanel
         {
-            get { return (object)GetValue(RibbonBarProperty); }
-            set { SetValue(RibbonBarProperty, value); }
+            get { return (object)GetValue(FloatingPanelProperty); }
+            set { SetValue(FloatingPanelProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RibbonBar.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty RibbonBarProperty =
-            DependencyProperty.Register("RibbonBar", typeof(object), typeof(FlexiMenu), new PropertyMetadata(null));
+        // Using a DependencyProperty as the backing store for FloatingPanel.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FloatingPanelProperty =
+            DependencyProperty.Register("FloatingPanel", typeof(object), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,propertyChangedCallback:FloatingPanelChanged));
+        public bool IsFloatingPanelVisible
+        {
+            get { return (bool)GetValue(IsFloatingPanelVisibleProperty); }
+            set { SetValue(IsFloatingPanelVisibleProperty, value); }
+        }
 
-        
-
+        // Using a DependencyProperty as the backing store for IsFloatingPanelVisible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsFloatingPanelVisibleProperty =
+            DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
         #endregion
 
         public ImageSource ToggleIcon
@@ -126,15 +139,15 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty MenuItemsProperty =
             DependencyProperty.Register(nameof(MenuItems), typeof(ObservableCollection<MenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
-        public ObservableCollection<MenuItem> OptionItems
+        public ObservableCollection<CommandMenuItem> OptionItems
         {
-            get { return (ObservableCollection<MenuItem>)GetValue(OptionItemsProperty); }
+            get { return (ObservableCollection<CommandMenuItem>)GetValue(OptionItemsProperty); }
             set { SetValue(OptionItemsProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for OptionItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OptionItemsProperty =
-            DependencyProperty.Register(nameof(OptionItems), typeof(ObservableCollection<MenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
+            DependencyProperty.Register(nameof(OptionItems), typeof(ObservableCollection<CommandMenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
 
         public IControlContainer LocalContainer
@@ -294,18 +307,31 @@ namespace Haley.WPF.Controls
             _messageHolder = GetTemplateChild(UIEMessageHolder) as FrameworkElement;
             _message = GetTemplateChild(UIEMessage) as TextBlock;
             _headerHolder = GetTemplateChild(UIEHeaderHolder) as ContentControl;
-
+            _floatingPanel = GetTemplateChild(UIEFloatingPanel) as ContentControl;
+            _floatingPanelHolderCanvas = GetTemplateChild(UIEFloatingPanelCanvas) as Canvas;
             //Set Welcome view if not null
             if (WelcomeView != null)
             {
                 _mainContentHolder.Content = WelcomeView;
+                //If welcome view is active, then we should hide the floating panel
+                _setFloatingCanvasVisibility(Visibility.Collapsed);
             }
             _changeHeader();
+            _changeFloatingPanel();
         }
 
         #endregion
 
         #region Private Methods
+
+        void _setFloatingCanvasVisibility(Visibility _visibility)
+        {
+            if (_floatingPanelHolderCanvas != null)
+            {
+                _floatingPanelHolderCanvas.Visibility = _visibility;
+            }
+        }
+
         void _processMenuAction(object sender, ExecutedRoutedEventArgs e)
         {
             _processAction(sender, e, true);
@@ -321,41 +347,50 @@ namespace Haley.WPF.Controls
             _closeMessage();
 
             //Send in the menu item as the parameter. Use that to fetch the target from the menuitem list or option item list and process the action.
-            var _inputitem = e.Parameter as MenuItem;
+            var _inputitem = e.Parameter as CommandMenuItem;
             if (_inputitem == null) return;
 
-            MenuItem _targetItem = null;
+            var _menuAction = MenuAction.RaiseCommand;
+            CommandMenuItem _targetItem = null;
 
             if(isMenu)
             {
                 _targetItem = MenuItems.FirstOrDefault(p => p.Id == _inputitem.Id);
-                if (_targetItem.Action != MenuAction.RaiseCommand)
+
+                if (_targetItem is MenuItem _targetMenuItem)
                 {
-                    //Because usually, raising command will only be used for showing dialog or performing actions like signing out, exporting, printing etc. So, we need not highlight that
-                    ActiveMenu = _targetItem; //this is actualy set so that it can be used for highlighting.
+                    _menuAction = _targetMenuItem.Action;
+                    if (_targetMenuItem.Action != MenuAction.RaiseCommand)
+                    {
+                        //Because usually, raising command will only be used for showing dialog or performing actions like signing out, exporting, printing etc. So, we need not highlight that
+                        ActiveMenu = _targetMenuItem; //this is actualy set so that it can be used for highlighting.
+                    }
                 }
             }
             else
             {
-                _targetItem = OptionItems.FirstOrDefault(p => p.Id == _inputitem.Id );
+                //For options we always have the action as Command
+                _targetItem = OptionItems.FirstOrDefault(p => p.Id == _inputitem.Id);
             }
 
             //Even after this, we are not able to get the target item, return.
             if (_targetItem == null) return;
 
             //Now, based on the target item, process the action.
-            switch (_targetItem.Action)
+            switch (_menuAction)
             {
                 case MenuAction.RaiseCommand:
                     _executeCommand(_targetItem); //Raise the command and send parameter along with it.
                     break;
                 case MenuAction.ShowContainerView:
-                    _setContainerView(_targetItem);
+                    _setFloatingCanvasVisibility(Visibility.Visible);
+                    _setContainerView(_targetItem as MenuItem);
                     break;
                 case MenuAction.ShowLocalView:
-                    if (_mainContentHolder != null && _targetItem.View != null)
+                    if (_mainContentHolder != null && ((MenuItem)_targetItem).View != null)
                     {
-                        _mainContentHolder.Content = _targetItem.View;
+                        _mainContentHolder.Content = ((MenuItem)_targetItem).View;
+                        _setFloatingCanvasVisibility(Visibility.Visible);
                     }
                     break;
             }
@@ -383,7 +418,7 @@ namespace Haley.WPF.Controls
             }
             return resultCmd;
         }
-        void _executeCommand(MenuItem item)
+        void _executeCommand(CommandMenuItem item)
         {
             var dc = this.DataContext;
             //if command is null, try to check if we can process a new command with the help of command name.
@@ -515,7 +550,36 @@ namespace Haley.WPF.Controls
                 this.SetCurrentValue(HideHeaderRegionProperty, false);
             }
         }
-        
+
+        void _changeFloatingPanel()
+        {
+            if (_floatingPanel == null) return;
+
+            _floatingPanel.Content = FloatingPanel;
+        }
+
+        static void FloatingPanelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            FlexiMenu flexiobj = d as FlexiMenu;
+            if (flexiobj == null) return;
+            flexiobj._changeFloatingPanel();
+        }
+        void _resetFloatingPanel(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (_floatingPanel != null)
+            {
+                Canvas.SetLeft(_floatingPanel, 100.0);
+                Canvas.SetTop(_floatingPanel, 100.0);
+            }
+        }
+        void _changeFloatingPanelVisibility(object sender, ExecutedRoutedEventArgs e)
+        {
+           if (e.Parameter is bool _checked)
+            {
+                this.SetCurrentValue(IsFloatingPanelVisibleProperty, _checked);
+            }
+        }
+
         #endregion
     }
 }

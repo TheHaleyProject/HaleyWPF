@@ -20,6 +20,7 @@
         <!--#region Base Styles-->
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
         <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
+        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FloatingPanelStyles.xaml"/>
         <!--#endregion-->
    
     </ResourceDictionary.MergedDictionaries>

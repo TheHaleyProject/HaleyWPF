@@ -62,8 +62,18 @@
             </hw:FlexiMenu.MenuItems>
             <!--Add Option Buttons like logout, login-->
             <hw:FlexiMenu.OptionItems>
-                <hw:MenuItem Action="RaiseCommand" Label="Log Out" hw:Icon.Default="{StaticResource mobile_phone}"/>
+                <hw:CommandMenuItem Label="Log Out" hw:Icon.Default="{StaticResource mobile_phone}"/>
             </hw:FlexiMenu.OptionItems>
+
+            <hw:FlexiMenu.FloatingPanel>
+                <Border Height="35" Width="120" Background="White" BorderBrush="Gray" BorderThickness="1" DataContext="{Binding Path=DataContext, Source={StaticResource proxy}}">
+                    <Border.Effect>
+                        <DropShadowEffect Color="#FFF12222" ShadowDepth="0" BlurRadius="8"/>
+                    </Border.Effect>
+                    <Button Margin="3" Content="Click me" Command="{Binding Cmd_Notify}"/>
+                </Border>
+            </hw:FlexiMenu.FloatingPanel>
+            
         </hw:FlexiMenu>
     </Grid>
 </Window>

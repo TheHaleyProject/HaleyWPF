@@ -16,5 +16,6 @@ namespace Haley.Utils
         public readonly static RoutedUICommand Toggle = new RoutedUICommand("To Toggle some object", nameof(Toggle), typeof(AdditionalCommands));
         public readonly static RoutedUICommand Increase = new RoutedUICommand("To Increase something", nameof(Increase), typeof(AdditionalCommands));
         public readonly static RoutedUICommand Decrease = new RoutedUICommand("To Decrease something", nameof(Decrease), typeof(AdditionalCommands));
+        public readonly static RoutedUICommand Reset = new RoutedUICommand("To Reset something", nameof(Reset), typeof(AdditionalCommands));
     }
 }

@@ -17,5 +17,10 @@
     </UserControl.Resources>
     <Grid Background="{DynamicResource scb_header}">
         <hw:ComboButton Height="70" Width="90" Content="From Control" ImageLocation="Top" hw:Icon.Default="{StaticResource heart_shiny}" hw:Icon.DefaultColor="{DynamicResource button_hover}" hw:Icon.HoverColor="#FF9413C2"/>
+        <Canvas>
+            <Grid Height="100" Width="100" Background="Purple">
+                <Button Margin="25"/>
+            </Grid>
+        </Canvas>
     </Grid>
 </UserControl>
