@@ -32,6 +32,9 @@ namespace Haley.WPF.Controls
         private static double _menuItemHeight = Convert.ToDouble(30);
         private static double _menuBarWidth = Convert.ToDouble(250);
 
+        private bool _canvasSet = false;
+        private bool _pauseProcessing = false;
+
         #endregion
 
         #region UIElements
@@ -42,9 +45,6 @@ namespace Haley.WPF.Controls
         private ContentControl _floatingPanel;
         private Canvas _floatingPanelHolderCanvas;
         #endregion
-
-
-        private bool _canvasSet = false;
 
         #region Constructors
         public FlexiMenu()
@@ -153,7 +153,6 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty OptionItemsProperty =
             DependencyProperty.Register(nameof(OptionItems), typeof(ObservableCollection<CommandMenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
-
         public IControlContainer LocalContainer
         {
             get { return (IControlContainer)GetValue(LocalContainerProperty); }
@@ -203,6 +202,18 @@ namespace Haley.WPF.Controls
         // Using a DependencyProperty as the backing store for MenuItemsAlignment.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuItemsAlignmentProperty =
             DependencyProperty.Register(nameof(MenuItemsAlignment), typeof(Alignment), typeof(FlexiMenu), new PropertyMetadata(Alignment.Left));
+
+        public string SelectedMenuId
+        {
+            get { return (string)GetValue(SelectedMenuIdProperty); }
+            set { SetValue(SelectedMenuIdProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedMenuId.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedMenuIdProperty =
+            DependencyProperty.Register("SelectedMenuId", typeof(string), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback:SelectedIdChanged));
+
+
 
         #region Heights
 
@@ -291,23 +302,6 @@ namespace Haley.WPF.Controls
         #endregion
         #endregion
 
-        private void _addProxyResource()
-        {
-            if (! this.Resources.Contains("proxy"))
-            {
-                //Create binding
-                var bp = new BindingProxy(); //The proxy to hold the datacontext
-                Binding _dcbinding = new Binding();
-                //_dcbinding.Source = this.DataContext; //Source dtatacontext
-                _dcbinding.NotifyOnSourceUpdated = true;
-                _dcbinding.NotifyOnTargetUpdated = true;
-                _dcbinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-                BindingOperations.SetBinding(bp, BindingProxy.DataContextProperty, _dcbinding); //Binding operation.
-                //Add resources
-                this.Resources.Add("proxy", bp);
-            }
-        }
-
         #region Overridden Methods
 
         public override void OnApplyTemplate()
@@ -336,7 +330,22 @@ namespace Haley.WPF.Controls
         #endregion
 
         #region Private Methods
-
+        private void _addProxyResource()
+        {
+            if (!this.Resources.Contains("proxy"))
+            {
+                //Create binding
+                var bp = new BindingProxy(); //The proxy to hold the datacontext
+                Binding _dcbinding = new Binding();
+                //_dcbinding.Source = this.DataContext; //Source dtatacontext
+                _dcbinding.NotifyOnSourceUpdated = true;
+                _dcbinding.NotifyOnTargetUpdated = true;
+                _dcbinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+                BindingOperations.SetBinding(bp, BindingProxy.DataContextProperty, _dcbinding); //Binding operation.
+                //Add resources
+                this.Resources.Add("proxy", bp);
+            }
+        }
         void _setFloatingCanvasVisibility(Visibility _visibility)
         {
             if (_floatingPanelHolderCanvas != null)
@@ -347,20 +356,19 @@ namespace Haley.WPF.Controls
 
         void _processMenuAction(object sender, ExecutedRoutedEventArgs e)
         {
-            _processAction(sender, e, true);
+            _processAction(e.Parameter as CommandMenuItem, true);
         }
         void _processOptionsAction(object sender, ExecutedRoutedEventArgs e)
         {
-            _processAction(sender, e, false);
+            _processAction(e.Parameter as CommandMenuItem, false);
         }
 
-        void _processAction(object sender, ExecutedRoutedEventArgs e,bool isMenu)
+        void _processAction(CommandMenuItem _inputitem, bool isMenu)
         {
             //First close any previous message
             _closeMessage();
 
             //Send in the menu item as the parameter. Use that to fetch the target from the menuitem list or option item list and process the action.
-            var _inputitem = e.Parameter as CommandMenuItem;
             if (_inputitem == null) return;
 
             var _menuAction = MenuAction.RaiseCommand;
@@ -377,6 +385,13 @@ namespace Haley.WPF.Controls
                     {
                         //Because usually, raising command will only be used for showing dialog or performing actions like signing out, exporting, printing etc. So, we need not highlight that
                         ActiveMenu = _targetMenuItem; //this is actualy set so that it can be used for highlighting.
+                        if (SelectedMenuId.ToLower() != ActiveMenu.Id.ToLower())
+                        {
+                            //Here, when we set, we don't need recursive effect.
+                            _pauseProcessing = true;
+                            SelectedMenuId = ActiveMenu.Id; //So, we set the selected id.
+                            _pauseProcessing = false;
+                        }
                     }
                 }
             }
@@ -643,6 +658,28 @@ namespace Haley.WPF.Controls
             {
                 this.SetCurrentValue(IsFloatingPanelVisibleProperty, _checked);
             }
+        }
+
+        void _setviewtoNewId()
+        {
+            if (_pauseProcessing || SelectedMenuId == null) return; 
+            //based on the new id, change the view.
+
+            if (ActiveMenu != null)
+            {
+                if (ActiveMenu?.Id.ToLower() == SelectedMenuId.ToLower()) return; //Because we already are in the correct view.
+            }
+            //Try to get the new id.
+            var menutoSet = MenuItems.FirstOrDefault(p => p.Id.ToLower() == SelectedMenuId.ToLower());
+            _processAction(menutoSet, true);
+        }
+
+        static void SelectedIdChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //The id has changed.
+            FlexiMenu flexiobj = d as FlexiMenu;
+            if (flexiobj == null) return;
+            flexiobj._setviewtoNewId();
         }
 
         #endregion

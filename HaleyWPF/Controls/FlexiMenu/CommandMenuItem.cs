@@ -22,10 +22,26 @@ namespace Haley.WPF.Controls
      /// </summary>
     public class CommandMenuItem : DependencyObject, ICommandMenuItem
     {
-        public string Id { get; private set; }
+        public string UId { get; private set; }
+        private string _id;
+
+        public string Id
+        {
+            get
+            { 
+                //We always return user set id. If not valid, then we send unique id.
+                if (string.IsNullOrWhiteSpace(_id))
+                {
+                    return UId;
+                }
+                return _id; 
+            }
+
+            set { _id = value; }
+        }
 
         public CommandMenuItem()
-        { Id = Guid.NewGuid().ToString(); }
+        { UId = Guid.NewGuid().ToString(); }
         public ICommand Command
         {
             get { return (ICommand)GetValue(CommandProperty); }
