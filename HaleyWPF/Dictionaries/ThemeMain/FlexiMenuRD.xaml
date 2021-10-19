@@ -70,13 +70,26 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             DockPanel.Dock="Left" 
                             Width="{Binding MenuBarWidth, RelativeSource={RelativeSource TemplatedParent}}">
-                            
+
+                            <!--<Border.Triggers>
+                                <EventTrigger RoutedEvent="Border.Loaded">
+                                  <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                Storyboard.TargetName="PART_brderMain"
+                Storyboard.TargetProperty="(Border.Width)" From="5"
+                Duration="0:0:0.5"/>
+                                  </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                            </Border.Triggers>-->
+
                             <Border.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
                                     <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
                                     <MenuItem Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}"/>
-                                    <MenuItem Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True"/>
+                                    <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
                             
@@ -231,15 +244,29 @@
                         <Trigger Property="Location" Value="Right">
                             <Setter TargetName="PART_brderMain" Property="DockPanel.Dock" Value="Right" />
                         </Trigger>
+
+                        <Trigger Property="IsMenuBarOpen" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_brderMain" Storyboard.TargetProperty="Width"
+                  From="45" Duration="0:0:0.3" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        
                         <Trigger Property="IsMenuBarOpen" Value="False">
                             <Setter TargetName="PART_toggleButton" Property="HorizontalAlignment" Value="Center"/>
                             <Setter TargetName="PART_footerRegion" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_headerRegion" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_brderMain" Property="Width" Value="45" />
                         </Trigger>
+                        
                         <DataTrigger Binding="{Binding Path=VerticalOffset, ElementName=MenuFlexiScroll}" Value="0">
                             <Setter TargetName="upButton" Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>
+                        
                         <DataTrigger Value="True">
                             <DataTrigger.Binding>
                                 <MultiBinding Converter="{StaticResource ScrollLimit}">
@@ -248,6 +275,7 @@
                                 </MultiBinding>
                             </DataTrigger.Binding>
                             <Setter TargetName="downButton" Property="Visibility" Value="Collapsed"/>
+                            
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
