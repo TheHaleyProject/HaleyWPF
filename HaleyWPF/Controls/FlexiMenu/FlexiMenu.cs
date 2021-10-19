@@ -385,7 +385,7 @@ namespace Haley.WPF.Controls
                     {
                         //Because usually, raising command will only be used for showing dialog or performing actions like signing out, exporting, printing etc. So, we need not highlight that
                         ActiveMenu = _targetMenuItem; //this is actualy set so that it can be used for highlighting.
-                        if (SelectedMenuId.ToLower() != ActiveMenu.Id.ToLower())
+                        if (SelectedMenuId != ActiveMenu.Id)
                         {
                             //Here, when we set, we don't need recursive effect.
                             _pauseProcessing = true;
