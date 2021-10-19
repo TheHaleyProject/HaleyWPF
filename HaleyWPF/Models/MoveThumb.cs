@@ -22,9 +22,28 @@ namespace Haley.Models
             {
                 double left = Canvas.GetLeft(_ctrl);
                 double top = Canvas.GetTop(_ctrl);
+                double right = Canvas.GetRight(_ctrl);
+                double bottom = Canvas.GetBottom(_ctrl);
 
-                Canvas.SetLeft(_ctrl, left + e.HorizontalChange);
-                Canvas.SetTop(_ctrl, top + e.VerticalChange);
+                if (!double.IsNaN(left))
+                {
+                    Canvas.SetLeft(_ctrl, left + e.HorizontalChange);
+                }
+
+                if (!double.IsNaN(right))
+                {
+                    Canvas.SetRight(_ctrl, right - e.HorizontalChange);
+                }
+
+                if (!double.IsNaN(top))
+                {
+                    Canvas.SetTop(_ctrl, top + e.VerticalChange);
+                }
+
+                if (!double.IsNaN(bottom))
+                {
+                    Canvas.SetBottom(_ctrl, bottom- e.VerticalChange);
+                }
             }
         }
     }

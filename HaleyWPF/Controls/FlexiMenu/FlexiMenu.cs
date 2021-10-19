@@ -31,6 +31,7 @@ namespace Haley.WPF.Controls
         private static double _headerRegionHeight = Convert.ToDouble(100);
         private static double _menuItemHeight = Convert.ToDouble(30);
         private static double _menuBarWidth = Convert.ToDouble(250);
+
         #endregion
 
         #region UIElements
@@ -41,6 +42,9 @@ namespace Haley.WPF.Controls
         private ContentControl _floatingPanel;
         private Canvas _floatingPanelHolderCanvas;
         #endregion
+
+
+        private bool _canvasSet = false;
 
         #region Constructors
         public FlexiMenu()
@@ -200,7 +204,6 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty MenuItemsAlignmentProperty =
             DependencyProperty.Register(nameof(MenuItemsAlignment), typeof(Alignment), typeof(FlexiMenu), new PropertyMetadata(Alignment.Left));
 
-
         #region Heights
 
         public double HeaderRegionHeight
@@ -275,8 +278,18 @@ namespace Haley.WPF.Controls
         // Using a DependencyProperty as the backing store for HeaderTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderTemplateProperty =
             DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, propertyChangedCallback: HeaderTemplatePropertyChanged));
+
+        public bool ShowFooter
+        {
+            get { return (bool)GetValue(ShowFooterProperty); }
+            set { SetValue(ShowFooterProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ShowFooter.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ShowFooterProperty =
+            DependencyProperty.Register(nameof(ShowFooter), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
         #endregion
-#endregion
+        #endregion
 
         private void _addProxyResource()
         {
@@ -555,22 +568,74 @@ namespace Haley.WPF.Controls
         {
             if (_floatingPanel == null) return;
 
+            //Also try to get the canvas location for the first time.
+            if (!_canvasSet)
+            {
+                _canvasSet = true;
+                _setFloatingPanelCanvasPosition();
+            }
             _floatingPanel.Content = FloatingPanel;
+        }
+
+        void _setFloatingPanelCanvasPosition()
+        {
+            if (_floatingPanel == null) return;
+
+            double left = double.NaN;
+            double right = double.NaN;
+            double bottom = double.NaN;
+            double top = double.NaN;
+
+            if (FloatingPanel != null && FloatingPanel is UIElement floating_uie)
+            {
+                left  = Position.GetLeft(floating_uie);
+                right = Position.GetRight(floating_uie);
+                bottom = Position.GetBottom(floating_uie);
+                top = Position.GetTop(floating_uie);
+            }
+
+            if (double.IsNaN(top) && double.IsNaN(bottom))
+            {
+                //we need atleast one value not to be nan
+                top = 25.0;
+            }
+
+            if (double.IsNaN(left) && double.IsNaN(right))
+            {
+                left = 25.0;
+            }
+
+            if (!double.IsNaN(top))
+            {
+                Canvas.SetTop(_floatingPanel, top);
+            }
+
+            if (!double.IsNaN(bottom))
+            {
+                Canvas.SetBottom(_floatingPanel, bottom);
+            }
+
+            if (!double.IsNaN(right))
+            {
+                Canvas.SetRight(_floatingPanel, right);
+            }
+
+            if (!double.IsNaN(left))
+            {
+                Canvas.SetLeft(_floatingPanel, left);
+            }
         }
 
         static void FloatingPanelChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             FlexiMenu flexiobj = d as FlexiMenu;
             if (flexiobj == null) return;
+            flexiobj._canvasSet = false; //Since we have received a new object, we need the canvas locations from here.
             flexiobj._changeFloatingPanel();
         }
         void _resetFloatingPanel(object sender, ExecutedRoutedEventArgs e)
         {
-            if (_floatingPanel != null)
-            {
-                Canvas.SetLeft(_floatingPanel, 100.0);
-                Canvas.SetTop(_floatingPanel, 100.0);
-            }
+            _setFloatingPanelCanvasPosition();
         }
         void _changeFloatingPanelVisibility(object sender, ExecutedRoutedEventArgs e)
         {

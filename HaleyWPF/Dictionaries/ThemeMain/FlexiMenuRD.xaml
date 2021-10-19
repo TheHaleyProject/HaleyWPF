@@ -196,7 +196,7 @@
                                 </Grid>
                                 
                                 <!--FOOT NOTE-->
-                                <Grid Grid.Row="5" Margin="5" x:Name="PART_footerRegion">
+                                <Grid Grid.Row="5" Margin="5" x:Name="PART_footerRegion" Visibility="{TemplateBinding ShowFooter,Converter={StaticResource BooltoVisibiliy}}">
                                     <TextBlock Foreground="{DynamicResource def_link}" Style="{StaticResource def_h4_inverted}" Text="{Binding FootNote, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </Grid>
                             </Grid>
@@ -223,7 +223,7 @@
                             
                             <!--Floating Panel Display-->
                             <Canvas x:Name="PART_FloatingPanelHolderCanvas" >
-                                <ContentControl x:Name="PART_FloatingPanel" Height="Auto" Width="Auto" MinHeight="50" MinWidth="50" Canvas.Top="100" Canvas.Left="100" Style="{StaticResource FloatingPanel}" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}"/>
+                                <ContentControl x:Name="PART_FloatingPanel" Height="Auto" Width="Auto" MinHeight="50" MinWidth="50" Style="{StaticResource FloatingPanel}" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}"/>
                             </Canvas>
                         </Grid>
                     </DockPanel>
