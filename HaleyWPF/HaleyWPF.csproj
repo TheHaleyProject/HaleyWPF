@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.0.15</Version>
+		<Version>5.0.16</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>(FlexiMenu) = Welcome view Autoclose timer implemented</PackageReleaseNotes>
+		<PackageReleaseNotes>Implemented PlainWindow and enhanced FlexiMenu</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
@@ -63,6 +63,12 @@
     <None Remove="Images\arrow_line.png" />
     <None Remove="Images\arrow_line_medium.png" />
     <None Remove="Images\arrow_medium.png" />
+    <None Remove="Images\avatar.png" />
+    <None Remove="Images\avatar_circle.png" />
+    <None Remove="Images\avatar_circle_medium.png" />
+    <None Remove="Images\avatar_medium.png" />
+    <None Remove="Images\box.png" />
+    <None Remove="Images\box_medium.png" />
     <None Remove="Images\calender.png" />
     <None Remove="Images\calender_clock.png" />
     <None Remove="Images\calender_clock_medium.png" />
@@ -87,6 +93,8 @@
     <None Remove="Images\chat_single_medium.png" />
     <None Remove="Images\clock.png" />
     <None Remove="Images\clock_medium.png" />
+    <None Remove="Images\close_circle.png" />
+    <None Remove="Images\close_circle_medium.png" />
     <None Remove="Images\coins_stack.png" />
     <None Remove="Images\coins_stack_medium.png" />
     <None Remove="Images\collapse.png" />
@@ -131,6 +139,8 @@
     <None Remove="Images\flag_triangle_medium.png" />
     <None Remove="Images\folder.png" />
     <None Remove="Images\folder_medium.png" />
+    <None Remove="Images\forward_filled.png" />
+    <None Remove="Images\forward_filled_medium.png" />
     <None Remove="Images\gift.png" />
     <None Remove="Images\gift_medium.png" />
     <None Remove="Images\globe.png" />
@@ -159,10 +169,18 @@
     <None Remove="Images\home_medium.png" />
     <None Remove="Images\info_circle.png" />
     <None Remove="Images\info_circle_medium.png" />
+    <None Remove="Images\key.png" />
+    <None Remove="Images\key_medium.png" />
+    <None Remove="Images\line.png" />
+    <None Remove="Images\line_medium.png" />
     <None Remove="Images\location_big.png" />
     <None Remove="Images\location_big_medium.png" />
     <None Remove="Images\location_plain.png" />
     <None Remove="Images\location_plain_medium.png" />
+    <None Remove="Images\lock_filled_circle.png" />
+    <None Remove="Images\lock_filled_circle_medium.png" />
+    <None Remove="Images\lock_medium.png" />
+    <None Remove="Images\lock_plain.png" />
     <None Remove="Images\mail.png" />
     <None Remove="Images\mail_medium.png" />
     <None Remove="Images\male.png" />
@@ -195,6 +213,8 @@
     <None Remove="Images\new_file_medium.png" />
     <None Remove="Images\package.png" />
     <None Remove="Images\package_medium.png" />
+    <None Remove="Images\pause_filled.png" />
+    <None Remove="Images\pause_filled_medium.png" />
     <None Remove="Images\pen.png" />
     <None Remove="Images\pen_medium.png" />
     <None Remove="Images\phone_circle.png" />
@@ -215,6 +235,8 @@
     <None Remove="Images\print_medium.png" />
     <None Remove="Images\refresh.png" />
     <None Remove="Images\refresh_medium.png" />
+    <None Remove="Images\reverse_filled.png" />
+    <None Remove="Images\reverse_filled_medium.png" />
     <None Remove="Images\rupee.png" />
     <None Remove="Images\rupee_medium.png" />
     <None Remove="Images\save.png" />
@@ -239,6 +261,10 @@
     <None Remove="Images\star_sharp_medium.png" />
     <None Remove="Images\stop.png" />
     <None Remove="Images\stop_medium.png" />
+    <None Remove="Images\success.png" />
+    <None Remove="Images\success_filled.png" />
+    <None Remove="Images\success_filled_medium.png" />
+    <None Remove="Images\success_medium.png" />
     <None Remove="Images\suitcase.png" />
     <None Remove="Images\suitcase_medium.png" />
     <None Remove="Images\tick.png" />
@@ -251,6 +277,10 @@
     <None Remove="Images\touch_medium.png" />
     <None Remove="Images\unknown_file.png" />
     <None Remove="Images\unknown_file_medium.png" />
+    <None Remove="Images\unlock.png" />
+    <None Remove="Images\unlock_filled_circle.png" />
+    <None Remove="Images\unlock_filled_circle_medium.png" />
+    <None Remove="Images\unlock_medium.png" />
     <None Remove="Images\video.png" />
     <None Remove="Images\video_camera.png" />
     <None Remove="Images\video_camera_medium.png" />
@@ -301,6 +331,12 @@
     <Resource Include="Images\arrow_line.png" />
     <Resource Include="Images\arrow_line_medium.png" />
     <Resource Include="Images\arrow_medium.png" />
+    <Resource Include="Images\avatar.png" />
+    <Resource Include="Images\avatar_circle.png" />
+    <Resource Include="Images\avatar_circle_medium.png" />
+    <Resource Include="Images\avatar_medium.png" />
+    <Resource Include="Images\box.png" />
+    <Resource Include="Images\box_medium.png" />
     <Resource Include="Images\calender.png" />
     <Resource Include="Images\calender_clock.png" />
     <Resource Include="Images\calender_clock_medium.png" />
@@ -325,6 +361,8 @@
     <Resource Include="Images\chat_single_medium.png" />
     <Resource Include="Images\clock.png" />
     <Resource Include="Images\clock_medium.png" />
+    <Resource Include="Images\close_circle.png" />
+    <Resource Include="Images\close_circle_medium.png" />
     <Resource Include="Images\coins_stack.png" />
     <Resource Include="Images\coins_stack_medium.png" />
     <Resource Include="Images\collapse.png" />
@@ -369,6 +407,8 @@
     <Resource Include="Images\flag_triangle_medium.png" />
     <Resource Include="Images\folder.png" />
     <Resource Include="Images\folder_medium.png" />
+    <Resource Include="Images\forward_filled.png" />
+    <Resource Include="Images\forward_filled_medium.png" />
     <Resource Include="Images\gift.png" />
     <Resource Include="Images\gift_medium.png" />
     <Resource Include="Images\globe.png" />
@@ -397,10 +437,18 @@
     <Resource Include="Images\home_medium.png" />
     <Resource Include="Images\info_circle.png" />
     <Resource Include="Images\info_circle_medium.png" />
+    <Resource Include="Images\key.png" />
+    <Resource Include="Images\key_medium.png" />
+    <Resource Include="Images\line.png" />
+    <Resource Include="Images\line_medium.png" />
     <Resource Include="Images\location_big.png" />
     <Resource Include="Images\location_big_medium.png" />
     <Resource Include="Images\location_plain.png" />
     <Resource Include="Images\location_plain_medium.png" />
+    <Resource Include="Images\lock_filled_circle.png" />
+    <Resource Include="Images\lock_filled_circle_medium.png" />
+    <Resource Include="Images\lock_medium.png" />
+    <Resource Include="Images\lock_plain.png" />
     <Resource Include="Images\mail.png" />
     <Resource Include="Images\mail_medium.png" />
     <Resource Include="Images\male.png" />
@@ -433,6 +481,8 @@
     <Resource Include="Images\new_file_medium.png" />
     <Resource Include="Images\package.png" />
     <Resource Include="Images\package_medium.png" />
+    <Resource Include="Images\pause_filled.png" />
+    <Resource Include="Images\pause_filled_medium.png" />
     <Resource Include="Images\pen.png" />
     <Resource Include="Images\pen_medium.png" />
     <Resource Include="Images\phone_circle.png" />
@@ -453,6 +503,8 @@
     <Resource Include="Images\print_medium.png" />
     <Resource Include="Images\refresh.png" />
     <Resource Include="Images\refresh_medium.png" />
+    <Resource Include="Images\reverse_filled.png" />
+    <Resource Include="Images\reverse_filled_medium.png" />
     <Resource Include="Images\rupee.png" />
     <Resource Include="Images\rupee_medium.png" />
     <Resource Include="Images\save.png" />
@@ -477,6 +529,10 @@
     <Resource Include="Images\star_sharp_medium.png" />
     <Resource Include="Images\stop.png" />
     <Resource Include="Images\stop_medium.png" />
+    <Resource Include="Images\success.png" />
+    <Resource Include="Images\success_filled.png" />
+    <Resource Include="Images\success_filled_medium.png" />
+    <Resource Include="Images\success_medium.png" />
     <Resource Include="Images\suitcase.png" />
     <Resource Include="Images\suitcase_medium.png" />
     <Resource Include="Images\tick.png" />
@@ -489,6 +545,10 @@
     <Resource Include="Images\touch_medium.png" />
     <Resource Include="Images\unknown_file.png" />
     <Resource Include="Images\unknown_file_medium.png" />
+    <Resource Include="Images\unlock.png" />
+    <Resource Include="Images\unlock_filled_circle.png" />
+    <Resource Include="Images\unlock_filled_circle_medium.png" />
+    <Resource Include="Images\unlock_medium.png" />
     <Resource Include="Images\video.png" />
     <Resource Include="Images\video_camera.png" />
     <Resource Include="Images\video_camera_medium.png" />
@@ -575,6 +635,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Dictionaries\ThemeMain\HotKeyEditorRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\ThemeMain\PlainWindowRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

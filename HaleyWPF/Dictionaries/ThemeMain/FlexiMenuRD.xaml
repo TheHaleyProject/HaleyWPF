@@ -88,7 +88,7 @@
                                 <ContextMenu>
                                     <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
                                     <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
-                                    <MenuItem Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}"/>
+                                    <MenuItem x:Name="PART_MenuItem_RepositionPanel" Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}"/>
                                     <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
@@ -108,6 +108,9 @@
                                 <Grid x:Name="PART_headerRegion" Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding HideHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
                                     <ContentControl x:Name="PART_header"/>
                                 </Grid>
+
+                                <Rectangle x:Name="PART_ToggleButton_screen" Grid.Row="0" Height="32" Width="32" Margin="4" Fill="{TemplateBinding ToggleButtonBackground}"  HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"/>
 
                                 <!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.-->
                                 <bc:ImageToggleButton x:Name="PART_toggleButton"
@@ -261,6 +264,7 @@
                             <Setter TargetName="PART_footerRegion" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_headerRegion" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_brderMain" Property="Width" Value="45" />
+                            <Setter TargetName="PART_ToggleButton_screen" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         
                         <DataTrigger Binding="{Binding Path=VerticalOffset, ElementName=MenuFlexiScroll}" Value="0">

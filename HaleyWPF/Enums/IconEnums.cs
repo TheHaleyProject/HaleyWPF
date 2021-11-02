@@ -225,5 +225,39 @@ namespace Haley.Enums
         zoom_out_medium,
 
         #endregion
+
+        #region SET 02
+        avatar,
+        avatar_circle,
+        avatar_circle_medium,
+        avatar_medium,
+        box,
+        box_medium,
+        close_circle,
+        close_circle_medium,
+        forward_filled,
+        forward_filled_medium,
+        key,
+        key_medium,
+        line,
+        line_medium,
+        lock_plain,
+        lock_filled_circle,
+        lock_filled_circle_medium,
+        lock_medium,
+        pause_filled,
+        pause_filled_medium,
+        reverse_filled,
+        reverse_filled_medium,
+        success,
+        success_filled,
+        success_filled_medium,
+        success_medium,
+        unlock,
+        unlock_filled_circle,
+        unlock_filled_circle_medium,
+        unlock_medium,
+
+        #endregion
     }
 }
