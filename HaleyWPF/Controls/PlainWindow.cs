@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Windows.Shell;
 
 namespace Haley.WPF.Controls
 {
@@ -27,6 +28,7 @@ namespace Haley.WPF.Controls
         private const string UIEMinimizeBtn = "PART_btn_minimize";
         private const string UIEMaximizeBtn = "PART_btn_maximize";
         private const string UIECloseBtn = "PART_btn_close";
+        private const string UIEControlBox = "grdControlBox";
 
         private Border _headerBorder;
         private Border _footerBorder;
@@ -35,6 +37,7 @@ namespace Haley.WPF.Controls
         private Control _btnMaximize;
         private Control _btnMinimize;
         private Control _btnClose;
+        private Grid _controlGrid;
 
         private DataTemplate _headerDefaultTemplate;
 
@@ -52,6 +55,7 @@ namespace Haley.WPF.Controls
         {
             this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
+            WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(3.0),GlassFrameThickness = new Thickness(1.0) }); //for enabling resize
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _controlboxAction));
         }
         public override void OnApplyTemplate()
@@ -64,7 +68,8 @@ namespace Haley.WPF.Controls
             _btnMaximize = GetTemplateChild(UIEMaximizeBtn) as Control;
             _btnMinimize = GetTemplateChild(UIEMinimizeBtn) as Control;
             _btnClose = GetTemplateChild(UIECloseBtn) as Control;
-
+            _controlGrid = GetTemplateChild(UIEControlBox) as Grid;
+            WindowChrome.SetIsHitTestVisibleInChrome(_controlGrid, true); //Important or else the control box items hit will not be visible.
             _initiate();
         }
 
