@@ -55,8 +55,13 @@ namespace Haley.WPF.Controls
         {
             this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
-            WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(3.0),GlassFrameThickness = new Thickness(1.0) }); //for enabling resize
+            WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(4.0),GlassFrameThickness = new Thickness(2.0)}); //for enabling resize
+            //set border thickness to match the resize border
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _controlboxAction));
+
+            ////This is to limit the maximum height of the screen.
+            //MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            //MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
         }
         public override void OnApplyTemplate()
         {
@@ -116,7 +121,7 @@ namespace Haley.WPF.Controls
         static object _headerfooterHeightCoerce(DependencyObject d, object baseValue)
         {
             double _actual = (double)baseValue;
-            if (_actual < 20.0) return 20.0;
+            if (_actual < 15.0) return 15.0;
             return baseValue;
         }
 

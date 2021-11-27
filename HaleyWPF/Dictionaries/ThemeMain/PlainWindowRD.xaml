@@ -11,10 +11,11 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:PlainWindow}">
-        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Margin" Value="4"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="#99888D90"/>
+        <!--Border thickness below should match the resizeborder and glass frame thickness of the window chrome (that we have set for resizing. Check the plainwindow implementation)-->
+        <Setter Property="BorderThickness" Value="6"/>
         <Setter Property="ml:Icon.DefaultColor" Value="White"/>
         <Setter Property="ResizeMode" Value="CanResize"/>
         <Setter Property="Template">
@@ -33,7 +34,6 @@
                             </DataTemplate>
                         </ResourceDictionary>
                     </ControlTemplate.Resources>
-                    
                         <Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="6" ShadowDepth="0"/>
@@ -55,10 +55,10 @@
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="5"/>
                                             <ColumnDefinition/>
                                             <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="10"/>
+                                            <ColumnDefinition Width="3"/>
                                         </Grid.ColumnDefinitions>
 
                                         <Grid x:Name="grdControlBox" VerticalAlignment="Top" Grid.Column="2" Height="27" Margin="4" >
