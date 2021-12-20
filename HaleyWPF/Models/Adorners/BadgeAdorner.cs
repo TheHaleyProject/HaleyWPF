@@ -13,6 +13,7 @@ namespace Haley.Models
 {
     public class BadgeAdorner : Adorner
     {
+        #region Attributes
         Point TopLeft = new Point(0, 0);
         Point TopRight = new Point(0, 0);
         Point BottomLeft = new Point(0, 0);
@@ -26,13 +27,18 @@ namespace Haley.Models
         private VisualCollection _visuals;
         private ContentPresenter _contentPresenter;
         private Badge _badge;
+        #endregion
 
+        #region Properties
         public object Content
         {
             get { return _contentPresenter.Content; }
             set { _contentPresenter.Content = value; }
         }
 
+        #endregion
+
+        #region Constructors
         public BadgeAdorner(UIElement adornedElement) : base(adornedElement)
         {
             _contentPresenter = new ContentPresenter();
@@ -41,20 +47,10 @@ namespace Haley.Models
             _visuals.Add(_contentPresenter); //This is to add to the target element.
             this.MouseLeftButtonDown += BadgeAdorner_MouseLeftButtonDown;
         }
-
-        private void BadgeAdorner_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            //If command is not empty, raise it with parameter.
-            if (_badge.Command != null)
-            {
-                _badge.Command.Execute(_badge.CommandParameter);
-            }
-        }
-
         public BadgeAdorner(UIElement adornedElement, Visual content)
           : this(adornedElement)
-        { 
-            Content = content; 
+        {
+            Content = content; //By default content is null (because the New contentpresenter value is null).
         }
 
         public BadgeAdorner(UIElement adornedElement, Badge badge)
@@ -68,7 +64,19 @@ namespace Haley.Models
             }
         }
 
+        #endregion
 
+        private void BadgeAdorner_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //If command is not empty, raise it with parameter.
+            if (_badge.Command != null)
+            {
+                _badge.Command.Execute(_badge.CommandParameter);
+            }
+        }
+
+
+        #region Overridden Methods
         //Below method overrides the render. So DON'T USE.
         //protected override Size MeasureOverride(Size constraint)
         //{
@@ -85,12 +93,41 @@ namespace Haley.Models
         }
         protected override Visual GetVisualChild(int index)
         {
-            return _visuals[index]; 
+            return _visuals[index];
         }
         protected override int VisualChildrenCount
         {
             get { return _visuals.Count; }
         }
+
+        protected override void OnRender(DrawingContext drawingContext)
+        {
+            if (_badge == null) return; //Don't proceed if the badge data is empty.
+
+            //if not visible then don't proceed at all.
+            if (!_badge.IsVisible)
+            {
+                //Reason why we set this below property is that for content, the adorner is already prepared via constructor.
+                this.SetCurrentValue(VisibilityProperty, Visibility.Collapsed);
+                return;
+            }
+            if (Content != null) return; //This means, if we have set the content, we will not proceed further. meaning we have already set the content as custom shape. We don't need to draw anything.
+
+            _getCorners();
+            switch (_badge.Shape)
+            {
+                case Enums.BadgeShape.Ellipse:
+                    _drawCircle(drawingContext);
+                    break;
+                case Enums.BadgeShape.Rectangle:
+                    _drawRectangle(drawingContext);
+                    break;
+            }
+        }
+
+        #endregion
+
+        #region Private Helpers
 
         private void _drawCircle(DrawingContext drawingContext)
         {
@@ -287,28 +324,6 @@ namespace Haley.Models
             }
             return _brush;
         }
-
-        protected override void OnRender(DrawingContext drawingContext)
-        {
-            //if not visible then don't proceed at all.
-            if (!_badge.IsVisible)
-            {
-                //Reason why we set this below property is that for content, the adorner is already prepared via constructor.
-                this.SetCurrentValue(VisibilityProperty, Visibility.Collapsed);
-                return;
-            }
-            if (Content != null) return; //This means, if we have set the content, we will not proceed further.
-
-            _getCorners();
-            switch (_badge.Shape)
-            {
-                case Enums.BadgeShape.Ellipse:
-                    _drawCircle(drawingContext);
-                    break;
-                case Enums.BadgeShape.Rectangle:
-                    _drawRectangle(drawingContext);
-                    break;
-            }
-        }
+        #endregion
     }
 }

@@ -50,4 +50,12 @@ namespace Haley.Enums
         BottomLeft,
         BottomRight
     }
+
+    public enum PickerAdornerShape
+    {
+        None,
+        Triangle,
+        Rectangle,
+        Circle,
+    }
 }

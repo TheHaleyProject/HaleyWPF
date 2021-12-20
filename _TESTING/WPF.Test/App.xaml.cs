@@ -21,15 +21,18 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            ContainerRegistrations(); //For notification test
-            //ExpanderTest _wndw2sd = new ExpanderTest();
+            //ContainerRegistrations(); //For notification test
+            ////ExpanderTest _wndw2sd = new ExpanderTest();
 
-            var mw = Application.Current.MainWindow;
-            if (mw == null)
-            {
-                //First invoke.
-                mw = new Window(); //Dummy initiation
-            }
+            //var mw = Application.Current.MainWindow;
+            //if (mw == null)
+            //{
+            //    //First invoke.
+            //    mw = new Window(); //Dummy initiation
+            //}
+
+            var twindow = new TestWindow();
+            twindow.ShowDialog();
 
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
@@ -52,8 +55,8 @@ namespace WPF.Test
             //RibbonTest wnddgtest = new RibbonTest();
             //wnddgtest.ShowDialog();
 
-            NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
-            flexiNewMenuTest.ShowDialog();
+            //NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
+            //flexiNewMenuTest.ShowDialog();
 
             //CardTest cardtestnew = new CardTest();
             //cardtestnew.ShowDialog();

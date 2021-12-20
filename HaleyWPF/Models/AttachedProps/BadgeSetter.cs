@@ -35,11 +35,15 @@ namespace Haley.Models
                 //Get adorner layer
                 var _layer = AdornerLayer.GetAdornerLayer(element);
 
+                //What if the element doesn't have any adorner layer???
+
+                if (_layer == null) return; //Should we try to create and add an adorner layer to the element??
+
                 //Create new adorner and add to the layer.
                 var _badgeAdorner = new BadgeAdorner(element, _badge);
                 _layer.Add(_badgeAdorner);
 
-                //Store all objects as reference in the Badge.
+                //Store all objects as reference in the Badge. (for referencing the parent info from the child).
                 _badge.Adorner = _badgeAdorner;
                 _badge.AdornerLayer = _layer;
                 _badge.Parent = element;

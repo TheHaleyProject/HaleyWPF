@@ -48,6 +48,7 @@
 	
   <ItemGroup>
     <Compile Remove="Controls\PlainDataGrid.cs" />
+    <Compile Remove="Controls\PlainSlider.cs" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -304,6 +305,7 @@
   <ItemGroup>
     <Page Remove="Dictionaries\ThemeMain\FlexiTabRD.xaml" />
     <Page Remove="Dictionaries\ThemeMain\PlainDataGridRD.xaml" />
+    <Page Remove="Dictionaries\ThemeMain\PlainSliderRD.xaml" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -726,6 +728,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Behaviours\" />
   </ItemGroup>
 	
 <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
