@@ -14,7 +14,25 @@
     Title="TestWindow">
     <Window.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries />
+            <ResourceDictionary.MergedDictionaries>
+                
+            </ResourceDictionary.MergedDictionaries>
+            <DrawingBrush TileMode="Tile" Viewport="0, 0, 20,20" ViewportUnits="Absolute" x:Key="checkerBox">
+                <DrawingBrush.Drawing>
+                    <DrawingGroup>
+                        <GeometryDrawing Brush="LightGray">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0, 0, 5, 5"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Brush="LightGray">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="5, 5, 5, 5"/>
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                    </DrawingGroup>
+                </DrawingBrush.Drawing>
+            </DrawingBrush>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -34,14 +52,15 @@
                 <Rectangle x:Name="SLRectangle" Stroke="Gray">
                     <Rectangle.Fill>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                            <GradientStop Color="White" />
-                            <GradientStop Offset="1" Color="Red" />
+                            <GradientStop Color="White" Offset="0"/>
+                            <GradientStop Offset="1" Color="{Binding SelectedHueColor, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}" />
                         </LinearGradientBrush>
                     </Rectangle.Fill>
                     <Rectangle.OpacityMask>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                             <GradientStop Offset="0" Color="White" />
-                            <GradientStop Offset="1" Color="#00000000" />
+                            <!--Since we cannot have two colors overlap each other. We use the transparency technique. We keep a black color background and the gradient white to transparent is like white to black.-->
+                            <GradientStop Offset="1" Color="Transparent" />
                         </LinearGradientBrush>
                     </Rectangle.OpacityMask>
 
@@ -53,14 +72,16 @@
                 RenderTransformOrigin="1,0"
                 Stroke="Gray">
                 <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox">
-                        <GradientStop Color="Red" />
-                        <GradientStop Offset="1" Color="Red" />
-                        <GradientStop Offset="0.1667" Color="Yellow" />
-                        <GradientStop Offset="0.3333333" Color="Lime" />
-                        <GradientStop Offset="0.5" Color="Cyan" />
-                        <GradientStop Offset="0.6666666666" Color="Blue" />
-                        <GradientStop Offset="0.83333" Color="Magenta" />
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" x:Name="HueRectangleGradients">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="Red" />
+                            <GradientStop Offset="0.1667" Color="Yellow" />
+                            <GradientStop Offset="0.3333333" Color="Lime" />
+                            <GradientStop Offset="0.5" Color="Cyan" />
+                            <GradientStop Offset="0.6666666666" Color="Blue" />
+                            <GradientStop Offset="0.83333" Color="Magenta" />
+                            <GradientStop Offset="1" Color="Red" />
+                        </LinearGradientBrush.GradientStops>
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
@@ -99,6 +120,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25" />
@@ -117,19 +139,19 @@
                 Maximum="255"
                 Minimum="0"
                 Orientation="Horizontal"
-                TickFrequency="1" />
+                TickFrequency="1" Value="{Binding RedComponent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}"/>
             <Slider
                 x:Name="sliderG"
                 Grid.Row="1"
-                Grid.Column="1"/>
+                Grid.Column="1" Value="{Binding GreenComponent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}"/>
             <Slider
                 x:Name="sliderB"
                 Grid.Row="2"
-                Grid.Column="1"/>
+                Grid.Column="1" Value="{Binding BlueComponent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}"/>
             <Slider
                 x:Name="sliderA"
                 Grid.Row="3"
-                Grid.Column="1" />
+                Grid.Column="1" Value="{Binding Alpha, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}"/>
 
             <hw:PlainTextBox
                 Grid.Column="2"
@@ -162,6 +184,10 @@
                     <hm:NumericLimiter MaxValue="255" />
                 </beh:Interaction.Behaviors>
             </hw:PlainTextBox>
+            <hw:PlainTextBox
+                Grid.Row="4"
+                Grid.ColumnSpan="3"
+                Text="{Binding HexComponent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}" Width="60" Margin="3" TextAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Row="2" Margin="4">
@@ -179,10 +205,12 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Border Background="Purple" CornerRadius="10,10,0,0" />
+                    <Border Background="{StaticResource checkerBox}" CornerRadius="10,10,0,0"/>
+                    <Border Background="{Binding SelectedBrush, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}" CornerRadius="10,10,0,0" />
+                    <Border Background="{StaticResource checkerBox}" CornerRadius="10,10,0,0" Grid.Row="1"/>
                     <Border
                         Grid.Row="1"
-                        Background="Violet"
+                        Background="{Binding OldBrush, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}"
                         CornerRadius="0,0,10,10">
                         <TextBlock
                             Margin="3"
@@ -191,7 +219,7 @@
                             Background="#66090909"
                             FontSize="9"
                             Foreground="#B2FFFFFF"
-                            Text="CURRENT" />
+                            Text="OLD" />
                     </Border>
                 </Grid>
             </Border>

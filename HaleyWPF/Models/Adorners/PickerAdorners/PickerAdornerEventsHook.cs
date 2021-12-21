@@ -11,7 +11,7 @@ using System;
 namespace Haley.Models
 {
     /// <summary>
-    /// Class for a picker canvas base
+    /// Class for a hooking up the pickeradorner with this adorned element events.
     /// </summary>
     public sealed class PickerAdornerEventsHook
     {

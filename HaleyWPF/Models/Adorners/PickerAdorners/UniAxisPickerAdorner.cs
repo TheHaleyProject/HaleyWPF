@@ -18,12 +18,30 @@ namespace Haley.Models
     {
         private static readonly Pen _pen = new Pen(Brushes.Black, 1);
         private Brush _brush = Brushes.Transparent;
-        public UniAxisPickerAdorner(UIElement adornedElement) : base(adornedElement,false)
+        public UniAxisPickerAdorner(UIElement adornedElement,Orientation orientation) : base(adornedElement,false)
         {
+            Orientation = orientation;
         }
 
-        public Orientation Orientation { get; set; }
+        public Color FillColor
+        {
+            get { return (Color)GetValue(FillColorProperty); }
+            set { SetValue(FillColorProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for FillColor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty FillColorProperty =
+            DependencyProperty.Register(nameof(FillColor), typeof(Color), typeof(UniAxisPickerAdorner), new FrameworkPropertyMetadata(Colors.Transparent,FrameworkPropertyMetadataOptions.AffectsRender,propertyChangedCallback:FillColorPropertyChanged));
+
+        public Orientation Orientation { get;}
+
+        static void FillColorPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is UniAxisPickerAdorner uniadorner && e.NewValue is Color newcolor)
+            {
+                uniadorner._brush = new SolidColorBrush(newcolor);
+            }
+        }
         public override void Draw(DrawingContext dwgContext)
         {
             //based upon the orientation get the X or Y value.

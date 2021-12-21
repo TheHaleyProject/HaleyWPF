@@ -9,6 +9,8 @@ using Haley.WPF.Controls;
 using System.Globalization;
 using Haley.Enums;
 using System.Windows.Input;
+using Haley.Events;
+using Haley.Utils;
 
 namespace Haley.Models
 {
@@ -19,6 +21,9 @@ namespace Haley.Models
     /// </summary>
     public abstract class PickerAdornerBase : Adorner
     {
+
+        public event EventHandler<ValueChangedArgs<(Point position,Point percent)>> PositionChangedEvent;
+        
         //Add a dependency property which will trigger onrender.
         public Point Position
         {
@@ -47,12 +52,26 @@ namespace Haley.Models
 
         public void SetPosition(Point position)
         {
+            //Instead of using the actualwidth/ actual height, we can also do AdornedElement.DesiredSize.Width & AdornedElement.DesiredSize.Height
+
             //check if current position and new position are same.
             if (Position.X == position.X && Position.Y == position.Y) return; //Do not update same values.
+
+            //TODO: Clamp the position to set within the adorned element size.
 
             PercentX = (ActualWidth != 0.0) ? (position.X / ActualWidth) : 0;
             PercentY = (ActualHeight != 0.0) ? (position.Y / ActualHeight) : 0;
             this.SetCurrentValue(PositionProperty, position);
+            var args = new ValueChangedArgs<(Point position, Point percent)>((position, new Point(PercentX, PercentY)), null);
+            PositionChangedEvent?.Invoke(this, args); //Send this new position.
+        }
+
+        public void SetPosition(double x_percent, double y_percent)
+        {
+            //Now, based upon the new percentage value, we change the position.
+            var _newX = x_percent * ActualWidth;
+            var _newY = y_percent * ActualHeight;
+            SetPosition(new Point(_newX, _newY));
         }
 
         public abstract void Draw(DrawingContext dwgContext);
