@@ -65,6 +65,9 @@
     <Compile Include="CardTest.xaml.cs">
       <DependentUpon>CardTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ColorPIckerTest.xaml.cs">
+      <DependentUpon>ColorPIckerTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LocalView2.xaml.cs">
       <DependentUpon>LocalView2.xaml</DependentUpon>
     </Compile>
@@ -95,9 +98,6 @@
       <DependentUpon>ScrollViewerTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="SubVM.cs" />
-    <Compile Include="TestWindow.xaml.cs">
-      <DependentUpon>TestWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ThemeTest.xaml.cs">
       <DependentUpon>ThemeTest.xaml</DependentUpon>
     </Compile>
@@ -116,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CardTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorPIckerTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,10 +190,6 @@
     <Page Include="ScrollViewerTest.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="TestWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ThemeTest.xaml">
       <SubType>Designer</SubType>

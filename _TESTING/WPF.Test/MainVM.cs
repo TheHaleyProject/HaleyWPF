@@ -9,6 +9,7 @@ using Haley.Abstractions;
 using Haley.IOC;
 using Haley.MVVM;
 using Haley.Events;
+using System.Windows.Media;
 
 namespace WPF.Test
 {
@@ -121,6 +122,12 @@ namespace WPF.Test
             set { SetProp(ref _choosentiems, value); }
         }
 
+        private SolidColorBrush _selectedBrush;
+        public SolidColorBrush SelectedBrush
+        {
+            get { return _selectedBrush; }
+            set { SetProp(ref _selectedBrush, value); }
+        }
 
         public MainVM()
         {
@@ -140,6 +147,7 @@ namespace WPF.Test
             selecteditems.Add(hello[3]);
             proxymessageholder = "New test from proxy binding. Success";
             IsVisible = false;
+            SelectedBrush = new SolidColorBrush(Colors.PaleVioletRed);
         }
     }
 

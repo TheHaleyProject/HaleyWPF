@@ -366,13 +366,13 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty IconColorProperty =
             DependencyProperty.Register(nameof(IconColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
 
-        public IEnumerable SourceSelectedItems
+        internal IEnumerable SourceSelectedItems
         {
             get { return (IEnumerable)GetValue(SourceSelectedItemsProperty); }
             set { SetValue(SourceSelectedItemsProperty, value); }
         }
 
-        public static readonly DependencyProperty SourceSelectedItemsProperty =
+        internal static readonly DependencyProperty SourceSelectedItemsProperty =
             DependencyProperty.Register(nameof(SourceSelectedItems), typeof(IEnumerable), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IEnumerable), FrameworkPropertyMetadataOptions.NotDataBindable, SourceSelectedItemsPropertyChanged));
 
         public string TitleSource

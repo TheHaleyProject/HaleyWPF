@@ -1,0 +1,14 @@
+﻿<Window x:Class="WPF.Test.ColorPIckerTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:local="clr-namespace:WPF.Test"
+        mc:Ignorable="d"
+        Title="ColorPIckerTest" Height="550" Width="400">
+    <Grid>
+        <hw:ColorPicker MaxStoredColors="3" OldBrush="Orange" HideColorPalette="True" HideRGBComponents="True" ShowMiniInfo="True" SelectedBrush="{Binding SelectedBrush,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
+    </Grid>
+</Window>

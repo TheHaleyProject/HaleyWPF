@@ -86,10 +86,10 @@
 
                             <Border.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
-                                    <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
-                                    <MenuItem x:Name="PART_MenuItem_RepositionPanel" Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}"/>
-                                    <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True"/>
+                                    <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                                    <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                                    <MenuItem x:Name="PART_MenuItem_RepositionPanel" Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                                    <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
                             

@@ -31,8 +31,9 @@ namespace WPF.Test
             //    mw = new Window(); //Dummy initiation
             //}
 
-            var twindow = new TestWindow();
-            twindow.ShowDialog();
+            ColorPIckerTest cpkrTest = new ColorPIckerTest();
+            cpkrTest.ShowDialog();
+
 
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
