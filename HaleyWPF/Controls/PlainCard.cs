@@ -72,7 +72,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Header.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderProperty =
             DependencyProperty.Register(nameof(Header), typeof(string), typeof(PlainCard), new FrameworkPropertyMetadata("Header"));
 
@@ -82,7 +81,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SubHeaderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SubHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SubHeaderProperty =
             DependencyProperty.Register(nameof(SubHeader), typeof(string), typeof(PlainCard), new PropertyMetadata("Sub Header"));
 
@@ -92,7 +90,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderAlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderAlignment.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderAlignmentProperty =
             DependencyProperty.Register(nameof(HeaderAlignment), typeof(HorizontalAlignment), typeof(PlainCard), new PropertyMetadata(HorizontalAlignment.Center));
 
@@ -102,7 +99,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowIconProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HideIcon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowIconProperty =
             DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(PlainCard), new PropertyMetadata(true));
 
@@ -114,7 +110,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FlyerHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FlyerHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FlyerHeightProperty =
             DependencyProperty.Register(nameof(FlyerHeight), typeof(double), typeof(PlainCard), new PropertyMetadata(60.0));
 
@@ -124,7 +119,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FlyerWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FlyerWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FlyerWidthProperty =
             DependencyProperty.Register(nameof(FlyerWidth), typeof(double), typeof(PlainCard), new PropertyMetadata(60.0));
 
@@ -134,7 +128,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainCard), new FrameworkPropertyMetadata(defaultValue: ResourceHelper.cornerRadius,propertyChangedCallback:cornerRadiusPropertyChanged));
 
@@ -152,7 +145,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowHeaderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowHeaderProperty =
             DependencyProperty.Register(nameof(ShowHeader), typeof(bool), typeof(PlainCard), new PropertyMetadata(true));
 
@@ -162,7 +154,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowSubHeaderProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowSubHeader.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowSubHeaderProperty =
             DependencyProperty.Register(nameof(ShowSubHeader), typeof(bool), typeof(PlainCard), new PropertyMetadata(true));
 
@@ -174,7 +165,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderFontSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderFontSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderFontSizeProperty =
             DependencyProperty.Register(nameof(HeaderFontSize), typeof(double), typeof(PlainCard), new PropertyMetadata(20.0));
 
@@ -184,7 +174,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SubHeaderFontSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SubHeaderFontSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SubHeaderFontSizeProperty =
             DependencyProperty.Register(nameof(SubHeaderFontSize), typeof(double), typeof(PlainCard), new PropertyMetadata(14.0));
 
@@ -196,7 +185,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderHeightProperty =
             DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(PlainCard), new FrameworkPropertyMetadata(30.0,null,coerceValueCallback:coerceHeight));
 
@@ -216,7 +204,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderBackgroundProperty =
             DependencyProperty.Register(nameof(HeaderBackground), typeof(Brush), typeof(PlainCard), new PropertyMetadata(null));
 
@@ -226,7 +213,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderForegroundProperty =
             DependencyProperty.Register(nameof(HeaderForeground), typeof(SolidColorBrush), typeof(PlainCard), new PropertyMetadata(null));
 
@@ -236,7 +222,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Mode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ModeProperty =
             DependencyProperty.Register("Mode", typeof(CardMode), typeof(PlainCard), new PropertyMetadata(CardMode.Simple));
     }

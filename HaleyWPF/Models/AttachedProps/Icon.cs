@@ -62,7 +62,6 @@ namespace Haley.Models
             obj.SetValue(DefaultProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Default.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DefaultProperty =
             DependencyProperty.RegisterAttached("Default", typeof(ImageSource), typeof(Icon), new PropertyMetadata(null));
 
@@ -76,7 +75,6 @@ namespace Haley.Models
             obj.SetValue(HoverProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Hover.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverProperty =
             DependencyProperty.RegisterAttached("Hover", typeof(ImageSource), typeof(Icon), new PropertyMetadata(null));
 
@@ -90,7 +88,6 @@ namespace Haley.Models
             obj.SetValue(PressedProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Pressed.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PressedProperty =
             DependencyProperty.RegisterAttached("Pressed", typeof(ImageSource), typeof(Icon), new PropertyMetadata(null));
 
@@ -108,7 +105,6 @@ namespace Haley.Models
             obj.SetValue(DefaultColorProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for DefaultColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DefaultColorProperty =
             DependencyProperty.RegisterAttached("DefaultColor", typeof(SolidColorBrush), typeof(Icon), new FrameworkPropertyMetadata(_defaultColorChanged));
 
@@ -122,7 +118,6 @@ namespace Haley.Models
             obj.SetValue(HoverColorProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for HoverColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverColorProperty =
             DependencyProperty.RegisterAttached("HoverColor", typeof(SolidColorBrush), typeof(Icon), new FrameworkPropertyMetadata(_hoverColorChanged));
 
@@ -136,7 +131,6 @@ namespace Haley.Models
             obj.SetValue(PressedColorProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for PressedColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PressedColorProperty =
             DependencyProperty.RegisterAttached("PressedColor", typeof(SolidColorBrush), typeof(Icon), new FrameworkPropertyMetadata(_pressedColorChanged));
 
@@ -152,7 +146,6 @@ namespace Haley.Models
             obj.SetValue(DisableColorChangeProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for DisableColorChange.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DisableColorChangeProperty =
             DependencyProperty.RegisterAttached("DisableColorChange", typeof(bool), typeof(Icon), new PropertyMetadata(false));
 

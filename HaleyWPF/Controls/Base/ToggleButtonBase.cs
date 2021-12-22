@@ -17,7 +17,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ToggleButtonBase), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
@@ -27,7 +26,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ColorONProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ColorON.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorONProperty =
             DependencyProperty.Register(nameof(ColorON), typeof(SolidColorBrush), typeof(ToggleButtonBase), new FrameworkPropertyMetadata(null));
 
@@ -37,7 +35,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ColorOFFProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ColorOFF.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorOFFProperty =
             DependencyProperty.Register(nameof(ColorOFF), typeof(SolidColorBrush), typeof(ToggleButtonBase), new PropertyMetadata(null));
     }

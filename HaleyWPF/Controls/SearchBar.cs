@@ -33,7 +33,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IconColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IconColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconColorProperty =
             DependencyProperty.Register(nameof(IconColor), typeof(SolidColorBrush), typeof(SearchBar), new PropertyMetadata(null));
 
@@ -43,7 +42,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(SearchBar), new PropertyMetadata(default(ICommand), OnCommandPropertyChanged));
 
@@ -53,7 +51,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandParameterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(SearchBar), new PropertyMetadata(default(object)));
 
@@ -63,7 +60,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandTargetProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CommandTarget.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandTargetProperty =
             DependencyProperty.Register(nameof(CommandTarget), typeof(IInputElement), typeof(SearchBar), new PropertyMetadata(default(IInputElement)));
 

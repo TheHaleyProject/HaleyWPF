@@ -20,7 +20,6 @@ namespace Haley.WPF.Controls
             set { SetValue(OnTextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for OnText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OnTextProperty =
             DependencyProperty.Register(nameof(OnText), typeof(string), typeof(PlainToggleButton), new PropertyMetadata("ON"));
 
@@ -30,7 +29,6 @@ namespace Haley.WPF.Controls
             set { SetValue(OffTextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for OffText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OffTextProperty =
             DependencyProperty.Register(nameof(OffText), typeof(string), typeof(PlainToggleButton), new PropertyMetadata("OFF"));
 
@@ -40,7 +38,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowTextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowText.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowTextProperty =
             DependencyProperty.Register(nameof(ShowText), typeof(bool), typeof(PlainToggleButton), new PropertyMetadata(true));
 
@@ -50,7 +47,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SwitchWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SwitchWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SwitchWidthProperty =
             DependencyProperty.Register(nameof(SwitchWidth), typeof(double), typeof(PlainToggleButton), new PropertyMetadata(10.0));
 
@@ -60,7 +56,6 @@ namespace Haley.WPF.Controls
             set { SetValue(EnlargeSwitchButtonProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for EnlargeSwitchButton.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EnlargeSwitchButtonProperty =
             DependencyProperty.Register(nameof(EnlargeSwitchButton), typeof(bool), typeof(PlainToggleButton), new PropertyMetadata(false));
 

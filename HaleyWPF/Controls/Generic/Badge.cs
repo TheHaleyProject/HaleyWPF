@@ -39,7 +39,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(Badge), new FrameworkPropertyMetadata(default(ICommand)));
 
@@ -49,7 +48,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CommandName.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandNameProperty =
             DependencyProperty.Register(nameof(CommandName), typeof(string), typeof(Badge), new PropertyMetadata(null));
 
@@ -59,7 +57,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandParameterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(Badge), new FrameworkPropertyMetadata(default(object)));
 
@@ -69,7 +66,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FontSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FontSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register(nameof(FontSize), typeof(double), typeof(Badge), new PropertyMetadata(12.0, propertyChangedCallback: badgeValueChanged));
 
@@ -79,7 +75,6 @@ namespace Haley.WPF.Controls
             set { SetValue(LabelProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register(nameof(Label), typeof(string), typeof(Badge), new FrameworkPropertyMetadata(defaultValue: "New",propertyChangedCallback:badgeValueChanged));
 
@@ -89,7 +84,6 @@ namespace Haley.WPF.Controls
             set { SetValue(BackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Background.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register(nameof(Background), typeof(Brush), typeof(Badge), new PropertyMetadata(null,propertyChangedCallback: badgeValueChanged));
         
@@ -99,7 +93,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Foreground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Brush), typeof(Badge), new PropertyMetadata(null, propertyChangedCallback: badgeValueChanged));
         public Brush BorderBrush
@@ -108,7 +101,6 @@ namespace Haley.WPF.Controls
             set { SetValue(BorderBrushProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for BorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BorderBrushProperty =
             DependencyProperty.Register("BorderBrush", typeof(Brush), typeof(Badge), new PropertyMetadata(null, propertyChangedCallback: badgeValueChanged));
         public double BorderThickness
@@ -117,7 +109,6 @@ namespace Haley.WPF.Controls
             set { SetValue(BorderThicknessProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for BorderThickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BorderThicknessProperty =
             DependencyProperty.Register("BorderThickness", typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
 
@@ -127,7 +118,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CustomShapeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CustomShapeProperty =
             DependencyProperty.Register("Content", typeof(object), typeof(Badge), new PropertyMetadata(null, propertyChangedCallback: badgeValueChanged));
 
@@ -137,7 +127,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShapeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Shape.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShapeProperty =
             DependencyProperty.Register("Shape", typeof(BadgeShape), typeof(Badge), new PropertyMetadata(BadgeShape.Ellipse, propertyChangedCallback: badgeValueChanged));
 
@@ -147,7 +136,6 @@ namespace Haley.WPF.Controls
             set { SetValue(KindProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Kind.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty KindProperty =
             DependencyProperty.Register(nameof(Kind), typeof(BadgeType), typeof(Badge), new PropertyMetadata(BadgeType.Info, propertyChangedCallback: badgeValueChanged));
 
@@ -157,7 +145,6 @@ namespace Haley.WPF.Controls
             set { SetValue(AlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Alignment.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AlignmentProperty =
             DependencyProperty.Register(nameof(Alignment), typeof(BadgeAlignment), typeof(Badge), new PropertyMetadata(BadgeAlignment.TopRight, propertyChangedCallback: badgeValueChanged));
 
@@ -167,7 +154,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IsVisibleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IsVisible.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsVisibleProperty =
             DependencyProperty.Register("IsVisible", typeof(bool), typeof(Badge), new PropertyMetadata(true, propertyChangedCallback: badgeValueChanged));
 
@@ -177,7 +163,6 @@ namespace Haley.WPF.Controls
             set { SetValue(AnchorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Anchor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AnchorProperty =
             DependencyProperty.Register(nameof(Anchor), typeof(BadgeAnchor), typeof(Badge), new PropertyMetadata(BadgeAnchor.Center, propertyChangedCallback: badgeValueChanged));
 
@@ -187,7 +172,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
 
@@ -197,7 +181,6 @@ namespace Haley.WPF.Controls
         //    set { SetValue(XProperty, value); }
         //}
 
-        //// Using a DependencyProperty as the backing store for LengthX.  This enables animation, styling, binding, etc...
         //public static readonly DependencyProperty XProperty =
         //    DependencyProperty.Register(nameof(X), typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
 
@@ -207,7 +190,6 @@ namespace Haley.WPF.Controls
         //    set { SetValue(YProperty, value); }
         //}
 
-        //// Using a DependencyProperty as the backing store for LengthY.  This enables animation, styling, binding, etc...
         //public static readonly DependencyProperty YProperty =
         //    DependencyProperty.Register(nameof(Y), typeof(double), typeof(Badge), new PropertyMetadata(0.0, propertyChangedCallback: badgeValueChanged));
 
@@ -217,7 +199,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Size.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SizeProperty =
             DependencyProperty.Register("Size", typeof(Size), typeof(Badge), new PropertyMetadata(new Size(), propertyChangedCallback: badgeValueChanged));
 
@@ -227,7 +208,6 @@ namespace Haley.WPF.Controls
             set { SetValue(MarginXProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MarginX.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MarginXProperty =
             DependencyProperty.Register("MarginX", typeof(double), typeof(Badge), new PropertyMetadata(0.0));
         public double MarginY
@@ -236,7 +216,6 @@ namespace Haley.WPF.Controls
             set { SetValue(MarginYProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MarginY.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MarginYProperty =
             DependencyProperty.Register("MarginY", typeof(double), typeof(Badge), new PropertyMetadata(0.0));
         public override string ToString()

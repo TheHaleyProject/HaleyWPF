@@ -45,7 +45,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ControlAreaVisibilityProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ControlAreaVisibility.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ControlAreaVisibilityProperty =
             DependencyProperty.Register(nameof(ControlAreaVisibility), typeof(Visibility), typeof(PlainListView), new PropertyMetadata(Visibility.Collapsed));
 
@@ -56,7 +55,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainListView), new PropertyMetadata(ResourceHelper.cornerRadius));
 
@@ -66,7 +64,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ItemSelectedColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemSelectedColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemSelectedColorProperty =
             DependencyProperty.Register(nameof(ItemSelectedColor), typeof(Brush), typeof(PlainListView), new PropertyMetadata(null));
 
@@ -76,7 +73,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ItemHoverColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemHoverColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemHoverColorProperty =
             DependencyProperty.Register(nameof(ItemHoverColor), typeof(Brush), typeof(PlainListView), new PropertyMetadata(null));
 
@@ -90,7 +86,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SelectedItemsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SelectedItems.  This enables animation, styling, binding, etc...
         public static new readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.Register(nameof(SelectedItems), typeof(IList), typeof(PlainListView), new FrameworkPropertyMetadata(default(IList), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,new PropertyChangedCallback(SelectedItemsPropertyChanged)));
 

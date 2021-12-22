@@ -48,7 +48,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Command.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(CommandMenuItem), new FrameworkPropertyMetadata(default(ICommand)));
 
@@ -58,7 +57,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandNameProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CommandName.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandNameProperty =
             DependencyProperty.Register(nameof(CommandName), typeof(string), typeof(CommandMenuItem), new PropertyMetadata(null));
 
@@ -68,7 +66,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CommandParameterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CommandParameter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(CommandMenuItem), new FrameworkPropertyMetadata(default(object)));
 
@@ -78,7 +75,6 @@ namespace Haley.WPF.Controls
             set { SetValue(LabelProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Label.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LabelProperty =
             DependencyProperty.Register(nameof(Label), typeof(string), typeof(CommandMenuItem), new FrameworkPropertyMetadata(defaultValue: "Button"));
         

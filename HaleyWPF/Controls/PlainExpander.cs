@@ -26,7 +26,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowIconProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowIcon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowIconProperty =
             DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(PlainExpander), new PropertyMetadata(true));
 
@@ -36,7 +35,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IconProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Icon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
 
@@ -46,7 +44,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IconDefColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IconDefColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconDefColorProperty =
             DependencyProperty.Register(nameof(IconDefColor), typeof(SolidColorBrush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
 
@@ -56,7 +53,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ArrowProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Arrow.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ArrowProperty =
             DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.getIcon(IconEnums.arrow_down_rounded.ToString())));
 
@@ -66,7 +62,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ArrowDefColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ArrowDefColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ArrowDefColorProperty =
             DependencyProperty.Register(nameof(ArrowDefColor), typeof(SolidColorBrush), typeof(PlainExpander), new PropertyMetadata(null));
 
@@ -76,7 +71,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ContentBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ContentBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContentBackgroundProperty =
             DependencyProperty.Register(nameof(ContentBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
 
@@ -86,7 +80,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
     }

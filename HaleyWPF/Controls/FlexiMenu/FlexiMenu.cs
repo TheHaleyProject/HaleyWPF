@@ -129,7 +129,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FloatingPanelProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FloatingPanel.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FloatingPanelProperty =
             DependencyProperty.Register("FloatingPanel", typeof(object), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,propertyChangedCallback:FloatingPanelChanged));
         public bool IsFloatingPanelVisible
@@ -138,7 +137,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IsFloatingPanelVisibleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IsFloatingPanelVisible.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsFloatingPanelVisibleProperty =
             DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new FrameworkPropertyMetadata(true,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback:IsFloatingPanelVisiblePropertyChanged));
         #endregion
@@ -149,7 +147,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ToggleIconProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ToggleIcon.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ToggleIconProperty =
             DependencyProperty.Register(nameof(ToggleIcon), typeof(ImageSource), typeof(FlexiMenu), new PropertyMetadata(null));
 
@@ -159,7 +156,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SelectedMenuColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemSelectedColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedMenuColorProperty =
             DependencyProperty.Register(nameof(SelectedMenuColor), typeof(Brush), typeof(FlexiMenu), new PropertyMetadata(null));
 
@@ -169,7 +165,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ActiveMenuProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ActiveMenu.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ActiveMenuProperty =
             DependencyProperty.Register(nameof(ActiveMenu), typeof(MenuItem), typeof(FlexiMenu), new FrameworkPropertyMetadata(null));
 
@@ -179,7 +174,6 @@ namespace Haley.WPF.Controls
             set { SetValue(WelcomeViewProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for WelcomeView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WelcomeViewProperty =
             DependencyProperty.Register(nameof(WelcomeView), typeof(UserControl), typeof(FlexiMenu), new PropertyMetadata(null));
 
@@ -189,7 +183,6 @@ namespace Haley.WPF.Controls
             set { SetValue(MenuItemsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MenuItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuItemsProperty =
             DependencyProperty.Register(nameof(MenuItems), typeof(ObservableCollection<MenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
@@ -199,7 +192,6 @@ namespace Haley.WPF.Controls
             set { SetValue(OptionItemsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for OptionItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OptionItemsProperty =
             DependencyProperty.Register(nameof(OptionItems), typeof(ObservableCollection<CommandMenuItem>), typeof(FlexiMenu), new PropertyMetadata(null));
 
@@ -209,7 +201,6 @@ namespace Haley.WPF.Controls
             set { SetValue(LocalContainerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LocalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LocalContainerProperty =
             DependencyProperty.Register(nameof(LocalContainer), typeof(IControlContainer), typeof(FlexiMenu), new PropertyMetadata(null));
 
@@ -219,7 +210,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FootNoteProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FootNote.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FootNoteProperty =
             DependencyProperty.Register(nameof(FootNote), typeof(string), typeof(FlexiMenu), new PropertyMetadata("Foot Note"));
 
@@ -229,7 +219,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IsMenuBarOpenProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IsMenuBarOpen.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsMenuBarOpenProperty =
             DependencyProperty.Register(nameof(IsMenuBarOpen), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
 
@@ -239,7 +228,6 @@ namespace Haley.WPF.Controls
             set { SetValue(LocationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Location.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LocationProperty =
             DependencyProperty.Register(nameof(Location), typeof(DockLocation), typeof(FlexiMenu), new PropertyMetadata(DockLocation.Left));
 
@@ -249,7 +237,6 @@ namespace Haley.WPF.Controls
             set { SetValue(MenuItemsAlignmentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MenuItemsAlignment.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuItemsAlignmentProperty =
             DependencyProperty.Register(nameof(MenuItemsAlignment), typeof(Alignment), typeof(FlexiMenu), new PropertyMetadata(Alignment.Left));
 
@@ -259,7 +246,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SelectedMenuIdProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SelectedMenuId.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedMenuIdProperty =
             DependencyProperty.Register("SelectedMenuId", typeof(string), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback:SelectedIdChanged));
 
@@ -270,7 +256,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ToggleButtonBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ToggleButtonBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ToggleButtonBackgroundProperty =
             DependencyProperty.Register(nameof(ToggleButtonBackground), typeof(SolidColorBrush), typeof(FlexiMenu), new PropertyMetadata(_defaultToggleButtonBg));
 
@@ -283,7 +268,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderRegionHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderRegionHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderRegionHeightProperty =
             DependencyProperty.Register(nameof(HeaderRegionHeight), typeof(double), typeof(FlexiMenu), new PropertyMetadata(_headerRegionHeight));
 
@@ -293,7 +277,6 @@ namespace Haley.WPF.Controls
             set { SetValue(MenuItemHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MenuItemHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuItemHeightProperty =
             DependencyProperty.Register(nameof(MenuItemHeight), typeof(double), typeof(FlexiMenu), new PropertyMetadata(_menuItemHeight));
 
@@ -303,7 +286,6 @@ namespace Haley.WPF.Controls
             set { SetValue(MenuBarWidthProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MenuBarWidth.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MenuBarWidthProperty =
             DependencyProperty.Register(nameof(MenuBarWidth), typeof(double), typeof(FlexiMenu), new PropertyMetadata(_menuBarWidth));
 
@@ -316,7 +298,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HideHeaderRegionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowHeaderRegion.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HideHeaderRegionProperty =
             DependencyProperty.Register(nameof(HideHeaderRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
@@ -326,7 +307,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HideMenuRegionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HideMenuRegion.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HideMenuRegionProperty =
             DependencyProperty.Register(nameof(HideMenuRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
@@ -336,7 +316,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HideOptionsRegionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HideOptionsRegion.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HideOptionsRegionProperty =
             DependencyProperty.Register(nameof(HideOptionsRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
@@ -346,7 +325,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderTemplateProperty =
             DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, propertyChangedCallback: HeaderTemplatePropertyChanged));
 
@@ -356,7 +334,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowFooterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowFooter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowFooterProperty =
             DependencyProperty.Register(nameof(ShowFooter), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
         #endregion

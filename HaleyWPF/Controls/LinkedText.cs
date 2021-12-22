@@ -21,7 +21,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HoverForegroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HoverForeground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverForegroundProperty =
             DependencyProperty.Register(nameof(HoverForeground), typeof(Brush), typeof(LinkedText), new FrameworkPropertyMetadata(null));
 
@@ -31,7 +30,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TextProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Text.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(nameof(Text), typeof(string), typeof(LinkedText), new FrameworkPropertyMetadata("Button"));
 
@@ -42,7 +40,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TextDecorationsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TextDecorations.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextDecorationsProperty =
             DependencyProperty.Register(nameof(TextDecorations), typeof(TextDecorationCollection), typeof(LinkedText));
 
@@ -52,7 +49,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TurnOffTextDecorationsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TurnOffTextDecorations.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TurnOffTextDecorationsProperty =
             DependencyProperty.Register(nameof(TurnOffTextDecorations), typeof(bool), typeof(LinkedText), new FrameworkPropertyMetadata(false));
     }

@@ -22,14 +22,12 @@ namespace Haley.Models
         {
             Orientation = orientation;
         }
-
         public Color FillColor
         {
             get { return (Color)GetValue(FillColorProperty); }
             set { SetValue(FillColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FillColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FillColorProperty =
             DependencyProperty.Register(nameof(FillColor), typeof(Color), typeof(UniAxisPickerAdorner), new FrameworkPropertyMetadata(Colors.Transparent,FrameworkPropertyMetadataOptions.AffectsRender,propertyChangedCallback:FillColorPropertyChanged));
 

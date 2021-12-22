@@ -23,7 +23,6 @@ namespace Haley.Models
             obj.SetValue(IsEnabledProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.RegisterAttached("IsEnabled", typeof(bool), typeof(Hover), new PropertyMetadata(true));
 
@@ -38,7 +37,6 @@ namespace Haley.Models
             obj.SetValue(BorderBrushProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for BorderBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BorderBrushProperty =
             DependencyProperty.RegisterAttached("BorderBrush", typeof(Brush), typeof(Hover), new PropertyMetadata(null));
 
@@ -52,7 +50,6 @@ namespace Haley.Models
             obj.SetValue(BackgroundProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Background.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BackgroundProperty =
             DependencyProperty.RegisterAttached("Background", typeof(Brush), typeof(Hover), new PropertyMetadata(null));
 
@@ -66,7 +63,6 @@ namespace Haley.Models
             obj.SetValue(BorderThicknessProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for BorderThickness.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BorderThicknessProperty =
             DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(Hover), new PropertyMetadata(ResourceHelper.borderThickness));
 
@@ -80,7 +76,6 @@ namespace Haley.Models
             obj.SetValue(ForegroundProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Foreground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ForegroundProperty =
             DependencyProperty.RegisterAttached("Foreground", typeof(SolidColorBrush), typeof(Hover), new PropertyMetadata(null));
     }

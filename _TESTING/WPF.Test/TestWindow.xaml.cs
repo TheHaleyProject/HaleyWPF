@@ -18,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using dwg=System.Drawing;
+using System.Collections.ObjectModel;
 
 namespace WPF.Test
 {
@@ -28,30 +29,20 @@ namespace WPF.Test
     /// </summary>
     public partial class TestWindow : Window
     {
-        private static List<Color> _lastusedColors = new List<Color>();
         private UniAxisPickerAdorner _hueAdorner;
         private BiAxisPickerAdorner _svAdorner;
         private static Brush _startbrush = new SolidColorBrush(Colors.White);
         private bool _freezeRGBChange = false;
         private bool _freezeHSVChange = false;
 
-        public static void AddColor(Color newColor)
-        {
-            if (!_lastusedColors.Contains(newColor))
-            {
-                _lastusedColors.Add(newColor);
-            }
-        }
-
-        public List<Color> FavouriteColors { get; set; }
-
+        internal List<Color> CommonColors { get; set; }
+        public int MaxStoredColors { get; set; }
         public Brush SelectedBrush
         {
             get { return (Brush)GetValue(SelectedBrushProperty); }
             set { SetValue(SelectedBrushProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SelectedBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedBrushProperty =
             DependencyProperty.Register(nameof(SelectedBrush), typeof(Brush), typeof(TestWindow), new PropertyMetadata(_startbrush,OnSelectedBrushChanged));
 
@@ -61,9 +52,17 @@ namespace WPF.Test
             set { SetValue(OldBrushProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for OldBrush.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OldBrushProperty =
             DependencyProperty.Register(nameof(OldBrush), typeof(Brush), typeof(TestWindow), new PropertyMetadata(_startbrush));
+
+        public ObservableCollection<Color> SavedColors
+        {
+            get { return (ObservableCollection<Color>)GetValue(SavedColorsProperty); }
+            set { SetValue(SavedColorsProperty, value); }
+        }
+
+        public static readonly DependencyProperty SavedColorsProperty =
+            DependencyProperty.Register(nameof(SavedColors), typeof(ObservableCollection<Color>), typeof(TestWindow), new FrameworkPropertyMetadata(new ObservableCollection<Color>(),propertyChangedCallback:SavedColorsChanged));
 
         internal Color SelectedHueColor
         {
@@ -71,7 +70,6 @@ namespace WPF.Test
             set { SetValue(SelectedHueColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SelectedHueColor.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty SelectedHueColorProperty =
             DependencyProperty.Register(nameof(SelectedHueColor), typeof(Color), typeof(TestWindow), new PropertyMetadata(Colors.Red,OnSelectedHueChanged));
 
@@ -81,7 +79,6 @@ namespace WPF.Test
             set { SetValue(AlphaProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Alpha.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty AlphaProperty =
             DependencyProperty.Register(nameof(Alpha), typeof(double), typeof(TestWindow), new FrameworkPropertyMetadata(255.0,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback: OnComponentsChanged));
 
@@ -91,7 +88,6 @@ namespace WPF.Test
             set { SetValue(RedComponentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RedComponent.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty RedComponentProperty =
             DependencyProperty.Register(nameof(RedComponent), typeof(double), typeof(TestWindow), new FrameworkPropertyMetadata(255.0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: OnComponentsChanged));
 
@@ -101,7 +97,6 @@ namespace WPF.Test
             set { SetValue(GreenComponentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for GreenComponent.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty GreenComponentProperty =
             DependencyProperty.Register(nameof(GreenComponent), typeof(double), typeof(TestWindow), new FrameworkPropertyMetadata(255.0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: OnComponentsChanged));
 
@@ -111,7 +106,6 @@ namespace WPF.Test
             set { SetValue(BlueComponentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for BlueComponent.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty BlueComponentProperty =
             DependencyProperty.Register(nameof(BlueComponent), typeof(double), typeof(TestWindow), new FrameworkPropertyMetadata(255.0, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: OnComponentsChanged));
 
@@ -121,25 +115,37 @@ namespace WPF.Test
             set { SetValue(HexComponentProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HexComponent.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty HexComponentProperty =
             DependencyProperty.Register(nameof(HexComponent), typeof(string), typeof(TestWindow), new PropertyMetadata(string.Empty));
 
+        public string ErrorMessage
+        {
+            get { return (string)GetValue(ErrorMessageProperty); }
+            set { SetValue(ErrorMessageProperty, value); }
+        }
+
+        public static readonly DependencyProperty ErrorMessageProperty =
+            DependencyProperty.Register(nameof(ErrorMessage), typeof(string), typeof(TestWindow), new PropertyMetadata(""));
+
 
         private HSV _selected_hsv;
-        private HSV _old_hsv;
-
+        private IDialogService _ds;
         public TestWindow()
         {
+            CommonColors = new List<Color>() { Colors.Crimson, Colors.DodgerBlue, Colors.ForestGreen, Colors.Yellow, Colors.SandyBrown, Colors.DarkMagenta, Colors.Orchid, Colors.CadetBlue };
             InitializeComponent();
+            lstCommonColors.ItemsSource = CommonColors;
+            MaxStoredColors = 12;
 
+            SavedColors.Add(Colors.BlanchedAlmond);
             _initialize();
+
+            _ds = ContainerStore.Singleton.DI.Resolve<IDialogService>();
+
         }
 
         private void _initialize()
         {
-            FavouriteColors = new List<Color>(); //No need to use observable collection, as we will update the UI only on loading.
-
             //Initate the Adorners
             _hueAdorner = new UniAxisPickerAdorner(HueRectangle, Orientation.Vertical);
             _svAdorner = new BiAxisPickerAdorner(SLRectangle);
@@ -154,6 +160,7 @@ namespace WPF.Test
             PickerAdornerEventsHook.Hook(_svAdorner);
 
             _initiateHSV();
+           
         }
 
         private void _initiateHSV()
@@ -266,6 +273,47 @@ namespace WPF.Test
             if (d is TestWindow twdw)
             {
                 twdw._hueAdorner.FillColor = twdw.SelectedHueColor;
+            }
+        }
+        static void SavedColorsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //When a new color is changed, then add it to the favourites.
+        }
+
+        private void ImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            //Get the selected color and add it to the saved colors.
+            SavedColors.Insert(0,SelectedHueColor);
+            var _toremove = SavedColors.Skip(MaxStoredColors).ToList();
+            if (_toremove != null && _toremove.Count() > 0)
+            {
+                foreach (var item in _toremove)
+                {
+                    SavedColors.Remove(item);
+                }
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (SavedColors == null || SavedColors.Count == 0) return;
+            //Raise a dialog for confirmation.
+            if (_ds!= null)
+            {
+               var ds_result =  _ds.Warning("Clear Favourites", "Clear all the stored favourite colors from memory?", DialogMode.Confirmation, true);
+                if (ds_result.DialogResult.HasValue && ! ds_result.DialogResult.Value )
+                {
+                    return; //If user says not to proceed, exit here.
+                }
+            }
+            SavedColors.Clear(); //clear all
+        }
+
+        private void deleteLatestClick(object sender, RoutedEventArgs e)
+        {
+            if (SavedColors.Count > 0)
+            {
+                SavedColors.RemoveAt(0);
             }
         }
     }

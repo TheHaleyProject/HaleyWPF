@@ -24,7 +24,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainRepeatButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
         #endregion
@@ -35,7 +34,6 @@ namespace Haley.WPF.Controls
             set { SetValue(PressedBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PressedBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PressedBackgroundProperty =
             DependencyProperty.Register(nameof(PressedBackground), typeof(Brush), typeof(PlainRepeatButton), new PropertyMetadata(null));
     }

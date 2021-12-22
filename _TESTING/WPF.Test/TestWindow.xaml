@@ -4,18 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:beh="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v4="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
     xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:hw="http://schemas.hpod9.com/haley/wpf"
     xmlns:local="clr-namespace:WPF.Test"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="350"
-    Height="475"
+    MinWidth="300"
+    MinHeight="350"
     mc:Ignorable="d"
-    Title="TestWindow">
+    Title="TestWindow" SizeToContent="Height" DataContext="{}">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                
             </ResourceDictionary.MergedDictionaries>
             <DrawingBrush TileMode="Tile" Viewport="0, 0, 20,20" ViewportUnits="Absolute" x:Key="checkerBox">
                 <DrawingBrush.Drawing>
@@ -33,11 +36,37 @@
                     </DrawingGroup>
                 </DrawingBrush.Drawing>
             </DrawingBrush>
+
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="#FF525151"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="{x:Type Slider}">
+                <Setter Property="Foreground" Value="Green"/>
+                <Setter Property="IsSnapToTickEnabled" Value="True"/>
+                <Setter Property="Margin" Value="4,2"/>
+                <Setter Property="Minimum" Value="0"/>
+                <Setter Property="Maximum" Value="255"/>
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="TickFrequency" Value="1"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="{x:Type hw:PlainTextBox}">
+                <Setter Property="Margin" Value="1"/>
+                <Setter Property="CornerRadius" Value="4"/>
+                <Setter Property="Foreground" Value="#FF525151"/>
+                <Setter Property="hm:InputAP.AllowNegative" Value="False"/>
+                <Setter Property="hm:InputAP.Constraint" Value="Integer"/>
+                <Setter Property="WaterMark" Value=""/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition MinHeight="250" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -68,7 +97,7 @@
             </Grid>
             <Rectangle x:Name="HueRectangle"
                 Grid.Column="2"
-                Margin="4"
+                Margin="5.2,7,3.2,0.6"
                 RenderTransformOrigin="1,0"
                 Stroke="Gray">
                 <Rectangle.Fill>
@@ -86,41 +115,12 @@
                 </Rectangle.Fill>
             </Rectangle>
         </Grid>
-
         <Grid Grid.Row="1" Margin="5">
-            <Grid.Resources>
-                <ResourceDictionary>
-                    <Style TargetType="{x:Type Label}">
-                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                        <Setter Property="Foreground" Value="#FF525151"/>
-                    </Style>
-                    <Style TargetType="{x:Type Slider}">
-                        <Setter Property="Foreground" Value="Green"/>
-                        <Setter Property="IsSnapToTickEnabled" Value="True"/>
-                        <Setter Property="Margin" Value="1"/>
-                        <Setter Property="Minimum" Value="0"/>
-                        <Setter Property="Maximum" Value="255"/>
-                        <Setter Property="Orientation" Value="Horizontal"/>
-                        <Setter Property="TickFrequency" Value="1"/>
-                        <Setter Property="VerticalAlignment" Value="Center"/>
-                    </Style>
-                    <Style TargetType="{x:Type hw:PlainTextBox}">
-                        <Setter Property="Margin" Value="1"/>
-                        <Setter Property="CornerRadius" Value="4"/>
-                        <Setter Property="Foreground" Value="#FF525151"/>
-                        <Setter Property="hm:InputAP.AllowNegative" Value="False"/>
-                        <Setter Property="hm:InputAP.Constraint" Value="Integer"/>
-                        <Setter Property="WaterMark" Value=""/>
-                        <Setter Property="HorizontalContentAlignment" Value="Center"/>  
-                    </Style>
-                </ResourceDictionary>
-            </Grid.Resources>
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition MinHeight="35"/>
+                <RowDefinition MinHeight="35"/>
+                <RowDefinition MinHeight="35"/>
+                <RowDefinition MinHeight="35"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25" />
@@ -155,7 +155,8 @@
 
             <hw:PlainTextBox
                 Grid.Column="2"
-                Text="{Binding ElementName=sliderR,Path=Value}">
+                Text="{Binding ElementName=sliderR,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
+               
                 <beh:Interaction.Behaviors>
                     <hm:NumericLimiter MaxValue="255" />
                 </beh:Interaction.Behaviors>
@@ -163,7 +164,7 @@
             <hw:PlainTextBox
                 Grid.Row="1"
                 Grid.Column="2"
-                Text="{Binding ElementName=sliderG,Path=Value}">
+                Text="{Binding ElementName=sliderG,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
                 <beh:Interaction.Behaviors>
                     <hm:NumericLimiter MaxValue="255" />
                 </beh:Interaction.Behaviors>
@@ -171,7 +172,7 @@
             <hw:PlainTextBox
                 Grid.Row="2"
                 Grid.Column="2"
-                Text="{Binding ElementName=sliderB,Path=Value}">
+                Text="{Binding ElementName=sliderB,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
                 <beh:Interaction.Behaviors>
                     <hm:NumericLimiter MaxValue="255" />
                 </beh:Interaction.Behaviors>
@@ -179,18 +180,58 @@
             <hw:PlainTextBox
                 Grid.Row="3"
                 Grid.Column="2"
-                Text="{Binding ElementName=sliderA,Path=Value}">
+                Text="{Binding ElementName=sliderA,Path=Value,UpdateSourceTrigger=PropertyChanged}">
                 <beh:Interaction.Behaviors>
                     <hm:NumericLimiter MaxValue="255" />
                 </beh:Interaction.Behaviors>
             </hw:PlainTextBox>
-            <hw:PlainTextBox
-                Grid.Row="4"
-                Grid.ColumnSpan="3"
-                Text="{Binding HexComponent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}" Width="60" Margin="3" TextAlignment="Center" HorizontalAlignment="Left" HorizontalContentAlignment="Center"/>
+       
         </Grid>
 
         <Grid Grid.Row="2" Margin="4">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Clear All Favourites" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </Grid.ContextMenu>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="#" VerticalAlignment="Center" Foreground="Gray"/>
+                    <hw:PlainTextBox
+                Text="{Binding HexComponent, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}},UpdateSourceTrigger=PropertyChanged}" Width="60" Margin="2" TextAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" IsTabStop="False"/>
+                    <hw:ImageButton Margin="3" hw:Icon.Default="{StaticResource favourite}" Height="23" Width="23" ToolTip="Add selected color to favourites." Click="ImageButton_Click" hw:Icon.DefaultColor="#FF545454" />
+                </StackPanel>
+                <hw:ImageButton Margin="3" hw:Icon.Default="{StaticResource dustbin}" Height="23" Width="23" ToolTip="Delete last stored favourite color" Click="deleteLatestClick" Grid.Column="1" hw:Icon.DefaultColor="Gray"/>
+            </Grid>
+           
+            <TextBlock Grid.Row="1"
+                MaxHeight="90" Text="{Binding ErrorMessage, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}},UpdateSourceTrigger=PropertyChanged}" Foreground="Crimson" FontSize="9" TextWrapping="Wrap">
+                <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="3" Margin="4">
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Clear All Favourites" Click="MenuItem_Click"/>
+                </ContextMenu>
+            </Grid.ContextMenu>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
@@ -200,14 +241,14 @@
                 BorderBrush="#FF5F5E5E"
                 BorderThickness="1"
                 CornerRadius="10">
-                <Grid Width="80" Height="55">
+                <Grid Width="70" MinHeight="55">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Border Background="{StaticResource checkerBox}" CornerRadius="10,10,0,0"/>
                     <Border Background="{Binding SelectedBrush, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}" CornerRadius="10,10,0,0" />
-                    <Border Background="{StaticResource checkerBox}" CornerRadius="10,10,0,0" Grid.Row="1"/>
+                    <Border Background="{StaticResource checkerBox}" CornerRadius="0,0,10,10" Grid.Row="1"/>
                     <Border
                         Grid.Row="1"
                         Background="{Binding OldBrush, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}}}"
@@ -237,36 +278,40 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <StackPanel
-                    Height="25"
+                <hw:PlainListView x:Name="lstCommonColors"
+                    Height="30"
                     Margin="3"
-                    Orientation="Horizontal">
-                    <Ellipse Fill="Red"/>
-                    <Ellipse Fill="Green"/>
-                    <Ellipse Fill="Blue"/>
-                    <Ellipse Fill="Yellow"/>
-                    <Ellipse Fill="Purple"/>
-                    <Ellipse Fill="Violet"/>
-                    <Ellipse Fill="Orange"/>
-                    <Ellipse Fill="Indigo"/>
-                    <Ellipse Fill="Brown"/>
-                </StackPanel>
+                    BorderBrush="{x:Null}" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ItemHoverColor="Transparent" Background="{x:Null}" ItemSelectedColor="Transparent">
+                    <hw:PlainListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </hw:PlainListView.ItemsPanel>
+                    <hw:PlainListView.ItemTemplate>
+                        <DataTemplate>
+                            <hw:PlainButton Height="22" Width="22" CornerRadius="11" BorderBrush="Gray" Background="{Binding Converter={StaticResource ColorToBrush}}" Content="" Margin="2,0" hw:Hover.IsEnabled="False" BorderThickness="1"/>
+                        </DataTemplate>
+                    </hw:PlainListView.ItemTemplate>
+                </hw:PlainListView>
 
-                <StackPanel
+                <hw:PlainListView x:Name="lstStoredColors"
                     Grid.Row="1"
-                    Height="25"
+                    Height="35"
                     Margin="3"
-                    Orientation="Horizontal">
-                    <Ellipse Fill="Crimson"/>
-                    <Ellipse Fill="#FF2B92DA"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                    <Ellipse Stroke="#FF6B6464"/>
-                </StackPanel>
+                    BorderBrush="{x:Null}" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Hidden" 
+                                  ScrollViewer.HorizontalScrollBarVisibility="Auto" ItemHoverColor="Transparent" Background="{x:Null}" ItemSelectedColor="Transparent" ItemsSource="{Binding SavedColors, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:TestWindow}},UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}">
+                    <hw:PlainListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </hw:PlainListView.ItemsPanel>
+                    <hw:PlainListView.ItemTemplate>
+                        <DataTemplate>
+                            <hw:PlainButton Height="22" Width="22" CornerRadius="11" BorderBrush="Gray" Background="{Binding Converter={StaticResource ColorToBrush}}" Content="" Margin="2,0" hw:Hover.IsEnabled="False" BorderThickness="1" VerticalAlignment="Top">
+                            </hw:PlainButton>
+                        </DataTemplate>
+                    </hw:PlainListView.ItemTemplate>
+                </hw:PlainListView>
             </Grid>
         </Grid>
     </Grid>

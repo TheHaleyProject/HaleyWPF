@@ -99,7 +99,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(Incrementer), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
@@ -109,7 +108,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IncrementValueProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IncrementValue.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IncrementValueProperty =
             DependencyProperty.Register(nameof(IncrementValue), typeof(int), typeof(Incrementer), new PropertyMetadata(1));
 
@@ -119,7 +117,6 @@ namespace Haley.WPF.Controls
             set { SetValue(AllowNegativeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for AllowNegative.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AllowNegativeProperty =
             DependencyProperty.Register(nameof(AllowNegative), typeof(bool), typeof(Incrementer), new PropertyMetadata(false));
 
@@ -129,7 +126,6 @@ namespace Haley.WPF.Controls
             set { SetValue(NumberModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for NumberMode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NumberModeProperty =
             DependencyProperty.Register(nameof(NumberMode), typeof(NumericType), typeof(Incrementer), new FrameworkPropertyMetadata(NumericType.Integer, propertyChangedCallback: NumberModePropertyChanged));
 

@@ -21,7 +21,6 @@ namespace Haley.WPF.Controls
             set { SetValue(WaterMarkProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for WaterMark.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WaterMarkProperty =
             DependencyProperty.Register(nameof(WaterMark), typeof(string), typeof(PlainTextBox), new PropertyMetadata("Enter Value"));
 
@@ -31,7 +30,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainTextBox), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
     }

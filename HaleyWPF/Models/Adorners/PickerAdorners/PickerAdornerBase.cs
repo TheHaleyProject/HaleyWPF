@@ -31,7 +31,6 @@ namespace Haley.Models
             set { SetValue(PositionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Position.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PositionProperty =
             DependencyProperty.Register(nameof(Position), typeof(Point), typeof(PickerAdornerBase), new FrameworkPropertyMetadata(new Point(0,0),FrameworkPropertyMetadataOptions.AffectsRender)); //This affects the render .  So, on render is triggered.
 

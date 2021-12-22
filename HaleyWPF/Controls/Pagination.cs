@@ -77,7 +77,6 @@ namespace Haley.WPF.Controls
             set { SetValue(PageChangeCommandProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PageChangeCommand.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PageChangeCommandProperty =
             DependencyProperty.Register(nameof(PageChangeCommand), typeof(ICommand), typeof(Pagination), new PropertyMetadata(default(ICommand)));
 
@@ -87,7 +86,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ModeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Mode.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ModeProperty =
             DependencyProperty.Register(nameof(Mode), typeof(PaginationMode), typeof(Pagination), new PropertyMetadata(PaginationMode.Extended));
 
@@ -97,7 +95,6 @@ namespace Haley.WPF.Controls
             set { SetValue(DirectButtonsCountProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for DirectButtonsCount.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DirectButtonsCountProperty =
             DependencyProperty.Register(nameof(DirectButtonsCount), typeof(int), typeof(Pagination), new PropertyMetadata(3));
 
@@ -107,7 +104,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(Pagination), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
 
@@ -117,7 +113,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ItemsCountTotalProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemsCountTotal.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsCountTotalProperty =
             DependencyProperty.Register(nameof(ItemsCountTotal), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(0, ItemsCountTotalPropertyChanged));
 
@@ -127,7 +122,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TotalPagesProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TotalPages.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TotalPagesProperty =
             DependencyProperty.Register(nameof(TotalPages), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(0));
 
@@ -137,7 +131,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ItemsCountPerPageProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemsCountPerPage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemsCountPerPageProperty =
             DependencyProperty.Register(nameof(ItemsCountPerPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(10, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, ItemsCountPerPagePropertyChanged, coerceValueCallback: CoerceItemsCount));
 
@@ -147,7 +140,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HideCounterProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HideCounter.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HideCounterProperty =
             DependencyProperty.Register(nameof(HideCounter), typeof(bool), typeof(Pagination), new PropertyMetadata(false));
 
@@ -157,7 +149,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CurrentPageProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CurrentPage.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentPageProperty =
             DependencyProperty.Register(nameof(CurrentPage), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(1, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, CurrentPagePropertyChanged));
 
@@ -167,7 +158,6 @@ namespace Haley.WPF.Controls
             set { SetValue(PrimaryColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PrimaryColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PrimaryColorProperty =
             DependencyProperty.Register(nameof(PrimaryColor), typeof(Brush), typeof(Pagination), new FrameworkPropertyMetadata());
         #endregion

@@ -21,7 +21,6 @@ namespace Haley.Models
             obj.SetValue(BadgeProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Badge.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BadgeProperty =
             DependencyProperty.RegisterAttached("Badge", typeof(Badge), typeof(BadgeSetter), new PropertyMetadata(null,BadgePropertyChanged));
 

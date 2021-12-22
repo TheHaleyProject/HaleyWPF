@@ -95,7 +95,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderTemplateProperty =
             DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(PlainWindow), new PropertyMetadata(null,propertyChangedCallback:HeaderTemplateChanged));
 
@@ -105,7 +104,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FooterTemplateProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FooterTemplate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FooterTemplateProperty =
             DependencyProperty.Register(nameof(FooterTemplate), typeof(DataTemplate), typeof(PlainWindow), new PropertyMetadata(null,propertyChangedCallback:FooterTemplateChanged));
 
@@ -115,7 +113,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HeaderHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HeaderHeightProperty =
             DependencyProperty.Register(nameof(HeaderHeight), typeof(double), typeof(PlainWindow), new FrameworkPropertyMetadata(35.0,null,coerceValueCallback: _headerfooterHeightCoerce));
         static object _headerfooterHeightCoerce(DependencyObject d, object baseValue)
@@ -131,7 +128,6 @@ namespace Haley.WPF.Controls
             set { SetValue(FooterHeightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for FooterHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty FooterHeightProperty =
             DependencyProperty.Register("FooterHeight", typeof(double), typeof(PlainWindow), new FrameworkPropertyMetadata(25.0,null,coerceValueCallback: _headerfooterHeightCoerce));
 
@@ -141,7 +137,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainWindow), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius,propertyChangedCallback:_cornerRadiusChanged));
 

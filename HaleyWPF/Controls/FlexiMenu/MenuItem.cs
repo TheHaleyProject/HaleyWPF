@@ -30,7 +30,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ActionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Action.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ActionProperty =
             DependencyProperty.Register(nameof(Action), typeof(MenuAction), typeof(MenuItem), new PropertyMetadata(MenuAction.RaiseCommand));
 
@@ -40,7 +39,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ViewProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for View.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ViewProperty =
             DependencyProperty.Register(nameof(View), typeof(UserControl), typeof(MenuItem), new PropertyMetadata(null));
 
@@ -50,7 +48,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ContainerKeyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ContainerKey.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ContainerKeyProperty =
             DependencyProperty.Register(nameof(ContainerKey), typeof(string), typeof(MenuItem), new FrameworkPropertyMetadata(null));
 
@@ -60,7 +57,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IgnoreLocalContainerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IgnoreLocalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IgnoreLocalContainerProperty =
             DependencyProperty.Register(nameof(IgnoreLocalContainer), typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
 
@@ -70,7 +66,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IgnoreGlobalContainerProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IgnoreGlobalContainer.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IgnoreGlobalContainerProperty =
             DependencyProperty.Register(nameof(IgnoreGlobalContainer), typeof(bool), typeof(MenuItem), new PropertyMetadata(false));
     }

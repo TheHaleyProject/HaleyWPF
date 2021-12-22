@@ -92,7 +92,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HasPasswordProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HasPassword.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HasPasswordProperty =
             DependencyProperty.Register(nameof(HasPassword), typeof(bool), typeof(PlainPasswordBox), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.NotDataBindable));
 
@@ -102,7 +101,6 @@ namespace Haley.WPF.Controls
             set { SetValue(PasswordCharProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for PasswordChar.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PasswordCharProperty =
             DependencyProperty.Register(nameof(PasswordChar), typeof(char), typeof(PlainPasswordBox), new PropertyMetadata('*'));
 
@@ -119,7 +117,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HoverImageColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HoverImageColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HoverImageColorProperty =
             DependencyProperty.Register(nameof(HoverImageColor), typeof(SolidColorBrush), typeof(PlainPasswordBox), new PropertyMetadata(null));
 
@@ -129,7 +126,6 @@ namespace Haley.WPF.Controls
             set { SetValue(DefaultImageColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for DefaultImageColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DefaultImageColorProperty =
             DependencyProperty.Register(nameof(DefaultImageColor), typeof(SolidColorBrush), typeof(PlainPasswordBox), new PropertyMetadata(null));
     }

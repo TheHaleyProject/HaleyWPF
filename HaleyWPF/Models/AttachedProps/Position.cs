@@ -21,7 +21,6 @@ namespace Haley.Models
             obj.SetValue(LeftProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Left.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LeftProperty =
             DependencyProperty.RegisterAttached("Left", typeof(double), typeof(Position), new PropertyMetadata(double.NaN));
 
@@ -35,7 +34,6 @@ namespace Haley.Models
             obj.SetValue(RightProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Right.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RightProperty =
             DependencyProperty.RegisterAttached("Right", typeof(double), typeof(Position), new PropertyMetadata(double.NaN));
 
@@ -49,7 +47,6 @@ namespace Haley.Models
             obj.SetValue(TopProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Top.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TopProperty =
             DependencyProperty.RegisterAttached("Top", typeof(double), typeof(Position), new PropertyMetadata(double.NaN));
         public static double GetBottom(DependencyObject obj)
@@ -62,7 +59,6 @@ namespace Haley.Models
             obj.SetValue(BottomProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Bottom.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty BottomProperty =
             DependencyProperty.RegisterAttached("Bottom", typeof(double), typeof(Position), new PropertyMetadata(double.NaN));
     }

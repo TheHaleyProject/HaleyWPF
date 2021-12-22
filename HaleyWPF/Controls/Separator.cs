@@ -20,7 +20,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Size.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SizeProperty =
             DependencyProperty.Register(nameof(Size), typeof(double), typeof(Separator), new PropertyMetadata(1.0));
 
@@ -30,7 +29,6 @@ namespace Haley.WPF.Controls
             set { SetValue(OrientationProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Orientation.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OrientationProperty =
             DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(Separator), new PropertyMetadata(Orientation.Horizontal));
     }

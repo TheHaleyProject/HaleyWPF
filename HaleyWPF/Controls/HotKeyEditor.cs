@@ -24,7 +24,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HotKeyProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HotKey.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HotKeyProperty =
             DependencyProperty.Register(nameof(HotKey), typeof(HotKey), typeof(HotKeyEditor), new FrameworkPropertyMetadata(default(HotKey), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 

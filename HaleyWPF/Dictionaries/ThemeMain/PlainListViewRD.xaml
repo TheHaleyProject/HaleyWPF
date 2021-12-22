@@ -56,6 +56,8 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ItemSelectedColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ItemHoverColor" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -66,7 +68,7 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
-                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" EnableOverLay="False" AutoHide="True" VerticalScrollBarSize="20" HorizontalScrollBarSize="20">
+                            <bc:FlexiScroll Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ScrollViewer.VerticalScrollBarVisibility)}" HorizontalScrollBarVisibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ScrollViewer.HorizontalScrollBarVisibility)}" EnableOverLay="True" AutoHide="True" VerticalScrollBarSize="20" HorizontalScrollBarSize="15">
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </bc:FlexiScroll>
                         </Border>

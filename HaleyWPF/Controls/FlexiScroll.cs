@@ -48,7 +48,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.cornerRadius));
 
@@ -58,7 +57,6 @@ namespace Haley.WPF.Controls
         //    set { SetValue(ArrowProperty, value); }
         //}
 
-        //// Using a DependencyProperty as the backing store for Arrow.  This enables animation, styling, binding, etc...
         //public static readonly DependencyProperty ArrowProperty =
         //    DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.getIcon(IconEnums.arrow_line_medium.ToString())));
 
@@ -68,7 +66,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ThumbBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ThumbBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ThumbBackgroundProperty =
             DependencyProperty.Register(nameof(ThumbBackground), typeof(Brush), typeof(FlexiScroll), new PropertyMetadata(null));
 
@@ -78,7 +75,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TrackBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TrackBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TrackBackgroundProperty =
             DependencyProperty.Register(nameof(TrackBackground), typeof(Brush), typeof(FlexiScroll), new PropertyMetadata(null));
 
@@ -88,7 +84,6 @@ namespace Haley.WPF.Controls
             set { SetValue(RepeatBackgroundProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RepeatBackground.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RepeatBackgroundProperty =
             DependencyProperty.Register(nameof(RepeatBackground), typeof(Brush), typeof(FlexiScroll), new PropertyMetadata(null));
 
@@ -98,7 +93,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HorizontalScrollBarSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HorizontalScrollBarSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HorizontalScrollBarSizeProperty =
             DependencyProperty.Register(nameof(HorizontalScrollBarSize), typeof(double), typeof(FlexiScroll), new PropertyMetadata(25.0));
 
@@ -108,7 +102,6 @@ namespace Haley.WPF.Controls
             set { SetValue(VerticalScrollBarSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for VerticalScrollBarSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty VerticalScrollBarSizeProperty =
             DependencyProperty.Register(nameof(VerticalScrollBarSize), typeof(double), typeof(FlexiScroll), new PropertyMetadata(25.0));
 
@@ -118,7 +111,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowVerticalButtonsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowVerticalButtons.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowVerticalButtonsProperty =
             DependencyProperty.Register(nameof(ShowVerticalButtons), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
 
@@ -128,7 +120,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ShowHorizontalButtonsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ShowHorizontalButtons.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ShowHorizontalButtonsProperty =
             DependencyProperty.Register(nameof(ShowHorizontalButtons), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
 
@@ -138,7 +129,6 @@ namespace Haley.WPF.Controls
             set { SetValue(EnableOverLayProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for EnableOverLay.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EnableOverLayProperty =
             DependencyProperty.Register(nameof(EnableOverLay), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(true));
 
@@ -148,7 +138,6 @@ namespace Haley.WPF.Controls
             set { SetValue(AutoHideProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for AutoHide.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AutoHideProperty =
             DependencyProperty.Register(nameof(AutoHide), typeof(bool), typeof(FlexiScroll), new PropertyMetadata(false));
 
@@ -159,7 +148,6 @@ namespace Haley.WPF.Controls
             set { SetValue(RepeatUpProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RepeatUp.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RepeatUpProperty =
             DependencyProperty.Register(nameof(RepeatUp), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
 
@@ -169,7 +157,6 @@ namespace Haley.WPF.Controls
             set { SetValue(RepeatDownProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RepeatDown.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RepeatDownProperty =
             DependencyProperty.Register(nameof(RepeatDown), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
 
@@ -179,7 +166,6 @@ namespace Haley.WPF.Controls
             set { SetValue(RepeatLeftProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RepeatLeft.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RepeatLeftProperty =
             DependencyProperty.Register(nameof(RepeatLeft), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
 
@@ -189,7 +175,6 @@ namespace Haley.WPF.Controls
             set { SetValue(RepeatRightProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for RepeatRight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty RepeatRightProperty =
             DependencyProperty.Register(nameof(RepeatRight), typeof(RepeatButton), typeof(FlexiScroll), new FrameworkPropertyMetadata(null));
 

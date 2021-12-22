@@ -23,7 +23,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TickColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TickColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TickColorProperty =
             DependencyProperty.Register(nameof(TickColor), typeof(SolidColorBrush), typeof(PlainCheckBox), new PropertyMetadata(null));
 
@@ -33,7 +32,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TickBoxSizeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TickBoxSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TickBoxSizeProperty =
             DependencyProperty.Register(nameof(TickBoxSize), typeof(double), typeof(PlainCheckBox), new FrameworkPropertyMetadata(16.0, new PropertyChangedCallback(TickBoxSizePropertyChanged), ValidatTickBoxSize));
         static void TickBoxSizePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

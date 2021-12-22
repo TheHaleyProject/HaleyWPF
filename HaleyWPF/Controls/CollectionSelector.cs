@@ -327,7 +327,6 @@ namespace Haley.WPF.Controls
             set { SetValue(HideSelectedProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HideSelected.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty HideSelectedProperty =
             DependencyProperty.Register(nameof(HideSelected), typeof(bool), typeof(CollectionSelector), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: HideSelectedPropertyChanged));
 
@@ -337,7 +336,6 @@ namespace Haley.WPF.Controls
             set { SetValue(CornerRadiusProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for CornerRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(CollectionSelector), new PropertyMetadata(ResourceHelper.cornerRadius));
 
@@ -347,7 +345,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ItemSelectedColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemSelectedColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemSelectedColorProperty =
             DependencyProperty.Register(nameof(ItemSelectedColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
 
@@ -357,7 +354,6 @@ namespace Haley.WPF.Controls
             set { SetValue(ItemHoverColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemHoverColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemHoverColorProperty =
             DependencyProperty.Register(nameof(ItemHoverColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
 
@@ -367,7 +363,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IconColorProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for IconColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconColorProperty =
             DependencyProperty.Register(nameof(IconColor), typeof(Brush), typeof(CollectionSelector), new PropertyMetadata(null));
 
@@ -377,7 +372,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SourceSelectedItemsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SourceSelectedItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SourceSelectedItemsProperty =
             DependencyProperty.Register(nameof(SourceSelectedItems), typeof(IEnumerable), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IEnumerable), FrameworkPropertyMetadataOptions.NotDataBindable, SourceSelectedItemsPropertyChanged));
 
@@ -387,7 +381,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TitleSourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TitleSource.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleSourceProperty =
             DependencyProperty.Register(nameof(TitleSource), typeof(string), typeof(CollectionSelector), new PropertyMetadata("Items Source"));
 
@@ -397,7 +390,6 @@ namespace Haley.WPF.Controls
             set { SetValue(TitleSelectionProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TitleSelection.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TitleSelectionProperty =
             DependencyProperty.Register(nameof(TitleSelection), typeof(string), typeof(CollectionSelector), new PropertyMetadata("Selected Items"));
 
@@ -410,7 +402,6 @@ namespace Haley.WPF.Controls
             set { SetValue(SelectedItemsProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for SelectedItems.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedItemsProperty =
             DependencyProperty.Register(nameof(SelectedItems), typeof(IList), typeof(CollectionSelector), new FrameworkPropertyMetadata(default(IList), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, new PropertyChangedCallback(SelectedItemsPropertyChanged)));
         #endregion
