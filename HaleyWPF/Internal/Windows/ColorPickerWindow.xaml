@@ -18,7 +18,7 @@
     HideMaximizeButton="True"
     HideMinimizeButton="True"
     SizeToContent="Height"
-    Title="Color Picker" HideIcon="True" WindowStartupLocation="CenterScreen">
+    Title="Color Picker" HideIcon="True" WindowStartupLocation="CenterScreen" Background="#4C74ACB1">
     <!--<bc:PlainWindow.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type bc:PlainWindow}">
@@ -26,7 +26,10 @@
             </Style>
         </ResourceDictionary>
     </bc:PlainWindow.Resources>-->
-<Grid>
+    <!--<Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
+    <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+    <Setter Property="Foreground" Value="{DynamicResource def_content}"/>-->
+    <Grid Background="{DynamicResource def_background_primary}">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
@@ -34,6 +37,7 @@
         <AdornerDecorator>
             <bc:ColorPicker x:Name="clrpckr"/>
         </AdornerDecorator>
-        <bc:ImageButton x:Name="ConfirmButton" Grid.Row="1" Height="30" Width="30" Margin="5,3" HorizontalAlignment="Right" ml:Icon.Default="{StaticResource success_filled}" ml:Icon.DefaultColor="DarkGreen" Click="ConfirmButtonClick"/>
+        <Ellipse x:Name="miniEllipse" Height="28" Width="28" Grid.Row="1" HorizontalAlignment="Left" Margin="10,0" Stroke="Gray" StrokeThickness="1"/>
+        <bc:ComboButton x:Name="ConfirmButton" Grid.Row="1" Height="27" Width="100" Margin="10,5" HorizontalAlignment="Right" ml:Icon.Default="{StaticResource success_filled}" Click="ConfirmButtonClick" ImageLocation="Left" CornerRadius="10" Background="#CCF0EBD7" Content="CONFIRM" BorderBrush="Gray" BorderThickness="1"/>
     </Grid>
 </bc:PlainWindow>

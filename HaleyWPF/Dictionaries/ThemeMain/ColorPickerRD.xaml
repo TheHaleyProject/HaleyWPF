@@ -66,6 +66,20 @@
         <Setter Property="ItemSelectedColor" Value="Transparent"/>
     </Style>
 
+    <Style x:Key="internal_cpkr_paletteBtn" TargetType="{x:Type bc:PlainButton}">
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="CornerRadius" Value="11"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="ml:Hover.IsEnabled" Value="False"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type bc:ColorPicker}}}"/>
+        <Setter Property="Command" Value="{x:Static ul:AdditionalCommands.ChangeColor}"/>
+        <Setter Property="Background" Value="{Binding Converter={StaticResource ColorToBrush}}"/>
+        <Setter Property="CommandParameter" Value="{Binding}"/>
+    </Style>
+
         <Style TargetType="{x:Type bc:ColorPicker}">
         <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
@@ -221,6 +235,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="#" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}"/>
@@ -228,7 +243,31 @@
                 Text="{TemplateBinding HexComponent}" Width="60" Margin="2" TextAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" IsTabStop="False"/>
                                     <bc:ImageButton Margin="3" ml:Icon.Default="{StaticResource favourite}" Height="23" Width="23" ToolTip="Add selected color to favourites." Command="{x:Static ul:AdditionalCommands.Add}" ml:Icon.DefaultColor="#FF545454" />
                                 </StackPanel>
-                                <bc:ImageButton Margin="3" ml:Icon.Default="{StaticResource dustbin}" Height="23" Width="23" ToolTip="Delete last stored favourite color" Command="{x:Static ApplicationCommands.Delete}" Grid.Column="1" ml:Icon.DefaultColor="Gray"/>
+                                <Grid Grid.Column="1" Width="130" Margin="5,0" Height="30">
+                                    <ComboBox x:Name="defcolors_cmbbx"  ItemsSource="{TemplateBinding SystemDefaultColors}"  SelectedItem="{Binding SelectedSystemColor,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" Focusable="False" IsReadOnly="True" IsEditable="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="2">
+                                                    <Rectangle Height="18" Width="25" Fill="{Binding Value,Converter={StaticResource ColorToBrush}}"/>
+                                                    <TextBlock Text="{Binding Key}" Margin="5,0" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBlock Text="--System Colors--" IsHitTestVisible="False" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=defcolors_cmbbx,Path=SelectedItem}" Value="{x:Null}">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                                <bc:ImageButton Margin="3" ml:Icon.Default="{StaticResource dustbin}" Height="23" Width="23" ToolTip="Delete last stored favourite color" Command="{x:Static ApplicationCommands.Delete}" Grid.Column="2" ml:Icon.DefaultColor="Gray"/>
                             </Grid>
 
                             <!--COLOR PALETTE-->
@@ -278,7 +317,7 @@
                                         </bc:PlainListView.ItemsPanel>
                                         <bc:PlainListView.ItemTemplate>
                                             <DataTemplate>
-                                                <bc:PlainButton Height="22" Width="22" CornerRadius="11" BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type bc:ColorPicker}}}" Background="{Binding Converter={StaticResource ColorToBrush}}" Content="" Margin="2,0" ml:Hover.IsEnabled="False" BorderThickness="1" Command="{x:Static ul:AdditionalCommands.ChangeColor}" CommandParameter="{Binding}"/>
+                                                <bc:PlainButton Style="{StaticResource internal_cpkr_paletteBtn}" />
                                             </DataTemplate>
                                         </bc:PlainListView.ItemTemplate>
                                     </bc:PlainListView>
@@ -292,8 +331,7 @@
                                         </bc:PlainListView.ItemsPanel>
                                         <bc:PlainListView.ItemTemplate>
                                             <DataTemplate>
-                                                <bc:PlainButton Height="22" Width="22" CornerRadius="11" BorderBrush="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type bc:ColorPicker}}}" Background="{Binding Converter={StaticResource ColorToBrush}}" Content="" Margin="2,0" ml:Hover.IsEnabled="False" BorderThickness="1" VerticalAlignment="Top" Command="{x:Static ul:AdditionalCommands.ChangeColor}" CommandParameter="{Binding}">
-                                                </bc:PlainButton>
+                                                <bc:PlainButton Style="{StaticResource internal_cpkr_paletteBtn}" VerticalAlignment="Top" />
                                             </DataTemplate>
                                         </bc:PlainListView.ItemTemplate>
                                     </bc:PlainListView>

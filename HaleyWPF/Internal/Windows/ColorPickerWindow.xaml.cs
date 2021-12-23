@@ -30,10 +30,20 @@ namespace Haley.WPF.Internal
     {
         public SolidColorBrush SelectedBrush { get; set; }
         public List<Color> SavedColors { get; set; }
-        public ColorPickerWindow()
+        private ColorPickerWindow()
         {
             InitializeComponent();
             SavedColors = new List<Color>();
+            clrpckr.SelectedBrushChanged += Clrpckr_SelectedBrushChanged;
+        }
+
+        private void Clrpckr_SelectedBrushChanged(object sender, RoutedEventArgs e)
+        {
+            if (miniEllipse.Visibility != Visibility.Visible) return;
+             if (e is UIRoutedEventArgs<SolidColorBrush> newargs)
+            {
+                miniEllipse.Fill = newargs.Value;
+            }
         }
 
         public void SetOptions(List<Color> savedColors, SolidColorBrush oldBrush = null, int maxSavedColrs = 9, bool showminiInfo = true, DisplayMode display = DisplayMode.Compact)
@@ -70,6 +80,15 @@ namespace Haley.WPF.Internal
                     clrpckr.HideRGBComponents = true;
                     clrpckr.HideColorPalette = true;
                     break;
+            }
+
+            if (display == DisplayMode.Mini)
+            {
+                miniEllipse.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                miniEllipse.Visibility = Visibility.Collapsed;
             }
 
             clrpckr.ShowMiniInfo = showminiInfo;

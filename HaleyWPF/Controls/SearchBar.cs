@@ -65,7 +65,7 @@ namespace Haley.WPF.Controls
 
         void Execute_Search(object sender, ExecutedRoutedEventArgs e)
         {
-            RaiseEvent(new UIRoutedEventArgs<string>(SearchStartedEvent, this) { value = Text });
+            RaiseEvent(new UIRoutedEventArgs<string>(SearchStartedEvent, this) { Value = Text });
             switch (Command)
             {
                 case null:

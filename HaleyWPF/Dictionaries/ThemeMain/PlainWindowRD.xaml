@@ -44,10 +44,10 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}"/>
                                     <RowDefinition />
-                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}"/>
                                 </Grid.RowDefinitions>
 
-                                <!--Header-->
+                                <!--Header (can be hidden)-->
                                 <Border x:Name="PART_header_holder" Background="Transparent" Margin="0" Padding="0">
                                     <Grid x:Name="grdHeader" Background="Transparent">
                                         <i:Interaction.Triggers>
@@ -55,51 +55,40 @@
                                                 <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction}" CommandParameter="DragMove"  />
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="5"/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="3"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid x:Name="grdControlBox" VerticalAlignment="Top" Grid.Column="2" Height="27" Margin="4" >
-                                        <Grid.Resources>
-                                            <ResourceDictionary>
-                                                <Style x:Key="controlButtonStyle" TargetType="{x:Type bc:ImageButton}">
-                                                    <Setter Property="ml:Icon.DefaultColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.DefaultColor)}"/>
-                                                    <Setter Property="ml:Icon.HoverColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>
-                                                    <Setter Property="Margin" Value="1"/>
-                                                </Style>
-                                            </ResourceDictionary>
-                                        </Grid.Resources>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="{Binding ElementName=grdControlBox,Path=ActualHeight}"/>
-                                                <ColumnDefinition Width="{Binding ElementName=grdControlBox,Path=ActualHeight}"/>
-                                                <ColumnDefinition Width="{Binding ElementName=grdControlBox,Path=ActualHeight}"/>
-                                            </Grid.ColumnDefinitions>
-                                        <bc:ImageButton x:Name="PART_btn_minimize"  ml:Icon.Default="{StaticResource line}"  Style="{StaticResource controlButtonStyle}" CommandParameter="Min" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
-                                        <bc:ImageButton x:Name="PART_btn_maximize" Grid.Column="1"  ml:Icon.Default="{StaticResource box}" Style="{StaticResource controlButtonStyle}"  CommandParameter="Max" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
-                                        <bc:ImageButton x:Name="PART_btn_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource controlButtonStyle}"  CommandParameter="Close" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
-                                        </Grid>
-
-                                        <ContentControl x:Name="PART_header" Grid.Column="1"/>
+                                        <ContentControl x:Name="PART_header" IsHitTestVisible="False" Margin="5,0"/>
                                     </Grid>
                                 </Border>
-
-                                <!--Footer-->
-                                <Border x:Name="PART_footer_holder" Grid.Row="2" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}">
-                                    <ContentControl x:Name="PART_footer"/>
-                                </Border>
-
-                              <!--Content Presenter-->
-                            <Border x:Name="PART_content_holder_opacitymask" Grid.Row="1" Background="White"/>
-                            <Border x:Name="PART_content_holder" Grid.Row="1" Background="Transparent">
-                                <Border.OpacityMask>
-                                    <VisualBrush Visual="{Binding ElementName=PART_content_holder_opacitymask}"/>
-                                </Border.OpacityMask>
-                                <ContentPresenter />
+                                
+                            <!--Footer (Can be hidden)-->
+                            <Border x:Name="PART_footer_holder" Grid.Row="2">
+                                <ContentControl x:Name="PART_footer"/>
                             </Border>
 
+                            <!--Control box-->
+                            <Grid x:Name="grdControlBox" VerticalAlignment="Top" Height="27" Margin="8,4" HorizontalAlignment="Right" IsHitTestVisible="True">
+                                <Grid.Resources>
+                                    <ResourceDictionary>
+                                        <Style x:Key="controlButtonStyle" TargetType="{x:Type bc:ImageButton}">
+                                            <Setter Property="ml:Icon.DefaultColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.DefaultColor)}"/>
+                                            <Setter Property="ml:Icon.HoverColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>
+                                            <Setter Property="Width" Value="26"/>
+                                            <Setter Property="Height" Value="26"/>
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <bc:ImageButton x:Name="PART_btn_minimize"  ml:Icon.Default="{StaticResource line}"  Style="{StaticResource controlButtonStyle}" CommandParameter="Min" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
+                                <bc:ImageButton x:Name="PART_btn_maximize" Grid.Column="1"  ml:Icon.Default="{StaticResource box}" Style="{StaticResource controlButtonStyle}"  CommandParameter="Max" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
+                                <bc:ImageButton x:Name="PART_btn_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource controlButtonStyle}"  CommandParameter="Close" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
+                            </Grid>
+                            
+
+                              <!--Content Presenter-->
+                            <ContentPresenter Grid.Row="1" />
                             </Grid>
                         </Border>
                 </ControlTemplate>

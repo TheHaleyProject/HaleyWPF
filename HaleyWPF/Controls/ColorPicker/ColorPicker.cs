@@ -61,6 +61,16 @@ namespace Haley.WPF.Controls
         private IDialogService _ds;
         #endregion
 
+        #region Events
+        public static readonly RoutedEvent SelectedBrushChangedEvent = EventManager.RegisterRoutedEvent(nameof(SelectedBrushChangedEvent), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ColorPicker));
+
+        public event RoutedEventHandler SelectedBrushChanged
+        {
+            add { AddHandler(SelectedBrushChangedEvent, value); }
+            remove { RemoveHandler(SelectedBrushChangedEvent, value); }
+        }
+        #endregion
+
         #region Initialization
 
         static ColorPicker()
@@ -97,6 +107,8 @@ namespace Haley.WPF.Controls
                 return;
             }
 
+            SetCurrentValue(SystemDefaultColorsProperty, ColorUtils.GetSystemColors());
+
             _initialize();
         }
 
@@ -131,13 +143,30 @@ namespace Haley.WPF.Controls
         #endregion
 
         #region Internal Properties
+        internal Dictionary<string,Color> SystemDefaultColors
+        {
+            get { return (Dictionary<string,Color>)GetValue(SystemDefaultColorsProperty); }
+            set { SetValue(SystemDefaultColorsProperty, value); }
+        }
+
+        internal static readonly DependencyProperty SystemDefaultColorsProperty =
+            DependencyProperty.Register(nameof(SystemDefaultColors), typeof(Dictionary<string,Color>), typeof(ColorPicker), new PropertyMetadata(new Dictionary<string,Color>()));
+
+        public object SelectedSystemColor
+        {
+            get { return (object)GetValue(SelectedSystemColorProperty); }
+            set { SetValue(SelectedSystemColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedSystemColorProperty =
+            DependencyProperty.Register(nameof(SelectedSystemColor), typeof(object), typeof(ColorPicker), new FrameworkPropertyMetadata(null, propertyChangedCallback:OnSelectedSystemColorChanged));
+
         internal string MiniRGBInfo
         {
             get { return (string)GetValue(MiniRGBInfoProperty); }
             set { SetValue(MiniRGBInfoProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MiniRGBInfo.  This enables animation, styling, binding, etc...
         internal static readonly DependencyProperty MiniRGBInfoProperty =
             DependencyProperty.Register(nameof(MiniRGBInfo), typeof(string), typeof(ColorPicker), new PropertyMetadata(""));
 
@@ -379,6 +408,8 @@ namespace Haley.WPF.Controls
             if (d is ColorPicker cpkr)
             {
                 cpkr._setHexValue();
+                //Also raise an event.
+                cpkr.RaiseEvent(new UIRoutedEventArgs<SolidColorBrush>(SelectedBrushChangedEvent, cpkr) { Value = cpkr.SelectedBrush });
             }
         }
         static void OnSelectedHueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -443,10 +474,15 @@ namespace Haley.WPF.Controls
         {
             if (e.Parameter is Color pickedColr)
             {
-                _setRGBComponentsFromColor(pickedColr, pickedColr.A); //Important we set the RGB first, because the HSV data is based on the RGB.
-                _setHSVComponents();
-                changeSelectedBrush();
+                _setColorByValue(pickedColr);
             }
+        }
+
+        void _setColorByValue(Color pickedColr)
+        {
+            _setRGBComponentsFromColor(pickedColr, pickedColr.A); //Important we set the RGB first, because the HSV data is based on the RGB.
+            _setHSVComponents();
+            changeSelectedBrush();
         }
         void _showHideComponents(object sender, ExecutedRoutedEventArgs e)
         {
@@ -464,6 +500,17 @@ namespace Haley.WPF.Controls
                         break;
                     default:
                         break;
+                }
+            }
+        }
+        static void OnSelectedSystemColorChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            //Use this only when specifically changed via the combo box. Else, this property should be ignored.
+            if (e.NewValue != null && e.NewValue is KeyValuePair<string,Color> kvpColor)
+            {
+                if (d is ColorPicker cpkr)
+                {
+                    cpkr._setColorByValue(kvpColor.Value);
                 }
             }
         }

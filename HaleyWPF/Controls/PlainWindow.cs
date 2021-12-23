@@ -23,8 +23,6 @@ namespace Haley.WPF.Controls
 
         private const string UIEHeaderHolder = "PART_header_holder";
         private const string UIEFooterHolder = "PART_footer_holder";
-        //private const string UIEContentHolder = "PART_content_holder";
-        private const string UIEContentHolderMask = "PART_content_holder_opacitymask";
 
         private const string UIEHeader = "PART_header";
         private const string UIEFooter = "PART_footer";
@@ -35,8 +33,6 @@ namespace Haley.WPF.Controls
 
         private Border _headerHolder;
         private Border _footerHolder;
-        //private Border _contentHolder;
-        private Border _contentHolderMask;
 
         private ContentControl _header;
         private ContentControl _footer;
@@ -57,6 +53,7 @@ namespace Haley.WPF.Controls
         public bool HideMaximizeButton { get; set; }
         public bool HideCloseButton { get; set; }
         public bool HideFooter { get; set; }
+        public bool HideHeader { get; set; }
 
         public PlainWindow() 
         {
@@ -75,8 +72,6 @@ namespace Haley.WPF.Controls
             base.OnApplyTemplate();
             _headerHolder = GetTemplateChild(UIEHeaderHolder) as Border;
             _footerHolder = GetTemplateChild(UIEFooterHolder) as Border;
-            //_contentHolder = GetTemplateChild(UIEContentHolder) as Border;
-            _contentHolderMask = GetTemplateChild(UIEContentHolderMask) as Border;
 
             _header = GetTemplateChild(UIEHeader) as ContentControl;
             _footer = GetTemplateChild(UIEFooter) as ContentControl;
@@ -94,14 +89,13 @@ namespace Haley.WPF.Controls
             if (HideMaximizeButton) _btnMaximize.Visibility = Visibility.Collapsed;
             if (HideMinimizeButton) _btnMinimize.Visibility = Visibility.Collapsed;
             if (HideFooter) _footerHolder.Visibility = Visibility.Collapsed;
+            if (HideHeader) _headerHolder.Visibility = Visibility.Collapsed;
 
             _headerDefaultTemplate = TryFindResource("defaultHeaderTemplate") as DataTemplate;
             _changeFooter();
             _changeHeader();
             _setWindowCornerRadius(this.CornerRadius);
         }
-
-
 
         public bool HideIcon
         {
@@ -177,15 +171,14 @@ namespace Haley.WPF.Controls
                 _headerHolder.CornerRadius = new CornerRadius(_radius.TopLeft, _radius.TopRight, 0.0, 0.0);
             }
 
-            if (_footerHolder != null)
+            if (!HideFooter && _footerHolder != null)
             {
                 _footerHolder.CornerRadius = new CornerRadius(0.0, 0.0, _radius.BottomRight, _radius.BottomLeft);
             }
 
-            if (HideFooter && _contentHolderMask != null)
+            if (HideFooter)
             {
-                //If we hide the footer, then we need to ensure that the content holder matches the corner radius.
-                _contentHolderMask.CornerRadius = new CornerRadius(0.0, 0.0, _radius.BottomRight, _radius.BottomLeft);
+                SetCurrentValue(FooterHeightProperty, 4.0);
             }
         }
 

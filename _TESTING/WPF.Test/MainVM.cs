@@ -23,6 +23,14 @@ namespace WPF.Test
         #endregion
 
         #region Properties
+
+        private Dictionary<string,Color> _SystemDefaultColors;
+        public Dictionary<string,Color> SystemDefaultColors
+        {
+            get { return _SystemDefaultColors; }
+            set { SetProp(ref _SystemDefaultColors, value); }
+        }
+
         private ObservableCollection<Person> _soemthing;
         public ObservableCollection<Person> something
         {
@@ -160,9 +168,9 @@ namespace WPF.Test
             {
                 _cp = new ColorPickerDialog();
             }
-            if (_cp.Favourites == null || _cp.Favourites.Count == 0)
+            if (ColorPickerDialog.Favourites == null || ColorPickerDialog.Favourites.Count == 0)
             { 
-                _cp.SetFavourites(new List<Color>() { Colors.Purple, Colors.Orange, Colors.Yellow }); //this remains static across all implementations.
+                ColorPickerDialog.SetFavourites(new List<Color>() { Colors.Purple, Colors.Orange, Colors.Yellow }); //this remains static across all implementations.
             }
             
             var _res = _cp.ShowDialog(SelectedBrush, dmode);
@@ -192,6 +200,8 @@ namespace WPF.Test
             proxymessageholder = "New test from proxy binding. Success";
             IsVisible = false;
             SelectedBrush = new SolidColorBrush(Colors.PaleVioletRed);
+            SystemDefaultColors = new Dictionary<string, Color>();
+            SystemDefaultColors = ColorUtils.GetSystemColors();
         }
     }
     public class Person : ChangeNotifier

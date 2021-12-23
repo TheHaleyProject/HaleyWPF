@@ -264,7 +264,7 @@ namespace Haley.WPF.Controls
         #region Helper Methods
         void _raisePageChangedEvent()
         {
-            RaiseEvent(new UIRoutedEventArgs<int>(PageChangedEvent, this) { value = CurrentPage });
+            RaiseEvent(new UIRoutedEventArgs<int>(PageChangedEvent, this) { Value = CurrentPage });
             //Also Invoke the command.
             if (PageChangeCommand != null)
             {

@@ -8,6 +8,7 @@ using System.Windows;
 using WPF.Test.Controls;
 using Haley.WPF.Controls;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System;
@@ -21,6 +22,7 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            //TempMethod();
             //ContainerRegistrations(); //For notification test
             ////ExpanderTest _wndw2sd = new ExpanderTest();
 
@@ -33,7 +35,6 @@ namespace WPF.Test
 
             ColorPIckerTest cpkrTest = new ColorPIckerTest();
             cpkrTest.ShowDialog();
-
 
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
@@ -144,6 +145,11 @@ namespace WPF.Test
         private void ContainerRegistrations()
         {
             var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>("localdemokey", mode: RegisterMode.Transient);
+        }
+
+        private void TempMethod()
+        {
+            
         }
     }
 }

@@ -219,7 +219,7 @@ namespace Haley.WPF.Controls
         {
             //Before raising, filter for visual changes.
             _filterSelected();
-            RaiseEvent(new UIRoutedEventArgs<IEnumerable>(SelectionChangedEvent, this) { value = SourceSelectedItems });
+            RaiseEvent(new UIRoutedEventArgs<IEnumerable>(SelectionChangedEvent, this) { Value = SourceSelectedItems });
         }
         void Execute_SelectAll(object sender, ExecutedRoutedEventArgs e)
         {

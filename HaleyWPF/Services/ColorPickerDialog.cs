@@ -16,27 +16,27 @@ namespace Haley.Services
     {
         private bool ShowMiniInfo;
         //the saved colors remain static
-        private static List<Color> StoredColors = new List<Color>();
+        private static List<Color> _storedColors = new List<Color>();
+        public static List<Color> Favourites => _storedColors;
         private static int MaxFavouriteColors = 6;
         public SolidColorBrush SelectedBrush { get; private set; }
         public Color SelectedColor { get; private set; }
-        public List<Color> Favourites => StoredColors;
-        public void SetFavourites(List<Color> favouriteColors)
+        public static void SetFavourites(List<Color> favouriteColors)
         {
-            StoredColors = favouriteColors;
+            _storedColors = favouriteColors;
         }
-        public void AddFavourite(Color color)
+        public static void AddFavourite(Color color)
         {
-            if (!StoredColors.Contains(color)) StoredColors.Add(color);
+            if (!_storedColors.Contains(color)) _storedColors.Add(color);
         }
-        public void RemoveFavourite(Color color)
+        public static void RemoveFavourite(Color color)
         {
-            if (StoredColors.Contains(color))
+            if (_storedColors.Contains(color))
             {
-                StoredColors.Remove(color);
+                _storedColors.Remove(color);
             }
         }
-        public void SetOptions(bool showminiInfo, int maxfavourites = 9)
+        public void SetOptions(bool showminiInfo, int maxfavourites = 0)
         {
             if (maxfavourites > 0) MaxFavouriteColors = maxfavourites;
             ShowMiniInfo = showminiInfo;
@@ -48,7 +48,7 @@ namespace Haley.Services
         public bool? ShowDialog(SolidColorBrush oldBrush, DisplayMode mode = DisplayMode.Compact)
         {
             bool? result;
-            var _clrpckWindow = new ColorPickerWindow(StoredColors, oldBrush, MaxFavouriteColors, ShowMiniInfo, mode);
+            var _clrpckWindow = new ColorPickerWindow(Favourites, oldBrush, MaxFavouriteColors, ShowMiniInfo, mode);
             result = _clrpckWindow.ShowDialog();
 
             //Show this dialog and retrieve the selected brush and savedcolors.
