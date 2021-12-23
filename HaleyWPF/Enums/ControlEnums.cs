@@ -58,4 +58,11 @@ namespace Haley.Enums
         Rectangle,
         Circle,
     }
+
+    public enum DisplayMode
+    {
+        Mini,
+        Compact,
+        Full
+    }
 }

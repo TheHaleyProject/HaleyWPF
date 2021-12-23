@@ -92,7 +92,11 @@ namespace Haley.Models
             //This is very important as the LoadedEvent is present only in the framework element.
             //Only for the framework element, we will able to add the adorner layer.
             var _layer = AdornerLayer.GetAdornerLayer(sender as FrameworkElement);
-            _layer.Add(_adorner); //Add the adorner to the layer so that it can draw on top of the UIElement.
+            if (_layer == null)
+            {
+                throw new ArgumentException("Adorner Layer is null.");
+            }
+            _layer?.Add(_adorner); //Add the adorner to the layer so that it can draw on top of the UIElement.
             _adorner.Layer = _layer; // Also store the layer to the adorner for further usage.
         }
 

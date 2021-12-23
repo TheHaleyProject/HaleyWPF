@@ -10,12 +10,46 @@ using Haley.IOC;
 using Haley.MVVM;
 using Haley.Events;
 using System.Windows.Media;
+using Haley.Services;
+using System.Collections.Generic;
 
 namespace WPF.Test
 {
     public class MainVM :BaseVM
     {
+        #region Attributes
         private IDialogService _dialogService;
+        private ColorPickerDialog _cp;
+        #endregion
+
+        #region Properties
+        private ObservableCollection<Person> _soemthing;
+        public ObservableCollection<Person> something
+        {
+            get { return _soemthing; }
+            set { SetProp(ref _soemthing, value); }
+        }
+
+        private ObservableCollection<object> _selecteditems;
+        public ObservableCollection<object> selecteditems
+        {
+            get { return _selecteditems; }
+            set { SetProp(ref _selecteditems, value); }
+        }
+
+        private ObservableCollection<Person> _choosentiems;
+        public ObservableCollection<Person> choosenitems
+        {
+            get { return _choosentiems; }
+            set { SetProp(ref _choosentiems, value); }
+        }
+
+        private SolidColorBrush _selectedBrush;
+        public SolidColorBrush SelectedBrush
+        {
+            get { return _selectedBrush; }
+            set { SetProp(ref _selectedBrush, value); }
+        }
         private int _counter;
         public int counter
         {
@@ -30,11 +64,12 @@ namespace WPF.Test
             set { SetProp(ref _proxymessageholder, value); }
         }
 
-        void _login(PlainPasswordBox obj)
+        private string _selectedDisplaymode;
+        public string SelectedDisplaymode
         {
-            currentpage = 0;
+            get { return _selectedDisplaymode; }
+            set { SetProp(ref _selectedDisplaymode, value); }
         }
-
         private bool _isVisible;
         public bool IsVisible
         {
@@ -49,9 +84,26 @@ namespace WPF.Test
             set { SetProp(ref _currentpage, value); }
         }
 
-        public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
+        #endregion
 
+        #region Commands
+        public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
+        public ICommand Cmd_Notify => new DelegateCommand<string>(_localNotify);
         public ICommand Cmd_Toggle => new DelegateCommand(_toggle);
+        public ICommand Cmd_IncreaseCounter => new DelegateCommand(_increaseCounter);
+        public ICommand Cmd_search => new DelegateCommand<string>(_search);
+        public ICommand Cmd_changetheme => new DelegateCommand(_changetheme);
+        public ICommand Cmd_OpenColorDialog => new DelegateCommand(_openColorDialog);
+
+        #endregion
+
+        #region Private Methods
+
+        void _login(PlainPasswordBox obj)
+        {
+            currentpage = 0;
+        }
+
         void _toggle()
         {
             IsVisible = !IsVisible;
@@ -68,17 +120,15 @@ namespace WPF.Test
 
             _dialogService.Info("Command Initiated", obj);
         }
-        public ICommand Cmd_Notify => new DelegateCommand<string>(_localNotify);
+      
         void _increaseCounter()
         {
             counter++;
         }
-        public ICommand Cmd_IncreaseCounter => new DelegateCommand(_increaseCounter);
         void _search(string obj)
         {
             //now we search
         }
-        public ICommand Cmd_search => new DelegateCommand<string>(_search);
 
         void _changetheme()
         {
@@ -97,38 +147,32 @@ namespace WPF.Test
                     break;
             }
         }
-        public ICommand Cmd_changetheme => new DelegateCommand(_changetheme);
-
-        private ObservableCollection<Person> _soemthing;
-        public ObservableCollection<Person> something
+        
+        void _openColorDialog()
         {
-            get { return _soemthing; }
-            set { SetProp(ref _soemthing, value); }
+            DisplayMode dmode = DisplayMode.Mini;
+            if (! string.IsNullOrEmpty(SelectedDisplaymode))
+            {
+                //get the corresponding enum.
+                dmode = SelectedDisplaymode.getValueFromDescription<DisplayMode>();
+            }
+            if (_cp == null)
+            {
+                _cp = new ColorPickerDialog();
+            }
+            if (_cp.Favourites == null || _cp.Favourites.Count == 0)
+            { 
+                _cp.SetFavourites(new List<Color>() { Colors.Purple, Colors.Orange, Colors.Yellow }); //this remains static across all implementations.
+            }
+            
+            var _res = _cp.ShowDialog(SelectedBrush, dmode);
+            
+            if (_res.HasValue && _res.Value)
+            {
+                SelectedBrush = _cp.SelectedBrush;
+            }
         }
-
-        private ObservableCollection<object> _selecteditems;
-        public ObservableCollection<object> selecteditems
-        {
-            get { return _selecteditems; }
-            set { SetProp(ref _selecteditems, value); }
-        }
-
-        private ObservableCollection<Person> _choosentiems;
-
-
-        public ObservableCollection<Person> choosenitems
-        {
-            get { return _choosentiems; }
-            set { SetProp(ref _choosentiems, value); }
-        }
-
-        private SolidColorBrush _selectedBrush;
-        public SolidColorBrush SelectedBrush
-        {
-            get { return _selectedBrush; }
-            set { SetProp(ref _selectedBrush, value); }
-        }
-
+        #endregion
         public MainVM()
         {
             ObservableCollection<Person> hello = new ObservableCollection<Person>();
@@ -150,7 +194,6 @@ namespace WPF.Test
             SelectedBrush = new SolidColorBrush(Colors.PaleVioletRed);
         }
     }
-
     public class Person : ChangeNotifier
     {
         private string _Name;

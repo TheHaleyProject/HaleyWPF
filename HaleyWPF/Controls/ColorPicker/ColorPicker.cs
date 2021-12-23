@@ -54,7 +54,7 @@ namespace Haley.WPF.Controls
         #region Attributes
         private UniAxisPickerAdorner _hueAdorner;
         private BiAxisPickerAdorner _svAdorner;
-        private static Brush _startbrush = new SolidColorBrush(Colors.White);
+        private static SolidColorBrush _startbrush = new SolidColorBrush(Colors.White);
         private bool _freezeRGBChange = false;
         private bool _freezeHSVChange = false;
         private HSV _selected_hsv;
@@ -125,6 +125,7 @@ namespace Haley.WPF.Controls
             {
                 _selected_hsv = new HSV(0.0, 1.0, 1.0);
             }
+            _truncateSavedColors(); //If user decides to bind some saved color values, then truncate them.
         }
 
         #endregion
@@ -240,23 +241,23 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty HideColorPaletteProperty =
             DependencyProperty.Register(nameof(HideColorPalette), typeof(bool), typeof(ColorPicker), new PropertyMetadata(false));
 
-        public Brush SelectedBrush
+        public SolidColorBrush SelectedBrush
         {
-            get { return (Brush)GetValue(SelectedBrushProperty); }
+            get { return (SolidColorBrush)GetValue(SelectedBrushProperty); }
             set { SetValue(SelectedBrushProperty, value); }
         }
 
         public static readonly DependencyProperty SelectedBrushProperty =
-            DependencyProperty.Register(nameof(SelectedBrush), typeof(Brush), typeof(ColorPicker), new FrameworkPropertyMetadata(_startbrush,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedBrushChanged));
+            DependencyProperty.Register(nameof(SelectedBrush), typeof(SolidColorBrush), typeof(ColorPicker), new FrameworkPropertyMetadata(_startbrush,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnSelectedBrushChanged));
 
-        public Brush OldBrush
+        public SolidColorBrush OldBrush
         {
-            get { return (Brush)GetValue(OldBrushProperty); }
+            get { return (SolidColorBrush)GetValue(OldBrushProperty); }
             set { SetValue(OldBrushProperty, value); }
         }
 
         public static readonly DependencyProperty OldBrushProperty =
-            DependencyProperty.Register(nameof(OldBrush), typeof(Brush), typeof(ColorPicker), new PropertyMetadata(_startbrush));
+            DependencyProperty.Register(nameof(OldBrush), typeof(SolidColorBrush), typeof(ColorPicker), new PropertyMetadata(_startbrush));
 
         public ObservableCollection<Color> SavedColors
         {
@@ -265,7 +266,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty SavedColorsProperty =
-            DependencyProperty.Register(nameof(SavedColors), typeof(ObservableCollection<Color>), typeof(ColorPicker), new FrameworkPropertyMetadata(new ObservableCollection<Color>(), propertyChangedCallback: SavedColorsChanged));
+            DependencyProperty.Register(nameof(SavedColors), typeof(ObservableCollection<Color>), typeof(ColorPicker), new FrameworkPropertyMetadata(new ObservableCollection<Color>(),FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: SavedColorsChanged));
         #endregion
 
         private void _svAdorner_PositionChangedEvent(object sender, ValueChangedArgs<(Point position, Point percent)> e)
@@ -400,6 +401,13 @@ namespace Haley.WPF.Controls
             if (SelectedBrush == null || ! (SelectedBrush is SolidColorBrush scb_selected)) return;
             //Get the selected color and add it to the saved colors.
             SavedColors.Insert(0, scb_selected.Color);
+            _truncateSavedColors();
+        }
+
+        void _truncateSavedColors()
+        {
+            if (MaxStoredColors < 1) MaxStoredColors = 1;
+            if (SavedColors == null || SavedColors.Count == 0) return;
             var _toremove = SavedColors.Skip(MaxStoredColors).ToList();
             if (_toremove != null && _toremove.Count() > 0)
             {

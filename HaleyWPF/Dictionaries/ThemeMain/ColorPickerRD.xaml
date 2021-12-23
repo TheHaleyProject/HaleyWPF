@@ -90,7 +90,7 @@
                         </Grid.RowDefinitions>
                         
                       <!--#region HSL PICKERS-->
-                        <Grid Margin="4">
+                        <Grid Margin="4" MinWidth="250">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="3" />

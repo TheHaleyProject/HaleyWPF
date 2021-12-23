@@ -26,10 +26,11 @@
                             <DataTemplate x:Key="defaultHeaderTemplate">
                                 <Grid x:Name="grdDefaultHeader">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="{Binding ElementName=grdDefaultHeader,Path=ActualHeight}"/>
+                                        <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="1" Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Title}"/>
+                                    <bc:PlainImage Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" ml:Icon.Default="{Binding (ml:Icon.Default),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" ml:Icon.DefaultColor="{Binding (ml:Icon.DefaultColor),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" ml:Hover.IsEnabled="False" Visibility="{Binding HideIcon,RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}},Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}" Margin="4"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Title,RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" Foreground="{Binding (ml:Icon.DefaultColor),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="11"/>
                                 </Grid>
                             </DataTemplate>
                         </ResourceDictionary>
@@ -42,12 +43,12 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}"/>
-                                    <RowDefinition/>
-                                <RowDefinition Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}"/>
+                                    <RowDefinition />
+                                <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
                                 <!--Header-->
-                                <Border x:Name="PART_header_holder" Background="Transparent">
+                                <Border x:Name="PART_header_holder" Background="Transparent" Margin="0" Padding="0">
                                     <Grid x:Name="grdHeader" Background="Transparent">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="MouseLeftButtonDown" >
@@ -67,7 +68,7 @@
                                                 <Style x:Key="controlButtonStyle" TargetType="{x:Type bc:ImageButton}">
                                                     <Setter Property="ml:Icon.DefaultColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.DefaultColor)}"/>
                                                     <Setter Property="ml:Icon.HoverColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>
-                                                    <Setter Property="Margin" Value="3"/>
+                                                    <Setter Property="Margin" Value="1"/>
                                                 </Style>
                                             </ResourceDictionary>
                                         </Grid.Resources>
@@ -86,12 +87,18 @@
                                 </Border>
 
                                 <!--Footer-->
-                                <Border x:Name="PART_footer_holder" Grid.Row="2">
+                                <Border x:Name="PART_footer_holder" Grid.Row="2" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}">
                                     <ContentControl x:Name="PART_footer"/>
                                 </Border>
 
-                                <!--Content Presenter-->
-                                <ContentPresenter Grid.Row="1"/>
+                              <!--Content Presenter-->
+                            <Border x:Name="PART_content_holder_opacitymask" Grid.Row="1" Background="White"/>
+                            <Border x:Name="PART_content_holder" Grid.Row="1" Background="Transparent">
+                                <Border.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=PART_content_holder_opacitymask}"/>
+                                </Border.OpacityMask>
+                                <ContentPresenter />
+                            </Border>
 
                             </Grid>
                         </Border>

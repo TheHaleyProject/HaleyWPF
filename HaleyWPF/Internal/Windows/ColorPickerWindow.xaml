@@ -1,0 +1,39 @@
+﻿<bc:PlainWindow
+    x:ClassModifier="internal"
+    x:Class="Haley.WPF.Internal.ColorPickerWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+    xmlns:local="clr-namespace:Haley.WPF.Internal"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ml="clr-namespace:Haley.Models"
+    
+    Width="340"
+    MinHeight="300"
+    mc:Ignorable="d"
+    CornerRadius="10"
+    HideFooter="True"
+    HideMaximizeButton="True"
+    HideMinimizeButton="True"
+    SizeToContent="Height"
+    Title="Color Picker" HideIcon="True" WindowStartupLocation="CenterScreen">
+    <!--<bc:PlainWindow.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type bc:PlainWindow}">
+                <Setter Property="ml:Icon.Default" Value="{StaticResource pen}"/>
+            </Style>
+        </ResourceDictionary>
+    </bc:PlainWindow.Resources>-->
+<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <AdornerDecorator>
+            <bc:ColorPicker x:Name="clrpckr"/>
+        </AdornerDecorator>
+        <bc:ImageButton x:Name="ConfirmButton" Grid.Row="1" Height="30" Width="30" Margin="5,3" HorizontalAlignment="Right" ml:Icon.Default="{StaticResource success_filled}" ml:Icon.DefaultColor="DarkGreen" Click="ConfirmButtonClick"/>
+    </Grid>
+</bc:PlainWindow>
