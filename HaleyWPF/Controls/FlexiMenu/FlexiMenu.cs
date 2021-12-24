@@ -95,21 +95,27 @@ namespace Haley.WPF.Controls
             _floatingPanelHolderCanvas = GetTemplateChild(UIEFloatingPanelCanvas) as Canvas;
             _contextMenuShow = GetTemplateChild(UIEContextMenuShow) as SysCtrls.MenuItem;
             _contextMenuReposition = GetTemplateChild(UIEContextMenuReposition) as SysCtrls.MenuItem;
-            //Set Welcome view if not null
-            if (WelcomeView != null)
-            {
-                _mainContentHolder.Content = WelcomeView;
-                //If welcome view is active, then we should hide the floating panel
-                _setFloatingCanvasVisibility(Visibility.Collapsed);
-            }
+            
             _changeHeader();
             _changeFloatingPanel();
-            _setupWelcomeViewCloseTimer();
-
+            
             if (DisableFloatingPanel )
             {
                 if (_contextMenuReposition != null) _contextMenuReposition.Visibility = Visibility.Collapsed;
                 if (_contextMenuShow != null) _contextMenuShow.Visibility = Visibility.Collapsed; //If we need to disable floating panel, then the context menu should not be shown.
+            }
+
+            //Set Welcome view if not null
+            if (WelcomeView != null && !DisableWelcomeView)
+            {
+                _mainContentHolder.Content = WelcomeView;
+                //If welcome view is active, then we should hide the floating panel
+                _setFloatingCanvasVisibility(Visibility.Collapsed);
+                _setupWelcomeViewCloseTimer();
+            }
+            else
+            {
+                _setFirstView(); //In case the welcome view is present and also it is not disabled, then we set the welcome view and then after timer runs out we set the first view.
             }
         }
         
@@ -140,6 +146,16 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty IsFloatingPanelVisibleProperty =
             DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new FrameworkPropertyMetadata(true,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback:IsFloatingPanelVisiblePropertyChanged));
         #endregion
+
+        public bool DisableWelcomeView
+        {
+            get { return (bool)GetValue(DisableWelcomeViewProperty); }
+            set { SetValue(DisableWelcomeViewProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DisableWelcomeView.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DisableWelcomeViewProperty =
+            DependencyProperty.Register(nameof(DisableWelcomeView), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
         public ImageSource ToggleIcon
         {
@@ -345,7 +361,7 @@ namespace Haley.WPF.Controls
             if (AutoCloseWelcomeView)
             {
                 //Validate timer duration
-                if (AutoCloseWelcomeViewTimeSpan < 1 || AutoCloseWelcomeViewTimeSpan > 100 || double.IsNaN(AutoCloseWelcomeViewTimeSpan))
+                if (AutoCloseWelcomeViewTimeSpan < 1 || AutoCloseWelcomeViewTimeSpan > 20 || double.IsNaN(AutoCloseWelcomeViewTimeSpan))
                 {
                     AutoCloseWelcomeViewTimeSpan = 3.0;
                 }
@@ -360,6 +376,11 @@ namespace Haley.WPF.Controls
         void TimerTick(object sender, EventArgs e)
         {
             ((DispatcherTimer)sender).Stop();
+            _setFirstView();
+        }
+
+        void _setFirstView()
+        {
             //if we have any other view, then try to show it. If we have already moved to a different view, then in that case, do not process it (check: activemenu == null)
             if (MenuItems != null && MenuItems?.Count > 0 && ActiveMenu == null)
             {
