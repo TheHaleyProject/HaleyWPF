@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
         Title="ColorPIckerTest" Height="550" Width="400" CornerRadius="20" Background="DimGray" HideHeader="True" HideMaximizeButton="True">
-    <StackPanel Background="Transparent">
+    <StackPanel Background="White" >
         <hw:PlainButton CornerRadius="10" Height="35" Background="Purple" Width="130" HorizontalAlignment="Left" Command="{Binding Cmd_OpenColorDialog}" VerticalAlignment="Top"/>
         <ComboBox Width="130" HorizontalAlignment="Right" Margin="10" ItemsSource="{Binding Source={x:Type hw:DisplayMode}, Converter={StaticResource EnumTypeToDescriptionList}}" SelectedValue="{Binding SelectedDisplaymode,Mode=TwoWay,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
         <Rectangle Fill="{Binding SelectedBrush}" Height="40" Width="120" Margin="30"/>

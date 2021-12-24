@@ -36,7 +36,12 @@
                         </ResourceDictionary>
                     </ControlTemplate.Resources>
                         <Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <Border.Effect>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown" >
+                                <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction}" CommandParameter="DragMove"  />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Border.Effect>
                                 <DropShadowEffect BlurRadius="6" ShadowDepth="0"/>
                             </Border.Effect>
 
@@ -48,16 +53,9 @@
                                 </Grid.RowDefinitions>
 
                                 <!--Header (can be hidden)-->
-                                <Border x:Name="PART_header_holder" Background="Transparent" Margin="0" Padding="0">
-                                    <Grid x:Name="grdHeader" Background="Transparent">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="MouseLeftButtonDown" >
-                                                <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction}" CommandParameter="DragMove"  />
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                        <ContentControl x:Name="PART_header" IsHitTestVisible="False" Margin="5,0"/>
-                                    </Grid>
-                                </Border>
+                                <Border x:Name="PART_header_holder" Background="Transparent" Margin="0" Padding="0" IsHitTestVisible="False">
+                                <ContentControl x:Name="PART_header" IsHitTestVisible="False" Margin="5,0"/>
+                            </Border>
                                 
                             <!--Footer (Can be hidden)-->
                             <Border x:Name="PART_footer_holder" Grid.Row="2">
@@ -88,7 +86,7 @@
                             
 
                               <!--Content Presenter-->
-                            <ContentPresenter Grid.Row="1" />
+                            <ContentPresenter Grid.Row="1" Margin="0.5"/>
                             </Grid>
                         </Border>
                 </ControlTemplate>

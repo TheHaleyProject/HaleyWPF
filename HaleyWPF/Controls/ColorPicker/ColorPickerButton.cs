@@ -35,6 +35,7 @@ namespace Haley.WPF.Controls
         {
             base.OnMouseLeftButtonDown(e);
             //When left button is pressed, we open up the dialog and display.
+            _cpService.SetOptions(ShowMiniInfo);
             var _res = _cpService.ShowDialog(OldBrush, Mode);
             if (_res.HasValue && _res.Value)
             {
@@ -91,5 +92,14 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty ModeProperty =
             DependencyProperty.Register(nameof(Mode), typeof(DisplayMode), typeof(ColorPickerButton), new FrameworkPropertyMetadata(DisplayMode.Compact));
+
+        public bool ShowMiniInfo
+        {
+            get { return (bool)GetValue(ShowMiniInfoProperty); }
+            set { SetValue(ShowMiniInfoProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowMiniInfoProperty =
+            DependencyProperty.Register(nameof(ShowMiniInfo), typeof(bool), typeof(ColorPickerButton), new PropertyMetadata(true));
     }
 }
