@@ -59,5 +59,14 @@ namespace WPF.Test.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pick a Color.
+        /// </summary>
+        internal static string pickColor {
+            get {
+                return ResourceManager.GetString("pickColor", resourceCulture);
+            }
+        }
     }
 }

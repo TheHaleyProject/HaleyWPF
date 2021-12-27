@@ -33,6 +33,8 @@ namespace WPF.Test
             //    mw = new Window(); //Dummy initiation
             //}
 
+            LangUtils.Register("WPF.Test.Properties.Resources");
+            LangUtils.ChangeCulture("ta");
             ColorPIckerTest cpkrTest = new ColorPIckerTest();
             cpkrTest.ShowDialog();
 

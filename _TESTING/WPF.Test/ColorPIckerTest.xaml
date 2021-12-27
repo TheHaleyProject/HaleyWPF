@@ -12,6 +12,6 @@
         <hw:PlainButton CornerRadius="10" Height="35" Background="Purple" Width="130" HorizontalAlignment="Left" Command="{Binding Cmd_OpenColorDialog}" VerticalAlignment="Top"/>
         <ComboBox Width="130" HorizontalAlignment="Right" Margin="10" ItemsSource="{Binding Source={x:Type hw:DisplayMode}, Converter={StaticResource EnumTypeToDescriptionList}}" SelectedValue="{Binding SelectedDisplaymode,Mode=TwoWay,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
         <Rectangle Fill="{Binding SelectedBrush}" Height="40" Width="120" Margin="30"/>
-        <hw:ColorPickerButton SelectedBrush="{Binding SelectedBrush}" Height="40" Width="120" Margin="30" Mode="Full"/>
+        <hw:ColorPickerButton SelectedBrush="{Binding SelectedBrush}" Height="40" Width="120" Margin="30" Mode="Full" Content="{hm:Lang pickColor}" Background="White"/>
     </StackPanel>
 </hw:PlainWindow>

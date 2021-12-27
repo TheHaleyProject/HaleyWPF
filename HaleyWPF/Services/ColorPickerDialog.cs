@@ -4,7 +4,6 @@ using System.Text;
 using System.Windows.Media;
 using Haley.Abstractions;
 using Haley.Enums;
-using Haley.WPF.BaseControls;
 using Haley.Utils;
 using System.Windows;
 using System.Windows.Controls;

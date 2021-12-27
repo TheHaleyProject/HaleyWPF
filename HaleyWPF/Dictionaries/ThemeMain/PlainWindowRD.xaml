@@ -37,8 +37,8 @@
                     </ControlTemplate.Resources>
                         <Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                         <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown" >
-                                <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction}" CommandParameter="DragMove"  />
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction2}" CommandParameter="DragMove"  />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                         <Border.Effect>
@@ -63,7 +63,7 @@
                             </Border>
 
                             <!--Control box-->
-                            <Grid x:Name="grdControlBox" VerticalAlignment="Top" Height="27" Margin="8,4" HorizontalAlignment="Right" IsHitTestVisible="True">
+                            <Grid x:Name="grdControlBox" VerticalAlignment="Top" Height="27" Margin="8,4" HorizontalAlignment="Right" IsHitTestVisible="True" Background="Transparent">
                                 <Grid.Resources>
                                     <ResourceDictionary>
                                         <Style x:Key="controlButtonStyle" TargetType="{x:Type bc:ImageButton}">

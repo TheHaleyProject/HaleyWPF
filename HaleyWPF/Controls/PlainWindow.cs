@@ -62,6 +62,7 @@ namespace Haley.WPF.Controls
             WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(4.0),GlassFrameThickness = new Thickness(2.0)}); //for enabling resize
             //set border thickness to match the resize border
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _controlboxAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction2, _headerAction));
 
             ////This is to limit the maximum height of the screen.
             //MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
@@ -182,32 +183,59 @@ namespace Haley.WPF.Controls
             }
         }
 
+        void _headerAction(object sender, ExecutedRoutedEventArgs e)
+        {
+            try
+            {
+                string _param = e.Parameter as string;
+                if (_param == null) return;
+                if (this == null) return;
+
+                switch (_param)
+                {
+                    case "DragMove":
+                        this.DragMove();
+                        break;
+                }
+                e.Handled = true;
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
+            }
+        }
         void _controlboxAction(object sender, ExecutedRoutedEventArgs e)
         {
-            string _param = e.Parameter as string;
-            if (_param == null) return;
-            switch(_param)
+            try
             {
-                case "Min":
-                    this.WindowState = WindowState.Minimized;
-                    break;
-                case "Max":
-                    switch (this.WindowState)
-                    {
-                        case WindowState.Maximized:
-                            this.WindowState = WindowState.Normal;
-                            break;
-                        case WindowState.Normal:
-                            this.WindowState = WindowState.Maximized;
-                            break;
-                    }
-                    break;
-                case "Close":
-                    this.Close();
-                    break;
-                case "DragMove":
-                    this.DragMove();
-                    break;
+                string _param = e.Parameter as string;
+                if (_param == null) return;
+                e.Handled = true;
+                if (this == null) return;
+                switch (_param)
+                {
+                    case "Min":
+                        this.WindowState = WindowState.Minimized;
+                        break;
+                    case "Max":
+                        switch (this.WindowState)
+                        {
+                            case WindowState.Maximized:
+                                this.WindowState = WindowState.Normal;
+                                break;
+                            case WindowState.Normal:
+                                this.WindowState = WindowState.Maximized;
+                                break;
+                        }
+                        break;
+                    case "Close":
+                        this.Close();
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.ToString());
             }
         }
         static void HeaderTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
