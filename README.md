@@ -1,6 +1,6 @@
 Okay
 # HaleyWPF
-Currently contains 14 User controls.
+Currently contains below customized controls.
 
 1. Image button 
 2. Image Combo button
@@ -16,3 +16,16 @@ Currently contains 14 User controls.
 12. Linked Text
 13. Plain Image
 14. Plain CheckBox
+15. Image Toggle Button
+16. Plain Toggle Button
+17. Color Picker Control
+18. Color Picker Button
+19. FlexiMenu
+20. Badge
+21. Combo Repeat Button
+22. Flexi Scroll
+23. HotKey Editor Control (Shortcut key)
+24. Incrementer (Numeric)
+25. Plain Card
+26. Plain Window (To be used as a window with customizable header/footer/border/colors)
+27. SearchBar
