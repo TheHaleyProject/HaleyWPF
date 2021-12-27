@@ -17,15 +17,8 @@ using Haley.Abstractions;
 
 namespace Haley.Abstractions
 {
-    public interface IMenuItem
+    public interface IMenuItem : ICommandMenuItem
     {
-        string Id { get; }
-        ICommand Command { get; set; }
-
-        object CommandParameter { get; set; }
-
-        string Label { get; set; }
-
         MenuAction Action { get; set; }
 
         UserControl View { get; set; }

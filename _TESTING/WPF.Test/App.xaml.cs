@@ -6,8 +6,9 @@ using Haley.MVVM;
 using Haley.Utils;
 using System.Windows;
 using WPF.Test.Controls;
-using Haley.WPF.BaseControls;
+using Haley.WPF.Controls;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System;
@@ -21,8 +22,19 @@ namespace WPF.Test
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            //TempMethod();
             //ContainerRegistrations(); //For notification test
-            //ExpanderTest _wndw2sd = new ExpanderTest();
+            ////ExpanderTest _wndw2sd = new ExpanderTest();
+
+            //var mw = Application.Current.MainWindow;
+            //if (mw == null)
+            //{
+            //    //First invoke.
+            //    mw = new Window(); //Dummy initiation
+            //}
+
+            ColorPIckerTest cpkrTest = new ColorPIckerTest();
+            cpkrTest.ShowDialog();
 
             //MainWindow _wndwo = new MainWindow();
             //_wndwo.ShowDialog();
@@ -33,8 +45,8 @@ namespace WPF.Test
             //WndwPagination _wndw3 = new WndwPagination();
             //_wndw3.ShowDialog();
 
-            ThemeTest wndw = new ThemeTest();
-            wndw.ShowDialog();
+            //ThemeTest wndw = new ThemeTest();
+            //wndw.ShowDialog();
 
             //ScrollViewerTest wndwscroll = new ScrollViewerTest();
             //wndwscroll.ShowDialog();
@@ -47,6 +59,12 @@ namespace WPF.Test
 
             //NewFlexiMenu flexiNewMenuTest = new NewFlexiMenu();
             //flexiNewMenuTest.ShowDialog();
+
+            //CardTest cardtestnew = new CardTest();
+            //cardtestnew.ShowDialog();
+
+            //BadgeTesting badgetst = new BadgeTesting();
+            //badgetst.ShowDialog();
 
             //notificationTest();
 
@@ -126,7 +144,12 @@ namespace WPF.Test
 
         private void ContainerRegistrations()
         {
-            var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>(mode: RegisterMode.Transient);
+            var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>("localdemokey", mode: RegisterMode.Transient);
+        }
+
+        private void TempMethod()
+        {
+            
         }
     }
 }

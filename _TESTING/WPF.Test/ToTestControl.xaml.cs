@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows;
 
 namespace WPF.Test
 {
@@ -11,6 +12,7 @@ namespace WPF.Test
         {
             InitializeComponent();
             this.DataContext = new MainVM();
+            
         }
     }
 }

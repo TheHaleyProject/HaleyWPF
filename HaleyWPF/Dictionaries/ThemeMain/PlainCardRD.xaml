@@ -1,0 +1,189 @@
+﻿ <ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.Controls"
+    xmlns:ml="clr-namespace:Haley.Models">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style x:Key="internal_plaincard_grid" TargetType="{x:Type Grid}">
+        <Setter Property="Grid.Column" Value="2"/>
+        <Style.Triggers>
+            <Trigger Property="HorizontalAlignment" Value="Center">
+                <Setter Property="Grid.Column" Value="0"/>
+                <Setter Property="Grid.ColumnSpan" Value="4"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+     
+    <ControlTemplate x:Key="internal_plaincard_simple" TargetType="{x:Type bc:PlainCard}">
+        <Grid>
+            <Border Style="{StaticResource BorderWithShadow}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1" Width="{Binding ElementName=PART_HeaderHolder,Path=ActualHeight}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                                <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="5" ml:Hover.IsEnabled="False"/>
+                            </Grid>
+                            <Grid Margin="2,0" HorizontalAlignment="{TemplateBinding HeaderAlignment}" Style="{StaticResource internal_plaincard_grid}">
+                                    <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}"/>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Row="1"/>
+                </Grid>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+            <Trigger Property="ShowHeader" Value="False">
+                <Setter TargetName="PART_HeaderHolder" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+     
+    <ControlTemplate x:Key="internal_plaincard_flyer" TargetType="{x:Type bc:PlainCard}">
+        <Border Style="{StaticResource BorderWithShadow}">
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Content-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <!--Below grid is just a place holder for the flyer.-->
+                        <Grid Width="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Grid.Column="1"/>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="2" />
+                    </Grid>
+
+                    <!--Header-->
+                    <Grid Grid.Row="1" Height="{TemplateBinding HeaderHeight}" x:Name="actual_grid_header" MinHeight="40" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="5"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}" Margin="15,0"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1" TextWrapping="Wrap"/>
+                    </Grid>
+                </Grid>
+
+                <!--Flyer-->
+                <Border x:Name="PART_FlyerHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding FlyerHeight}" Width="{TemplateBinding FlyerWidth}" MinHeight="50" MinWidth="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0">
+                    <Viewbox VerticalAlignment="Bottom" Height="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                        <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
+                    </Viewbox>
+                </Border>
+            </Grid>
+            
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+            <Trigger Property="ShowHeader" Value="False">
+                <Setter TargetName="actual_grid_header" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="internal_plaincard_professional" TargetType="{x:Type bc:PlainCard}">
+        <Border Style="{StaticResource BorderWithShadow}"  >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--Content-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="coldefImage" Width="0.35*" MaxWidth="150"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                        <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
+                    </Viewbox>
+                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1"/>
+                </Grid>
+
+                <!--Header-->
+                <Border x:Name="PART_HeaderHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding HeaderHeight}" MinHeight="50" Grid.Row="1" VerticalAlignment="Bottom">
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="5"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}" Margin="15,0"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
+                    </Grid>
+                </Border>
+                
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+            <Trigger Property="ShowHeader" Value="False">
+                <Setter TargetName="PART_HeaderHolder" Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+            <Trigger Property="ShowIcon" Value="False">
+                <Setter TargetName="coldefImage" Property="Width" Value="Auto"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+     
+    <Style TargetType="{x:Type bc:PlainCard}">
+        <Setter Property="Background" Value="{DynamicResource def_background_secondary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="HeaderBackground" Value="{DynamicResource def_accent_tertiary}"/>
+        
+        <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="ml:Shadow.OnlyOnMouseOver" Value="false"/>
+        <Setter Property="ml:Shadow.IsEnabled" Value="true"/>
+        <Setter Property="ml:Shadow.BlurRadius" Value="3.0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Style.Triggers>
+            <Trigger Property="Mode" Value="Simple">
+                <Setter Property="Template" Value="{StaticResource internal_plaincard_simple}"/>
+                <Setter Property="HeaderForeground" Value="{DynamicResource def_content_inverted}"/>
+            </Trigger>
+            <Trigger Property="Mode" Value="Flyer">
+                <Setter Property="Template" Value="{StaticResource internal_plaincard_flyer}"/>
+                <Setter Property="HeaderForeground" Value="{DynamicResource def_content}"/>
+            </Trigger>
+            <Trigger Property="Mode" Value="Professional">
+                <Setter Property="Template" Value="{StaticResource internal_plaincard_professional}"/>
+                <Setter Property="HeaderForeground" Value="{DynamicResource def_content_inverted}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

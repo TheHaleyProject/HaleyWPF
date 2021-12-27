@@ -23,7 +23,6 @@ namespace Haley.Models
             obj.SetValue(IsEnabledProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for IsEnabled.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.RegisterAttached("IsEnabled", typeof(bool), typeof(Shadow), new PropertyMetadata(false));
 
@@ -38,7 +37,6 @@ namespace Haley.Models
             obj.SetValue(ColorProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for Color.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ColorProperty =
             DependencyProperty.RegisterAttached("Color", typeof(Brush), typeof(Shadow), new PropertyMetadata(null));
 
@@ -52,9 +50,21 @@ namespace Haley.Models
             obj.SetValue(OnlyOnMouseOverProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for OnlyOnMouseOver.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty OnlyOnMouseOverProperty =
             DependencyProperty.RegisterAttached("OnlyOnMouseOver", typeof(bool), typeof(Shadow), new PropertyMetadata(true));
+
+        public static double GetBlurRadius(DependencyObject obj)
+        {
+            return (double)obj.GetValue(BlurRadiusProperty);
+        }
+
+        public static void SetBlurRadius(DependencyObject obj, double value)
+        {
+            obj.SetValue(BlurRadiusProperty, value);
+        }
+
+        public static readonly DependencyProperty BlurRadiusProperty =
+            DependencyProperty.RegisterAttached("BlurRadius", typeof(double), typeof(Shadow), new PropertyMetadata(4.0));
 
         #endregion
     }

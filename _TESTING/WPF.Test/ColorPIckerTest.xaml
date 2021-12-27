@@ -1,0 +1,17 @@
+﻿<hw:PlainWindow x:Class="WPF.Test.ColorPIckerTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:local="clr-namespace:WPF.Test"
+        mc:Ignorable="d"
+        Title="ColorPIckerTest" Height="550" Width="400" CornerRadius="20" Background="DimGray" HideHeader="True" HideMaximizeButton="True">
+    <StackPanel Background="White" >
+        <hw:PlainButton CornerRadius="10" Height="35" Background="Purple" Width="130" HorizontalAlignment="Left" Command="{Binding Cmd_OpenColorDialog}" VerticalAlignment="Top"/>
+        <ComboBox Width="130" HorizontalAlignment="Right" Margin="10" ItemsSource="{Binding Source={x:Type hw:DisplayMode}, Converter={StaticResource EnumTypeToDescriptionList}}" SelectedValue="{Binding SelectedDisplaymode,Mode=TwoWay,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
+        <Rectangle Fill="{Binding SelectedBrush}" Height="40" Width="120" Margin="30"/>
+        <hw:ColorPickerButton SelectedBrush="{Binding SelectedBrush}" Height="40" Width="120" Margin="30" Mode="Full"/>
+    </StackPanel>
+</hw:PlainWindow>

@@ -59,6 +59,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BadgeTesting.xaml.cs">
+      <DependentUpon>BadgeTesting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CardTest.xaml.cs">
+      <DependentUpon>CardTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPIckerTest.xaml.cs">
+      <DependentUpon>ColorPIckerTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LocalView2.xaml.cs">
       <DependentUpon>LocalView2.xaml</DependentUpon>
     </Compile>
@@ -102,6 +111,18 @@
     <Compile Include="WndwPagination.xaml.cs">
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
+    <Page Include="BadgeTesting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CardTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ColorPIckerTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\LocalView2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,7 +259,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Extensions" Version="2.0.1" />
+        <PackageReference Include="Haley.Extensions" Version="2.0.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -253,7 +274,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Helpers" Version="2.0.2" />
+        <PackageReference Include="Haley.Helpers" Version="2.0.3" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -268,7 +289,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.0.2" />
+        <PackageReference Include="Haley.MVVM" Version="6.0.7" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -283,7 +304,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="5.0.0-prerelease" />
+        <PackageReference Include="Haley.WPF" Version="5.1.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -299,7 +320,7 @@
     <Otherwise>
       <ItemGroup>
         <PackageReference Include="Haley.WPF.Fonts">
-          <Version>1.0.1</Version>
+          <Version>1.0.2</Version>
         </PackageReference>
       </ItemGroup>
     </Otherwise>
@@ -315,7 +336,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Events" Version="2.0.2" />
+        <PackageReference Include="Haley.Events" Version="2.0.3" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -330,7 +351,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.IOC" Version="3.0.1" />
+        <PackageReference Include="Haley.IOC" Version="3.0.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>

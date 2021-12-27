@@ -1,0 +1,355 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bc="clr-namespace:Haley.WPF.Controls"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+    xmlns:ul="clr-namespace:Haley.Utils"
+    xmlns:beh="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:ml="clr-namespace:Haley.Models">
+    
+    <ResourceDictionary.MergedDictionaries>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <DrawingBrush TileMode="Tile" Viewport="0, 0, 20,20" ViewportUnits="Absolute" x:Key="internal_clrpkr_transparent_tile">
+        <DrawingBrush.Drawing>
+            <DrawingGroup>
+                <GeometryDrawing Brush="LightGray">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="0, 0, 5, 5"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="LightGray">
+                    <GeometryDrawing.Geometry>
+                        <RectangleGeometry Rect="5, 5, 5, 5"/>
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingBrush.Drawing>
+    </DrawingBrush>
+
+    <Style x:Key="internal_cpkr_label" TargetType="{x:Type Label}">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type bc:ColorPicker}}}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="internal_cpkr_slider" TargetType="{x:Type Slider}">
+        <Setter Property="IsSnapToTickEnabled" Value="True"/>
+        <Setter Property="Margin" Value="4,2"/>
+        <Setter Property="Minimum" Value="0"/>
+        <Setter Property="Maximum" Value="255"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="TickFrequency" Value="1"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="internal_cpkr_plaintbox" TargetType="{x:Type bc:PlainTextBox}">
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type bc:ColorPicker}}}"/>
+        <Setter Property="hm:InputAP.AllowNegative" Value="False"/>
+        <Setter Property="hm:InputAP.Constraint" Value="Integer"/>
+        <Setter Property="WaterMark" Value=""/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="internal_cpkr_plaintlstvw" TargetType="{x:Type bc:PlainListView}">
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="BorderBrush" Value="{x:Null}"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="ItemHoverColor" Value="Transparent"/>
+        <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="ItemSelectedColor" Value="Transparent"/>
+    </Style>
+
+    <Style x:Key="internal_cpkr_paletteBtn" TargetType="{x:Type bc:PlainButton}">
+        <Setter Property="Height" Value="22"/>
+        <Setter Property="Width" Value="22"/>
+        <Setter Property="CornerRadius" Value="11"/>
+        <Setter Property="Content" Value=""/>
+        <Setter Property="Margin" Value="2,0"/>
+        <Setter Property="ml:Hover.IsEnabled" Value="False"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{Binding BorderBrush,RelativeSource={RelativeSource AncestorType={x:Type bc:ColorPicker}}}"/>
+        <Setter Property="Command" Value="{x:Static ul:AdditionalCommands.ChangeColor}"/>
+        <Setter Property="Background" Value="{Binding Converter={StaticResource ColorToBrush}}"/>
+        <Setter Property="CommandParameter" Value="{Binding}"/>
+    </Style>
+
+        <Style TargetType="{x:Type bc:ColorPicker}">
+        <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type bc:ColorPicker}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="PART_MenuItem_ShowRGB" Header="Show RGB Components" IsCheckable="True" IsChecked="{TemplateBinding HideRGBComponents,Converter={StaticResource InverseBoolean}}" CommandParameter="RGB" Command="{x:Static ul:AdditionalCommands.Show}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                                <MenuItem x:Name="PART_MenuItem_ShowPalette" Header="Show Palette" IsCheckable="True" IsChecked="{TemplateBinding HideColorPalette,Converter={StaticResource InverseBoolean}}" CommandParameter="Palette" Command="{x:Static ul:AdditionalCommands.Show}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                                <!--If there are no focused element, then the context menu items will be disabled. So, add command target-->
+                            </ContextMenu>
+                        </Grid.ContextMenu>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="250" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        
+                      <!--#region HSL PICKERS-->
+                        <Grid Margin="4" MinWidth="250">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="3" />
+                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="3" />
+                            </Grid.ColumnDefinitions>
+                            <!--Reason for giving a black background to below holder, we need two colors to overlap and we cannot do it direclty. So we use the opacity mask technique.-->
+                            <Grid Margin="4" Background="Black">
+                                <Rectangle x:Name="PART_SVRegion" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1">
+                                    <Rectangle.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="White" Offset="0"/>
+                                            <GradientStop Offset="1" Color="{Binding SelectedHueColor,UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </LinearGradientBrush>
+                                    </Rectangle.Fill>
+                                    <Rectangle.OpacityMask>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="White" />
+                                            <!--Since we cannot have two colors overlap each other. We use the transparency technique. We keep a black color background and the gradient white to transparent is like white to black.-->
+                                            <GradientStop Offset="1" Color="Transparent" />
+                                        </LinearGradientBrush>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="3" FontSize="10" Foreground="FloralWhite" Text="{TemplateBinding MiniRGBInfo}" IsHitTestVisible="False"/>
+                            </Grid>
+                            <Rectangle x:Name="PART_HueRegion"
+                Grid.Column="2"
+                RenderTransformOrigin="1,0"
+                Stroke="{TemplateBinding BorderBrush}" StrokeThickness="1">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" x:Name="PART_HueGradients">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Color="Red" />
+                                            <GradientStop Offset="0.1667" Color="Yellow" />
+                                            <GradientStop Offset="0.3333333" Color="Lime" />
+                                            <GradientStop Offset="0.5" Color="Cyan" />
+                                            <GradientStop Offset="0.6666666666" Color="Blue" />
+                                            <GradientStop Offset="0.83333" Color="Magenta" />
+                                            <GradientStop Offset="1" Color="Red" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                        <!--#endregion-->
+                        
+                      <!--#region RGB COMPONENTS-->
+                        <Grid Grid.Row="1" Margin="5" Visibility="{TemplateBinding HideRGBComponents,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="35"/>
+                                <RowDefinition MinHeight="35"/>
+                                <RowDefinition MinHeight="35"/>
+                                <RowDefinition MinHeight="35"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="40" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="R" Style="{StaticResource internal_cpkr_label}"/>
+                            <Label Grid.Row="1" Content="G" Style="{StaticResource internal_cpkr_label}"/>
+                            <Label Grid.Row="2" Content="B" Style="{StaticResource internal_cpkr_label}"/>
+                            <Label Grid.Row="3" Content="A" Style="{StaticResource internal_cpkr_label}"/>
+
+                            <Slider x:Name="sliderR" Style="{StaticResource internal_cpkr_slider}" Grid.Column="1" Value="{Binding RedComponent,NotifyOnTargetUpdated=True, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Slider x:Name="sliderG" Style="{StaticResource internal_cpkr_slider}" Grid.Row="1" Grid.Column="1" Value="{Binding GreenComponent,NotifyOnTargetUpdated=True, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Slider x:Name="sliderB" Style="{StaticResource internal_cpkr_slider}" Grid.Row="2" Grid.Column="1" Value="{Binding BlueComponent,NotifyOnTargetUpdated=True, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Slider x:Name="sliderA" Style="{StaticResource internal_cpkr_slider}" Grid.Row="3" Grid.Column="1" Value="{Binding Alpha,NotifyOnTargetUpdated=True, RelativeSource={RelativeSource TemplatedParent}}"/>
+
+                            <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}" Grid.Column="2" Text="{Binding ElementName=sliderR,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
+                                <beh:Interaction.Behaviors>
+                                    <hm:NumericLimiter MaxValue="255" />
+                                </beh:Interaction.Behaviors>
+                            </bc:PlainTextBox>
+                            <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}" Grid.Row="1" Grid.Column="2" Text="{Binding ElementName=sliderG,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
+                                <beh:Interaction.Behaviors>
+                                    <hm:NumericLimiter MaxValue="255" />
+                                </beh:Interaction.Behaviors>
+                            </bc:PlainTextBox>
+                            <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}" Grid.Row="2"
+                Grid.Column="2" Text="{Binding ElementName=sliderB,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
+                                <beh:Interaction.Behaviors>
+                                    <hm:NumericLimiter MaxValue="255" />
+                                </beh:Interaction.Behaviors>
+                            </bc:PlainTextBox>
+                            <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}" Grid.Row="3" Grid.Column="2" Text="{Binding ElementName=sliderA,Path=Value,UpdateSourceTrigger=PropertyChanged}">
+                                <beh:Interaction.Behaviors>
+                                    <hm:NumericLimiter MaxValue="255" />
+                                </beh:Interaction.Behaviors>
+                            </bc:PlainTextBox>
+
+                        </Grid>
+                        <!--#endregion-->
+
+                      <!--#region MESSAGE AREA-->
+                        <Grid Grid.Row="2" Margin="3" Height="Auto">
+                            <TextBlock Grid.Row="1"
+                MaxHeight="90" Text="{TemplateBinding ErrorMessage}" Foreground="{TemplateBinding Foreground}" FontSize="9" TextWrapping="Wrap">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="Text" Value="">
+                                                <Setter Property="Visibility" Value="Collapsed"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                        <!--#endregion-->
+
+                      <!--#region HEX & COLOR PALETTE-->
+                        <Grid Grid.Row="3" Margin="4" Visibility="{TemplateBinding HideColorPalette,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}" Background="Transparent">
+                            <Grid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Clear All Favourites" Command="{x:Static ul:AdditionalCommands.Reset}"/>
+                                </ContextMenu>
+                            </Grid.ContextMenu>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!--HEX COMPONENT-->
+                            <Grid Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="#" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}"/>
+                                    <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}"
+                Text="{TemplateBinding HexComponent}" Width="60" Margin="2" TextAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" IsTabStop="False"/>
+                                    <bc:ImageButton Margin="3" ml:Icon.Default="{StaticResource favourite}" Height="23" Width="23" ToolTip="Add selected color to favourites." Command="{x:Static ul:AdditionalCommands.Add}" ml:Icon.DefaultColor="#FF545454" />
+                                </StackPanel>
+                                <Grid Grid.Column="1" Width="130" Margin="5,0" Height="30">
+                                    <ComboBox x:Name="defcolors_cmbbx"  ItemsSource="{TemplateBinding SystemDefaultColors}"  SelectedItem="{Binding SelectedSystemColor,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" Focusable="False" IsReadOnly="True" IsEditable="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="2">
+                                                    <Rectangle Height="18" Width="25" Fill="{Binding Value,Converter={StaticResource ColorToBrush}}"/>
+                                                    <TextBlock Text="{Binding Key}" Margin="5,0" VerticalAlignment="Center"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <TextBlock Text="--System Colors--" IsHitTestVisible="False" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Visibility" Value="Hidden"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=defcolors_cmbbx,Path=SelectedItem}" Value="{x:Null}">
+                                                        <Setter Property="Visibility" Value="Visible"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </Grid>
+                                <bc:ImageButton Margin="3" ml:Icon.Default="{StaticResource dustbin}" Height="23" Width="23" ToolTip="Delete last stored favourite color" Command="{x:Static ApplicationCommands.Delete}" Grid.Column="2" ml:Icon.DefaultColor="Gray"/>
+                            </Grid>
+
+                            <!--COLOR PALETTE-->
+                            <Grid Grid.Row="1" Margin="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Border
+                Margin="3"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="1"
+                CornerRadius="10">
+                                    <Grid Width="70" MinHeight="55">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Border Background="{StaticResource internal_clrpkr_transparent_tile}" CornerRadius="10,10,0,0"/>
+                                        <Border Background="{TemplateBinding SelectedBrush}" CornerRadius="10,10,0,0" />
+                                        <Border Background="{StaticResource internal_clrpkr_transparent_tile}" CornerRadius="0,0,10,10" Grid.Row="1"/>
+                                        <Border
+                        Grid.Row="1"
+                        Background="{TemplateBinding OldBrush}"
+                        CornerRadius="0,0,10,10">
+                                            <TextBlock
+                            Margin="3"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
+                            Background="#66090909"
+                            FontSize="9"
+                            Foreground="#B2FFFFFF"
+                            Text="OLD" />
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <bc:PlainListView  Style="{StaticResource internal_cpkr_plaintlstvw}" ItemsSource="{TemplateBinding CommonColors}">
+                                        <bc:PlainListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </bc:PlainListView.ItemsPanel>
+                                        <bc:PlainListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <bc:PlainButton Style="{StaticResource internal_cpkr_paletteBtn}" />
+                                            </DataTemplate>
+                                        </bc:PlainListView.ItemTemplate>
+                                    </bc:PlainListView>
+
+                                    <bc:PlainListView Grid.Row="1" Height="35" Style="{StaticResource internal_cpkr_plaintlstvw}"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Auto" ItemsSource="{TemplateBinding SavedColors}">
+                                        <bc:PlainListView.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </bc:PlainListView.ItemsPanel>
+                                        <bc:PlainListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <bc:PlainButton Style="{StaticResource internal_cpkr_paletteBtn}" VerticalAlignment="Top" />
+                                            </DataTemplate>
+                                        </bc:PlainListView.ItemTemplate>
+                                    </bc:PlainListView>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        
+                        <!--#endregion-->
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
+
+
