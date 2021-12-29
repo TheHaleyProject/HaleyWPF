@@ -9,9 +9,15 @@
         mc:Ignorable="d"
         Title="ColorPIckerTest" Height="550" Width="400" CornerRadius="20" Background="DimGray" HideHeader="True" HideMaximizeButton="True">
     <StackPanel Background="White" >
-        <hw:PlainButton CornerRadius="10" Height="35" Background="Purple" Width="130" HorizontalAlignment="Left" Command="{Binding Cmd_OpenColorDialog}" VerticalAlignment="Top"/>
+        <hw:PlainButton CornerRadius="10" Height="35" Background="#FFC8C4C8" Width="130" HorizontalAlignment="Left" Command="{Binding Cmd_OpenColorDialog}" VerticalAlignment="Top" hw:Shadow.Color="Red" Margin="20" hw:Shadow.BlurRadius="10" hw:Shadow.IsEnabled="True" hw:Hover.IsEnabled="True" hw:Hover.BorderThickness="0"/>
+        <Grid>
+            <hw:PlainTextBox x:Name="pboxMain" Width="120" CornerRadius="10" BorderBrush="Gray"/>
+        </Grid>
         <ComboBox Width="130" HorizontalAlignment="Right" Margin="10" ItemsSource="{Binding Source={x:Type hw:DisplayMode}, Converter={StaticResource EnumTypeToDescriptionList}}" SelectedValue="{Binding SelectedDisplaymode,Mode=TwoWay,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
         <Rectangle Fill="{Binding SelectedBrush}" Height="40" Width="120" Margin="30"/>
         <hw:ColorPickerButton SelectedBrush="{Binding SelectedBrush}" Height="40" Width="120" Margin="30" Mode="Full" Content="{hm:Lang pickColor}" Background="White"/>
+        <AdornerDecorator>
+            <hw:ColorPicker HideColorPalette="True" HideRGBComponents="True"/>
+        </AdornerDecorator>
     </StackPanel>
 </hw:PlainWindow>

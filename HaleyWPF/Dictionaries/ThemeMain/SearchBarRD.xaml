@@ -22,24 +22,40 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:SearchBar}">
+                    <ControlTemplate.Resources>
+                        <ResourceDictionary>
+                            <DataTemplate x:Key="internal_default_popup">
+                                <TextBlock Foreground = "#FF5E5E62"
+               Text = "{Binding Text}" Margin="3"/>
+                            </DataTemplate>
+                        </ResourceDictionary>
+                    </ControlTemplate.Resources>
                     <Border Style="{StaticResource BorderWithShadow}">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <!--Search Icon goes to the left-->
-                            <Grid Width="{TemplateBinding Height}" Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" ClipToBounds="True" >
-                                <bc:ImageButton  ml:Icon.Default="{StaticResource search_medium}" ml:Icon.DefaultColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
+                            <Grid x:Name="grdContent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <!--Search Icon goes to the left-->
+                                <Grid Width="{TemplateBinding Height}" Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" ClipToBounds="True" >
+                                    <bc:ImageButton  ml:Icon.Default="{StaticResource search_medium}" ml:Icon.DefaultColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
+                                </Grid>
+                                <!--Content and watermark goes to the right (column 1)-->
+                                <ScrollViewer  x:Name="PART_ContentHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0" Grid.Column="1">
+                                    <ScrollViewer.InputBindings>
+                                        <KeyBinding Gesture="Enter" Command="{x:Static NavigationCommands.Search}"/>
+                                    </ScrollViewer.InputBindings>
+                                </ScrollViewer>
+                                <ContentControl x:Name="WaterMarkContent" Content="{TemplateBinding WaterMark}" Visibility="Collapsed" IsHitTestVisible="False" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3" Margin="4,0" Grid.Column="1"/>
+
                             </Grid>
-                            <!--Content and watermark goes to the right (column 1)-->
-                            <ScrollViewer  x:Name="PART_ContentHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0" Grid.Column="1">
-                                <ScrollViewer.InputBindings>
-                                    <KeyBinding Gesture="Enter" Command="{x:Static NavigationCommands.Search}"/>
-                                </ScrollViewer.InputBindings>
-                            </ScrollViewer>
-                            <ContentControl x:Name="WaterMarkContent" Content="{TemplateBinding WaterMark}" Visibility="Collapsed" IsHitTestVisible="False" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="3" Margin="4,0" Grid.Column="1"/>
-                           
+                            <Popup x:Name="PART_popup" IsOpen="False"  
+         PlacementTarget = "{Binding ElementName=grdContent}" AllowsTransparency = "True" PopupAnimation = "Slide" Panel.ZIndex="0">
+                                <Border Width = "{Binding ElementName=grdContent,Path=ActualWidth}" MinHeight = "50" Height="Auto" Background = "#CCFFFFFF" CornerRadius="0,0,10,10" BorderBrush="Gray" BorderThickness="1">
+                                    <bc:PlainListView x:Name="PART_popup_content" ItemsSource="{Binding Suggestions,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}" BorderBrush="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="5" SelectionMode="Single" SelectedItem="{Binding SelectedSuggestion,RelativeSource={RelativeSource TemplatedParent},NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" ItemTemplate="{StaticResource internal_default_popup}"/>
+                                </Border>
+                            </Popup>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -52,6 +68,15 @@
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="WaterMarkContent" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="SuggestionsAvailable" Value="True"/>
+                                <Condition Property="ShowSuggestions" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="PART_popup" Property="IsOpen" Value="True"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

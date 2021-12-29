@@ -30,7 +30,7 @@
                 <DataTemplate>
                     <Grid>
                         <Grid.Background>
-                            <ImageBrush ImageSource="Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" Opacity="0.8"/>
+                            <ImageBrush ImageSource="../Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" Opacity="0.8"/>
                         </Grid.Background>
                         
                         <Grid Background="#FF3A3333" VerticalAlignment="Bottom" Height="Auto" Opacity="0.7">

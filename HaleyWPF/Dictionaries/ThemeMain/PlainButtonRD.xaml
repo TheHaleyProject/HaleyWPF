@@ -17,6 +17,9 @@
         <Setter Property="Height" Value="{StaticResource def_height}"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="ml:Hover.Foreground" Value="{DynamicResource def_content_inverted}"/>
+        <Setter Property="ml:Hover.BorderBrush" Value="{Binding BorderBrush, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="ml:Hover.BorderThickness" Value="{Binding BorderThickness, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -36,6 +39,7 @@
                             <MultiDataTrigger.Setters>
                                 <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding Path=(ml:Hover.BorderBrush), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter TargetName="PART_BorderMain" Property="BorderThickness" Value="{Binding Path=(ml:Hover.BorderThickness), RelativeSource={RelativeSource TemplatedParent}}"/>
                             </MultiDataTrigger.Setters>
                         </MultiDataTrigger>
                         <Trigger Property="IsPressed" Value="True">

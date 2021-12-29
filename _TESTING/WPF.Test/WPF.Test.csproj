@@ -59,13 +59,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BadgeTesting.xaml.cs">
+    <Compile Include="UITests\BadgeTesting.xaml.cs">
       <DependentUpon>BadgeTesting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CardTest.xaml.cs">
+    <Compile Include="BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITests\CardTest.xaml.cs">
       <DependentUpon>CardTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ColorPIckerTest.xaml.cs">
+    <Compile Include="UITests\ColorPIckerTest.xaml.cs">
       <DependentUpon>ColorPIckerTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\LocalView2.xaml.cs">
@@ -77,18 +80,15 @@
     <Compile Include="Controls\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ExpanderTest.xaml.cs">
+    <Compile Include="UITests\ExpanderTest.xaml.cs">
       <DependentUpon>ExpanderTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FlexiMenuTest.xaml.cs">
-      <DependentUpon>FlexiMenuTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="GlobalData.cs" />
     <Compile Include="MainVM.cs" />
-    <Compile Include="NewFlexiMenu.xaml.cs">
+    <Compile Include="UITests\NewFlexiMenu.xaml.cs">
       <DependentUpon>NewFlexiMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotificationTest.xaml.cs">
+    <Compile Include="UITests\NotificationTest.xaml.cs">
       <DependentUpon>NotificationTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.ta.Designer.cs">
@@ -99,32 +99,36 @@
     <Compile Include="RibbonTest.xaml.cs">
       <DependentUpon>RibbonTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ScrollViewerTest.xaml.cs">
+    <Compile Include="UITests\PlainWindowTest.xaml.cs">
+      <DependentUpon>PlainWindowTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITests\ScrollViewerTest.xaml.cs">
       <DependentUpon>ScrollViewerTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="SubVM.cs" />
-    <Compile Include="ThemeTest.xaml.cs">
+    <Compile Include="UITests\ThemeTest.xaml.cs">
       <DependentUpon>ThemeTest.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ToTestControl.xaml.cs">
+    <Compile Include="Controls\ToTestControl.xaml.cs">
       <DependentUpon>ToTestControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="VerificationConverter.cs" />
-    <Compile Include="WindowTheme.xaml.cs">
-      <DependentUpon>WindowTheme.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WndwPagination.xaml.cs">
+    <Compile Include="UITests\WndwPagination.xaml.cs">
       <DependentUpon>WndwPagination.xaml</DependentUpon>
     </Compile>
-    <Page Include="BadgeTesting.xaml">
+    <Page Include="UITests\BadgeTesting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CardTest.xaml">
+    <Page Include="BaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ColorPIckerTest.xaml">
+    <Page Include="UITests\CardTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITests\ColorPIckerTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,27 +144,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ExpanderTest.xaml">
+    <Page Include="UITests\ExpanderTest.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="FlexiMenuTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="UITests\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="NewFlexiMenu.xaml">
+    <Page Include="UITests\NewFlexiMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NotificationTest.xaml">
+    <Page Include="UITests\NotificationTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,29 +192,29 @@
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
-    <Page Include="ScrollViewerTest.xaml">
+    <Page Include="UITests\PlainWindowTest.xaml">
       <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="ThemeTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="ToTestControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="WindowTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
-    <Page Include="WndwPagination.xaml">
+    <Page Include="UITests\ScrollViewerTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="UITests\ThemeTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Controls\ToTestControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="UITests\WndwPagination.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="UITests\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -253,9 +253,7 @@
   <ItemGroup>
     <Resource Include="Images\hippo_bliue.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UITests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
     <When Condition="Exists($(HaleyExtensions))">

@@ -90,7 +90,7 @@ namespace Haley.WPF.Controls
             if (HideMaximizeButton) _btnMaximize.Visibility = Visibility.Collapsed;
             if (HideMinimizeButton) _btnMinimize.Visibility = Visibility.Collapsed;
             if (HideFooter) _footerHolder.Visibility = Visibility.Collapsed;
-            if (HideHeader) _headerHolder.Visibility = Visibility.Collapsed;
+            if (HideHeader) _header.Visibility = Visibility.Collapsed; //Directly collapsing the header content control (Not the header holder).
 
             _headerDefaultTemplate = TryFindResource("defaultHeaderTemplate") as DataTemplate;
             _changeFooter();
@@ -136,7 +136,7 @@ namespace Haley.WPF.Controls
         static object _headerfooterHeightCoerce(DependencyObject d, object baseValue)
         {
             double _actual = (double)baseValue;
-            if (_actual < 15.0) return 15.0;
+            if (_actual < 5.0) return 5.0;
             return baseValue;
         }
 
@@ -179,7 +179,7 @@ namespace Haley.WPF.Controls
 
             if (HideFooter)
             {
-                SetCurrentValue(FooterHeightProperty, 4.0);
+                SetCurrentValue(FooterHeightProperty, 5.0);
             }
         }
 
@@ -269,7 +269,12 @@ namespace Haley.WPF.Controls
             }
             else
             {
+                //Setting the foreground from xaml, results in parser exception which in returns delays the loading process.
                 _header.ContentTemplate = _headerDefaultTemplate;
+                var _foregroundBinding = new Binding();
+                _foregroundBinding.Source = this;
+                _foregroundBinding.Path = new PropertyPath(Models.Icon.DefaultColorProperty);
+                _header.SetBinding(ContentControl.ForegroundProperty, _foregroundBinding);
             }
         }
     }

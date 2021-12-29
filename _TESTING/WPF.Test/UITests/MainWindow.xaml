@@ -45,6 +45,18 @@
             <hw:ComboButton Height="70" Width="180" Content="Favourites" ImageLocation="Bottom" Background="{x:Null}"  hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="{DynamicResource scb_content}" hw:Icon.HoverColor="#FF3295ED"/>
             <hw:ComboButton Height="30" Width="120" Content="Favourites" ImageLocation="Left" HorizontalContentAlignment="Left" Background="{x:Null}" hw:Icon.Default="{StaticResource music}" hw:Icon.DefaultColor="{DynamicResource scb_content}" hw:Icon.Hover="{StaticResource music_cd}" hw:Icon.HoverColor="#FF3295ED"/>
             <hw:ComboButton Height="30" Width="120" Content="Favourites" ImageLocation="Right" HorizontalContentAlignment="Right"/>
+            <Grid Width="120" Height="60">
+                <hw:PlainTextBox x:Name="pBox" Panel.ZIndex="10" Background="LightYellow" CornerRadius="5" TextChanged="pBox_TextChanged" DisplaySuggestions="True" Text="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged,NotifyOnSourceUpdated=True}"/>
+            </Grid>
+            <Grid Width="120" Height="60">
+                <hw:SearchBar x:Name="sBar" Panel.ZIndex="10" Background="LightYellow" CornerRadius="5" TextChanged="sBar_TextChanged" DisplaySuggestions="True" Command="{Binding Cmd_search}" CommandParameter="{Binding ElementName=pBox,Path=Text}" BindTextToCommand="False">
+                    <hw:SearchBar.PopupTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Text}" Foreground="Purple" Margin="10"/>
+                        </DataTemplate>
+                    </hw:SearchBar.PopupTemplate>
+                </hw:SearchBar>
+            </Grid>
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="5">
             <hw:PlainButton Content="Switch Theme" Width="120" Height="30" CornerRadius="5" Click="PlainButton_Click_1" Margin="10"/>
@@ -56,7 +68,7 @@
                 <hw:PlainTextBox x:Name="blueValue" Width="50" Margin="4" WaterMark="BLUE"/>
             </StackPanel>
             <hw:ImageButton x:Name="imgeChanger" Height="40" Width="40" Margin="10" hw:Icon.Default="{StaticResource heart_plain}" hw:Icon.DefaultColor="{DynamicResource button_hover}" hw:Icon.HoverColor="Yellow"/>
-            <local:ToTestControl/>
+            <!--<local:ToTestControl/>-->
         </StackPanel>
     </Grid>
    

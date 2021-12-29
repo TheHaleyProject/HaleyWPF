@@ -29,18 +29,14 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
                                     </Grid.ColumnDefinitions>
-                                    <bc:PlainImage Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" ml:Icon.Default="{Binding (ml:Icon.Default),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" ml:Icon.DefaultColor="{Binding (ml:Icon.DefaultColor),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" ml:Hover.IsEnabled="False" Visibility="{Binding HideIcon,RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}},Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}" Margin="4"/>
-                                    <TextBlock Grid.Column="1" Text="{Binding Title,RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" Foreground="{Binding (ml:Icon.DefaultColor),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="11"/>
+                                    <!--Having a plain image with Attached properties throws interna parser exception.-->
+                                    <!--<bc:PlainImage Width="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" ml:Icon.Default="{Binding (ml:Icon.Default),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" ml:Icon.DefaultColor="{Binding (ml:Icon.DefaultColor),RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}" ml:Hover.IsEnabled="False" Visibility="{Binding HideIcon,RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}},Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}" Margin="4"/>-->
+                                    <TextBlock Grid.Column="1" Text="{Binding Title,RelativeSource={RelativeSource AncestorType={x:Type bc:PlainWindow}}}"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="11"/>
                                 </Grid>
                             </DataTemplate>
                         </ResourceDictionary>
                     </ControlTemplate.Resources>
                         <Border Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction2}" CommandParameter="DragMove"  />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
                         <Border.Effect>
                                 <DropShadowEffect BlurRadius="6" ShadowDepth="0"/>
                             </Border.Effect>
@@ -53,7 +49,12 @@
                                 </Grid.RowDefinitions>
 
                                 <!--Header (can be hidden)-->
-                                <Border x:Name="PART_header_holder" Background="Transparent" Margin="0" Padding="0" IsHitTestVisible="False">
+                                <Border x:Name="PART_header_holder" Margin="0" Padding="0" IsHitTestVisible="True" Background="Transparent">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                                        <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.ExecuteAction2}" CommandParameter="DragMove"  />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <ContentControl x:Name="PART_header" IsHitTestVisible="False" Margin="5,0"/>
                             </Border>
                                 
@@ -84,9 +85,8 @@
                                 <bc:ImageButton x:Name="PART_btn_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource controlButtonStyle}"  CommandParameter="Close" Command="{x:Static ul:AdditionalCommands.ExecuteAction}"/>
                             </Grid>
                             
-
                               <!--Content Presenter-->
-                            <ContentPresenter Grid.Row="1" Margin="0.5"/>
+                            <ContentPresenter Grid.Row="1" Margin="1" IsHitTestVisible="True"/>
                             </Grid>
                         </Border>
                 </ControlTemplate>

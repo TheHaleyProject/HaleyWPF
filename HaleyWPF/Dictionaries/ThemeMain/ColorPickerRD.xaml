@@ -81,6 +81,7 @@
     </Style>
 
         <Style TargetType="{x:Type bc:ColorPicker}">
+        <Setter Property="ml:Shadow.BlurRadius" Value="0"/>
         <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
@@ -175,7 +176,7 @@
                             <Slider x:Name="sliderB" Style="{StaticResource internal_cpkr_slider}" Grid.Row="2" Grid.Column="1" Value="{Binding BlueComponent,NotifyOnTargetUpdated=True, RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Slider x:Name="sliderA" Style="{StaticResource internal_cpkr_slider}" Grid.Row="3" Grid.Column="1" Value="{Binding Alpha,NotifyOnTargetUpdated=True, RelativeSource={RelativeSource TemplatedParent}}"/>
 
-                            <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}" Grid.Column="2" Text="{Binding ElementName=sliderR,Path=Value,UpdateSourceTrigger=PropertyChanged}" >
+                            <bc:PlainTextBox Style="{StaticResource internal_cpkr_plaintbox}" Grid.Column="2" Text="{Binding ElementName=sliderR,Path=Value,UpdateSourceTrigger=PropertyChanged}" ml:Shadow.BlurRadius="0">
                                 <beh:Interaction.Behaviors>
                                     <hm:NumericLimiter MaxValue="255" />
                                 </beh:Interaction.Behaviors>

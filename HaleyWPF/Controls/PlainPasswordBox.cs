@@ -44,6 +44,7 @@ namespace Haley.WPF.Controls
 
         public override void OnApplyTemplate()
         {
+            DisplaySuggestions = false; //Before applying template disable the suggestions.
             base.OnApplyTemplate();
             _pboxMain = GetTemplateChild(UIEMainPWDbox) as PasswordBox;
             _tblckDisplay = GetTemplateChild(UIEPWDDisplay) as TextBlock;

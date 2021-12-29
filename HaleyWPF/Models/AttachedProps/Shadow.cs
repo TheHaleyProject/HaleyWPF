@@ -9,6 +9,7 @@ namespace Haley.Models
 {
     public class Shadow : DependencyObject
     {
+        private static SolidColorBrush _defaultBrush = new SolidColorBrush(Colors.Transparent);
         public Shadow() { }
 
         #region SHADOW
@@ -38,7 +39,7 @@ namespace Haley.Models
         }
 
         public static readonly DependencyProperty ColorProperty =
-            DependencyProperty.RegisterAttached("Color", typeof(Brush), typeof(Shadow), new PropertyMetadata(null));
+            DependencyProperty.RegisterAttached("Color", typeof(Brush), typeof(Shadow), new PropertyMetadata(_defaultBrush));
 
         public static bool GetOnlyOnMouseOver(DependencyObject obj)
         {

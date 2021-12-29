@@ -14,7 +14,7 @@
 
     <!-- BUTTONS -->
     <SolidColorBrush x:Key="def_button_background" Color="#FF141419"/>
-    <SolidColorBrush x:Key="def_button_hover" Color="#99A4D9D4"/>
+    <SolidColorBrush x:Key="def_button_hover" Color="#FF4AB0CA"/>
 
     <!-- SCROLLBARS -->
     <SolidColorBrush x:Key="def_scroll_thumb" Color="WhiteSmoke"/>

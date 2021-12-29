@@ -3,6 +3,7 @@ using Haley.Utils;
 using System.Windows;
 using System;
 using Haley.Enums;
+using System.Collections.ObjectModel;
 
 namespace WPF.Test
 {
@@ -15,6 +16,7 @@ namespace WPF.Test
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainVM();
         }
 
         private void ToggleButton_OnClicked(object sender, RoutedEventArgs e)
@@ -85,6 +87,42 @@ namespace WPF.Test
                     break;
             }
             ThemeLoader.Singleton.changeInternalTheme(_newmode);
+        }
+
+        private void pBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            //Event after changed.
+            if (!string.IsNullOrEmpty(pBox.Text) && pBox.Text?.Length == 3)
+            {
+                if (pBox.Text.StartsWith("sen"))
+                {
+                    var _sugg = new ObservableCollection<Suggestion>();
+                    _sugg.Add(new Suggestion("senguttuvan", null));
+                    _sugg.Add(new Suggestion("Shivanya", null));
+                    _sugg.Add(new Suggestion("Bhadrinarayanan", null));
+                    pBox.Suggestions = _sugg;
+                    return;
+                }
+            }
+            pBox.Suggestions = null;
+        }
+
+        private void sBar_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            //Event after changed.
+            if (!string.IsNullOrEmpty(sBar.Text) && sBar.Text?.Length == 3)
+            {
+                if (sBar.Text.StartsWith("sen"))
+                {
+                    var _sugg = new ObservableCollection<Suggestion>();
+                    _sugg.Add(new Suggestion("senguttuvan",null));
+                    _sugg.Add(new Suggestion("Latha", null));
+                    _sugg.Add(new Suggestion("Bhadrinarayanan", null));
+                    sBar.Suggestions = _sugg;
+                    return;
+                }
+            }
+            sBar.Suggestions = null;
         }
     }
 }

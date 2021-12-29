@@ -24,6 +24,13 @@ namespace WPF.Test
 
         #region Properties
 
+        private string _selectedText;
+        public string SelectedText
+        {
+            get { return _selectedText; }
+            set { SetProp(ref _selectedText, value); }
+        }
+
         private Dictionary<string,Color> _SystemDefaultColors;
         public Dictionary<string,Color> SystemDefaultColors
         {
@@ -134,6 +141,7 @@ namespace WPF.Test
             counter++;
         }
         void _search(string obj)
+        
         {
             //now we search
         }

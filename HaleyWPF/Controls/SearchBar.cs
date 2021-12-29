@@ -24,8 +24,13 @@ namespace Haley.WPF.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SearchBar), new FrameworkPropertyMetadata(typeof(SearchBar)));
         }
 
+        public bool BindTextToCommand { get; set; }
+
         public SearchBar()
-        { CommandBindings.Add(new CommandBinding(NavigationCommands.Search, Execute_Search)); }
+        {
+            CommandBindings.Add(new CommandBinding(NavigationCommands.Search, Execute_Search));
+            BindTextToCommand = true; //By default it is true. If user needs to change, he needs to specifically set it.
+        }
 
         public SolidColorBrush IconColor
         {
@@ -63,18 +68,25 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty CommandTargetProperty =
             DependencyProperty.Register(nameof(CommandTarget), typeof(IInputElement), typeof(SearchBar), new PropertyMetadata(default(IInputElement)));
 
+        object _getCommandParameter()
+        {
+            if (BindTextToCommand) return Text;
+            return CommandParameter;
+        }
+
         void Execute_Search(object sender, ExecutedRoutedEventArgs e)
         {
             RaiseEvent(new UIRoutedEventArgs<string>(SearchStartedEvent, this) { Value = Text });
+            object _cmdParameter = _getCommandParameter();
             switch (Command)
             {
                 case null:
                     return;
                 case RoutedCommand command: //same as  if (Command is RoutedCommand command)
-                    command.Execute(CommandParameter, CommandTarget);
+                    command.Execute(_cmdParameter, CommandTarget);
                     break;
                 default:
-                    Command.Execute(CommandParameter);
+                    Command.Execute(_cmdParameter);
                     break;
             }
         }
@@ -95,10 +107,10 @@ namespace Haley.WPF.Controls
         private void CanExecuteChanged(object sender, EventArgs e)
         {
             if (Command == null) return;
-
+            object _cmdParameter = _getCommandParameter();
             IsEnabled = Command is RoutedCommand command
-                ? command.CanExecute(CommandParameter, CommandTarget)
-                : Command.CanExecute(CommandParameter);
+                ? command.CanExecute(_cmdParameter, CommandTarget)
+                : Command.CanExecute(_cmdParameter);
         }
 
     }
