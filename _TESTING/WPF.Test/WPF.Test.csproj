@@ -296,7 +296,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.0.8-beta-3" />
+        <PackageReference Include="Haley.MVVM" Version="6.0.9" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -311,7 +311,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="5.1.1.1-developement" />
+        <PackageReference Include="Haley.WPF" Version="5.1.3" />
       </ItemGroup>
     </Otherwise>
   </Choose>
