@@ -8,19 +8,10 @@ using System.Windows.Media;
 
 namespace Haley.WPF.Controls
 {
-    //[TemplatePart(Name = UIERepeatDown, Type = typeof(RepeatButton))]
-    //[TemplatePart(Name = UIERepeatUp, Type = typeof(RepeatButton))]
     [TemplatePart(Name = UIERoot, Type = typeof(FrameworkElement))]
     public class FlexiScroll : ScrollViewer, ICornerRadius
     {
-        //private const string UIERepeatDown = "PART_RepeatDown";
-        //private const string UIERepeatUp = "PART_RepeatUp";
-        //private const string UIETrack = "PART_Track";
         private const string UIERoot = "PART_root";
-
-        //private RepeatButton _repeatUp;
-        //private RepeatButton _repeatDown;
-        //private Track _track;
         private FrameworkElement _root;
         private RoutedEventHandler _lineUp = null;
         private RoutedEventHandler _lineDown = null;
@@ -50,15 +41,6 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.cornerRadius));
-
-        //public ImageSource Arrow
-        //{
-        //    get { return (ImageSource)GetValue(ArrowProperty); }
-        //    set { SetValue(ArrowProperty, value); }
-        //}
-
-        //public static readonly DependencyProperty ArrowProperty =
-        //    DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.getIcon(IconEnums.arrow_line_medium.ToString())));
 
         public Brush ThumbBackground
         {

@@ -24,6 +24,8 @@ namespace WPF.Test
 
         #region Properties
 
+        public Func<object, string, bool> PersonFilter { get; set; }
+
         private string _selectedText;
         public string SelectedText
         {
@@ -210,8 +212,19 @@ namespace WPF.Test
             SelectedBrush = new SolidColorBrush(Colors.PaleVioletRed);
             SystemDefaultColors = new Dictionary<string, Color>();
             SystemDefaultColors = ColorUtils.GetSystemColors();
+            PersonFilter = _filterSearch;
+        }
+        private bool _filterSearch(object item, string filter_key)
+        {
+            if (item is Person p)
+            {
+                return p.Name.ToLower().StartsWith(filter_key.ToLower());
+            }
+            return true;
         }
     }
+
+   
     public class Person : ChangeNotifier
     {
         private string _Name;

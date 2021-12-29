@@ -22,6 +22,13 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="CornerRadius" Value="{Binding Path=CornerRadius, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="SelectionMode" Value="{Binding Path=SelectionMode, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.AutoHide" Value="{Binding Path=(ml:FlexiScrollViewer.AutoHide), RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.EnableOverLay" Value="{Binding Path=(ml:FlexiScrollViewer.EnableOverLay), RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.HorizontalBarSize" Value="{Binding Path=(ml:FlexiScrollViewer.HorizontalBarSize), RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.HorizontalBarVisibility" Value="{Binding Path=(ml:FlexiScrollViewer.HorizontalBarVisibility), RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.ShowButtons" Value="{Binding Path=(ml:FlexiScrollViewer.ShowButtons), RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.VerticalBarSize" Value="{Binding Path=(ml:FlexiScrollViewer.VerticalBarSize), RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:FlexiScrollViewer.VerticalBarVisibility" Value="{Binding Path=(ml:FlexiScrollViewer.VerticalBarVisibility), RelativeSource={RelativeSource TemplatedParent}}"/>
     </Style>
 
     <Style TargetType="{x:Type bc:CollectionSelector}">

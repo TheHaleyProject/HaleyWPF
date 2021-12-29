@@ -56,8 +56,10 @@
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="ItemSelectedColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ItemHoverColor" Value="{DynamicResource def_button_hover}"/>
-        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ml:FlexiScrollViewer.HorizontalBarVisibility" Value="Auto"/>
+        <Setter Property="ml:FlexiScrollViewer.VerticalBarVisibility" Value="Auto"/>
+        <Setter Property="ml:FlexiScrollViewer.HorizontalBarSize" Value="20.0"/>
+        <Setter Property="ml:FlexiScrollViewer.VerticalBarSize" Value="20.0"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -68,9 +70,16 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
-                            <bc:FlexiScroll Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ScrollViewer.VerticalScrollBarVisibility)}" HorizontalScrollBarVisibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ScrollViewer.HorizontalScrollBarVisibility)}" EnableOverLay="True" AutoHide="True" VerticalScrollBarSize="20" HorizontalScrollBarSize="15">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <bc:SearchBar x:Name="PART_searchbar" Height="25" CornerRadius="{TemplateBinding CornerRadius}" Visibility="{Binding EnableFilter,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource NegateValue}}" DisplaySuggestions="False" Command="{x:Static ul:AdditionalCommands.ExecuteAction}" Text="{Binding SearchFilter,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"/>
+                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" Style="{StaticResource internal_flexiscroll_style}" Grid.Row="1">
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </bc:FlexiScroll>
+                            </Grid>
                         </Border>
                         <StackPanel Grid.Row="1" Height="25" Orientation="Horizontal" Visibility="{TemplateBinding ControlAreaVisibility}" Margin="5">
                             <bc:LinkedText Text="Select All" CommandParameter="{StaticResource True}" Command="{x:Static ApplicationCommands.SelectAll}"/>

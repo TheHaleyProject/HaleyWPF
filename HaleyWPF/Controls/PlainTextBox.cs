@@ -33,6 +33,7 @@ namespace Haley.WPF.Controls
         public PlainTextBox()
         {
             DisplaySuggestions = false;
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, _showPopup));
         }
 
         public override void OnApplyTemplate()
@@ -153,6 +154,15 @@ namespace Haley.WPF.Controls
             this.Focus();
             CaretIndex = Text.Length; //So that the cursor is at end.
             //Even though suggestions are available, if selection is made, don't show anymore.
+        }
+        protected override void OnMouseLeave(MouseEventArgs e)
+        {
+            base.OnMouseLeave(e);
+            ShowSuggestions = false;
+        }
+        void _showPopup(object sender, ExecutedRoutedEventArgs e)
+        {
+            ShowSuggestions = (DisplaySuggestions && true); //Display suggestions should be true.
         }
     }
 }

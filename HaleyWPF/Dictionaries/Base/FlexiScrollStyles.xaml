@@ -1,0 +1,18 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:bc="clr-namespace:Haley.WPF.Controls"
+    xmlns:ml="clr-namespace:Haley.Models"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+    <Style x:Key="internal_flexiscroll_style" TargetType="{x:Type bc:FlexiScroll}">
+        <Setter Property="VerticalScrollBarVisibility" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.VerticalBarVisibility)}"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.HorizontalBarVisibility)}"/>
+        <Setter Property="AutoHide" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.AutoHide)}"/>
+        <Setter Property="EnableOverLay" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.EnableOverLay)}"/>
+        <Setter Property="VerticalScrollBarSize" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.VerticalBarSize)}"/>
+        <Setter Property="HorizontalScrollBarSize" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.HorizontalBarSize)}"/>
+        <Setter Property="ShowHorizontalButtons" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.ShowButtons)}"/>
+        <Setter Property="ShowVerticalButtons" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.ShowButtons)}"/>
+    </Style>
+
+</ResourceDictionary>

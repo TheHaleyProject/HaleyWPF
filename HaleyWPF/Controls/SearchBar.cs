@@ -108,9 +108,12 @@ namespace Haley.WPF.Controls
         {
             if (Command == null) return;
             object _cmdParameter = _getCommandParameter();
+            //IsEnabled = Command is RoutedCommand command
+            //    ? command.CanExecute(_cmdParameter, CommandTarget)
+            //    : Command.CanExecute(_cmdParameter);
             IsEnabled = Command is RoutedCommand command
-                ? command.CanExecute(_cmdParameter, CommandTarget)
-                : Command.CanExecute(_cmdParameter);
+               ? true
+               : Command.CanExecute(_cmdParameter);
         }
 
     }

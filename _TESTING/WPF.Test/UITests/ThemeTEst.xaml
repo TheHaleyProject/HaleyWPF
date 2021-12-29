@@ -89,7 +89,7 @@
                 
             </StackPanel>
             <StackPanel Grid.Column="1">
-                <hw:CollectionSelector Grid.Column="1" CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" TitleSelection="Selected Employees" TitleSource="Company Employees">
+                <hw:CollectionSelector Grid.Column="1" CornerRadius="5" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" TitleSelection="Selected Employees" TitleSource="Company Employees" hw:FlexiScrollViewer.ShowButtons="False" hw:FlexiScrollViewer.AutoHide="True">
                     <hw:CollectionSelector.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Margin="5" />
@@ -106,7 +106,7 @@
                         </DataTemplate>
                     </hw:CollectionSelector.ItemTemplate>
                 </hw:CollectionSelector>
-                <hw:PlainListView CornerRadius="10" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" ControlAreaVisibility="Visible">
+                <hw:PlainListView CornerRadius="5" Margin="10" ItemsSource="{Binding something,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,NotifyOnTargetUpdated=True}" SelectedItems="{Binding selecteditems,NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}" Height="200" VerticalAlignment="Top" ControlAreaVisibility="Visible" hw:FlexiScrollViewer.ShowButtons="False" hw:FlexiScrollViewer.AutoHide="True" EnableFilter="True" BorderThickness="1" FilterDelegate="{Binding PersonFilter}">
                     <hw:PlainListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Margin="5" />
