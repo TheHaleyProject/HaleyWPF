@@ -18,10 +18,12 @@ namespace Haley.WPF.Controls
     {
         private const string UIEMainPWDbox = "PART_mainpwdbox";
         private const string UIEPWDDisplay = "PART_pwdDisplay";
+        private const string UIEPWDEye = "PART_Eye";
 
         private PasswordBox _pboxMain;
         private TextBlock _tblckDisplay;
-
+        private FrameworkElement _pwdEye;
+        public bool EnablePasswordViewing { get; set; }
         #region Click Event
         public static readonly RoutedEvent PasswordChangedEvent = EventManager.RegisterRoutedEvent(nameof(PasswordChanged), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(PlainPasswordBox));
 
@@ -39,6 +41,7 @@ namespace Haley.WPF.Controls
         }
         public PlainPasswordBox()
         {
+            EnablePasswordViewing = true;
             //Plain password box is inheriting from PlainTextbox which already has a commandbinding for Show.
             SubscribeSuggestions = false; //Do not register popup events.
             CommandBindings.Remove(ShowPopupBinding);
@@ -52,6 +55,9 @@ namespace Haley.WPF.Controls
             base.OnApplyTemplate();
             _pboxMain = GetTemplateChild(UIEMainPWDbox) as PasswordBox;
             _tblckDisplay = GetTemplateChild(UIEPWDDisplay) as TextBlock;
+            _pwdEye = GetTemplateChild(UIEPWDEye) as FrameworkElement;
+
+            if (!EnablePasswordViewing && _pwdEye != null) _pwdEye.Visibility = Visibility.Collapsed;
             if (_pboxMain != null)
             {
                 _pboxMain.PasswordChanged -= _pboxMain_PasswordChanged;
@@ -133,5 +139,7 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty DefaultImageColorProperty =
             DependencyProperty.Register(nameof(DefaultImageColor), typeof(SolidColorBrush), typeof(PlainPasswordBox), new PropertyMetadata(null));
+
+       
     }
 }
