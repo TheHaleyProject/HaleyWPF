@@ -5,12 +5,18 @@
     
     <!--ALL THE DICTIONARIES BELOW ARE ADDED ONLY ONCE AND ARE DIRECTLY ASSOCIATED WITH THE CONTROLS. NONE OF THE BELOW MERGED DICTIOANRIES ARE(SHOULD BE) RD RELATED TO THEME OR COLORS OR SKINS-->
     <ResourceDictionary.MergedDictionaries>
+
+        <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Internal/Themes/FlexiBorderRD.xaml"/>-->
+
+        <!--#region BASE ITEMS-->
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainImageRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainTextBoxRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/SearchBarRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainPasswordBoxRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/SeparatorRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainCheckBoxRD.xaml"/>
+        
+        <!--#endregion-->
 
         <!--#region BUTTONS-->
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/LinkedTextRD.xaml"/>
@@ -24,12 +30,12 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ImageToggleButtonRD.xaml"/>
         <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainSliderRD.xaml"/>-->
         <!--#endregion-->
-
+        
+        <!--#region  COMBO ITEMS-->
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainExpanderRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PaginationRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainListViewRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/CollectionSelectorRD.xaml"/>
-        
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiScrollRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiMenuRD.xaml"/>
         <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiTabRD.xaml"/>-->
@@ -39,7 +45,7 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ColorPickerRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainWindowRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ColorPickerButtonRD.xaml"/>
-
+        <!--#endregion-->
    
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

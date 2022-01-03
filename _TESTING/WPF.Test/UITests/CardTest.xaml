@@ -7,24 +7,38 @@
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
-        Title="CardTest" Height="800" Width="1200">
+        Title="CardTest" Height="800" Width="900">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type hw:PlainCard}">
+                <Setter Property="Margin" Value="15"/>
+                <Setter Property="Height" Value="90"/>
+                <Setter Property="Width" Value="160"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="hw:Shadow.IsEnabled" Value="True"/>
+                <Setter Property="hw:Shadow.BlurRadius" Value="10"/>
+                <Setter Property="hw:Shadow.OnlyOnMouseOver" Value="False"/>
+                <Setter Property="hw:Shadow.Color" Value="Green"/>
+                <Setter Property="BorderBrush" Value="Purple"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <WrapPanel>
-        <!--<hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="200" hw:Icon.Default="{StaticResource home}" HeaderHeight="20" hw:Icon.DefaultColor="White" HeaderAlignment="Left"/>
-        <hw:PlainCard Margin="30" Height="150" Width="200" hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="White" HeaderHeight="45"/>
-        <hw:PlainCard Margin="30" CornerRadius="10" Height="150" Width="200" hw:Icon.Default="{StaticResource rupee}" HeaderHeight="50" hw:Icon.DefaultColor="White" HeaderAlignment="Right"/>-->
-        <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional" ShowSubHeader="False">
+      
+        <hw:PlainCard hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional" ShowSubHeader="False">
             <Viewbox Margin="25">
                 <TextBlock Text="4,85,00" Foreground="Gray"/>
             </Viewbox>
         </hw:PlainCard>
 
-        <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" Header="Senguttuvan" SubHeader="AI Manager" HeaderAlignment="Center" Mode="Professional" ShowIcon="False">
+        <hw:PlainCard  hw:Icon.Default="{StaticResource home}" Header="Senguttuvan" SubHeader="AI Manager" HeaderAlignment="Center" Mode="Professional" ShowIcon="False">
             <Viewbox Margin="25">
                 <TextBlock Text="4,85,00" Foreground="Gray"/>
             </Viewbox>
         </hw:PlainCard>
 
-        <hw:PlainCard Margin="30" Height="180" Width="350" CornerRadius="10" hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional" ShowIcon="False" HeaderFontSize="25">
+        <hw:PlainCard hw:Icon.Default="{StaticResource home}" HeaderAlignment="Center" Mode="Professional" ShowIcon="False" HeaderFontSize="25">
             <hw:BadgeSetter.Badge>
                 <hw:Badge CommandName="hello"/>
             </hw:BadgeSetter.Badge>
@@ -32,17 +46,17 @@
                 <TextBlock Text="Badge" Foreground="Gray"/>
             </Viewbox>
         </hw:PlainCard>
-        
-        <hw:PlainCard Margin="30" CornerRadius="10" Height="180" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Right" Mode="Flyer" SubHeader="whaaaa" HeaderBackground="Green" Background="#B2CABF26" HeaderHeight="190" FlyerWidth="70" FlyerHeight="90" >
+
+        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Right" Mode="Flyer" SubHeader="whaaaa" HeaderBackground="Green" Background="#B2CABF26" HeaderHeight="190" FlyerWidth="70" FlyerHeight="90" >
             <Grid>
                 <Viewbox >
                     <TextBlock Text="4,85,00" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Viewbox>
             </Grid>
         </hw:PlainCard>
-        <hw:PlainCard Margin="30" CornerRadius="10" Height="180" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" HeaderHeight="70"/>
-        <hw:PlainCard Margin="30" Height="180" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Flyer" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" CornerRadius="15" />
-        <hw:PlainCard Margin="30" Height="180" Width="320" hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" Background="LightYellow"/>
-        <hw:PlainCard Margin="30" CornerRadius="10" Height="180" Width="320" hw:Icon.Default="{StaticResource car_2_medium}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />
+        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" HeaderHeight="30"/>
+        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Flyer" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" CornerRadius="15" />
+        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" Background="LightYellow"/>
+        <hw:PlainCard hw:Icon.Default="{StaticResource car_2_medium}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />
     </WrapPanel>
 </Window>

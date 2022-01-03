@@ -24,6 +24,9 @@ namespace Haley.WPF.Controls
         private FrameworkElement _popupContent;
         private FrameworkElement _contentHost;
         //private DataTemplate _defaultPopupTemplate;
+        protected bool SubscribeSuggestions = true;
+
+        protected CommandBinding ShowPopupBinding;
         static PlainTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PlainTextBox), new FrameworkPropertyMetadata(typeof(PlainTextBox)));
@@ -33,18 +36,22 @@ namespace Haley.WPF.Controls
         public PlainTextBox()
         {
             DisplaySuggestions = false;
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, _showPopup));
+            ShowPopupBinding = new CommandBinding(AdditionalCommands.Show, _showPopup);
+            CommandBindings.Add(ShowPopupBinding);
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _popupContent = GetTemplateChild(UIEPopUp) as FrameworkElement;
             _contentHost = GetTemplateChild(UIEContentHost) as FrameworkElement;
-            ShowSuggestions = DisplaySuggestions;
-            //_defaultPopupTemplate = TryFindResource("internal_default_popup") as DataTemplate;
-            _setSuggestion();
-            _setPopupTemplate();
+            if (SubscribeSuggestions)
+            {
+                _popupContent = GetTemplateChild(UIEPopUp) as FrameworkElement;
+                ShowSuggestions = DisplaySuggestions;
+                //_defaultPopupTemplate = TryFindResource("internal_default_popup") as DataTemplate;
+                _setSuggestion();
+                _setPopupTemplate();
+            }
         }
 
         public string WaterMark

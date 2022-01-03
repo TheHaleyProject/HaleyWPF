@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Haley.Events;
 
 namespace Haley.WPF.Controls
 {
@@ -38,6 +39,9 @@ namespace Haley.WPF.Controls
         }
         public PlainPasswordBox()
         {
+            //Plain password box is inheriting from PlainTextbox which already has a commandbinding for Show.
+            SubscribeSuggestions = false; //Do not register popup events.
+            CommandBindings.Remove(ShowPopupBinding);
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, Execute_show));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Hide, Execute_hide));
         }
@@ -69,7 +73,7 @@ namespace Haley.WPF.Controls
             {
                 HasPassword = true;
             }
-            RaiseEvent(new RoutedEventArgs(PasswordChangedEvent, this)); //Raise the event and send this object. Then user can get the password from it.
+            RaiseEvent(new UIRoutedEventArgs<SecureString>(PasswordChangedEvent, this) {Value = SecurePassword }); //Raise the event and send this object. Then user can get the password from it.
         }
         void Execute_show(object sender, ExecutedRoutedEventArgs e)
         {

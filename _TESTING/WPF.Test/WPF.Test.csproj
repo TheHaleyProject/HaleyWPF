@@ -99,6 +99,9 @@
     <Compile Include="RibbonTest.xaml.cs">
       <DependentUpon>RibbonTest.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UITests\PlainDesigner.xaml.cs">
+      <DependentUpon>PlainDesigner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UITests\PlainWindowTest.xaml.cs">
       <DependentUpon>PlainWindowTest.xaml</DependentUpon>
     </Compile>
@@ -191,6 +194,9 @@
     <Page Include="RibbonTest.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="UITests\PlainDesigner.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UITests\PlainWindowTest.xaml">
       <SubType>Designer</SubType>
@@ -296,7 +302,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.0.9" />
+        <PackageReference Include="Haley.MVVM" Version="6.1.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>

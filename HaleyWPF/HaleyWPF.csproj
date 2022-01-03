@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.1.5</Version>
+		<Version>5.1.5-beta.1</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Update and critical bug fixes &amp; references. Added filter for Plainlistview,</PackageReleaseNotes>
+		<PackageReleaseNotes>Fixed password box critical bugs</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Remove="Controls\PlainDataGrid.cs" />
     <Compile Remove="Controls\PlainSlider.cs" />
+    <Compile Remove="Internal\Controls\FlexiBorder.cs" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -306,6 +307,7 @@
     <Page Remove="Dictionaries\ThemeMain\FlexiTabRD.xaml" />
     <Page Remove="Dictionaries\ThemeMain\PlainDataGridRD.xaml" />
     <Page Remove="Dictionaries\ThemeMain\PlainSliderRD.xaml" />
+    <Page Remove="Internal\Themes\FlexiBorderRD.xaml" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -743,6 +745,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Internal\Controls\" />
+    <Folder Include="Internal\Themes\" />
     <Folder Include="Models\Behaviours\" />
   </ItemGroup>
 	
@@ -787,7 +791,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.0.9" />
+       <PackageReference Include="Haley.MVVM" Version="6.1.0" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

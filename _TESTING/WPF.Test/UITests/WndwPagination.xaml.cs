@@ -1,4 +1,8 @@
 ﻿using System.Windows;
+using Haley.Events;
+using System.Security;
+using Haley.WPF.Controls;
+
 
 namespace WPF.Test
 {
@@ -27,6 +31,17 @@ namespace WPF.Test
         private void SearchBar_SearchStarted(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void pwdbox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (e is UIRoutedEventArgs<SecureString> uir_ss)
+            {
+                if (e.Source is PlainPasswordBox ppb)
+                {
+                    var pass = ppb.GetPassword();
+                }
+            }
         }
     }
 }
