@@ -317,7 +317,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="5.1.3" />
+        <PackageReference Include="Haley.WPF" Version="5.1.6" />
       </ItemGroup>
     </Otherwise>
   </Choose>
