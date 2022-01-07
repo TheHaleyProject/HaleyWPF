@@ -25,7 +25,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel>
                     <hw:PlainTextBox x:Name="username" Height="35" Width="180" CornerRadius="10" WaterMark="User Name" Margin="5" hw:Shadow.IsEnabled="True" hw:Shadow.Color="Red"/>
-                    <hw:PlainPasswordBox x:Name="pwdbox" Height="27" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" hw:Shadow.IsEnabled="True" hw:Shadow.Color="Red" PasswordChanged="pwdbox_PasswordChanged"/>
+                    <hw:PlainPasswordBox x:Name="pwdbox" Height="25" Width="180" Margin="5" WaterMark="Enter Password"  CornerRadius="5" Tag="{Binding Path=Text, ElementName=username}" DefaultImageColor="Red" HoverImageColor="Black" hw:Shadow.IsEnabled="True" hw:Shadow.Color="Red" PasswordChanged="pwdbox_PasswordChanged"/>
                     <hw:PlainButton CommandParameter="{Binding ElementName=pwdbox}" Command="{Binding Cmd_Login}" Content="Button" Width="180"/>
                     <hw:PlainToggleButton  OffText="light"/>
                 </StackPanel>

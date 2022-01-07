@@ -22,6 +22,47 @@ namespace Haley.WPF.Controls
     /// </summary>
     public class FlexiMenu : Control
     {
+        #region Overridden Methods
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            var items = this.MenuItems;
+            var ops = this.OptionItems;
+
+            _mainContentHolder = GetTemplateChild(UIEMainContentHolder) as ContentControl;
+            _messageHolder = GetTemplateChild(UIEMessageHolder) as FrameworkElement;
+            _message = GetTemplateChild(UIEMessage) as TextBlock;
+            _headerHolder = GetTemplateChild(UIEHeaderHolder) as ContentControl;
+            _floatingPanel = GetTemplateChild(UIEFloatingPanel) as ContentControl;
+            _floatingPanelHolderCanvas = GetTemplateChild(UIEFloatingPanelCanvas) as Canvas;
+            _contextMenuShow = GetTemplateChild(UIEContextMenuShow) as SysCtrls.MenuItem;
+            _contextMenuReposition = GetTemplateChild(UIEContextMenuReposition) as SysCtrls.MenuItem;
+
+            _changeHeader();
+            _changeFloatingPanel();
+
+            if (DisableFloatingPanel)
+            {
+                if (_contextMenuReposition != null) _contextMenuReposition.Visibility = Visibility.Collapsed;
+                if (_contextMenuShow != null) _contextMenuShow.Visibility = Visibility.Collapsed; //If we need to disable floating panel, then the context menu should not be shown.
+            }
+
+            //Set Welcome view if not null
+            if (WelcomeView != null && !DisableWelcomeView)
+            {
+                _mainContentHolder.Content = WelcomeView;
+                //If welcome view is active, then we should hide the floating panel
+                _setFloatingCanvasVisibility(Visibility.Collapsed);
+                _setupWelcomeViewCloseTimer();
+            }
+            else
+            {
+                _setFirstView(); //In case the welcome view is present and also it is not disabled, then we set the welcome view and then after timer runs out we set the first view.
+            }
+        }
+
+        #endregion
+
         #region Attributes
         private const string UIEMainContentHolder = "PART_MainContentArea";
         private const string UIEMessageHolder = "PART_messageHolder";
@@ -36,6 +77,7 @@ namespace Haley.WPF.Controls
         private static double _menuItemHeight = Convert.ToDouble(30);
         private static double _menuBarWidth = Convert.ToDouble(250);
 
+        private DispatcherTimer _messageTimer;
         private bool _canvasSet = false;
         private bool _pauseMenuSelection = false;
 
@@ -61,15 +103,17 @@ namespace Haley.WPF.Controls
             this.MenuItems = new ObservableCollection<MenuItem>();
             this.OptionItems = new ObservableCollection<CommandMenuItem>();
 
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction, _processMenuAction));
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction2, _processOptionsAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ProcessMenuAction, _processMenuAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ProcessMenuAction2, _processOptionsAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, _toggleMenuBar));
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Reset, _resetFloatingPanel));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, _changeFloatingPanelVisibility));
 
             _addProxyResource();
-            //IControlContainer v;
+            _messageTimer = new DispatcherTimer();
+            _messageTimer.Interval = TimeSpan.FromSeconds(4);
+            _messageTimer.Tick += _messageTimerTick;
         }
 
 
@@ -77,48 +121,6 @@ namespace Haley.WPF.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(FlexiMenu), new FrameworkPropertyMetadata(typeof(FlexiMenu)));
         }
-        #endregion
-
-        #region Overridden Methods
-
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            var items = this.MenuItems;
-            var ops = this.OptionItems;
-
-            _mainContentHolder = GetTemplateChild(UIEMainContentHolder) as ContentControl;
-            _messageHolder = GetTemplateChild(UIEMessageHolder) as FrameworkElement;
-            _message = GetTemplateChild(UIEMessage) as TextBlock;
-            _headerHolder = GetTemplateChild(UIEHeaderHolder) as ContentControl;
-            _floatingPanel = GetTemplateChild(UIEFloatingPanel) as ContentControl;
-            _floatingPanelHolderCanvas = GetTemplateChild(UIEFloatingPanelCanvas) as Canvas;
-            _contextMenuShow = GetTemplateChild(UIEContextMenuShow) as SysCtrls.MenuItem;
-            _contextMenuReposition = GetTemplateChild(UIEContextMenuReposition) as SysCtrls.MenuItem;
-            
-            _changeHeader();
-            _changeFloatingPanel();
-            
-            if (DisableFloatingPanel )
-            {
-                if (_contextMenuReposition != null) _contextMenuReposition.Visibility = Visibility.Collapsed;
-                if (_contextMenuShow != null) _contextMenuShow.Visibility = Visibility.Collapsed; //If we need to disable floating panel, then the context menu should not be shown.
-            }
-
-            //Set Welcome view if not null
-            if (WelcomeView != null && !DisableWelcomeView)
-            {
-                _mainContentHolder.Content = WelcomeView;
-                //If welcome view is active, then we should hide the floating panel
-                _setFloatingCanvasVisibility(Visibility.Collapsed);
-                _setupWelcomeViewCloseTimer();
-            }
-            else
-            {
-                _setFirstView(); //In case the welcome view is present and also it is not disabled, then we set the welcome view and then after timer runs out we set the first view.
-            }
-        }
-        
         #endregion
 
         #region Properties
@@ -136,7 +138,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty FloatingPanelProperty =
-            DependencyProperty.Register("FloatingPanel", typeof(object), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,propertyChangedCallback:FloatingPanelChanged));
+            DependencyProperty.Register("FloatingPanel", typeof(object), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, propertyChangedCallback: FloatingPanelChanged));
         public bool IsFloatingPanelVisible
         {
             get { return (bool)GetValue(IsFloatingPanelVisibleProperty); }
@@ -144,7 +146,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty IsFloatingPanelVisibleProperty =
-            DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new FrameworkPropertyMetadata(true,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback:IsFloatingPanelVisiblePropertyChanged));
+            DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: IsFloatingPanelVisiblePropertyChanged));
         #endregion
 
         public bool DisableWelcomeView
@@ -153,7 +155,6 @@ namespace Haley.WPF.Controls
             set { SetValue(DisableWelcomeViewProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for DisableWelcomeView.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DisableWelcomeViewProperty =
             DependencyProperty.Register(nameof(DisableWelcomeView), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
@@ -263,7 +264,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty SelectedMenuIdProperty =
-            DependencyProperty.Register("SelectedMenuId", typeof(string), typeof(FlexiMenu), new FrameworkPropertyMetadata(null,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,propertyChangedCallback:SelectedIdChanged));
+            DependencyProperty.Register("SelectedMenuId", typeof(string), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: SelectedIdChanged));
 
 
         public SolidColorBrush ToggleButtonBackground
@@ -369,16 +370,21 @@ namespace Haley.WPF.Controls
                 //Setup timer
                 var timer = new DispatcherTimer();
                 timer.Interval = TimeSpan.FromSeconds(AutoCloseWelcomeViewTimeSpan);
-                timer.Tick += TimerTick;
+                timer.Tick += timerTick;
                 timer.Start();
             }
         }
-        void TimerTick(object sender, EventArgs e)
+        void timerTick(object sender, EventArgs e)
         {
             ((DispatcherTimer)sender).Stop();
             _setFirstView();
         }
 
+        void _messageTimerTick(object sender, EventArgs e)
+        {
+            ((DispatcherTimer)sender).Stop();
+            _closeMessage();
+        }
         void _setFirstView()
         {
             //if we have any other view, then try to show it. If we have already moved to a different view, then in that case, do not process it (check: activemenu == null)
@@ -407,7 +413,7 @@ namespace Haley.WPF.Controls
                 this.Resources.Add("proxy", bp);
             }
         }
-        
+
         void _processMenuAction(object sender, ExecutedRoutedEventArgs e)
         {
             _processAction(e.Parameter as CommandMenuItem, true);
@@ -427,7 +433,7 @@ namespace Haley.WPF.Controls
             var _menuAction = MenuAction.RaiseCommand;
             CommandMenuItem _targetItem = null;
 
-            if(isMenu)
+            if (isMenu)
             {
                 _targetItem = MenuItems.FirstOrDefault(p => p.Id == _inputitem.Id);
 
@@ -515,9 +521,7 @@ namespace Haley.WPF.Controls
             }
             else
             {
-                //Set the error as message
-                _message.Text = $@"Command is null. Cannot proceed.";
-                _messageHolder.Visibility = Visibility.Visible;
+                _setMessage($@"Command is null. Cannot proceed.");
                 return;
             }
         }
@@ -529,8 +533,8 @@ namespace Haley.WPF.Controls
                 if (string.IsNullOrEmpty(item.ContainerKey))
                 {
                     //Set the error as message
-                    _message.Text = $@"Container key cannot be empty. Please assign a container key value.";
-                    _messageHolder.Visibility = Visibility.Visible;
+
+                    _setMessage($@"Container key cannot be empty. Please assign a container key value.");
                     return;
                 }
 
@@ -575,10 +579,13 @@ namespace Haley.WPF.Controls
         void _setMessage(string message)
         {
             if (_messageHolder == null) return;
+            _messageTimer.Stop(); //stop any running timer.
             //Set the error as message
             _message.Text = message;
             _messageHolder.Visibility = Visibility.Visible;
+            _messageTimer.Start();
         }
+
         void _toggleMenuBar(object sender, ExecutedRoutedEventArgs e)
         {
             string _param = e.Parameter as string;
@@ -654,7 +661,7 @@ namespace Haley.WPF.Controls
 
             if (FloatingPanel != null && FloatingPanel is UIElement floating_uie)
             {
-                left  = Position.GetLeft(floating_uie);
+                left = Position.GetLeft(floating_uie);
                 right = Position.GetRight(floating_uie);
                 bottom = Position.GetBottom(floating_uie);
                 top = Position.GetTop(floating_uie);
@@ -717,7 +724,7 @@ namespace Haley.WPF.Controls
         }
         void _changeFloatingPanelVisibility(object sender, ExecutedRoutedEventArgs e)
         {
-           if (e.Parameter is bool _checked)
+            if (e.Parameter is bool _checked)
             {
                 this.SetCurrentValue(IsFloatingPanelVisibleProperty, _checked);
             }
@@ -732,7 +739,7 @@ namespace Haley.WPF.Controls
         }
         void _setviewtoNewId()
         {
-            if (_pauseMenuSelection || SelectedMenuId == null) return; 
+            if (_pauseMenuSelection || SelectedMenuId == null) return;
             //based on the new id, change the view.
 
             if (ActiveMenu != null)

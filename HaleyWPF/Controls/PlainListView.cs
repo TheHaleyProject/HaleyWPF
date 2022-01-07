@@ -60,7 +60,7 @@ namespace Haley.WPF.Controls
         {
             collectionChanging = false;
             CommandBindings.Add(new CommandBinding(ApplicationCommands.SelectAll, ExecuteSelectAll));
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.ExecuteAction,ExecuteFilter));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.Filter,ExecuteFilter));
         }
 
         public override void OnApplyTemplate()

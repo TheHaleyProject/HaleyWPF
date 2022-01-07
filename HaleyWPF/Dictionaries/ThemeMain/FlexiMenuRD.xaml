@@ -176,7 +176,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ExecuteAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}" Tag="{Binding}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}" Tag="{Binding}"/>
                                                 </DataTemplate>
                                             </bc:PlainListView.ItemTemplate>
                                         </bc:PlainListView>
@@ -204,7 +204,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ExecuteAction2}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction2}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
@@ -218,22 +218,40 @@
                             </Grid>
                         </Border>
                         <Grid>
+                            <!--MAIN REGION-->
                             <Grid TextBlock.Foreground="{DynamicResource def_content}">
                                     <ContentControl x:Name="PART_MainContentArea"/>
-                                    <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FF393939" Margin="15" CornerRadius="10" Visibility="Collapsed">
+                                <!--MESSAGE BAR-->
+                                <Border x:Name="PART_messageHolder" MinHeight="30" Height="Auto"  VerticalAlignment="Top" Background="#FFE4E8CB" Margin="15" CornerRadius="5" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5">
                                         <Border.Effect>
-                                            <DropShadowEffect ShadowDepth="0" Color="Red" BlurRadius="2"/>
+                                            <DropShadowEffect ShadowDepth="0" Color="#FF423F3F" BlurRadius="2"/>
                                         </Border.Effect>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition/>
                                                 <ColumnDefinition Width="30"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FFC2FAC2" TextWrapping="WrapWithOverflow" FontSize="10"/>
+                                            <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FF384B8C" TextWrapping="WrapWithOverflow" FontSize="11"/>
                                             <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
-                                                <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="White"/>
+                                                <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="Gray"/>
                                             </Viewbox>
                                         </Grid>
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Style.Triggers>
+                                                <Trigger Property="Visibility" Value="Visible">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <!--<DoubleAnimation  Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" From="0" To="100" Duration="00:04:0" />-->
+                                                                <DoubleAnimation  Storyboard.TargetProperty="Opacity" From="0" To="100" Duration="00:01:0" />
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
                                     </Border>
                             </Grid>
                             

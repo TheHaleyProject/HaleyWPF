@@ -124,5 +124,15 @@ namespace WPF.Test
             }
             sBar.Suggestions = null;
         }
+
+        private void PlainButton_Click_3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ImageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

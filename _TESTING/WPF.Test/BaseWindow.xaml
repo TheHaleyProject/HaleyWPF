@@ -29,8 +29,8 @@
             <Button  x:Name="btnScrollViewerTest" Content="Scroll Test" Click="btnScrollViewerTest_Click"/>
             <Button  x:Name="btnThemeTest" Content="Theme Test" Click="btnThemeTest_Click"/>
             <Button x:Name="btnPaginationTest" Content="Pagination Test" Click="btnPaginationTest_Click"/>
-            <Button x:Name="btnPlainWindowTest" Content="PlainWindow Test" Click="btnPlainWindowTest_Click"/>
+            <Button x:Name="btnPlainWindowTest" Content="PlainWindow Test" Click="btnPlainWindowTest_Click" />
         </WrapPanel>
     </Grid>
-    
+
 </Window>

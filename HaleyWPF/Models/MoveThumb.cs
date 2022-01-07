@@ -5,6 +5,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using Haley.Utils;
+
 
 namespace Haley.Models
 {
@@ -13,25 +15,6 @@ namespace Haley.Models
         public MoveThumb()
         {
             DragDelta += new DragDeltaEventHandler(this.MoveThumb_DragDelta);
-        }
-
-        private Canvas _getCanvas(DependencyObject input,int parentlevel)
-        {
-            try
-            {
-                if (parentlevel == 0 || input == null) return null;
-
-                var _parent = VisualTreeHelper.GetParent(input);
-                //if parent is canvas, return it.
-                if (_parent is Canvas _canvasParent) return _canvasParent;
-
-                //If not, loop again
-                return _getCanvas(_parent, parentlevel - 1);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
         }
 
         private void MoveThumb_DragDelta(object sender, DragDeltaEventArgs e)
@@ -44,7 +27,8 @@ namespace Haley.Models
                 double top = Canvas.GetTop(_ctrl);
                 double right = Canvas.GetRight(_ctrl);
                 double bottom = Canvas.GetBottom(_ctrl);
-                var _parent = _getCanvas(this, 3);
+                //var _parent = _getCanvas(this, 3);
+                var _parent = VisualUtils.FindVisualParent<Canvas>(this, 3);
                 Canvas _targetCanvas = _parent as Canvas;
                 if (!double.IsNaN(left))
                 {
