@@ -104,7 +104,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}"/>
                                     <RowDefinition />
-                                <RowDefinition Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}"/>
+                                <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
                                 <!--Header (can be hidden)-->
@@ -114,17 +114,18 @@
                                         <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.WindowAction2}" CommandParameter="DragMove"  />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                                <ContentControl x:Name="PART_header" IsHitTestVisible="False" Margin="5,0"/>
+                                    <!--User can decide to hit some buttons onheader. So always keep the test visible-->
+                                <ContentControl x:Name="PART_header" Margin="5,0"/>
                             </Border>
                                 
                             <!--Footer (Can be hidden)-->
-                            <Border x:Name="PART_footer_holder" Grid.Row="2">
+                            <Border x:Name="PART_footer_holder" Grid.Row="2" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}">
                                 <ContentControl x:Name="PART_footer"/>
                             </Border>
 
                             <!--Control box-->
                             <Grid x:Name="PART_controlbox_holder" VerticalAlignment="Top" Height="27" Margin="8,4" HorizontalAlignment="Right" IsHitTestVisible="True" Background="Transparent">
-                                <ContentControl x:Name="PART_controlbox"/>
+                                <ContentControl x:Name="PART_controlbox" IsHitTestVisible="True"/>
                             </Grid>
                             
                               <!--Content Presenter-->
