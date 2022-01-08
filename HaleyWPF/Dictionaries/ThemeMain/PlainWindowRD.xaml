@@ -129,7 +129,7 @@
                             </Grid>
                             
                               <!--Content Presenter-->
-                            <ContentPresenter Grid.Row="1" Margin="1" IsHitTestVisible="True"/>
+                            <ContentPresenter Grid.Row="1" Margin="0" IsHitTestVisible="True"/>
                             </Grid>
                         </Border>
                 </ControlTemplate>
