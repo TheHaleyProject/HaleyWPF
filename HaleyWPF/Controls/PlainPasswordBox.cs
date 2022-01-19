@@ -119,7 +119,7 @@ namespace Haley.WPF.Controls
         public string GetPassword()
         {
             if (SecurePassword == null) return null;
-            return HashUtils.unWrap(SecurePassword);
+            return HashUtils.UnWrap(SecurePassword);
         }
 
         public SolidColorBrush HoverImageColor
