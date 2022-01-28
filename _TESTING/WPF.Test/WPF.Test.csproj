@@ -272,7 +272,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Extensions" Version="2.0.2" />
+        <PackageReference Include="Haley.Extensions" Version="2.1.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -287,7 +287,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Helpers" Version="2.0.3" />
+        <PackageReference Include="Haley.Helpers" Version="2.1.1" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -302,7 +302,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.1.1" />
+        <PackageReference Include="Haley.MVVM" Version="6.1.5" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -349,7 +349,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Events" Version="2.1.0" />
+        <PackageReference Include="Haley.Events" Version="2.1.2" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -364,7 +364,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.IOC" Version="3.0.2" />
+        <PackageReference Include="Haley.IOC" Version="3.0.4" />
       </ItemGroup>
     </Otherwise>
   </Choose>

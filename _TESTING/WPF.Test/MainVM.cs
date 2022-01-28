@@ -172,7 +172,7 @@ namespace WPF.Test
             if (! string.IsNullOrEmpty(SelectedDisplaymode))
             {
                 //get the corresponding enum.
-                dmode = SelectedDisplaymode.getValueFromDescription<DisplayMode>();
+                dmode = SelectedDisplaymode.GetValueFromDescription<DisplayMode>();
             }
             if (_cp == null)
             {

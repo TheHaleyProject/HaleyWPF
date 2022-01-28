@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF.Test.UITests"
-                       xmlns:hw="http://schemas.hpod9.com/haley/wpf"
-                       xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         mc:Ignorable="d"
-        Title="PlainWindowTest" Height="450" Width="800" CornerRadius="20" HideFooter="True">
-    <Grid Background="White">
+        Title="PlainWindowTest" Height="450" Width="800" hm:WindowBlurAP.IsEnabled="True"  BorderBrush="Transparent" Background="#33132B3A" BorderThickness="0">
+    <Grid >
         <Button Height="30" Width="150" Content="Raise Dialog" Click="Button_Click"/>
     </Grid>
 </hw:PlainWindow>

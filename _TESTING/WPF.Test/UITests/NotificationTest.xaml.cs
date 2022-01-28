@@ -35,7 +35,7 @@ namespace WPF.Test
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ds.ChangeSettings(null, chkbxShwInTaskBar.IsChecked, chkbxCenterOwner.IsChecked.Value ? DialogStartupLocation.CenterParent:DialogStartupLocation.CenterScreen);
-            ds.ShowDialog("Test", tbxMain.Text, blurWindows: chkbx.IsChecked.Value);
+            ds.ShowDialog("Test", tbxMain.Text, blurOtherWindows: chkbx.IsChecked.Value);
         }
     }
 }
