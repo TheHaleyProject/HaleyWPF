@@ -35,7 +35,6 @@ namespace Haley.WPF.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             _mainContentHolder = GetTemplateChild(UIEMainContentHolder) as ContentControl;
             _messageHolder = GetTemplateChild(UIEMessageHolder) as FrameworkElement;
             _message = GetTemplateChild(UIEMessage) as TextBlock;
@@ -176,6 +175,12 @@ namespace Haley.WPF.Controls
             }
             _setContainerView(ViewKey);
         }
+
+        private void SendEvent(bool status, string message)
+        {
+            if (!IsInitialized) return;
+            RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = status, Message = message});
+        }
         void _setContainerView(object key)
         {
             try
@@ -186,7 +191,7 @@ namespace Haley.WPF.Controls
                     //Set the error as message
 
                     _setMessage($@"Container key cannot be empty. Please assign a container key value.");
-                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false,Message = "Container Key is empty." });
+                    SendEvent(false, "Container is empty");
                     return;
                 }
 
@@ -221,19 +226,19 @@ namespace Haley.WPF.Controls
                 if (_mainContentHolder != null && _targetView != null)
                 {
                     _mainContentHolder.Content = _targetView;
-                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = true, Message = $@"View for key {key.AsString()} is obtained from {containerName} sucessfully." });
+                    SendEvent(true, $@"View for key {key.AsString()} is obtained from {containerName} sucessfully.");
                 }
                 else
                 {
                     var _message = $@"Unable to find any view for the container key - {key}. Check if key is correct";
                     _setMessage(_message);
-                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false, Message = _message });
+                    SendEvent(false, _message);
                 }
             }
             catch (Exception ex)
             {
                 _setMessage(ex.ToString());
-                RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false, Message = ex.ToString()});
+                SendEvent(false, ex.ToString());
             }
         }
         void _setMessage(string message)
