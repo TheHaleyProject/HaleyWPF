@@ -111,11 +111,15 @@ namespace WPF.Test
         public ICommand Cmd_search => new DelegateCommand<string>(_search);
         public ICommand Cmd_changetheme => new DelegateCommand(_changetheme);
         public ICommand Cmd_OpenColorDialog => new DelegateCommand(_openColorDialog);
+        public ICommand Cmd_ChangeContainerKey => new DelegateCommand<object>(_changeContainerView);
 
         #endregion
 
         #region Private Methods
-
+        private void _changeContainerView(object obj)
+        {
+            DataVM.Singleton.CommonView = obj; //Setting the value to a singleton class.
+        }
         void _login(PlainPasswordBox obj)
         {
             currentpage = 0;
@@ -213,6 +217,7 @@ namespace WPF.Test
             SystemDefaultColors = new Dictionary<string, Color>();
             SystemDefaultColors = ColorUtils.GetSystemColors();
             PersonFilter = _filterSearch;
+
         }
         private bool _filterSearch(object item, string filter_key)
         {

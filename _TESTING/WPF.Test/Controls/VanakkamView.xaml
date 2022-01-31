@@ -8,5 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#FF8CACA0">
         <TextBlock Text="Vaanganna vanakammanna" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="35" Foreground="Purple"/>
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="4" Height="30" Width="120" Content="Change Me" CommandParameter="localdemokey" Command="{Binding Cmd_ChangeContainerKey}"/>
     </Grid>
 </UserControl>

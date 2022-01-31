@@ -42,14 +42,14 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty ViewProperty =
             DependencyProperty.Register(nameof(View), typeof(UserControl), typeof(MenuItem), new PropertyMetadata(null));
 
-        public string ContainerKey
+        public object ContainerKey
         {
-            get { return (string)GetValue(ContainerKeyProperty); }
+            get { return (object)GetValue(ContainerKeyProperty); }
             set { SetValue(ContainerKeyProperty, value); }
         }
 
         public static readonly DependencyProperty ContainerKeyProperty =
-            DependencyProperty.Register(nameof(ContainerKey), typeof(string), typeof(MenuItem), new FrameworkPropertyMetadata(null));
+            DependencyProperty.Register(nameof(ContainerKey), typeof(object), typeof(MenuItem), new FrameworkPropertyMetadata(null));
 
         public bool IgnoreLocalContainer
         {

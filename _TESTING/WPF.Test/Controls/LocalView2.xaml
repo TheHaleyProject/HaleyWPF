@@ -51,9 +51,11 @@
                 <TextBlock Text="Hello.. This is a test project"  Style="{DynamicResource def_h3}"/>
                 <TextBlock Text="I'm a sub title text"  Style="{DynamicResource def_h4_Secondary}"/>
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <hw:PlainButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
-                    <hw:ComboRepeatButton Width="100" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4"  Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
+                    <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
+                    <hw:ComboRepeatButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4"  Command="{Binding Cmd_IncreaseCounter}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False"/>
                     <hw:PlainTextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}" WaterMark=""/>
+                    <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" CommandParameter="testkitty2" Command="{Binding Cmd_ChangeContainerKey}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False" Content="Change"/>
+                    <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" CommandParameter="testkitty234" Command="{Binding Cmd_ChangeContainerKey}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False" Content="W Change"/>
                 </StackPanel>
 
 

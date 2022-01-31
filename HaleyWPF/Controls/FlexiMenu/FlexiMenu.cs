@@ -104,7 +104,7 @@ namespace Haley.WPF.Controls
             this.OptionItems = new ObservableCollection<CommandMenuItem>();
 
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ProcessMenuAction, _processMenuAction));
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.ProcessMenuAction2, _processOptionsAction));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.ProcessOptionsAction, _processOptionsAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Toggle, _toggleMenuBar));
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Reset, _resetFloatingPanel));
@@ -266,7 +266,6 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty SelectedMenuIdProperty =
             DependencyProperty.Register("SelectedMenuId", typeof(string), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: SelectedIdChanged));
 
-
         public SolidColorBrush ToggleButtonBackground
         {
             get { return (SolidColorBrush)GetValue(ToggleButtonBackgroundProperty); }
@@ -278,7 +277,6 @@ namespace Haley.WPF.Controls
 
 
         #region Heights
-
         public double HeaderRegionHeight
         {
             get { return (double)GetValue(HeaderRegionHeightProperty); }
@@ -530,7 +528,7 @@ namespace Haley.WPF.Controls
             try
             {
                 //First ensure that the key is present.
-                if (string.IsNullOrEmpty(item.ContainerKey))
+                if (item.ContainerKey == null)
                 {
                     //Set the error as message
 
@@ -546,18 +544,20 @@ namespace Haley.WPF.Controls
                 //PRIORITY 1 : If local container is present, then try to find the view. 
                 if (_targetView == null && !item.IgnoreLocalContainer && LocalContainer != null)
                 {
-                    if (LocalContainer.ContainsKey(item.ContainerKey))
+                    var _value = LocalContainer.ContainsKey(item.ContainerKey);
+                    if (_value.HasValue && _value.Value)
                     {
-                        _targetView = LocalContainer.GenerateView(item.ContainerKey);
+                        _targetView = LocalContainer.GenerateViewFromKey(item.ContainerKey);
                     }
                 }
 
                 //PRIORIY 2 : If global container is present and also view is still empty, try finding the view.
                 if (_targetView == null && !item.IgnoreGlobalContainer && _globalContainer != null)
                 {
-                    if (_globalContainer.ContainsKey(item.ContainerKey))
+                    var _value = _globalContainer.ContainsKey(item.ContainerKey);
+                    if (_value.HasValue && _value.Value)
                     {
-                        _targetView = _globalContainer.GenerateView(item.ContainerKey);
+                        _targetView = _globalContainer.GenerateViewFromKey(item.ContainerKey);
                     }
                 }
 

@@ -10,19 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Haley.Enums;
-using Haley.Abstractions;
+using WPF.Test;
 
-namespace Haley.Abstractions
+namespace WPF.Test.UITests
 {
-    public interface IMenuItem : ICommandMenuItem
+    /// <summary>
+    /// Interaction logic for ContainerViewerTest.xaml
+    /// </summary>
+    public partial class ContainerViewerTest : Window
     {
-        MenuAction Action { get; set; }
-
-        UserControl View { get; set; }
-
-        object ContainerKey { get; set; }
+        public ContainerViewerTest()
+        {
+            InitializeComponent();
+            var _mainvm = new MainVM();
+            this.DataContext = _mainvm;
+        }
     }
 }

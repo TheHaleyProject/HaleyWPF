@@ -14,7 +14,7 @@
     </Window.InputBindings>
    
     <Grid x:Name="grdMain">
-        <hw:FlexiMenu x:Name="flexiMain" DataContext="{Binding}" Location="Left" FontSize="12" FontFamily="{StaticResource Lato_Regular}" ToggleIcon ="{StaticResource hamburger_combo}">
+        <hw:FlexiMenu x:Name="flexiMain" DataContext="{Binding}" Location="Left" FontSize="12" ToggleIcon ="{StaticResource hamburger_combo}">
 
             <!--welcome view-->
             <hw:FlexiMenu.WelcomeView>

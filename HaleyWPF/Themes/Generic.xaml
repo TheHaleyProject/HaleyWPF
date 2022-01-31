@@ -37,7 +37,6 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainListViewRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/CollectionSelectorRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiScrollRD.xaml"/>
-        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiMenuRD.xaml"/>
         <!--<ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiTabRD.xaml"/>-->
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/HotKeyEditorRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/IncrementerRD.xaml"/>
@@ -45,6 +44,8 @@
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ColorPickerRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/PlainWindowRD.xaml"/>
         <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ColorPickerButtonRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/ContainerViewerRD.xaml"/>
+        <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeMain/FlexiMenuRD.xaml"/>
         <!--#endregion-->
    
     </ResourceDictionary.MergedDictionaries>

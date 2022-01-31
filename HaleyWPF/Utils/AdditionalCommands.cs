@@ -28,7 +28,7 @@ namespace Haley.Utils
         public readonly static RoutedUICommand ExecuteAction2 = new RoutedUICommand("To execute some action-set2", nameof(ExecuteAction2), typeof(AdditionalCommands));
 
         public readonly static RoutedUICommand ProcessMenuAction = new RoutedUICommand("To process menu action", nameof(ProcessMenuAction), typeof(AdditionalCommands));
-        public readonly static RoutedUICommand ProcessMenuAction2 = new RoutedUICommand("To process menu action 2", nameof(ProcessMenuAction2), typeof(AdditionalCommands));
+        public readonly static RoutedUICommand ProcessOptionsAction = new RoutedUICommand("To process menu action 2", nameof(ProcessOptionsAction), typeof(AdditionalCommands));
 
         public readonly static RoutedUICommand WindowAction = new RoutedUICommand("To filter something", nameof(WindowAction), typeof(AdditionalCommands));
         public readonly static RoutedUICommand WindowAction2 = new RoutedUICommand("To filter something", nameof(WindowAction2), typeof(AdditionalCommands));

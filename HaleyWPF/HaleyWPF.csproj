@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.1.9</Version>
+		<Version>5.1.10</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -630,6 +630,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Update="Dictionaries\ThemeMain\ContainerViewerRD.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dictionaries\ThemeMain\FlexiMenuRD.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
@@ -791,7 +795,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.1.5" />
+       <PackageReference Include="Haley.MVVM" Version="6.1.9" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
+        xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
-        Title="BaseWindow" Height="450" Width="800">
+        Title="BaseWindow" Height="450" Width="800" >
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type Button}">
@@ -30,6 +31,7 @@
             <Button  x:Name="btnThemeTest" Content="Theme Test" Click="btnThemeTest_Click"/>
             <Button x:Name="btnPaginationTest" Content="Pagination Test" Click="btnPaginationTest_Click"/>
             <Button x:Name="btnPlainWindowTest" Content="PlainWindow Test" Click="btnPlainWindowTest_Click" />
+            <Button  x:Name="btnContainerViewerTest" Content="ContainerViewer Test" Click="btnContainerViewerTest_Click"/>
         </WrapPanel>
     </Grid>
 

@@ -27,7 +27,9 @@ namespace WPF.Test
         {
             _ds = ContainerStore.Singleton.DI.Resolve<IDialogService>();
             InitializeComponent();
-            this.DataContext = new MainVM();
+            //var _mainvm = new MainVM();
+            //_mainvm.SetCurrentView(nameof(BaseWindow));
+            //this.DataContext = _mainvm;
         }
 
         private void btnCardTest_Click(object sender, RoutedEventArgs e)
@@ -152,5 +154,10 @@ namespace WPF.Test
             _wndw.ShowDialog();
         }
 
+        private void btnContainerViewerTest_Click(object sender, RoutedEventArgs e)
+        {
+            ContainerViewerTest _wndw = new ContainerViewerTest();
+            _wndw.ShowDialog();
+        }
     }
 }

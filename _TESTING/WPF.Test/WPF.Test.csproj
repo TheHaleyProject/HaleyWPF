@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataVM.cs" />
     <Compile Include="UITests\BadgeTesting.xaml.cs">
       <DependentUpon>BadgeTesting.xaml</DependentUpon>
     </Compile>
@@ -79,6 +80,9 @@
     </Compile>
     <Compile Include="Controls\WelcomeView.xaml.cs">
       <DependentUpon>WelcomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UITests\ContainerViewerTest.xaml.cs">
+      <DependentUpon>ContainerViewerTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="UITests\ExpanderTest.xaml.cs">
       <DependentUpon>ExpanderTest.xaml</DependentUpon>
@@ -144,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\WelcomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UITests\ContainerViewerTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -302,7 +310,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.1.5" />
+        <PackageReference Include="Haley.MVVM" Version="6.1.9" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -322,14 +330,7 @@
     </Otherwise>
   </Choose>
   <Choose>
-    <When Condition="Exists($(HaleyWPFFonts))">
-      <ItemGroup>
-        <ProjectReference Include="..\..\..\HaleyWPFFonts\HaleyWPFFonts\HaleyWPFFonts.csproj">
-          <Project>{05804a25-49b3-45e3-af8d-9a1c310e993f}</Project>
-          <Name>HaleyWPFFonts</Name>
-        </ProjectReference>
-      </ItemGroup>
-    </When>
+    <When Condition="Exists($(HaleyWPFFonts))" />
     <Otherwise>
       <ItemGroup>
         <PackageReference Include="Haley.WPF.Fonts">

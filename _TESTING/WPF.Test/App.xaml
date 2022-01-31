@@ -10,7 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <hw:CommonDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
                 <hw:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
-                <hw:CommonDictionary Source="pack://application:,,,/Haley.WPF.Fonts;component/Dictionaries/haleyFonts.xaml"/>
+                <!--<hw:CommonDictionary Source="pack://application:,,,/Haley.WPF.Fonts;component/Dictionaries/haleyFonts.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
             <local:VerificationConverter x:Key="verfiyConv"/>
         </ResourceDictionary>

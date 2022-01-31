@@ -7,4 +7,5 @@
         </ResourceDictionary.MergedDictionaries>
 
     <!--<ObjectDataProvider x:Key="GlobalData__" ObjectType="{x:Type data:GlobalData}" MethodName="getSingleton" />-->
+    <ObjectDataProvider x:Key="GlobalData" ObjectType="{x:Type data:DataVM}" MethodName="getSingleton"/>
 </ResourceDictionary>

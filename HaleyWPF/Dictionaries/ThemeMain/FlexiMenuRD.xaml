@@ -204,7 +204,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction2}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
