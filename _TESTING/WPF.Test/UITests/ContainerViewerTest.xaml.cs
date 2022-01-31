@@ -26,5 +26,10 @@ namespace WPF.Test.UITests
             var _mainvm = new MainVM();
             this.DataContext = _mainvm;
         }
+
+        private void ContainerViewer_ViewChanging(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

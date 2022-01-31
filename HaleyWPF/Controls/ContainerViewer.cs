@@ -225,8 +225,9 @@ namespace Haley.WPF.Controls
                 }
                 else
                 {
-                    _setMessage($@"Unable to set view for container key - {key}. Check if key is correct");
-                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false, Message = "No view found for the container key." });
+                    var _message = $@"Unable to find any view for the container key - {key}. Check if key is correct";
+                    _setMessage(_message);
+                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false, Message = _message });
                 }
             }
             catch (Exception ex)

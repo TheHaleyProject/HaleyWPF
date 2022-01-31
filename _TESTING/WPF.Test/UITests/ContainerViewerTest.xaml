@@ -12,7 +12,7 @@
         <KeyBinding Modifiers="Ctrl" Key="Q" Command="{Binding Cmd_changetheme}"/>
     </Window.InputBindings>
     <Grid>
-        <hw:ContainerViewer ViewKey="{Binding Source={StaticResource GlobalData}, Path=CommonView,UpdateSourceTrigger=PropertyChanged}" Margin="20">
+        <hw:ContainerViewer ViewKey="{Binding Source={StaticResource GlobalData}, Path=CommonView,UpdateSourceTrigger=PropertyChanged}" Margin="20" ViewChanging="ContainerViewer_ViewChanging">
             <hw:ContainerViewer.WelcomeView>
                 <test:WelcomeView/>
             </hw:ContainerViewer.WelcomeView>
