@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using Haley.Events;
 
 namespace Haley.WPF.Controls
 {
@@ -22,6 +23,14 @@ namespace Haley.WPF.Controls
     /// </summary>
     public class ContainerViewer : Control
     {
+        public static readonly RoutedEvent ViewChangingEvent = EventManager.RegisterRoutedEvent(nameof(ViewChanging), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SearchBar));
+
+        public event RoutedEventHandler ViewChanging
+        {
+            add { AddHandler(ViewChangingEvent, value); }
+            remove { RemoveHandler(ViewChangingEvent, value); }
+        }
+
         #region Overridden Methods
         public override void OnApplyTemplate()
         {
@@ -177,12 +186,13 @@ namespace Haley.WPF.Controls
                     //Set the error as message
 
                     _setMessage($@"Container key cannot be empty. Please assign a container key value.");
+                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false,Message = "Container Key is empty." });
                     return;
                 }
 
                 //Check the menu item to find which container to use.
                 UserControl _targetView = null;
-
+                string containerName = string.Empty;
                 var _globalContainer = ContainerStore.Singleton.Controls;
 
                 //PRIORITY 1 : If local container is present, then try to find the view. 
@@ -192,6 +202,7 @@ namespace Haley.WPF.Controls
                     if (_value.HasValue && _value.Value)
                     {
                         _targetView = LocalContainer.GenerateViewFromKey(key);
+                        containerName = "Local Container";
                     }
                 }
 
@@ -202,6 +213,7 @@ namespace Haley.WPF.Controls
                     if (_value.HasValue && _value.Value)
                     {
                         _targetView = _globalContainer.GenerateViewFromKey(key);
+                        containerName = "Global Container";
                     }
                 }
 
@@ -209,15 +221,18 @@ namespace Haley.WPF.Controls
                 if (_mainContentHolder != null && _targetView != null)
                 {
                     _mainContentHolder.Content = _targetView;
+                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = true, Message = $@"View for key {key.AsString()} is obtained from {containerName} sucessfully." });
                 }
                 else
                 {
                     _setMessage($@"Unable to set view for container key - {key}. Check if key is correct");
+                    RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false, Message = "No view found for the container key." });
                 }
             }
             catch (Exception ex)
             {
                 _setMessage(ex.ToString());
+                RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = false, Message = ex.ToString()});
             }
         }
         void _setMessage(string message)
