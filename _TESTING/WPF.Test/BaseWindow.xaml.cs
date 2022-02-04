@@ -88,7 +88,7 @@ namespace WPF.Test
 
             var _baseAccent = (SolidColorBrush)new BrushConverter().ConvertFromString("Purple");
 
-            _ds.ChangeAccentColors(_baseAccent);
+            _ds.AccentColor = _baseAccent;
             _ds.ShowDialog("MyGoodness", "Warning, you are going to die at 90", NotificationIcon.Warning);
             var _data = _ds.ShowDialog("Confirm", "Do you know that you are an idiot", mode: DialogMode.Confirmation);
             var _data2 = _ds.ShowDialog("Name", "please write your name ", NotificationIcon.Error, DialogMode.GetInput);

@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.1.13</Version>
+		<Version>5.1.14</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -751,7 +751,6 @@
   <ItemGroup>
     <Folder Include="Internal\Controls\" />
     <Folder Include="Internal\Themes\" />
-    <Folder Include="Models\Behaviours\" />
   </ItemGroup>
 	
 <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
@@ -795,7 +794,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.1.9" />
+       <PackageReference Include="Haley.MVVM" Version="6.1.11" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

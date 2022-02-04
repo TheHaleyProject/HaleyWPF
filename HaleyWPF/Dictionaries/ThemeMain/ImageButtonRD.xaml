@@ -13,12 +13,13 @@
         <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="ml:Icon.PressedColor" Value="{DynamicResource def_accent_tertiary}"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ImageButton}">
-                    <Border x:Name="PART_imageborder" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" BorderBrush="{Binding Path=(ml:Icon.DefaultColor), RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=CornerRadius,RelativeSource={RelativeSource TemplatedParent}}">
-                        <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="2"/>
+                    <Border x:Name="PART_imageborder" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" BorderBrush="{Binding Path=(ml:Icon.DefaultColor), RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=CornerRadius,RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
+                        <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="2" SnapsToDevicePixels="True"/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">

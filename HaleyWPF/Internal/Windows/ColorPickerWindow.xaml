@@ -13,12 +13,11 @@
     Width="340"
     MinHeight="300"
     mc:Ignorable="d"
-    CornerRadius="10"
     HideFooter="True"
     HideMaximizeButton="True"
     HideMinimizeButton="True"
     SizeToContent="Height"
-    Title="Color Picker" HideIcon="True" WindowStartupLocation="CenterScreen" Background="#4C74ACB1">
+    Title="Color Picker" HideIcon="True" WindowStartupLocation="CenterScreen" Background="#7F05122C" ml:Icon.DefaultColor="White" hm:WindowBlurAP.IsEnabled="True" Margin="0" BorderThickness="0">
     <!--<bc:PlainWindow.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type bc:PlainWindow}">

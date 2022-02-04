@@ -1,24 +1,17 @@
 ﻿using Haley.Abstractions;
 using Haley.Enums;
-using Haley.Models;
-using Haley.MVVM;
 using Haley.Utils;
 using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
-using SysCtrls = System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Threading;
 using System.Windows.Shell;
+using System.Windows.Media;
 
 namespace Haley.WPF.Controls
 {
-    [TemplatePart(Name = UIEHeaderHolder, Type = typeof(Border))]
+    [TemplatePart(Name = UIEDragMoveRegion, Type = typeof(Border))]
     [TemplatePart(Name = UIEFooterHolder, Type = typeof(Border))]
     [TemplatePart(Name = UIEControlBoxHolder, Type = typeof(Grid))]
     [TemplatePart(Name = UIEHeader, Type = typeof(ContentControl))]
@@ -27,11 +20,13 @@ namespace Haley.WPF.Controls
     [TemplatePart(Name = UIECloseBtn, Type = typeof(Control))]
     [TemplatePart(Name = UIEMinimizeBtn, Type = typeof(Control))]
     [TemplatePart(Name = UIEMaximizeBtn, Type = typeof(Control))]
+    [TemplatePart(Name = UIEOverallBorder,Type =typeof(Border))]
     public class PlainWindow : Window, ICornerRadius
     {
-        private const string UIEHeaderHolder = "PART_header_holder";
+        private const string UIEDragMoveRegion = "PART_dragemoveArea";
         private const string UIEFooterHolder = "PART_footer_holder";
         private const string UIEControlBoxHolder = "PART_controlbox_holder";
+        private const string UIEOverallBorder = "PART_OverallBorder";
 
         private const string UIEHeader = "PART_header";
         private const string UIEFooter = "PART_footer";
@@ -41,8 +36,9 @@ namespace Haley.WPF.Controls
         private const string UIEMaximizeBtn = "PART_maximize";
         private const string UIECloseBtn = "PART_close";
 
-        private Border _headerHolder;
+        private Border _dragMoveRegion;
         private Border _footerHolder;
+        private Border _overallBorder;
         private Grid _controlboxHolder;
 
         private ContentControl _header;
@@ -57,24 +53,20 @@ namespace Haley.WPF.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PlainWindow), new FrameworkPropertyMetadata(typeof(PlainWindow)));
         }
 
-        public bool HideMinimizeButton { get; set; }
-        public bool HideMaximizeButton { get; set; }
-        public bool HideCloseButton { get; set; }
-        public bool HideFooter { get; set; }
-        public bool HideHeader { get; set; }
-        public ControlBoxStyle ControlBoxStyle { get; set; }
+        
 
         public PlainWindow() 
         {
             this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
             ControlBoxStyle = ControlBoxStyle.Windows;
-            WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(4.0),GlassFrameThickness = new Thickness(2.0)}); //for enabling resize
+            WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(4.0),GlassFrameThickness = new Thickness(3.0)}); //for enabling resize in borderless window
             //set border thickness to match the resize border
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Minimize, _minimizeAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Maximize, _maximizeAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Close, _closeAction));
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.DragMove, _dragMoveHeader));
+            CommandBindings.Add(new CommandBinding(AdditionalCommands.WindowDragMove, _dragMoveHeader));
+            
 
             ////This is to limit the maximum height of the screen.
             //MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
@@ -83,7 +75,8 @@ namespace Haley.WPF.Controls
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            _headerHolder = GetTemplateChild(UIEHeaderHolder) as Border;
+            _overallBorder = GetTemplateChild(UIEOverallBorder) as Border;
+            _dragMoveRegion = GetTemplateChild(UIEDragMoveRegion) as Border;
             _footerHolder = GetTemplateChild(UIEFooterHolder) as Border;
             _controlboxHolder = GetTemplateChild(UIEControlBoxHolder) as Grid;
 
@@ -97,29 +90,75 @@ namespace Haley.WPF.Controls
 
         void _initiate()
         {
-            if (HideFooter) _footerHolder.Visibility = Visibility.Collapsed;
-            if (HideHeader) _header.Visibility = Visibility.Collapsed; //Directly collapsing the header content control (Not the header holder).
-
             _headerDefaultTemplate = TryFindResource("defaultHeaderTemplate") as DataTemplate;
-            switch(ControlBoxStyle)
-            {
-                case ControlBoxStyle.Mac:
-                    _controlboxDefaultTemplate = TryFindResource("internal_controlboxMac") as DataTemplate;
-                    break;
-                case ControlBoxStyle.Windows:
-                default:
-                    _controlboxDefaultTemplate = TryFindResource("internal_controlboxWindows") as DataTemplate;
-                    break;
-            }
-
-            DataTemplate _targetControlbox = _controlboxDefaultTemplate;
-            if (ControlBoxTemplate != null) _targetControlbox = ControlBoxTemplate;
-
+           
             _setFooter();
             _setHeader();
-            _setControlBox();
+            _getAndSetControlBox();
             _setWindowCornerRadius(this.CornerRadius);
         }
+
+        public bool ClipBorder
+        {
+            get { return (bool)GetValue(ClipBorderProperty); }
+            set { SetValue(ClipBorderProperty, value); }
+        }
+
+        public static readonly DependencyProperty ClipBorderProperty =
+            DependencyProperty.Register(nameof(ClipBorder), typeof(bool), typeof(PlainWindow), new FrameworkPropertyMetadata(false,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
+        public ControlBoxStyle ControlBoxStyle
+        {
+            get { return (ControlBoxStyle)GetValue(ControlBoxStyleProperty); }
+            set { SetValue(ControlBoxStyleProperty, value); }
+        }
+
+        public static readonly DependencyProperty ControlBoxStyleProperty =
+            DependencyProperty.Register(nameof(ControlBoxStyle), typeof(ControlBoxStyle), typeof(PlainWindow), new PropertyMetadata(ControlBoxStyle.Windows));
+
+        public bool HideCloseButton
+        {
+            get { return (bool)GetValue(HideCloseButtonProperty); }
+            set { SetValue(HideCloseButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty HideCloseButtonProperty =
+            DependencyProperty.Register(nameof(HideCloseButton), typeof(bool), typeof(PlainWindow), new PropertyMetadata(false));
+        public bool HideMinimizeButton
+        {
+            get { return (bool)GetValue(HideMinimizeButtonProperty); }
+            set { SetValue(HideMinimizeButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty HideMinimizeButtonProperty =
+            DependencyProperty.Register(nameof(HideMinimizeButton), typeof(bool), typeof(PlainWindow), new PropertyMetadata(false));
+
+        public bool HideMaximizeButton
+        {
+            get { return (bool)GetValue(HideMaximizeButtonProperty); }
+            set { SetValue(HideMaximizeButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty HideMaximizeButtonProperty =
+            DependencyProperty.Register(nameof(HideMaximizeButton), typeof(bool), typeof(PlainWindow), new PropertyMetadata(false));
+
+        public bool HideFooter
+        {
+            get { return (bool)GetValue(HideFooterProperty); }
+            set { SetValue(HideFooterProperty, value); }
+        }
+
+        public static readonly DependencyProperty HideFooterProperty =
+            DependencyProperty.Register(nameof(HideFooter), typeof(bool), typeof(PlainWindow), new PropertyMetadata(false));
+
+        public bool HideHeader
+        {
+            get { return (bool)GetValue(HideHeaderProperty); }
+            set { SetValue(HideHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty HideHeaderProperty =
+            DependencyProperty.Register(nameof(HideHeader), typeof(bool), typeof(PlainWindow), new PropertyMetadata(false));
 
         public bool HideIcon
         {
@@ -179,7 +218,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty FooterHeightProperty =
-            DependencyProperty.Register("FooterHeight", typeof(double), typeof(PlainWindow), new FrameworkPropertyMetadata(25.0,null,coerceValueCallback: _headerfooterHeightCoerce));
+            DependencyProperty.Register(nameof(FooterHeight), typeof(double), typeof(PlainWindow), new FrameworkPropertyMetadata(25.0,null,coerceValueCallback: _headerfooterHeightCoerce));
 
         public CornerRadius CornerRadius
         {
@@ -199,19 +238,14 @@ namespace Haley.WPF.Controls
         }
         private void _setWindowCornerRadius(CornerRadius _radius)
         {
-            if (_headerHolder != null)
+            if (_dragMoveRegion != null)
             {
-                _headerHolder.CornerRadius = new CornerRadius(_radius.TopLeft, _radius.TopRight, 0.0, 0.0);
+                _dragMoveRegion.CornerRadius = new CornerRadius(_radius.TopLeft, _radius.TopRight, 0.0, 0.0);
             }
 
             if (!HideFooter && _footerHolder != null)
             {
                 _footerHolder.CornerRadius = new CornerRadius(0.0, 0.0, _radius.BottomRight, _radius.BottomLeft);
-            }
-
-            if (HideFooter)
-            {
-                SetCurrentValue(FooterHeightProperty, 5.0);
             }
         }
 
@@ -294,8 +328,26 @@ namespace Haley.WPF.Controls
         {
             if (d is PlainWindow pw)
             {
-                pw._setControlBox();
+                pw._getAndSetControlBox();
             }
+        }
+
+        void _getAndSetControlBox()
+        {
+            if (ControlBoxTemplate != null) _setControlBox(); //User defined custom tempate is not empty.
+
+            switch (ControlBoxStyle)
+            {
+                case ControlBoxStyle.Mac:
+                    _controlboxDefaultTemplate = TryFindResource("internal_controlboxMac") as DataTemplate;
+                    break;
+                case ControlBoxStyle.Windows:
+                default:
+                    _controlboxDefaultTemplate = TryFindResource("internal_controlboxWindows") as DataTemplate;
+                    break;
+            }
+
+            _setControlBox();
         }
 
         void _setControlBox()

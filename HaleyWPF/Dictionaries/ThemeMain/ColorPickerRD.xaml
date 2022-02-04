@@ -16,6 +16,7 @@
             <DrawingGroup>
                 <GeometryDrawing Brush="LightGray">
                     <GeometryDrawing.Geometry>
+                        <!--X,Y 0,0 Width Heigh 5,5-->
                         <RectangleGeometry Rect="0, 0, 5, 5"/>
                     </GeometryDrawing.Geometry>
                 </GeometryDrawing>
@@ -80,7 +81,7 @@
         <Setter Property="CommandParameter" Value="{Binding}"/>
     </Style>
 
-        <Style TargetType="{x:Type bc:ColorPicker}">
+    <Style TargetType="{x:Type bc:ColorPicker}">
         <Setter Property="ml:Shadow.BlurRadius" Value="0"/>
         <Setter Property="Background" Value="{DynamicResource def_background_primary}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>

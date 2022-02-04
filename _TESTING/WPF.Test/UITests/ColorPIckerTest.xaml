@@ -7,7 +7,7 @@
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
-        Title="ColorPIckerTest" Height="550" Width="400" CornerRadius="20" Background="DimGray" HideHeader="True" HideMaximizeButton="True" ControlBoxStyle="Mac" >
+        Title="ColorPIckerTest" Height="550" Width="400" CornerRadius="20" HideMaximizeButton="True" ControlBoxStyle="Mac" ClipBorder="True">
     <StackPanel Background="White" >
         <hw:PlainButton CornerRadius="10" Height="35" Background="#FFC8C4C8" Width="130" HorizontalAlignment="Left" Command="{Binding Cmd_OpenColorDialog}" VerticalAlignment="Top" hw:Shadow.Color="Red" Margin="20" hw:Shadow.BlurRadius="10" hw:Shadow.IsEnabled="True" hw:Hover.IsEnabled="True" hw:Hover.BorderThickness="0"/>
         <Grid>
