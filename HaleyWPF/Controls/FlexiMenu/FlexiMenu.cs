@@ -547,7 +547,7 @@ namespace Haley.WPF.Controls
                     var _value = LocalContainer.ContainsKey(item.ContainerKey);
                     if (_value.HasValue && _value.Value)
                     {
-                        _targetView = LocalContainer.GenerateViewFromKey(item.ContainerKey);
+                        _targetView = LocalContainer.GenerateViewFromKey(item.ContainerKey) as UserControl;
                     }
                 }
 
@@ -557,7 +557,7 @@ namespace Haley.WPF.Controls
                     var _value = _globalContainer.ContainsKey(item.ContainerKey);
                     if (_value.HasValue && _value.Value)
                     {
-                        _targetView = _globalContainer.GenerateViewFromKey(item.ContainerKey);
+                        _targetView = _globalContainer.GenerateViewFromKey(item.ContainerKey) as UserControl;
                     }
                 }
 
