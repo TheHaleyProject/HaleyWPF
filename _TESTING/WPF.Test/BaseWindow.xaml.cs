@@ -22,10 +22,10 @@ namespace WPF.Test
     /// </summary>
     public partial class BaseWindow : Window
     {
-        IDialogService _ds;
+        IDialogServiceEx _ds;
         public BaseWindow()
         {
-            _ds = ContainerStore.Singleton.DI.Resolve<IDialogService>();
+            _ds = ContainerStore.Singleton.DI.Resolve<IDialogServiceEx>();
             InitializeComponent();
             //var _mainvm = new MainVM();
             //_mainvm.SetCurrentView(nameof(BaseWindow));
@@ -66,7 +66,17 @@ namespace WPF.Test
         {
             NotificationTest _wndwNotification = new NotificationTest();
             _wndwNotification.ShowDialog();
-            notificationTest();
+            MainVM _vm = new MainVM();
+            _vm.something = new ObservableCollection<Person>();
+
+            _vm.something.Add(new Person("Johnson and Johnson", 45));
+            _vm.something.Add(new Person("Lux", 35));
+            _vm.something.Add(new Person("Medimix", 15));
+            _vm.something.Add(new Person("Cinthol", 145));
+            _vm.something.Add(new Person("Lifebouy", 63));
+
+            var _jesh = _ds.ShowContainerView<LocalView2>("Now new view", _vm);
+            //notificationTest();
         }
 
         private void btnScrollViewerTest_Click(object sender, RoutedEventArgs e)

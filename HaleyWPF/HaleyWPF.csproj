@@ -810,7 +810,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.2.1" />
+       <PackageReference Include="Haley.MVVM" Version="6.2.2" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

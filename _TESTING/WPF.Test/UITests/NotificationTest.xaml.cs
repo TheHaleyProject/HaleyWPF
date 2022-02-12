@@ -25,10 +25,10 @@ namespace WPF.Test
     /// </summary>
     public partial class NotificationTest : Window
     {
-        private IDialogService ds;
+        private IDialogServiceEx ds;
         public NotificationTest()
         {
-            ds = ContainerStore.Singleton.DI.Resolve<IDialogService>();
+            ds = ContainerStore.Singleton.DI.Resolve<IDialogServiceEx>();
             InitializeComponent();
         }
 
