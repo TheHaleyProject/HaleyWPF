@@ -22,7 +22,7 @@ namespace WPF.Test.External
             {
                 ts.Register(new AssemblyThemeBuilder()
                     .Add("Theme1", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeDark.xaml", UriKind.RelativeOrAbsolute))
-                    .Add("Theme3", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute)));
+                    .Add("Theme2", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute)));
                 _initiated = true;
             }
         }

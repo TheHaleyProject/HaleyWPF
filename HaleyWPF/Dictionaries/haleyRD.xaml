@@ -7,6 +7,7 @@
 
     <!--Users will get both haley base styles and also theme extra (in case they need to change something)-->
     <ResourceDictionary.MergedDictionaries>
+       
         <!--#region Base-->
         <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
         <!--#endregion-->
@@ -14,6 +15,6 @@
         <!--#region Theme Extra (For use as static resource)-->
         <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml"/>
         <!--#endregion-->
-   
+       
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

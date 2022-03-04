@@ -24,7 +24,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <WrapPanel Orientation="Horizontal" Background="{DynamicResource def_background_primary}">
-            <Button x:Name="btnCommonTest" Content="General Test" Click="btnCommonTest_Click"/>
+            <Button x:Name="btnCommonTest" Content="General Test" Click="btnCommonTest_Click" Background="{DynamicResource color_bg_2}"/>
             <Button x:Name="btnCardTest" Content="Card Test" Click="btnCardTest_Click" Background="{DynamicResource scb_core}"/>
             <Button  x:Name="btnBadgeTest" Content="Badge Test" Click="btnBadgeTest_Click"/>
             <Button  x:Name="btnColorPickerTest" Content="Colorpicker Test" Click="btnColorPickerTest_Click" Background="{DynamicResource def_accent_primary}" Foreground="{DynamicResource def_content_inverted}"/>

@@ -3,6 +3,6 @@
     xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
                    >
         <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/WPF.Test.External;component/Resources/SDMain.xaml"/>
+            <ResourceDictionary Source="pack://application:,,,/WPF.Test.External;component/Resources/ThemeDark.xaml"/>
         </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

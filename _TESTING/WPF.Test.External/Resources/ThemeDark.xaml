@@ -3,7 +3,7 @@
                    >
     
     <!--#region  Core Colors-->
-    <SolidColorBrush x:Key="color_bg_1" Color="#FF513939"/>
+    <SolidColorBrush x:Key="color_bg_1" Color="#FFD426A9"/>
     <SolidColorBrush x:Key="color_bg_2" Color="#FF1C80AE"/>
     <!--#endregion-->
 </ResourceDictionary>
