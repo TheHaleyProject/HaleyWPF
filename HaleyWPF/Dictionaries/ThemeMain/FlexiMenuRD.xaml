@@ -3,12 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.Controls"
     xmlns:enums="clr-namespace:Haley.Enums"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:mdl="clr-namespace:Haley.Models"
     xmlns:ul="clr-namespace:Haley.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
-        <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">

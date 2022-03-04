@@ -14,6 +14,8 @@ using System.Windows.Threading;
 using System;
 using WPF.Test.UITests;
 using System.Windows.Controls;
+using WPF.Test.External;
+using Haley.Services;
 
 namespace WPF.Test
 {
@@ -23,13 +25,22 @@ namespace WPF.Test
     public partial class BaseWindow : Window
     {
         IDialogServiceEx _ds;
+        IThemeService _ts;
         public BaseWindow()
         {
             _ds = ContainerStore.Singleton.DI.Resolve<IDialogServiceEx>();
             InitializeComponent();
+            _ts = ThemeService.Singleton;
+            _ts.ThemeChanged += _ts_ThemeChanged;
+            this.tblckTheme.Text = _ts.StartupTheme?.AsString() ?? "Null";
             //var _mainvm = new MainVM();
             //_mainvm.SetCurrentView(nameof(BaseWindow));
             //this.DataContext = _mainvm;
+        }
+
+        private void _ts_ThemeChanged(object sender, (object newTheme, object oldTheme) e)
+        {
+            this.tblckTheme.Text = e.newTheme?.AsString() ?? "Null";
         }
 
         private void btnCardTest_Click(object sender, RoutedEventArgs e)
@@ -167,6 +178,12 @@ namespace WPF.Test
         private void btnContainerViewerTest_Click(object sender, RoutedEventArgs e)
         {
             ContainerViewerTest _wndw = new ContainerViewerTest();
+            _wndw.ShowDialog();
+        }
+
+        private void btnExternalWindow_Click(object sender, RoutedEventArgs e)
+        {
+            WndwExternal _wndw = new WndwExternal();
             _wndw.ShowDialog();
         }
     }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{00B06F81-F672-40CD-8149-CA14D721DD7C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>WPF.Test</RootNamespace>
-    <AssemblyName>WPF.Test</AssemblyName>
+    <ProjectGuid>{55CABF85-5B4B-42CF-B974-0F5501BB17AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WPF.Test.External</RootNamespace>
+    <AssemblyName>WPF.Test.External</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -25,7 +25,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,11 +35,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows" />
-    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,183 +55,25 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <Page Include="Resources\RDMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="DataVM.cs" />
-    <Compile Include="UITests\BadgeTesting.xaml.cs">
-      <DependentUpon>BadgeTesting.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BaseWindow.xaml.cs">
-      <DependentUpon>BaseWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\CardTest.xaml.cs">
-      <DependentUpon>CardTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\ColorPIckerTest.xaml.cs">
-      <DependentUpon>ColorPIckerTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\LocalView2.xaml.cs">
-      <DependentUpon>LocalView2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\VanakkamView.xaml.cs">
-      <DependentUpon>VanakkamView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\WelcomeView.xaml.cs">
-      <DependentUpon>WelcomeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\ContainerViewerTest.xaml.cs">
-      <DependentUpon>ContainerViewerTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\ExpanderTest.xaml.cs">
-      <DependentUpon>ExpanderTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GlobalData.cs" />
-    <Compile Include="MainVM.cs" />
-    <Compile Include="UITests\NewFlexiMenu.xaml.cs">
-      <DependentUpon>NewFlexiMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\NotificationTest.xaml.cs">
-      <DependentUpon>NotificationTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Resources.ta.Designer.cs">
-      <DependentUpon>Resources.ta.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="RibbonTest.xaml.cs">
-      <DependentUpon>RibbonTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\PlainDesigner.xaml.cs">
-      <DependentUpon>PlainDesigner.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\PlainWindowTest.xaml.cs">
-      <DependentUpon>PlainWindowTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UITests\ScrollViewerTest.xaml.cs">
-      <DependentUpon>ScrollViewerTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SubVM.cs" />
-    <Compile Include="UITests\ThemeTest.xaml.cs">
-      <DependentUpon>ThemeTest.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ToTestControl.xaml.cs">
-      <DependentUpon>ToTestControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="VerificationConverter.cs" />
-    <Compile Include="UITests\WndwPagination.xaml.cs">
-      <DependentUpon>WndwPagination.xaml</DependentUpon>
-    </Compile>
-    <Page Include="UITests\BadgeTesting.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BaseWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\CardTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\ColorPIckerTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\LocalView2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\VanakkamView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\WelcomeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\ContainerViewerTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\ExpanderTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="UITests\MainWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="UITests\NewFlexiMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\NotificationTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\DicRD.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\DicSD.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\External.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Resources\MSDatagrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ThemeDark.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\ThemeLight.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WndwExternal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="RibbonTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="UITests\PlainDesigner.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\PlainWindowTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UITests\ScrollViewerTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="UITests\ThemeTest.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="Controls\ToTestControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
-    </Page>
-    <Page Include="UITests\WndwPagination.xaml">
-      <SubType>Designer</SubType>
-      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UITests\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="EntryModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -245,10 +87,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.ta.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.ta.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Compile Include="WndwExternal.xaml.cs">
+      <DependentUpon>WndwExternal.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -258,21 +99,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\aerial.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\hippo_bliue.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WPF.Test.External\WPF.Test.External.csproj">
-      <Project>{55cabf85-5b4b-42cf-b974-0f5501bb17ad}</Project>
-      <Name>WPF.Test.External</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
     <When Condition="Exists($(HaleyAbstractions))">
@@ -388,5 +215,4 @@
       </ItemGroup>
     </Otherwise>
   </Choose>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

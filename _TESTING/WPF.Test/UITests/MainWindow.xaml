@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" 
-        hm:ThemeAP.NewTheme="{Binding Path=current_theme, Source={x:Static local:GlobalData.Singleton},NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}">
+        >
     <Window.Resources>
         <Style TargetType="{x:Type hw:PlainToggleButton}">
             <Setter Property="hw:Shadow.Color" Value="Blue"/>
@@ -28,7 +28,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
+        <StackPanel Background="{DynamicResource def_background_primary}">
             <hw:ImageButton Height="40" Width="40"  hw:Icon.Default="{StaticResource refresh}"  hw:Icon.DefaultColor="{DynamicResource scb_highlight}" hw:Icon.HoverColor="Green"/>
             <hw:PlainButton Height="40" Width="120" HorizontalAlignment="Center"  CornerRadius="10" Content="Hello" Background="{DynamicResource scb_background2}"  Foreground="{DynamicResource scb_content}" hw:Shadow.IsEnabled="True" hw:Shadow.Color="Pink" hw:Shadow.OnlyOnMouseOver="False"/>
             <Button Height="40" Width="120" HorizontalAlignment="Center"  Content="What" />
@@ -40,7 +40,7 @@
             <hw:PlainToggleButton CornerRadius="8" IsChecked="{x:Null}" OnText="Yes" OffText="No" Margin="3"/>
             <hw:PlainToggleButton  IsChecked="False" OnText="True" OffText="False"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="20">
+        <StackPanel Grid.Column="1" Margin="20" Background="{DynamicResource color_bg_2}">
             <hw:ComboButton Height="70" Width="90" Content="Favourites" ImageLocation="Top" Background="{x:Null}" hw:Icon.Default="{StaticResource heart_shiny}" hw:Icon.DefaultColor="{DynamicResource button_hover}" hw:Icon.HoverColor="#FF9413C2"/>
             <hw:ComboButton Height="70" Width="180" Content="Favourites" ImageLocation="Bottom" Background="{x:Null}"  hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="{DynamicResource scb_content}" hw:Icon.HoverColor="#FF3295ED"/>
             <hw:ComboButton Height="30" Width="120" Content="Favourites" ImageLocation="Left" HorizontalContentAlignment="Left" Background="{x:Null}" hw:Icon.Default="{StaticResource music}" hw:Icon.DefaultColor="{DynamicResource scb_content}" hw:Icon.Hover="{StaticResource music_cd}" hw:Icon.HoverColor="#FF3295ED"/>

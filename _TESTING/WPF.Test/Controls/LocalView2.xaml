@@ -8,6 +8,7 @@
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <UserControl.Resources>
         <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="ImageLocation" Value="Top"/>
@@ -56,6 +57,7 @@
                     <hw:PlainTextBox Text="{Binding counter,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="50" Margin="5" Foreground="{DynamicResource def_content}" WaterMark=""/>
                     <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" CommandParameter="testkitty2" Command="{Binding Cmd_ChangeContainerKey}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False" Content="Change"/>
                     <hw:PlainButton Width="50" Height="30" HorizontalAlignment="Left" Margin="3" CornerRadius="4" CommandParameter="testkitty234" Command="{Binding Cmd_ChangeContainerKey}" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="False" Content="W Change"/>
+                    <Grid Width="50" Height="30" HorizontalAlignment="Left" Margin="3" Background="{DynamicResource scb_core}"/>
                 </StackPanel>
 
 

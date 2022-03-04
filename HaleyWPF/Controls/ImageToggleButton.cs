@@ -6,7 +6,9 @@ using Haley.Enums;
 
 namespace Haley.WPF.Controls
 {
-    //Apart from whatever is in the ToggleButtonBase, we also add an icon
+    /// <summary>
+    /// Toggle button to change image.
+    /// </summary>
     public class ImageToggleButton : ToggleButtonBase
     {
         static ImageToggleButton()
@@ -21,6 +23,7 @@ namespace Haley.WPF.Controls
         public override void OnApplyTemplate()
         {
             if (Icon == null) Icon = ResourceHelper.getIcon(IconEnums.empty_image.ToString());
+            if (OffIcon == null) SetCurrentValue(OffIconProperty, Icon);
             base.OnApplyTemplate();
         }
 
@@ -32,5 +35,14 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(ImageToggleButton), new PropertyMetadata(null));
+
+        public ImageSource OffIcon
+        {
+            get { return (ImageSource)GetValue(OffIconProperty); }
+            set { SetValue(OffIconProperty, value); }
+        }
+
+        public static readonly DependencyProperty OffIconProperty =
+            DependencyProperty.Register(nameof(OffIcon), typeof(ImageSource), typeof(ImageToggleButton), new PropertyMetadata(null));
     }
 }

@@ -1,27 +1,28 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:model="clr-namespace:Haley.Models">
+    >
 
     <ResourceDictionary.MergedDictionaries>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeColors/ThemeNormal.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeColors/ThemeNormal.xaml"/>
         
-        <model:CommonDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
 
         <!--Order:  Defaults, Icons, Converters and then followed by base styles.-->
         
         <!--#region Primary-->
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons01.xaml"/>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons01.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml"/>
         <!--#endregion-->
      
         <!--#region Base Styles-->
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FlexiScrollStyles.xaml"/>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
-        <model:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FloatingPanelStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FlexiScrollStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FloatingPanelStyles.xaml"/>
         <!--#endregion-->
    
     </ResourceDictionary.MergedDictionaries>

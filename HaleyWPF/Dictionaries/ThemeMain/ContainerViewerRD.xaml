@@ -4,11 +4,12 @@
     xmlns:bc="clr-namespace:Haley.WPF.Controls"
     xmlns:enums="clr-namespace:Haley.Enums"
     xmlns:mdl="clr-namespace:Haley.Models"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:ul="clr-namespace:Haley.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
-        <mdl:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ContainerViewer}">

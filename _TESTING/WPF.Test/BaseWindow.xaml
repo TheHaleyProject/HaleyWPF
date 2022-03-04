@@ -7,11 +7,11 @@
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
-        Title="BaseWindow" Height="450" Width="800" >
+        Title="BaseWindow" Height="450" Width="650" >
     <Window.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type Button}">
-                <Setter Property="Width" Value="120"/>
+                <Setter Property="Width" Value="180"/>
                 <Setter Property="Height" Value="40"/>
                 <Setter Property="Margin" Value="10"/>
                 <Setter Property="FontSize" Value="14"/>
@@ -19,11 +19,15 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <WrapPanel Orientation="Horizontal">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Orientation="Horizontal" Background="{DynamicResource def_background_primary}">
             <Button x:Name="btnCommonTest" Content="General Test" Click="btnCommonTest_Click"/>
-            <Button x:Name="btnCardTest" Content="Card Test" Click="btnCardTest_Click"/>
+            <Button x:Name="btnCardTest" Content="Card Test" Click="btnCardTest_Click" Background="{DynamicResource scb_core}"/>
             <Button  x:Name="btnBadgeTest" Content="Badge Test" Click="btnBadgeTest_Click"/>
-            <Button  x:Name="btnColorPickerTest" Content="Colorpicker Test" Click="btnColorPickerTest_Click"/>
+            <Button  x:Name="btnColorPickerTest" Content="Colorpicker Test" Click="btnColorPickerTest_Click" Background="{DynamicResource def_accent_primary}" Foreground="{DynamicResource def_content_inverted}"/>
             <Button  x:Name="btnExpanderTest" Content="Expander Test" Click="btnExpanderTest_Click"/>
             <Button  x:Name="btnFlexiMenuTest" Content="FlexiMenu Test" Click="btnFlexiMenuTest_Click"/>
             <Button  x:Name="btnNotificationTest" Content="Notification Test" Click="btnNotificationTest_Click"/>
@@ -32,7 +36,9 @@
             <Button x:Name="btnPaginationTest" Content="Pagination Test" Click="btnPaginationTest_Click"/>
             <Button x:Name="btnPlainWindowTest" Content="PlainWindow Test" Click="btnPlainWindowTest_Click" />
             <Button  x:Name="btnContainerViewerTest" Content="ContainerViewer Test" Click="btnContainerViewerTest_Click"/>
+            <Button  x:Name="btnExternalWindow" Content="ExternalWindow" Click="btnExternalWindow_Click"/>
         </WrapPanel>
+        <TextBlock Text="" Grid.Row="1" FontSize="18" Margin="5" Foreground="Red" x:Name="tblckTheme"/>
     </Grid>
 
 </Window>

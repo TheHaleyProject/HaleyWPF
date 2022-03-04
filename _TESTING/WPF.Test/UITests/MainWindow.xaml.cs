@@ -4,6 +4,8 @@ using System.Windows;
 using System;
 using Haley.Enums;
 using System.Collections.ObjectModel;
+using Haley.Abstractions;
+using Haley.Services;
 
 namespace WPF.Test
 {
@@ -13,6 +15,7 @@ namespace WPF.Test
     public partial class MainWindow : Window
     {
         public bool is_dark_theme = true;
+        private IThemeService _ts;
         public MainWindow()
         {
             InitializeComponent();
@@ -40,53 +43,36 @@ namespace WPF.Test
 
         private void PlainButton_Click_1(object sender, RoutedEventArgs e)
         {
-            /*_changeTheme();*/ //DIRECTLY CHANGE.
-            ThemeLoader.Singleton.changeTheme(_getTheme());
-            //Old theme will be set by themeloader.
+            changeTheme();
         }
 
-        private Theme _getTheme()
+        private void changeTheme()
         {
-            var _lightTheme = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute);
-            var _darkTheme = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/ThemeDark.xaml", UriKind.RelativeOrAbsolute);
-            //var _base_dic = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml", UriKind.RelativeOrAbsolute);
-            Uri _base_dic = null;
-            Theme activeTheme = null;
-            //Switch theme.
-            switch (is_dark_theme)
+            _ts = ThemeService.Singleton;
+            switch (_ts.ActiveTheme)
             {
-                case true:
-                    activeTheme = new Theme(_lightTheme, _darkTheme, _base_dic);
-                    is_dark_theme = false;
+                case null:
+                case "Theme1":
+                    //If null, assume we are already at startuptheme.
+                    _ts.ChangeTheme("Theme2");
                     break;
-                case false:
-                    activeTheme = new Theme(_darkTheme, _lightTheme, _base_dic);
-                    is_dark_theme = true;
+                case "Theme2":
+                    _ts.ChangeTheme("Theme3");
+                    break;
+                case "Theme3":
+                    _ts.ChangeTheme("Theme1");
                     break;
             }
-            return activeTheme;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var theme = _getTheme();
-            ThemeLoader.Singleton.changeTheme(this, theme,Haley.Enums.SearchPriority.FrameworkElement);
+
         }
 
         private void PlainButton_Click_2(object sender, RoutedEventArgs e)
         {
-            var _currentmode = ThemeLoader.Singleton.current_internal_mode;
-            ThemeMode _newmode = ThemeMode.Dark;
-            switch(_currentmode)
-            { 
-                case ThemeMode.Dark:
-                    _newmode = ThemeMode.Normal;
-                    break;
-                case ThemeMode.Normal:
-                    _newmode = ThemeMode.Dark;
-                    break;
-            }
-            ThemeLoader.Singleton.changeInternalTheme(_newmode);
+            changeTheme();
         }
 
         private void pBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)

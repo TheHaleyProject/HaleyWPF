@@ -19,7 +19,8 @@ namespace WPF.Test
     {
         #region Attributes
         private IDialogService _dialogService;
-        private ColorPickerDialog _cp;
+        private IThemeService _ts;
+        private IColorPickerService _cp;
         #endregion
 
         #region Properties
@@ -154,18 +155,18 @@ namespace WPF.Test
 
         void _changetheme()
         {
-            ThemeMode _mode = ThemeLoader.Singleton.current_internal_mode;
-
-            switch(_mode)
+            switch(_ts.ActiveTheme)
             {
-                case ThemeMode.Dark:
-                    ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Normal);
+                case null:
+                case "Theme1":
+                    //If null, assume we are already at startuptheme.
+                    _ts.ChangeTheme("Theme2");
                     break;
-                case ThemeMode.Normal:
-                    ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Mild);
+                case "Theme2":
+                    _ts.ChangeTheme("Theme3");
                     break;
-                case ThemeMode.Mild:
-                    ThemeLoader.Singleton.changeInternalTheme(ThemeMode.Dark);
+                case "Theme3":
+                    _ts.ChangeTheme("Theme1");
                     break;
             }
         }
@@ -217,8 +218,12 @@ namespace WPF.Test
             SystemDefaultColors = new Dictionary<string, Color>();
             SystemDefaultColors = ColorUtils.GetSystemColors();
             PersonFilter = _filterSearch;
+            _ts = ThemeService.Singleton;
 
         }
+
+        
+
         private bool _filterSearch(object item, string filter_key)
         {
             if (item is Person p)

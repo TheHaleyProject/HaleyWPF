@@ -1,11 +1,12 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:bc="clr-namespace:Haley.WPF.Controls"
     xmlns:ml="clr-namespace:Haley.Models">
 
     <ResourceDictionary.MergedDictionaries>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Common/ToggleButtonCommon.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Common/ToggleButtonCommon.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_tglebtn_plainImage" TargetType="{x:Type bc:PlainImage}">
@@ -31,7 +32,7 @@
                     <Border x:Name="PART_BorderMain" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{x:Null}">
                         <Grid>
                             <bc:PlainImage x:Name="Image_ON"    ml:Icon.DefaultColor="{TemplateBinding ColorON}" Style="{StaticResource internal_tglebtn_plainImage}"/>
-                            <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" Style="{StaticResource internal_tglebtn_plainImage}"/>
+                            <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" ml:Icon.Default="{TemplateBinding OffIcon}"  Style="{StaticResource internal_tglebtn_plainImage}"/>
                             <bc:PlainImage x:Name="Image_NULL"  ml:Icon.DefaultColor="{DynamicResource def_border_brush}" Style="{StaticResource internal_tglebtn_plainImage}"/>
                         </Grid>
                     </Border>

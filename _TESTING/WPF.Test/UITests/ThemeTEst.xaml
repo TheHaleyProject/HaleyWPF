@@ -78,6 +78,7 @@
                     <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource microphone}" Height="Auto"/>
                     <hw:ImageToggleButton IsChecked="{x:Null}" Icon="{StaticResource heart_plain}" Height="Auto"/>
                     <hw:ImageToggleButton Icon="{StaticResource chat_single}" Height="Auto"/>
+                    <hw:ImageToggleButton Icon="{StaticResource chat_single}" OffIcon="{StaticResource heart_line}" Height="40" Width="40"/>
                 </StackPanel>
                 <hw:HotKeyEditor CornerRadius="5" Height="30"/>
 
