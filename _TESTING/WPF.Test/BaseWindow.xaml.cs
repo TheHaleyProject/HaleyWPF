@@ -38,9 +38,9 @@ namespace WPF.Test
             //this.DataContext = _mainvm;
         }
 
-        private void _ts_ThemeChanged(object sender, (object newTheme, object oldTheme) e)
+        private void _ts_ThemeChanged(object sender, object e)
         {
-            this.tblckTheme.Text = e.newTheme?.AsString() ?? "Null";
+            this.tblckTheme.Text = e.AsString() ?? "Null";
         }
 
         private void btnCardTest_Click(object sender, RoutedEventArgs e)

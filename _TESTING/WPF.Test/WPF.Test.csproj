@@ -284,7 +284,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Abstractions" Version="1.0.8" />
+        <PackageReference Include="Haley.Abstractions" Version="1.0.9" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -329,7 +329,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.2.8" />
+        <PackageReference Include="Haley.MVVM" Version="6.2.9" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -344,7 +344,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF" Version="5.2.1" />
+        <PackageReference Include="Haley.WPF" Version="5.2.5" />
       </ItemGroup>
     </Otherwise>
   </Choose>

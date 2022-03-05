@@ -49,18 +49,18 @@ namespace WPF.Test
                 .Add("Theme1", InternalThemeMode.Normal)
                 .Add("Theme2", InternalThemeMode.Mild)
                 .Add("Theme3", InternalThemeMode.Dark);
-            _ts.Register(internalBuilder);
+            _ts.RegisterGroup(internalBuilder);
 
             //Register external themes if required.
             var _lightTheme = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute);
             var _darkTheme = new Uri($@"pack://application:,,,/WPF.Test;component/Resources/ThemeDark.xaml", UriKind.RelativeOrAbsolute);
 
-            _ts.Register(new AssemblyThemeBuilder()
+            _ts.RegisterGroup(new AssemblyThemeBuilder()
                 .Add("Theme1", _lightTheme)
                 .Add("Theme2", _darkTheme));
 
 
-            _ts.Register(new AssemblyThemeBuilder()
+            _ts.RegisterGroup(new AssemblyThemeBuilder()
                .Add("Theme1", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeDark.xaml", UriKind.RelativeOrAbsolute))
                .Add("Theme2", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute)));
 
