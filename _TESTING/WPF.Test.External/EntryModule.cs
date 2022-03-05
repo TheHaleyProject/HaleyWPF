@@ -20,7 +20,7 @@ namespace WPF.Test.External
         {
             if(!_initiated)
             {
-                ts.Register(new AssemblyThemeBuilder()
+                ts.RegisterGroup(new AssemblyThemeBuilder()
                     .Add("Theme1", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeDark.xaml", UriKind.RelativeOrAbsolute))
                     .Add("Theme2", new Uri("pack://application:,,,/WPF.Test.External;component/Resources/ThemeLight.xaml", UriKind.RelativeOrAbsolute)));
                 _initiated = true;
