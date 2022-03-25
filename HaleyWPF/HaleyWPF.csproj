@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.2.6</Version>
+		<Version>5.2.8</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -15,7 +15,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
-		<PackageReleaseNotes>Updated references to latest Haley.Extensions library</PackageReleaseNotes>
+		<PackageReleaseNotes>Updated with latest IOC and MVVM</PackageReleaseNotes>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
@@ -318,7 +318,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.IOC" Version="3.0.6" />
+    <PackageReference Include="Haley.IOC" Version="3.0.9" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
@@ -765,7 +765,7 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Haley.Abstractions" Version="1.0.10" />
+				<PackageReference Include="Haley.Abstractions" Version="1.0.13" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -780,7 +780,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Extensions" Version="2.1.5" />
+       <PackageReference Include="Haley.Extensions" Version="2.1.7" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -810,7 +810,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.2.10" />
+       <PackageReference Include="Haley.MVVM" Version="6.2.14" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
