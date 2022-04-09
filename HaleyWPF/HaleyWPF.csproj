@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.2.9</Version>
+		<Version>5.2.10</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -301,6 +301,12 @@
     <None Remove="Images\zoom_out_line.png" />
     <None Remove="Images\zoom_out_line_medium.png" />
     <None Remove="Images\zoom_out_medium.png" />
+    <None Remove="Properties\history.png" />
+    <None Remove="Properties\history_medium.png" />
+    <None Remove="Properties\paintbrush.png" />
+    <None Remove="Properties\paintbrush_2.png" />
+    <None Remove="Properties\paintbrush_2_medium.png" />
+    <None Remove="Properties\paintbrush_medium.png" />
   </ItemGroup>
 	
   <ItemGroup>
@@ -571,6 +577,12 @@
     <Resource Include="Images\zoom_out_line.png" />
     <Resource Include="Images\zoom_out_line_medium.png" />
     <Resource Include="Images\zoom_out_medium.png" />
+    <Resource Include="Images\history.png" />
+    <Resource Include="Images\history_medium.png" />
+    <Resource Include="Images\paintbrush.png" />
+    <Resource Include="Images\paintbrush_2.png" />
+    <Resource Include="Images\paintbrush_2_medium.png" />
+    <Resource Include="Images\paintbrush_medium.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -765,7 +777,7 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Haley.Abstractions" Version="1.0.13" />
+				<PackageReference Include="Haley.Abstractions" Version="1.0.14" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -780,7 +792,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Extensions" Version="2.1.7" />
+       <PackageReference Include="Haley.Extensions" Version="2.1.10" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -795,7 +807,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Helpers" Version="2.1.3" />
+       <PackageReference Include="Haley.Helpers" Version="2.1.4" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -810,7 +822,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.2.15" />
+       <PackageReference Include="Haley.MVVM" Version="6.2.16" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

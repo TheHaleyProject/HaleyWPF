@@ -32,6 +32,11 @@
     <ImageSource x:Key="unlock_filled_circle">pack://application:,,,/Haley.WPF;component/Images/unlock_filled_circle.png</ImageSource>
     <ImageSource x:Key="unlock_filled_circle_medium">pack://application:,,,/Haley.WPF;component/Images/unlock_filled_circle_medium.png</ImageSource>
     <ImageSource x:Key="unlock_medium">pack://application:,,,/Haley.WPF;component/Images/unlock_medium.png</ImageSource>
-
+    <ImageSource x:Key="history">pack://application:,,,/Haley.WPF;component/Images/history.png</ImageSource>
+    <ImageSource x:Key="history_medium">pack://application:,,,/Haley.WPF;component/Images/history_medium.png</ImageSource>
+    <ImageSource x:Key="paintbrush">pack://application:,,,/Haley.WPF;component/Images/paintbrush.png</ImageSource>
+    <ImageSource x:Key="paintbrush_2">pack://application:,,,/Haley.WPF;component/Images/paintbrush_2.png</ImageSource>
+    <ImageSource x:Key="paintbrush_2_medium">pack://application:,,,/Haley.WPF;component/Images/paintbrush_2_medium.png</ImageSource>
+    <ImageSource x:Key="paintbrush_medium">pack://application:,,,/Haley.WPF;component/Images/paintbrush_medium.png</ImageSource>
 
 </ResourceDictionary>

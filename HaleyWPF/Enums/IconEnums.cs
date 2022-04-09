@@ -257,6 +257,13 @@ namespace Haley.Enums
         unlock_filled_circle,
         unlock_filled_circle_medium,
         unlock_medium,
+        history,
+        history_medium,
+        paintbrush,
+        paintbrush_2,
+        paintbrush_2_medium,
+        paintbrush_medium,
+
 
         #endregion
     }
