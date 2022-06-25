@@ -123,18 +123,19 @@
                                         <ContentControl x:Name="PART_footer"/>
                                     </Border>
 
-                                    <!--Content Presenter-->
-                                    <ContentPresenter Grid.Row="1" Margin="0" IsHitTestVisible="True" />
+                                    <!--Content Presenter (should lie on top of everything, including the drag move area)--> 
+                                    <ContentPresenter Grid.Row="1" Margin="0" IsHitTestVisible="True" Panel.ZIndex="1000"/>
                                 </Grid>
 
                                 <Grid>
-                                    <Border x:Name="PART_dragemoveArea" Margin="0" Padding="0" IsHitTestVisible="True" Background="Transparent" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}" VerticalAlignment="Top">
+                                    <Border x:Name="PART_dragemoveArea" Margin="0" Padding="0" IsHitTestVisible="True" Background="Transparent" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}" VerticalAlignment="Top" >
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="MouseLeftButtonDown">
                                                 <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.WindowDragMove}" />
                                             </i:EventTrigger>
                                         </i:Interaction.Triggers>
                                     </Border>
+
                                     <!--Control box (totally outside the header grid)-->
                                     <Grid x:Name="PART_controlbox_holder" VerticalAlignment="Top" Height="27" Margin="10,4" HorizontalAlignment="Right" IsHitTestVisible="True" Background="Transparent">
                                         <ContentControl x:Name="PART_controlbox" IsHitTestVisible="True"/>
