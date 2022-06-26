@@ -35,6 +35,7 @@ namespace Haley.WPF.Controls
         private const string UIEMinimizeBtn = "PART_minimize";
         private const string UIEMaximizeBtn = "PART_maximize";
         private const string UIECloseBtn = "PART_close";
+        private const string UIEMainContent = "PART_mainContent";
 
         private Border _dragMoveRegion;
         private Border _footerHolder;
@@ -44,6 +45,7 @@ namespace Haley.WPF.Controls
         private ContentControl _header;
         private ContentControl _footer;
         private ContentControl _controlBox;
+        private ContentPresenter _mainContent;
 
         private DataTemplate _headerDefaultTemplate;
         private DataTemplate _controlboxDefaultTemplate;
@@ -60,13 +62,12 @@ namespace Haley.WPF.Controls
             this.AllowsTransparency = true;
             this.WindowStyle = WindowStyle.None;
             ControlBoxStyle = ControlBoxStyle.Windows;
-            WindowChrome.SetWindowChrome(this, new WindowChrome() {ResizeBorderThickness=new Thickness(4.0),GlassFrameThickness = new Thickness(3.0)}); //for enabling resize in borderless window
+            WindowChrome.SetWindowChrome(this, new WindowChrome() { ResizeBorderThickness = new Thickness(3.0), GlassFrameThickness = new Thickness(3.0) }); //for enabling resize in borderless window
             //set border thickness to match the resize border
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Minimize, _minimizeAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Maximize, _maximizeAction));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Close, _closeAction));
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.WindowDragMove, _dragMoveHeader));
-            
+            CommandBindings.Add(new CommandBinding(PlainWindowCommands.WindowDragMove, _dragMoveHeader));
 
             ////This is to limit the maximum height of the screen.
             //MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
@@ -83,8 +84,11 @@ namespace Haley.WPF.Controls
             _header = GetTemplateChild(UIEHeader) as ContentControl;
             _footer = GetTemplateChild(UIEFooter) as ContentControl;
             _controlBox = GetTemplateChild(UIEControlBox) as ContentControl;
+            _mainContent = GetTemplateChild(UIEMainContent) as ContentPresenter;
 
             WindowChrome.SetIsHitTestVisibleInChrome(_controlboxHolder, true); //Important or else the control box items hit will not be visible.
+            //WindowChrome.SetIsHitTestVisibleInChrome(_dragMoveRegion, true); //Important or else the control box items hit will not be visible.
+            //WindowChrome.SetIsHitTestVisibleInChrome(_mainContent, true);
             _initiate();
         }
 

@@ -7,8 +7,15 @@
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
         mc:Ignorable="d"
-        Title="PlainWindowTest" Height="450" Width="800" WindowStartupLocation="CenterScreen" hw:Icon.DefaultColor="White"  HeaderHeight="30" HideHeader="True" HideFooter="True" SnapsToDevicePixels="True" Background="Transparent" ClipBorder="True" BorderBrush="Pink" hm:WindowBlurAP.IsEnabled="True" Margin="0">
-    <Border >
-        <Button Height="30" Width="150" Content="Raise Dialog" Click="Button_Click"/>
+        Title="PlainWindowTest" Height="450" Width="800" WindowStartupLocation="CenterScreen" hw:Icon.DefaultColor="White"  HeaderHeight="30" HideHeader="True" HideFooter="True" SnapsToDevicePixels="True"  BorderBrush="Pink" Margin="0" Background="Transparent" >
+    <Border Margin="0,30,0,0">
+        <TabControl PreviewMouseLeftButtonDown="TabControl_PreviewMouseLeftButtonDown">
+            <TabItem Header="One" Height="40">
+                <Button Height="30" Width="150" Content="Raise Dialog" Click="Button_Click"/>
+            </TabItem>
+            <TabItem Header="two">
+                <Grid Background="Green"/>
+            </TabItem>
+        </TabControl>
     </Border>
 </hw:PlainWindow>

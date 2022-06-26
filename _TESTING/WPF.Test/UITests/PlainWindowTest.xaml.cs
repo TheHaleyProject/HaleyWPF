@@ -43,5 +43,9 @@ namespace WPF.Test.UITests
             //_ds.Foreground = Brushes.Purple;
             _ds.Info("Working", "message raised");
         }
+
+        private void TabControl_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e) {
+            //e.Handled = true;
+        }
     }
 }

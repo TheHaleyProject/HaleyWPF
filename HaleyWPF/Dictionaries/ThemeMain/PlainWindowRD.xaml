@@ -107,8 +107,18 @@
                             <i:Interaction.Behaviors>
                                 <ml:BorderClipper EnableClip="{Binding ClipBorder,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}" Radius="{Binding CornerRadius,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"/>
                             </i:Interaction.Behaviors>
+                            
                             <Grid>
-                                <Grid>
+                                <!-- Among the below children we need to have the control box on top of everything. Drag move area could be bottom most one.-->
+                                <Border x:Name="PART_dragemoveArea" Margin="0" Padding="0" Background="Transparent" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}" VerticalAlignment="Top" Panel.ZIndex="998" IsHitTestVisible="True">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{x:Static ul:PlainWindowCommands.WindowDragMove}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </Border>
+
+                                <Grid Panel.ZIndex="997">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition />
@@ -123,23 +133,14 @@
                                         <ContentControl x:Name="PART_footer"/>
                                     </Border>
 
-                                    <!--Content Presenter (should lie on top of everything, including the drag move area)--> 
-                                    <ContentPresenter Grid.Row="1" Margin="0" IsHitTestVisible="True" Panel.ZIndex="1000"/>
+                                    <!--Content Presenter (should lie on top of everything, including the drag move area)-->
+                                    <!-- Anyhow the content presenter is overlaid at top of the grid children (with in this grid). However, we also set the zindex to 999 so that we donot forget in future. -->
+                                    <ContentPresenter x:Name="PART_mainContent" Grid.Row="1" Margin="0" IsHitTestVisible="True"/>
                                 </Grid>
 
-                                <Grid>
-                                    <Border x:Name="PART_dragemoveArea" Margin="0" Padding="0" IsHitTestVisible="True" Background="Transparent" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}" VerticalAlignment="Top" >
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="MouseLeftButtonDown">
-                                                <i:InvokeCommandAction Command="{x:Static ul:AdditionalCommands.WindowDragMove}" />
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </Border>
-
-                                    <!--Control box (totally outside the header grid)-->
-                                    <Grid x:Name="PART_controlbox_holder" VerticalAlignment="Top" Height="27" Margin="10,4" HorizontalAlignment="Right" IsHitTestVisible="True" Background="Transparent">
-                                        <ContentControl x:Name="PART_controlbox" IsHitTestVisible="True"/>
-                                    </Grid>
+                                <!--Control box (totally outside the header grid. We also set the zindex so that it remains the top most.)-->
+                                <Grid x:Name="PART_controlbox_holder" VerticalAlignment="Top" Height="27" Margin="10,4" HorizontalAlignment="Right" Background="Transparent"  IsHitTestVisible="True" Panel.ZIndex="999">
+                                    <ContentControl x:Name="PART_controlbox" IsHitTestVisible="True"/>
                                 </Grid>
                             </Grid>
 

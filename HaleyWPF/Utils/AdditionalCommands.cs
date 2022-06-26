@@ -29,9 +29,6 @@ namespace Haley.Utils
 
         public readonly static RoutedUICommand ProcessMenuAction = new RoutedUICommand("To process menu action", nameof(ProcessMenuAction), typeof(AdditionalCommands));
         public readonly static RoutedUICommand ProcessOptionsAction = new RoutedUICommand("To process menu action 2", nameof(ProcessOptionsAction), typeof(AdditionalCommands));
-
-        public readonly static RoutedUICommand WindowAction = new RoutedUICommand("To filter something", nameof(WindowAction), typeof(AdditionalCommands));
-        public readonly static RoutedUICommand WindowDragMove = new RoutedUICommand("To drag and move", nameof(WindowDragMove), typeof(AdditionalCommands));
         #endregion
     }
 }
