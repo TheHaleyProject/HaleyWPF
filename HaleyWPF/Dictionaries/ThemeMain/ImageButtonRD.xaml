@@ -20,7 +20,13 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ImageButton}">
                     <Border x:Name="PART_imageborder" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" BorderBrush="{Binding Path=(ml:Icon.DefaultColor), RelativeSource={RelativeSource TemplatedParent}}" CornerRadius="{Binding Path=CornerRadius,RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True">
-                        <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="2" SnapsToDevicePixels="True"/>
+                        <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="2" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="{Binding Path=RotateAngle, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">

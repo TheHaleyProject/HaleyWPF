@@ -40,5 +40,12 @@ namespace Haley.WPF.Controls
             DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ImageButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
         #endregion
 
+        public double RotateAngle {
+            get { return (double)GetValue(RotateAngleProperty); }
+            set { SetValue(RotateAngleProperty, value); }
+        }
+
+        public static readonly DependencyProperty RotateAngleProperty =
+            DependencyProperty.Register(nameof(RotateAngle), typeof(double), typeof(ImageButton), new PropertyMetadata(0.0));
     }
 }

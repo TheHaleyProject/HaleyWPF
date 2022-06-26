@@ -31,9 +31,9 @@
                     <!--Base border which lays at the bottom and covers whole length and will be filled with the color representing the status-->
                     <Border x:Name="PART_BorderMain" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{x:Null}">
                         <Grid>
-                            <bc:PlainImage x:Name="Image_ON"    ml:Icon.DefaultColor="{TemplateBinding ColorON}" Style="{StaticResource internal_tglebtn_plainImage}"/>
-                            <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" ml:Icon.Default="{TemplateBinding OffIcon}"  Style="{StaticResource internal_tglebtn_plainImage}"/>
-                            <bc:PlainImage x:Name="Image_NULL"  ml:Icon.DefaultColor="{DynamicResource def_border_brush}" Style="{StaticResource internal_tglebtn_plainImage}"/>
+                            <bc:PlainImage x:Name="Image_ON"    ml:Icon.DefaultColor="{TemplateBinding ColorON}" Style="{StaticResource internal_tglebtn_plainImage}" RotateAngle="{TemplateBinding RotateAngle}"/>
+                            <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" ml:Icon.Default="{TemplateBinding OffIcon}"  Style="{StaticResource internal_tglebtn_plainImage}" RotateAngle="{TemplateBinding RotateAngle}"/>
+                            <bc:PlainImage x:Name="Image_NULL"  ml:Icon.DefaultColor="{DynamicResource def_border_brush}" Style="{StaticResource internal_tglebtn_plainImage}" RotateAngle="{TemplateBinding RotateAngle}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
