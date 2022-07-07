@@ -59,6 +59,7 @@ namespace Haley.WPF.Controls
         private bool _freezeHSVChange = false;
         private HSV _selected_hsv;
         private IDialogService _ds;
+        private bool _selectedBrushInitialized = false;
         #endregion
 
         #region Events
@@ -91,16 +92,6 @@ namespace Haley.WPF.Controls
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete, _deleteLatestInPalette));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.ChangeColor, _changeColorFromPalette));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, _showHideComponents));
-        }
-
-        private void OnHueAdornerLoaded(object sender, RoutedEventArgs e) {
-            if (OldBrush == _startbrush) return;
-            _setColorByValue(OldBrush.Color);
-        }
-
-        private void OnSvAdornerLoaded(object sender, RoutedEventArgs e) {
-            if (OldBrush == _startbrush) return;
-            _setColorByValue(OldBrush.Color);
         }
 
         public override void OnApplyTemplate()
@@ -148,9 +139,19 @@ namespace Haley.WPF.Controls
                 _selected_hsv = new HSV(0.0, 1.0, 1.0);
             }
             //FIRST THE COLORPICKER IS RENDERED, SIZE CHANGED AND THEN LOADED. ONLY AFTER THE COLORPICKER IS LOADED, OUR ADORNER IS MEASURED/RENDERED/SIZECHANGED. SO, WE NEED TO HOOK ON TO ADORNER CHANGES TO KNOW WHEN THE ACTUAL WIDTH OF ADORNER IS AVAILABLE.
-            _hueAdorner.Loaded += OnHueAdornerLoaded;
-            _svAdorner.Loaded += OnSvAdornerLoaded;
+            _hueAdorner.SizeChanged += OnHueAdornerSizeChanged;
             _truncateSavedColors(); //If user decides to bind some saved color values, then truncate them.
+        }
+        private void OnHueAdornerSizeChanged(object sender, SizeChangedEventArgs e) {
+            if (_selectedBrushInitialized) return;
+            if (OldBrush == _startbrush) {
+                _selectedBrushInitialized = true;
+                return;
+            }
+
+            if (_hueAdorner.ActualHeight == 0 && _hueAdorner.ActualWidth == 0) return;
+            _setColorByValue(OldBrush.Color);
+            _selectedBrushInitialized = true;
         }
 
         #endregion
