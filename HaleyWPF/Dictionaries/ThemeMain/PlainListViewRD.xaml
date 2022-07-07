@@ -76,7 +76,7 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <bc:SearchBar x:Name="PART_searchbar" Height="25" CornerRadius="{TemplateBinding CornerRadius}" Visibility="{Binding EnableFilter,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource NegateValue}}" DisplaySuggestions="False" Command="{x:Static ul:AdditionalCommands.Filter}" Text="{Binding SearchFilter,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"/>
-                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" Style="{StaticResource internal_flexiscroll_style}" Grid.Row="1">
+                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" Style="{StaticResource internal_flexiscroll_style}" Grid.Row="1" CanContentScroll="True">
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </bc:FlexiScroll>
                             </Grid>

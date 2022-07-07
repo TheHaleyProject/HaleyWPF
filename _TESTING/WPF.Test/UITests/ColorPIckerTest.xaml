@@ -15,7 +15,7 @@
         </Grid>
         <ComboBox Width="130" HorizontalAlignment="Right" Margin="10" ItemsSource="{Binding Source={x:Type hw:DisplayMode}, Converter={StaticResource EnumTypeToDescriptionList}}" SelectedValue="{Binding SelectedDisplaymode,Mode=TwoWay,NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
         <Rectangle Fill="{Binding SelectedBrush}" Height="40" Width="120" Margin="30"/>
-        <hw:ColorPickerButton SelectedBrush="{Binding SelectedBrush}" Height="40" Width="120" Margin="30" Mode="Full" Content="{hm:Lang pickColor}" Background="White"/>
+        <hw:ColorPickerButton SelectedBrush="{Binding SelectedBrush}" Height="40" Width="120" Margin="30" Mode="Full" Content="{hm:Lang pickColor}" Background="White" OldBrush="{Binding SelectedBrush}"/>
         <AdornerDecorator>
             <hw:ColorPicker HideColorPalette="True" HideRGBComponents="True"/>
         </AdornerDecorator>

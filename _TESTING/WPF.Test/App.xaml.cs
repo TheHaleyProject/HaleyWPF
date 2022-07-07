@@ -68,7 +68,7 @@ namespace WPF.Test
 
             //Set startuptheme
             _ts.SetStartupTheme("Theme1");
-            _ts.ReplaceMode = ThemeReplaceMode.FindReplace;
+            _ts.ReplaceMode = ThemeReplaceMode.IgnoreFindReplaceAndCreateCopy;
             _ts.BuildAndFillMissing();
 
         }

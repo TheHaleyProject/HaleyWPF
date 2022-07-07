@@ -7,7 +7,7 @@
               xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" hm:ThemeAP.MonitorChange="True">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type hw:ComboButton}">

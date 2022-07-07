@@ -93,6 +93,16 @@ namespace Haley.WPF.Controls
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Show, _showHideComponents));
         }
 
+        private void OnHueAdornerLoaded(object sender, RoutedEventArgs e) {
+            if (OldBrush == _startbrush) return;
+            _setColorByValue(OldBrush.Color);
+        }
+
+        private void OnSvAdornerLoaded(object sender, RoutedEventArgs e) {
+            if (OldBrush == _startbrush) return;
+            _setColorByValue(OldBrush.Color);
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -137,6 +147,9 @@ namespace Haley.WPF.Controls
             {
                 _selected_hsv = new HSV(0.0, 1.0, 1.0);
             }
+            //FIRST THE COLORPICKER IS RENDERED, SIZE CHANGED AND THEN LOADED. ONLY AFTER THE COLORPICKER IS LOADED, OUR ADORNER IS MEASURED/RENDERED/SIZECHANGED. SO, WE NEED TO HOOK ON TO ADORNER CHANGES TO KNOW WHEN THE ACTUAL WIDTH OF ADORNER IS AVAILABLE.
+            _hueAdorner.Loaded += OnHueAdornerLoaded;
+            _svAdorner.Loaded += OnSvAdornerLoaded;
             _truncateSavedColors(); //If user decides to bind some saved color values, then truncate them.
         }
 
