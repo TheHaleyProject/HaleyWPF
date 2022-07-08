@@ -46,7 +46,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel  Margin="20">
+            <StackPanel Margin="20">
                 <TextBlock Text="Project Demo" Style="{DynamicResource def_h1_Secondary}"/>
                 <TextBlock Text="Topic 1 : Introduction" Style="{DynamicResource def_h2}"/>
                 <TextBlock Text="Hello.. This is a test project"  Style="{DynamicResource def_h3}"/>
@@ -67,7 +67,7 @@
                         <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello"/>
                         <hw:PlainCheckBox HorizontalAlignment="Left" Content="Hello" />
                         <hw:PlainTextBox Height="30" Width="100" HorizontalAlignment="Left" CornerRadius="4"/>
-                        <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5"/>
+                        <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" Background="Wheat"/>
                         <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsChecked="True"/>
                         <hw:PlainToggleButton HorizontalAlignment="Left" Margin="5" CornerRadius="5" IsThreeState="True" Style="{StaticResource CircularToggleButton}" EnlargeSwitchButton="True"/>
                     </StackPanel>
@@ -75,8 +75,8 @@
                 <hw:LinkedText Text="What a world"/>
                 <hw:SearchBar CornerRadius="5" Height="30" Margin="10"/>
                 <StackPanel Orientation="Horizontal" Height="40">
-                    <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource microphone}" Height="Auto"/>
-                    <hw:ImageToggleButton IsChecked="{x:Null}" Icon="{StaticResource heart_plain}" Height="Auto"/>
+                    <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource microphone}" Height="Auto" BorderThickness="2" ColorON="Green" ColorOFF="Purple"/>
+                    <hw:ImageToggleButton IsChecked="{x:Null}" Icon="{StaticResource heart_plain}" Height="Auto" BorderThickness="2" />
                     <hw:ImageToggleButton Icon="{StaticResource chat_single}" Height="Auto"/>
                 </StackPanel>
                 <TextBlock Text="{Binding DisplayMessage,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>

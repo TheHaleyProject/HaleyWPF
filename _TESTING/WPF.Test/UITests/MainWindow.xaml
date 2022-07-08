@@ -13,6 +13,7 @@
         <Style TargetType="{x:Type hw:PlainToggleButton}">
             <Setter Property="hw:Shadow.Color" Value="Blue"/>
             <Setter Property="hw:Shadow.IsEnabled" Value="True"/>
+            <Setter Property="hw:Shadow.BlurRadius" Value="10"/>
         </Style>
         <Style TargetType="{x:Type hw:ComboButton}">
             <Setter Property="hw:Shadow.Color" Value="Blue"/>
@@ -29,10 +30,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Background="{DynamicResource def_background_primary}">
-            <hw:ImageButton Height="40" Width="40"  hw:Icon.Default="{StaticResource refresh}"  hw:Icon.DefaultColor="{DynamicResource scb_highlight}" hw:Icon.HoverColor="Green"/>
+            <hw:ImageButton Height="40" Width="40"  hw:Icon.Default="{StaticResource refresh}"  hw:Icon.DefaultColor="{DynamicResource scb_highlight}" hw:Icon.HoverColor="Green" hw:Shadow.Color="Red" hw:Shadow.IsEnabled="True" hw:Shadow.OnlyOnMouseOver="True" RotateAngle="270" BorderBrush="Red" BorderThickness="2" hw:Shadow.BlurRadius="5" Background="White"/>
             <hw:PlainButton Height="40" Width="120" HorizontalAlignment="Center"  CornerRadius="10" Content="Hello" Background="{DynamicResource scb_background2}"  Foreground="{DynamicResource scb_content}" hw:Shadow.IsEnabled="True" hw:Shadow.Color="Pink" hw:Shadow.OnlyOnMouseOver="False"/>
             <Button Height="40" Width="120" HorizontalAlignment="Center"  Content="What" />
-            <hw:ComboButton Width="90" Height="30" Content="Hello" ImageLocation="Left" Background="{DynamicResource scb_background2}" Foreground="{DynamicResource scb_content}"   BorderBrush="#FFA7A7A7" BorderThickness="1" CornerRadius="4" hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="{DynamicResource scb_content}" hw:Icon.HoverColor="#FF3295ED"/>
+            <hw:ComboButton Width="90" Height="30" Content="Hello" ImageLocation="Left" Background="{DynamicResource scb_background2}" Foreground="{DynamicResource scb_content}"   BorderBrush="#FFA7A7A7" BorderThickness="1" CornerRadius="4" hw:Icon.Default="{StaticResource chat_double}" hw:Icon.DefaultColor="{DynamicResource scb_content}" hw:Icon.HoverColor="#FF3295ED" hw:Shadow.OnlyOnMouseOver="False" hw:Shadow.BlurRadius="8"/>
             <hw:PlainTextBox x:Name="pbox" Height="50" Width="120" CornerRadius="10" HorizontalAlignment="Center" VerticalAlignment="Center" WaterMark="Enter user name" hw:Shadow.IsEnabled="True" hw:Shadow.Color="blue" hw:Shadow.OnlyOnMouseOver="False"/>
             <TextBox Text="{Binding ElementName=pbox,Path=Text}" Height="50" Width="120" />
             <hw:PlainToggleButton Height="30" Width="70" SwitchWidth="30"  CornerRadius="8" IsChecked="True"/>
