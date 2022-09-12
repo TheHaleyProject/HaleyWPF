@@ -324,7 +324,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.IOC" Version="3.0.11" />
+    <PackageReference Include="Haley.IOC" Version="3.0.12" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
@@ -777,7 +777,7 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Haley.Abstractions" Version="1.0.17" />
+				<PackageReference Include="Haley.Abstractions" Version="1.0.17.4" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -807,7 +807,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Helpers" Version="2.1.7" />
+       <PackageReference Include="Haley.Helpers" Version="2.1.7.5" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
