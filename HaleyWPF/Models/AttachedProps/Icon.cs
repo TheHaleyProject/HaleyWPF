@@ -9,11 +9,13 @@ using Haley.WPF;
 using Haley.Events;
 using System.Windows.Input;
 using Haley.Utils;
+using System.Windows.Media.Imaging;
 
 namespace Haley.Models
 {
     public class Icon : Control
     {
+        public static ImageSource EmptyImage = ResourceHelper.getIcon(IconEnums.empty_image.ToString());
         public Icon() 
         { 
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Initiate, Execute_Initiate));
@@ -31,10 +33,10 @@ namespace Haley.Models
         {
             //Process Images
             if (GetDefault(sender) == null)
-            { SetDefault(sender, ResourceHelper.getIcon(IconEnums.empty_image.ToString())); }
+            { SetDefault(sender, EmptyImage); }
 
             if (GetHover(sender) == null) SetHover(sender, GetDefault(sender));
-            if (GetPressed(sender) == null) SetPressed(sender, GetHover(sender));
+            if (GetPressed(sender) == null ) SetPressed(sender, GetDefault(sender));
 
             //Process Image Colors
             if (!GetDisableColorChange(sender))
@@ -49,6 +51,34 @@ namespace Haley.Models
                 { SetPressed(sender, ImageHelper.changeColor(GetPressed(sender), GetPressedColor(sender))); }
             }
         }
+
+        public static void ReInitiateImages(DependencyObject sender, bool inheritfromDefault = false) {
+            //When there is no image, we get null, but when we have set some image, it is then cached. So, subsequent calls will return cached bitmap. This method of initiate image itself is called only when we try to initiate for the first time. So, if deliberately we initiate for second time, we should have already changed the image. So, we check if it is cached, then we reset that as well.
+            var defImage = GetDefault(sender);
+            //Process Images
+            if (defImage == null || defImage is CachedBitmap) { SetDefault(sender, EmptyImage); }
+
+            var hoverImage = GetHover(sender);
+            if (hoverImage == null || hoverImage == EmptyImage || hoverImage is CachedBitmap || inheritfromDefault) SetHover(sender, GetDefault(sender));
+
+            var pressedImage = GetPressed(sender);
+            if (pressedImage == null || pressedImage == EmptyImage || pressedImage is CachedBitmap || inheritfromDefault) SetPressed(sender, GetDefault(sender));
+
+            //Process Image Colors
+            if (!GetDisableColorChange(sender))
+            {
+                if (GetDefaultColor(sender) != null)
+                { SetDefault(sender,ImageHelper.changeColor(GetDefault(sender), GetDefaultColor(sender))); }
+
+                if (GetHoverColor(sender) != null)
+                    { SetHover(sender, ImageHelper.changeColor(GetHover(sender), GetHoverColor(sender))); }
+
+                if (GetPressedColor(sender) != null)
+                { SetPressed(sender, ImageHelper.changeColor(GetPressed(sender), GetPressedColor(sender))); }
+            }
+        }
+
+
 
         #region Images
 

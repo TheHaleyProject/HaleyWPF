@@ -14,8 +14,8 @@
     <Style x:Key="internal_plainwndw_ctrlbx_btns" TargetType="{x:Type bc:ImageButton}">
         <Setter Property="ml:Icon.DefaultColor" Value="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=(ml:Icon.DefaultColor)}"/>
         <Setter Property="ml:Icon.HoverColor" Value="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=(ml:Icon.HoverColor)}"/>
-            <Setter Property="Width" Value="26"/>
-            <Setter Property="Height" Value="26"/>
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="25"/>
     </Style>
 
     <Style x:Key="internal_plainwnw_btnBase" TargetType="{x:Type Button}">
@@ -64,7 +64,7 @@
                                     </Grid.ColumnDefinitions>
                                     <bc:ImageButton x:Name="PART_minimize"  ml:Icon.Default="{StaticResource line}"  Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Minimize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMinimizeButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>
                                     <bc:ImageButton x:Name="PART_maximize" Grid.Column="1"  ml:Icon.Default="{StaticResource box}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}"  Command="{x:Static ul:AdditionalCommands.Maximize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMaximizeButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>
-                                    <bc:ImageButton x:Name="PART_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Close}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideCloseButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>
+                                    <bc:ImageButton x:Name="PART_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Close}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideCloseButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>  
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate x:Key="internal_controlboxMac">
