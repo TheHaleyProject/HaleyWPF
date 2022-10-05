@@ -1,5 +1,10 @@
 ﻿using System.Text;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Windows.Input;
+using System;
+using System.Linq;
 
 namespace Haley.Models
 {
@@ -8,29 +13,29 @@ namespace Haley.Models
     /// </summary>
     public class HotKey
     {
+        string _displayname = null;
+        public string Id { get; }
         /// <summary>
         /// Display Name
         /// </summary>
-        public string DisplayName { get; set; }
+        public string DisplayName { get; private set; }
 
         /// <summary>
         /// Gets the key 
         /// </summary>
-        public Key Key { get; }
-
-        /// <summary>
-        /// Gets modifier keys 
-        /// </summary>
-        public ModifierKeys Modifiers { get; }
+        public IEnumerable<Key> Keys { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HotKey" /> class.
         /// </summary>
-        public HotKey(Key key, ModifierKeys modifiers)
-        {
-            Key = key;
-            Modifiers = modifiers;
+        public HotKey(Key key):this(new List<Key> { key}){
+
+        }
+
+        public HotKey(IEnumerable<Key> keys) {
+            Keys = keys;
             DisplayName = GetDisplayName();
+            Id = Guid.NewGuid().ToString();
         }
 
         /// <summary>
@@ -49,7 +54,8 @@ namespace Haley.Models
             if (obj == null) return false;
             var input = obj as HotKey;
             if (input == null) return false;
-            return (input.Key == this.Key && input.Modifiers == this.Modifiers);
+            //https://stackoverflow.com/questions/22173762/check-if-two-lists-are-equal
+            return (this.Keys.All(input.Keys.Contains) &&  this.Keys.Count() == input.Keys.Count());
         }
 
         public override int GetHashCode()
@@ -59,20 +65,33 @@ namespace Haley.Models
 
         private string GetDisplayName()
         {
+            if (_displayname != null) return _displayname;
+            var incoming = new List<Key>(Keys);
+            //incoming.Sort((first, next) => ((int)first).CompareTo((int)next)); //use "-first.CompareTo(next)" for inverse
+            //incoming.Sort(); //will sort by string
+
+            //44 to 69 are alphabets
+            var _alphabets = incoming.Where(p => (int)p >= 44 && (int)p <= 69)?.ToList() ?? new List<Key>();
+            var _others = incoming.Except(_alphabets).ToList();
+
+            //Sort
+            _alphabets?.Sort();
+            _others?.Sort();
+
+            _others.AddRange(_alphabets); //without sorting, add at the end.
+          
             var str = new StringBuilder();
-
-            if (Modifiers.HasFlag(ModifierKeys.Control))
-                str.Append("Ctrl + ");
-            if (Modifiers.HasFlag(ModifierKeys.Shift))
-                str.Append("Shift + ");
-            if (Modifiers.HasFlag(ModifierKeys.Alt))
-                str.Append("Alt + ");
-            if (Modifiers.HasFlag(ModifierKeys.Windows))
-                str.Append("Win + ");
-
-            str.Append(Key);
-
-            return str.ToString();
+            int i = 0;
+            int count = _others.Count();
+            foreach (var key in _others) {
+                str.Append($@"{key.ToString()}");
+                i++;
+                if (i < count) {
+                    str.Append(" + ");
+                }
+            }
+            _displayname = str.ToString();
+            return _displayname;
         }
     }
 }
