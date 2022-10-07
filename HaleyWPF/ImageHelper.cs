@@ -19,13 +19,18 @@ namespace Haley.WPF
         /// <param name="propname">Property name of the ImageSource</param>
         /// <param name="d"></param>
         /// <param name="e"></param>
-        public static void changeColor(string propname, DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void ChangeColorWithName(string propname, DependencyObject d, object value)
         {
             try
             {
                 Func<DependencyPropertyDescriptor> _getDescriptor = () => { return DependencyPropertyDescriptor.FromName(propname, d.GetType(),d.GetType()); };
 
-                changeColor(_getDescriptor, d, e);
+                if (value is DependencyPropertyChangedEventArgs e) {
+                    value = e.NewValue;
+                    if (value == null) return;
+                }
+
+                changeColorInternal(_getDescriptor, d, value );
                 
             }
             catch (Exception)
@@ -34,41 +39,39 @@ namespace Haley.WPF
             }
         }
 
-        /// <summary>
-        /// Changes color
-        /// </summary>
-        /// <param name="propname">Property name of the ImageSource</param>
-        /// <param name="d"></param>
-        /// <param name="e"></param>
-        public static void changeColor(DependencyProperty prop, DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            try
-            {
+        public static void ChangeColor(DependencyProperty prop, DependencyObject d, object value) {
+            try {
                 Func<DependencyPropertyDescriptor> _getDescriptor = () => { return DependencyPropertyDescriptor.FromProperty(prop, d.GetType()); };
 
-                changeColor(_getDescriptor, d, e);
-            }
-            catch (Exception)
-            {
+                if (value is DependencyPropertyChangedEventArgs e) {
+                    value = e.NewValue;
+                    if (value == null) return;
+                }
+
+                changeColorInternal(_getDescriptor, d, value);
+            } catch (Exception) {
                 return;
             }
         }
 
-        /// <summary>
-        /// Changes color
-        /// </summary>
-        /// <param name="propname">Property name of the ImageSource</param>
-        /// <param name="d"></param>
-        /// <param name="e"></param>
-        public static void changeColor(Func<DependencyPropertyDescriptor> descriptorDelgate, DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            try
-            {
-                //CHECK: Is New color value empty?
-                if (e.NewValue == null || d == null) return;
+        ///// <summary>
+        ///// Changes color
+        ///// </summary>
+        ///// <param name="propname">Property name of the ImageSource</param>
+        ///// <param name="d"></param>
+        ///// <param name="e"></param>
+        //public static void changeColor(Func<DependencyPropertyDescriptor> descriptorDelgate, DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //{
+        //    //CHECK: Is New color value empty?
+        //    if (e.NewValue == null || d == null) return;
+        //    changeColorInternal(descriptorDelgate, d, e.NewValue);
+        //}
 
+        private static void changeColorInternal(Func<DependencyPropertyDescriptor> descriptorDelgate, DependencyObject d, object NewValue) {
+            try {
+                if (NewValue == null) return;
                 //CHECK: Is new value is actually a SolidColorBrush?
-                var _newcolor = e.NewValue as SolidColorBrush;
+                var _newcolor = NewValue as SolidColorBrush;
                 if (_newcolor == null) return;
 
                 //CHECK: Does the dependency object contain an actual property with the provided name?
@@ -83,22 +86,20 @@ namespace Haley.WPF
                 //If all okay change the color.
                 //ImageSource modified_source = null;
 
-                var modified_source = changeColor(target_imagesource, _newcolor);
-                if (modified_source != null)
-                {
+                var modified_source = ChangeColor(target_imagesource, _newcolor);
+                if (modified_source != null) {
                     actual_propInfo.SetValue(d, modified_source);
                     //var property = actual_propInfo.DependencyProperty; //TO GET THE PROPERTY DIRECTLY
                     //d.SetValue(actual_propInfo, modified_source); //IF NORMAL PROPERTY
                 }
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 return;
             }
         }
 
-        public static ImageSource changeColor(ImageSource source, SolidColorBrush brush)
+        public static ImageSource ChangeColor(ImageSource source, SolidColorBrush brush)
         {
+            if (source == null) return null;
             //FIRST LOADING IS DIRECT AND SUBSEQUENT ARE PREPARED USING CACHED BITMAP BY DOT NET. SO, NO NEED TO IMPLEMENT A SEPARATE CACHING SYSTEM.
             //ImageRequest _request = new ImageRequest(source, brush);
             //ImageSource result = null;

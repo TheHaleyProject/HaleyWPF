@@ -22,7 +22,7 @@ namespace Haley.WPF.Controls
 
         public override void OnApplyTemplate()
         {
-            if (Icon == null) Icon = ResourceHelper.getIcon(IconEnums.empty_image.ToString());
+            if (Icon == null) Icon = ResourceHelper.getIcon(IconKind.empty_image.ToString());
             if (OffIcon == null) SetCurrentValue(OffIconProperty, Icon);
             base.OnApplyTemplate();
         }

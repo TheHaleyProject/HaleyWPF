@@ -11,6 +11,7 @@
     
     <Style TargetType="{x:Type bc:PlainImage}">
         <Setter Property="Background" Value="{x:Null}"/>
+        <Setter Property="ml:Icon.IsHandler" Value="True"/>
         <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}"/>
         <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="Template">

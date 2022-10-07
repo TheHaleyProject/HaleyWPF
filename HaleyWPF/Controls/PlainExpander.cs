@@ -54,7 +54,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty ArrowProperty =
-            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.getIcon(IconEnums.arrow_down_rounded.ToString())));
+            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.getIcon(IconKind.arrow_down_rounded.ToString())));
 
         public SolidColorBrush ArrowDefColor
         {

@@ -14,7 +14,7 @@
     </Window.InputBindings>
    
     <Grid x:Name="grdMain">
-        <hw:FlexiMenu x:Name="flexiMain" DataContext="{Binding}" Location="Left" FontSize="12" ToggleIcon ="{StaticResource hamburger_combo}">
+        <hw:FlexiMenu x:Name="flexiMain" DataContext="{Binding}" Location="Left" FontSize="12" ToggleIcon ="{StaticResource hamburger_combo}" ToggleButtonBackground="Pink">
 
             <!--welcome view-->
             <hw:FlexiMenu.WelcomeView>
@@ -28,7 +28,7 @@
             <!--Header Template-->
             <hw:FlexiMenu.HeaderTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <!--<Grid >
                         <Grid.Background>
                             <ImageBrush ImageSource="../Images/aerial.jpg" TileMode="Tile" Stretch="UniformToFill" Opacity="0.8"/>
                         </Grid.Background>
@@ -40,10 +40,7 @@
                         <Border Height="35" Width="35" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource internal_tglebtn_BorderCircular}" Background="#66000000">
                             <Image Source="Images/hippo_bliue.png"  Margin="4"/>
                         </Border>
-
-                        <Border Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Top" Background="White" Margin="3"/>
-
-                    </Grid>
+                    </Grid>-->
                 </DataTemplate>
             </hw:FlexiMenu.HeaderTemplate>
             
@@ -54,15 +51,15 @@
                         <ctrl:WelcomeView/>
                     </hw:MenuItem.View>
                 </hw:MenuItem>
-                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource arrow}"  Label="Container View" ContainerKey="whataworld"/>
-                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_circle}" hw:Icon.Hover="{StaticResource plane}"  Label="Container View 2" ContainerKey="localdemokey"/>
-                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car}"  Label="Referenced Command" CommandParameter="{Binding DataContext.proxymessageholder,Source={StaticResource proxy}}" CommandName="Cmd_Notify"/>
-                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource camera}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding DataContext.Cmd_Notify,Source={StaticResource proxy}}"/>
+                <hw:MenuItem Action="ShowContainerView" hw:Icon.Preference="IconKind" hw:Icon.DefaultKind="monitor_keyboard" hw:Icon.Default="{StaticResource calender_clock_medium}" hw:Icon.HoverKind="globe_2" hw:Icon.Hover="{StaticResource arrow_down_square}"  Label="Container View 4" ContainerKey="whataworld"/>
+                <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_directory}" hw:Icon.Hover="{StaticResource car}"  Label="Container View 2" ContainerKey="localdemokey"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource camera_flat_2_medium}"  Label="Referenced Command" CommandParameter="{Binding DataContext.proxymessageholder,Source={StaticResource proxy}}" CommandName="Cmd_Notify"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource calender}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding DataContext.Cmd_Notify,Source={StaticResource proxy}}"/>
                 <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource camera}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy2}}"/>
             </hw:FlexiMenu.MenuItems>
             <!--Add Option Buttons like logout, login-->
             <hw:FlexiMenu.OptionItems>
-                <hw:CommandMenuItem Label="Log Out" hw:Icon.Default="{StaticResource mobile_phone}"/>
+                <hw:CommandMenuItem Label="Log Out" hw:Icon.Default="{StaticResource collapse}"/>
             </hw:FlexiMenu.OptionItems>
 
             <hw:FlexiMenu.FloatingPanel>

@@ -2,35 +2,12 @@
 
 namespace Haley.Enums
 {
-    public enum PaginationMode
-    {
-        Simple,
-        Extended
+    public enum Alignment {
+        Left,
+        Right
     }
 
-    public enum CardMode
-    {
-        Simple,
-        Flyer,
-        Professional
-    }
-
-    public enum BadgeShape
-    {
-        Ellipse,
-        Rectangle,
-    }
-
-    public enum BadgeType
-    {
-        Success,
-        Info,
-        Warning,
-        Error
-    }
-
-    public enum BadgeAlignment
-    {
+    public enum BadgeAlignment {
         TopRight,
         TopLeft,
         BottomLeft,
@@ -42,8 +19,7 @@ namespace Haley.Enums
         Center
     }
 
-    public enum BadgeAnchor
-    {
+    public enum BadgeAnchor {
         Center,
         TopLeft,
         TopRight,
@@ -51,6 +27,49 @@ namespace Haley.Enums
         BottomRight
     }
 
+    public enum BadgeShape {
+        Ellipse,
+        Rectangle,
+    }
+
+    public enum BadgeType {
+        Success,
+        Info,
+        Warning,
+        Error
+    }
+
+    public enum CardMode {
+        Simple,
+        Flyer,
+        Professional
+    }
+
+    public enum ControlBoxStyle {
+        Windows,
+        Mac
+    }
+
+    public enum DisplayMode {
+        Mini,
+        Compact,
+        Full
+    }
+
+    public enum DockLocation {
+        Left,
+        Right
+    }
+
+    public enum NumericType {
+        Integer,
+        Double,
+    }
+
+    public enum PaginationMode {
+        Simple,
+        Extended
+    }
     public enum PickerAdornerShape
     {
         None,
@@ -59,10 +78,8 @@ namespace Haley.Enums
         Circle,
     }
 
-    public enum DisplayMode
-    {
-        Mini,
-        Compact,
-        Full
+    public enum IconSourcePreference {
+        ImageSource = 0,
+        IconKind = 1
     }
 }

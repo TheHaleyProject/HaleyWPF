@@ -20,10 +20,12 @@
         <Setter Property="Margin" Value="5" />
         <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="Background" Value="Transparent" />
+        
+        <!--We are only binding the colors and preference to overall value from ancestor-->
         <Setter Property="mdl:Icon.HoverColor" Value="{Binding Path=(mdl:Icon.HoverColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="mdl:Hover.Background" Value="{Binding Path=(mdl:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
-        <Setter Property="mdl:Icon.DefaultColor" Value="{Binding Path=(mdl:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
-        
+        <Setter Property="mdl:Icon.DefaultColor" Value="{Binding Path=(mdl:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
+        <!--<Setter Property="mdl:Icon.Preference" Value="{Binding Path=(mdl:Icon.Preference), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>-->
         <Setter Property="HideContent" Value="False" />
         <Style.Triggers>
             <DataTrigger Value="False" Binding="{Binding IsMenuBarOpen, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}">
@@ -110,24 +112,32 @@
                                     <ContentControl x:Name="PART_header"/>
                                 </Grid>
 
-                                <Rectangle x:Name="PART_ToggleButton_screen" Grid.Row="0" Height="32" Width="32" Margin="4" Fill="{TemplateBinding ToggleButtonBackground}"  HorizontalAlignment="Right"
-                                        VerticalAlignment="Top"/>
-
-                                <!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.-->
-                                <bc:ImageToggleButton x:Name="PART_toggleButton"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Top"
+                                <!--<Canvas Grid.Row="0" Margin="5" MinHeight="40" MinWidth="40" >
+                                    <Grid Canvas.Right="0">
+                                        <Rectangle x:Name="PART_ToggleButton_screen" Height="32" Width="32" Fill="{TemplateBinding ToggleButtonBackground}" />
+                                        --><!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.--><!--
+                                        <bc:ImageToggleButton x:Name="PART_toggleButton"
                                         ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                         ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Grid.Row="0" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" Margin="5"/>
+                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                    </Grid>
+                                </Canvas>-->
 
+                                <Grid Height="Auto" Width="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5">
+                                    <Rectangle x:Name="PART_ToggleButton_screen" Height="32" Width="32" Fill="{TemplateBinding ToggleButtonBackground}" />
+                                    <!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.-->
+                                    <bc:ImageToggleButton x:Name="PART_toggleButton"
+                                        ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
+                                        ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
+                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                </Grid>
                                 <!--#endregion-->
 
                                 <!--SEPARATOR-->
                                 <bc:Separator
                                     Grid.Row="1"
                                     Background="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                    Size="2" />
+                                    Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" />
 
                                 <!--#region MENU-->
                                 <Grid Grid.Row="2" Margin="0,5">
@@ -177,7 +187,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}" Tag="{Binding}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </DataTemplate>
                                             </bc:PlainListView.ItemTemplate>
                                         </bc:PlainListView>
@@ -189,7 +199,7 @@
                                 <bc:Separator
                                     Grid.Row="3"
                                     Background="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                    Size="2" />
+                                    Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" />
                                 
                                 <!--OPTIONS MENU-->
                                 <Grid Grid.Row="4">
@@ -205,7 +215,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default)}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover)}" ToolTip="{Binding Label}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
@@ -214,7 +224,7 @@
                                 
                                 <!--FOOT NOTE-->
                                 <Grid Grid.Row="5" Margin="5" x:Name="PART_footerRegion" Visibility="{TemplateBinding ShowFooter,Converter={StaticResource BooltoVisibiliy}}">
-                                    <TextBlock Foreground="{DynamicResource def_link}" Style="{StaticResource def_h4_inverted}" Text="{Binding FootNote, RelativeSource={RelativeSource TemplatedParent}}" />
+                                    <TextBlock Foreground="{Binding FootNoteForeground,RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource def_h4_inverted}" Text="{Binding FootNote, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </Grid>
                             </Grid>
                         </Border>
