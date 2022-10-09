@@ -123,7 +123,7 @@ namespace Haley.Models
 
         public static void InitiateImages(DependencyObject sender, bool resetCaches = false, string[] affected_props = null) {
             //ONLY HANDLERS INITIATE THE IMAGES
-            SetIsHandler(sender, true);
+            //SetIsHandler(sender, true); //Set handlers explicitly in their constructors.
             SetChangeInProgress(sender, true);
 
             if (GetPreference(sender) is IconSourcePreference.IconKind) {
@@ -154,10 +154,14 @@ namespace Haley.Models
             }
 
             var hoverImage = GetHover(sender);
-            if (hoverImage == null || (resetCaches && affected_props.Contains(HOVER) && (hoverImage is CachedBitmap || hoverImage == EmptyImage))) SetHover(sender, GetDefault(sender));
+            if (hoverImage == null || (resetCaches && affected_props.Contains(HOVER) && (hoverImage is CachedBitmap || hoverImage == EmptyImage))) {
+                SetHover(sender, GetDefault(sender));
+            }
 
             var pressedImage = GetPressed(sender);
-            if (pressedImage == null || (resetCaches && affected_props.Contains(PRESSED) && (pressedImage is CachedBitmap || pressedImage == EmptyImage))) SetPressed(sender, GetDefault(sender));
+            if (pressedImage == null || (resetCaches && affected_props.Contains(PRESSED) && (pressedImage is CachedBitmap || pressedImage == EmptyImage))) {
+                SetPressed(sender, GetDefault(sender));
+            }
             ProcessColorChange(sender);
             SetChangeInProgress(sender, false);
         }
@@ -282,7 +286,7 @@ namespace Haley.Models
                 return;
             }
             //no change or is in progress or this is the first setting
-            if (e.OldValue == e.NewValue || GetChangeInProgress(d) || string.IsNullOrWhiteSpace(propname)) return;
+                if (e.OldValue == e.NewValue || GetChangeInProgress(d) || string.IsNullOrWhiteSpace(propname)) return;
             //if (!GetChangeInProgress(d) && e.NewValue is CachedBitmap) return; // needed because we also try to set the cached image after color change
 
             ReInitiateImages(d, true, new string[] { propname });

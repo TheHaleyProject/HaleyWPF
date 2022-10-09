@@ -37,12 +37,12 @@ namespace Haley.WPF
                 iconDictionaries = new List<CommonDictionary>();
 
                 var dic_01 = new CommonDictionary();
-                dic_01.Source = new Uri("pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons01.xaml", UriKind.RelativeOrAbsolute);
-                var dic_02 = new CommonDictionary();
-                dic_02.Source = new Uri("pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml", UriKind.RelativeOrAbsolute);
+                dic_01.Source = new Uri("pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/Icons/haleyIcons01.xaml", UriKind.RelativeOrAbsolute);
+                //var dic_02 = new CommonDictionary();
+                //dic_02.Source = new Uri("pack://application:,,,/Haley.WPF;component/Dictionaries/Icons/haleyIcons02.xaml", UriKind.RelativeOrAbsolute);
 
                 iconDictionaries.Add(dic_01);
-                iconDictionaries.Add(dic_02);
+                //iconDictionaries.Add(dic_02);
             }
             foreach (var dic in iconDictionaries)
             {

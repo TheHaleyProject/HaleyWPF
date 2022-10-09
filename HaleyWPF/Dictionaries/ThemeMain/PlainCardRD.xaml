@@ -110,7 +110,7 @@
     </ControlTemplate>
 
     <ControlTemplate x:Key="internal_plaincard_professional" TargetType="{x:Type bc:PlainCard}">
-        <Border Style="{StaticResource BorderWithShadow}"  >
+       <Border Style="{StaticResource BorderWithShadow}" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>

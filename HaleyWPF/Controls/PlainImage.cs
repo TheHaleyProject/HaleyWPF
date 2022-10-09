@@ -16,6 +16,7 @@ namespace Haley.WPF.Controls
 
         public PlainImage()
         {
+            Icon.SetIsHandler(this,true); //This is an handler for the icon
         }
         #endregion
 

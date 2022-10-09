@@ -18,7 +18,7 @@ namespace Haley.WPF.Controls
 
         public ImageButton()
         {
-
+            Icon.SetIsHandler(this, true); //This is an handler for the icon
         }
         #endregion
 

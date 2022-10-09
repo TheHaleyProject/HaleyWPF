@@ -32,7 +32,7 @@
             </Viewbox>
         </hw:PlainCard>
 
-        <hw:PlainCard  hw:Icon.Default="{StaticResource home}" Header="Senguttuvan" SubHeader="AI Manager" HeaderAlignment="Center" Mode="Professional" ShowIcon="False">
+        <!--<hw:PlainCard  hw:Icon.Default="{StaticResource home}" Header="Senguttuvan" SubHeader="AI Manager" HeaderAlignment="Center" Mode="Professional" ShowIcon="False">
             <Viewbox Margin="25">
                 <TextBlock Text="4,85,00" Foreground="Gray"/>
             </Viewbox>
@@ -54,9 +54,9 @@
                 </Viewbox>
             </Grid>
         </hw:PlainCard>
-        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" HeaderHeight="30"/>
+        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" HeaderHeight="30"/>-->
         <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Flyer" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" CornerRadius="15" />
-        <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" Background="LightYellow"/>
-        <hw:PlainCard hw:Icon.Default="{StaticResource car_2_medium}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />
+        <!--<hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" Background="LightYellow"/>
+        <hw:PlainCard hw:Icon.Default="{StaticResource car_2_medium}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />-->
     </WrapPanel>
 </Window>

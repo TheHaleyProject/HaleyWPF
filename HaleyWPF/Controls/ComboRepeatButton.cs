@@ -16,7 +16,7 @@ namespace Haley.WPF.Controls
 
         public ComboRepeatButton()
         {
-
+            Icon.SetIsHandler(this, true); //This is an handler for the icon
         }
         #endregion
 
