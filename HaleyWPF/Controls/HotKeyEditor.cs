@@ -26,8 +26,8 @@ namespace Haley.WPF.Controls
             }
         }
 
-        private void HandleKeyDown(object sender, IEnumerable<Key> e) {
-            var newhk = new HotKey(e);
+        private void HandleKeyDown(object sender, Events.HotKeyArgs e) {
+            var newhk = new HotKey(e?.PressedKeys);
             // Update the value
             this.SetCurrentValue(HotKeyProperty, newhk);
         }
