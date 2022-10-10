@@ -88,7 +88,7 @@ namespace Haley.WPF.Controls {
 
             WindowChrome.SetIsHitTestVisibleInChrome(_controlboxHolder, true); //Important or else the control box items hit will not be visible.
             //WindowChrome.SetIsHitTestVisibleInChrome(_dragMoveRegion, true); //Important or else the control box items hit will not be visible.
-            //WindowChrome.SetIsHitTestVisibleInChrome(_mainContent, true);
+            WindowChrome.SetIsHitTestVisibleInChrome(_mainContent, true);
             _initiate();
             this.Loaded += WindowLoaded;
         }

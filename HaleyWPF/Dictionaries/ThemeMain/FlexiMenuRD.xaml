@@ -128,7 +128,7 @@
                                     <bc:ImageToggleButton x:Name="PART_toggleButton"
                                         ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                         ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
+                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" WindowChrome.IsHitTestVisibleInChrome="True"/>
                                 </Grid>
                                 <!--#endregion-->
 

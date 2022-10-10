@@ -14,6 +14,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Windows.Shell;
 
 namespace Haley.WPF.Controls
 {
@@ -37,6 +38,7 @@ namespace Haley.WPF.Controls
             _floatingPanelHolderCanvas = GetTemplateChild(UIEFloatingPanelCanvas) as Canvas;
             _contextMenuShow = GetTemplateChild(UIEContextMenuShow) as SysCtrls.MenuItem;
             _contextMenuReposition = GetTemplateChild(UIEContextMenuReposition) as SysCtrls.MenuItem;
+            _toggleBtn = GetTemplateChild(UIEToggleButton) as Button;
 
             _changeHeader();
             _changeFloatingPanel();
@@ -59,6 +61,10 @@ namespace Haley.WPF.Controls
             {
                 _setFirstView(); //In case the welcome view is present and also it is not disabled, then we set the welcome view and then after timer runs out we set the first view.
             }
+
+            //if (_toggleBtn != null) {
+            //    WindowChrome.SetIsHitTestVisibleInChrome(_toggleBtn, true); //Important or else the control box items hit will not be visible.
+            //}
         }
 
         #endregion
@@ -72,6 +78,7 @@ namespace Haley.WPF.Controls
         private const string UIEMainContentHolder = "PART_MainContentArea";
         private const string UIEMessage = "PART_message";
         private const string UIEMessageHolder = "PART_messageHolder";
+        private const string UIEToggleButton = "PART_toggleButton";
         private static SolidColorBrush _defaultToggleButtonBg = Brushes.Transparent;
         private static SolidColorBrush _defaultFootNote = Brushes.Gray;
         private static double _headerRegionHeight = Convert.ToDouble(100);
@@ -91,6 +98,7 @@ namespace Haley.WPF.Controls
         private ContentControl _mainContentHolder;
         private TextBlock _message;
         private FrameworkElement _messageHolder;
+        private Button _toggleBtn;
         #endregion
 
         #region Constructors
