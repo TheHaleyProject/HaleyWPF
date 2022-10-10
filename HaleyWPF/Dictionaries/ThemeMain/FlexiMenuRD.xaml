@@ -52,6 +52,16 @@
         </Style.Triggers>
     </Style>
 
+     <Style x:Key="internal_plainlistview" TargetType="{x:Type bc:PlainListView}" BasedOn="{StaticResource CleanListView}">
+        <Setter Property="mdl:FlexiScrollViewer.EnableOverLay" Value="False"/>
+        <Setter Property="mdl:FlexiScrollViewer.AutoHide" Value="True"/>
+        <Setter Property="mdl:FlexiScrollViewer.HorizontalBarVisibility" Value="Hidden"/>
+        <Setter Property="mdl:FlexiScrollViewer.VerticalBarVisibility" Value="Auto"/>
+        <Setter Property="mdl:FlexiScrollViewer.VerticalBarSize" Value="15"/>
+        <Setter Property="mdl:FlexiScrollViewer.ShowButtons" Value="False"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+    </Style>
+
     <Style TargetType="{x:Type bc:FlexiMenu}">
         <Setter Property="mdl:Hover.Background" Value="{DynamicResource def_fleximenu_hoverbg}" />
         <Setter Property="mdl:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}" />
@@ -112,17 +122,6 @@
                                     <ContentControl x:Name="PART_header"/>
                                 </Grid>
 
-                                <!--<Canvas Grid.Row="0" Margin="5" MinHeight="40" MinWidth="40" >
-                                    <Grid Canvas.Right="0">
-                                        <Rectangle x:Name="PART_ToggleButton_screen" Height="32" Width="32" Fill="{TemplateBinding ToggleButtonBackground}" />
-                                        --><!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.--><!--
-                                        <bc:ImageToggleButton x:Name="PART_toggleButton"
-                                        ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}"/>
-                                    </Grid>
-                                </Canvas>-->
-
                                 <Grid Height="Auto" Width="Auto" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5">
                                     <Rectangle x:Name="PART_ToggleButton_screen" Height="32" Width="32" Fill="{TemplateBinding ToggleButtonBackground}" />
                                     <!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.-->
@@ -141,57 +140,16 @@
 
                                 <!--#region MENU-->
                                 <Grid Grid.Row="2" Margin="0,5">
-                                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                                    <bc:ComboRepeatButton
-                                        x:Name="upButton"
-                                        Height="25"
-                                        VerticalAlignment="Top"
-                                        Panel.ZIndex="99"
-                                        Background="Transparent"
-                                        mdl:Icon.Default="{StaticResource arrow_line}"
-                                        mdl:Icon.DefaultColor="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        mdl:Icon.HoverColor="{Binding Path=(mdl:Icon.HoverColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        RenderTransformOrigin="0.5,0.5">
-                                        <bc:ComboRepeatButton.RenderTransform>
-                                            <TransformGroup>
-                                                <RotateTransform Angle="180" />
-                                            </TransformGroup>
-                                        </bc:ComboRepeatButton.RenderTransform>
-                                    </bc:ComboRepeatButton>
-                                    <bc:ComboRepeatButton
-                                        x:Name="downButton"
-                                        Grid.Row="2"
-                                        Height="25"
-                                        VerticalAlignment="Bottom"
-                                        Panel.ZIndex="99"
-                                        Background="Transparent"
-                                        mdl:Icon.DefaultColor="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        mdl:Icon.HoverColor="{Binding Path=(mdl:Icon.HoverColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        mdl:Icon.Default="{StaticResource arrow_line}" />
 
-                                    <bc:FlexiScroll
-                                        x:Name="MenuFlexiScroll"
-                                        Grid.Row="1"
-                                        Panel.ZIndex="1"
-                                        CanContentScroll="True"
-                                        HorizontalScrollBarVisibility="Hidden"
-                                        RepeatDown="{Binding ElementName=downButton}"
-                                        RepeatUp="{Binding ElementName=upButton}"
-                                        VerticalScrollBarVisibility="Hidden" Visibility="{Binding HideMenuRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
-                                        <bc:PlainListView x:Name="PART_MenuSource" ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource TemplatedParent}}" SelectionMode="Single" Style="{StaticResource CleanListView}">
-                                            <bc:PlainListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <bc:ComboButton
+                                    <bc:PlainListView Grid.Row="1" x:Name="PART_MenuSource" ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource internal_plainlistview}" Visibility="{Binding HideMenuRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                        <bc:PlainListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                                                         Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
-                                                </DataTemplate>
-                                            </bc:PlainListView.ItemTemplate>
-                                        </bc:PlainListView>
-                                    </bc:FlexiScroll>
+                                            </DataTemplate>
+                                        </bc:PlainListView.ItemTemplate>
+                                    </bc:PlainListView>
                                 </Grid>
                                 <!--#endregion-->
                                 
@@ -203,23 +161,15 @@
                                 
                                 <!--OPTIONS MENU-->
                                 <Grid Grid.Row="4">
-                                    <bc:FlexiScroll
-                                        x:Name="OptionsFlexiScroll"
-                                        Grid.Row="1"
-                                        Panel.ZIndex="1"
-                                        CanContentScroll="True"
-                                        HorizontalScrollBarVisibility="Hidden"
-                                        VerticalScrollBarVisibility="Hidden" Visibility="{Binding HideOptionsRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
-                                        <ListView x:Name="PART_OptionSource" Style="{StaticResource CleanListView}" ItemsSource="{Binding OptionItems, RelativeSource={RelativeSource TemplatedParent}}" SelectionMode="Single">
-                                            <ListView.ItemTemplate>
+                                    <bc:PlainListView x:Name="PART_OptionSource" ItemsSource="{Binding OptionItems, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource internal_plainlistview}"  Visibility="{Binding HideOptionsRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                            <bc:PlainListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                                                         Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </bc:FlexiScroll>
+                                            </bc:PlainListView.ItemTemplate>
+                                        </bc:PlainListView>
                                 </Grid>
                                 
                                 <!--FOOT NOTE-->
@@ -296,11 +246,11 @@
                             <Setter TargetName="PART_ToggleButton_screen" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                         
-                        <DataTrigger Binding="{Binding Path=VerticalOffset, ElementName=MenuFlexiScroll}" Value="0">
+                        <!--<DataTrigger Binding="{Binding Path=VerticalOffset, ElementName=MenuFlexiScroll}" Value="0">
                             <Setter TargetName="upButton" Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
+                        </DataTrigger>-->
                         
-                        <DataTrigger Value="True">
+                        <!--<DataTrigger Value="True">
                             <DataTrigger.Binding>
                                 <MultiBinding Converter="{StaticResource ScrollLimit}">
                                     <Binding ElementName="MenuFlexiScroll" Path="VerticalOffset"/>
@@ -309,7 +259,7 @@
                             </DataTrigger.Binding>
                             <Setter TargetName="downButton" Property="Visibility" Value="Collapsed"/>
                             
-                        </DataTrigger>
+                        </DataTrigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

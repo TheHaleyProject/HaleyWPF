@@ -15,7 +15,6 @@ namespace Haley.WPF.Controls
 
         public ImageRepeatButton()
         {
-            Icon.SetIsHandler(this, true); //This is an handler for the icon
         }
         #endregion
 

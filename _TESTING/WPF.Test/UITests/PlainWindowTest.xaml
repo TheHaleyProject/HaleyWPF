@@ -13,7 +13,7 @@
             <TabItem Header="One" Height="40">
                 <Grid>
                     <Button Height="30" Width="150" Content="Raise Dialog" Click="Button_Click"/>
-                    <hw:ImageButton/>
+                    <hw:ImageButton Height="100" Width="100"/>
                 </Grid>
             </TabItem>
             <TabItem Header="two">

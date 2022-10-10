@@ -186,5 +186,10 @@ namespace WPF.Test
             WndwExternal _wndw = new WndwExternal();
             _wndw.ShowDialog();
         }
+
+        private void bntIconAPTest_Click(object sender, RoutedEventArgs e) {
+            IconAPTest _wndw = new IconAPTest();
+            _wndw.ShowDialog();
+        }
     }
 }

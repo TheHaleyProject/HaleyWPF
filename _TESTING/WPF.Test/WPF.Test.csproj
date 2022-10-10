@@ -89,6 +89,9 @@
     </Compile>
     <Compile Include="GlobalData.cs" />
     <Compile Include="MainVM.cs" />
+    <Compile Include="UITests\IconAPTest.xaml.cs">
+      <DependentUpon>IconAPTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UITests\NewFlexiMenu.xaml.cs">
       <DependentUpon>NewFlexiMenu.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UITests\IconAPTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UITests\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>

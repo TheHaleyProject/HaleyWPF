@@ -37,7 +37,7 @@
             <Button x:Name="btnPlainWindowTest" Content="PlainWindow Test" Click="btnPlainWindowTest_Click" />
             <Button  x:Name="btnContainerViewerTest" Content="ContainerViewer Test" Click="btnContainerViewerTest_Click"/>
             <Button  x:Name="btnExternalWindow" Content="ExternalWindow" Click="btnExternalWindow_Click"/>
-            <hw:ImageButton Height="30" Width="30" hw:Icon.Preference="IconKind" hw:Icon.Default="{StaticResource star_sharp_medium}" hw:Icon.Hover="{StaticResource camera_flat_medium}" hw:Icon.DefaultKind="flag_triangle_medium"/>
+            <Button  x:Name="bntIconAPTest" Content="Icon AP" Click="bntIconAPTest_Click"/>
         </WrapPanel>
         <TextBlock Text="" Grid.Row="1" FontSize="18" Margin="5" Foreground="Red" x:Name="tblckTheme"/>
     </Grid>

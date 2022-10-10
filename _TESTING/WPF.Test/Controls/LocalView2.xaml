@@ -29,9 +29,9 @@
             <UniformGrid.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="{DynamicResource def_shadow}" BlurRadius="10"/>
             </UniformGrid.Effect>
-            <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home_medium}"/>
+            <hw:ComboButton Content="Home" hw:Icon.Default="{StaticResource home_2}"/>
             <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource settings_simple_medium}"/>
-            <hw:ComboButton Content="View" hw:Icon.Default="{StaticResource eye_medium}"/>
+            <hw:ComboButton Content="View" hw:Icon.Preference="IconKind" hw:Icon.DefaultKind="zoom_out" hw:Icon.Default="{StaticResource video_camera}"/>
 
             <hw:ComboButton Content="Save" hw:Icon.Default="{StaticResource save_medium}"/>
             <hw:ComboButton Content="Copy" hw:Icon.Default="{StaticResource copy_medium}"/>

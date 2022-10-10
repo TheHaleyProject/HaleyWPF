@@ -27,11 +27,8 @@ namespace Haley.WPF
 
                 if (value is DependencyPropertyChangedEventArgs e) {
                     value = e.NewValue;
-                    if (value == null) return;
                 }
-
                 changeColorInternal(_getDescriptor, d, value );
-                
             }
             catch (Exception)
             {
@@ -45,7 +42,6 @@ namespace Haley.WPF
 
                 if (value is DependencyPropertyChangedEventArgs e) {
                     value = e.NewValue;
-                    if (value == null) return;
                 }
 
                 changeColorInternal(_getDescriptor, d, value);
@@ -53,19 +49,6 @@ namespace Haley.WPF
                 return;
             }
         }
-
-        ///// <summary>
-        ///// Changes color
-        ///// </summary>
-        ///// <param name="propname">Property name of the ImageSource</param>
-        ///// <param name="d"></param>
-        ///// <param name="e"></param>
-        //public static void changeColor(Func<DependencyPropertyDescriptor> descriptorDelgate, DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    //CHECK: Is New color value empty?
-        //    if (e.NewValue == null || d == null) return;
-        //    changeColorInternal(descriptorDelgate, d, e.NewValue);
-        //}
 
         private static void changeColorInternal(Func<DependencyPropertyDescriptor> descriptorDelgate, DependencyObject d, object NewValue) {
             try {

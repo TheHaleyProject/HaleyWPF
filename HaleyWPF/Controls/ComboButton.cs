@@ -17,7 +17,6 @@ namespace Haley.WPF.Controls
 
         public ComboButton()
         {
-            Icon.SetIsHandler(this, true); //This is an handler for the icon
         }
         #endregion
 

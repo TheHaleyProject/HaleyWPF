@@ -14,7 +14,7 @@
         
         <!--#region Primary-->
         <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/Icons/haleyIcons01.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/haleyIcons01.xaml"/>
         <!--#endregion-->
      
         <!--#region Base Styles-->
