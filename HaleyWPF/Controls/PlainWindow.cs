@@ -11,6 +11,7 @@ using System.Windows.Media;
 using Haley.Models;
 using System.Linq;
 using System.Windows.Controls.Primitives;
+using Haley.WPF.Internal;
 
 namespace Haley.WPF.Controls {
     [TemplatePart(Name = UIEDragMoveRegion, Type = typeof(Border))]
@@ -97,6 +98,12 @@ namespace Haley.WPF.Controls {
             _postLoadFetchElements();
             _postLoadSetImages();
             this.Loaded -= WindowLoaded;
+        }
+
+        protected override void OnSourceInitialized(EventArgs e) {
+            base.OnSourceInitialized(e);
+            //On source initialized
+            WindowStateUtil.AddMaximizeHook(this);
         }
 
         void _initiate() {
@@ -311,7 +318,8 @@ namespace Haley.WPF.Controls {
             try {
                 if (this == null) return;
                 e.Handled = true;
-                this.WindowState = WindowState.Minimized;
+                //this.WindowState = WindowState.Minimized;
+                WindowStateUtil.Minimize(this);
             } catch (Exception ex) {
                 System.Console.WriteLine(ex.ToString());
             }
@@ -322,10 +330,12 @@ namespace Haley.WPF.Controls {
                 e.Handled = true;
                 switch (this.WindowState) {
                     case WindowState.Maximized:
-                        this.WindowState = WindowState.Normal;
+                        WindowStateUtil.Restore(this);
+                        //this.WindowState = WindowState.Normal;
                         break;
                     case WindowState.Normal:
-                        this.WindowState = WindowState.Maximized;
+                        WindowStateUtil.Maximize(this);
+                        //this.WindowState = WindowState.Maximized;
                         break;
                 }
             } catch (Exception ex) {
