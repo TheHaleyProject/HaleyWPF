@@ -18,7 +18,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="5" />
-        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="Foreground" Value="{Binding Path=(mdl:FlexiMenuBar.Foreground), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="Background" Value="Transparent" />
         
         <!--We are only binding the colors and preference to overall value from ancestor-->
@@ -67,6 +67,7 @@
         <Setter Property="mdl:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}" />
         <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_fleximenu_icon_hover}" />
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="mdl:FlexiMenuBar.Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Background" Value="{DynamicResource def_fleximenu_bg}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="SelectedMenuColor" Value="{DynamicResource def_button_hover}"/>
@@ -105,8 +106,8 @@
                                     <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
-                            
-                            <Grid Width="Auto">
+
+                            <Grid Width="Auto" TextBlock.FontFamily="{Binding Path=(mdl:FlexiMenuBar.FontFamily),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.Foreground="{Binding Path=(mdl:FlexiMenuBar.Foreground),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontSize="{Binding Path=(mdl:FlexiMenuBar.FontSize),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontWeight="{Binding Path=(mdl:FlexiMenuBar.FontWeight),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontStretch="{Binding Path=(mdl:FlexiMenuBar.FontStretch),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontStyle="{Binding Path=(mdl:FlexiMenuBar.FontStyle),RelativeSource={RelativeSource TemplatedParent}}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" /> <!--HEADER-->
                                     <RowDefinition Height="Auto" /> <!--SEPARATOR-->
