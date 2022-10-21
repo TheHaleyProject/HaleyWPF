@@ -198,7 +198,7 @@ namespace Haley.WPF.Controls
                 //Check the menu item to find which container to use.
                 UserControl _targetView = null;
                 string containerName = string.Empty;
-                var _globalContainer = ContainerStore.Singleton.Controls;
+                var _globalContainer = ContainerStore.Controls;
 
                 //PRIORITY 1 : If local container is present, then try to find the view. 
                 if (_targetView == null && !IgnoreLocalContainer && LocalContainer != null)
@@ -230,7 +230,7 @@ namespace Haley.WPF.Controls
                 }
                 else
                 {
-                    var _message = $@"Unable to find any view for the container key - {key}. Check if key is correct";
+                    var _message = $@"Unable to find any view for the container key - {key}. Check if key is correct. {Environment.NewLine} If you are using a separate ContainerFactory, then update the LocalContainer Value to fetch correct mapped value.";
                     _setMessage(_message);
                     SendEvent(false, _message);
                 }

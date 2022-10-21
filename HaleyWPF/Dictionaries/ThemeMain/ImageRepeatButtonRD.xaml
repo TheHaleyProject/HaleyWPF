@@ -16,11 +16,12 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ImageRepeatButton}">
                     <Border x:Name="PART_imageborder" BorderBrush="{Binding Path=(ml:Icon.DefaultColor), RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource BorderWithShadow}">
-                        <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="2" RenderTransformOrigin="0.5,0.5">
+                        <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="{Binding Path=Padding,RelativeSource={RelativeSource TemplatedParent}}" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <RotateTransform Angle="{Binding Path=RotateAngle, RelativeSource={RelativeSource TemplatedParent}}"/>

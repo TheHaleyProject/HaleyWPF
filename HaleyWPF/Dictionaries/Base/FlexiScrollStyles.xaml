@@ -13,6 +13,9 @@
         <Setter Property="HorizontalScrollBarSize" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.HorizontalBarSize)}"/>
         <Setter Property="ShowHorizontalButtons" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.ShowButtons)}"/>
         <Setter Property="ShowVerticalButtons" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.ShowButtons)}"/>
+        <Setter Property="TrackBackground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.TrackBackground)}"/>
+        <Setter Property="RepeatBackground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.RepeatBackground)}"/>
+        <Setter Property="ThumbBackground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:FlexiScrollViewer.ThumbBackground)}"/>
     </Style>
 
 </ResourceDictionary>

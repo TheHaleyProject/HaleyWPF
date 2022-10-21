@@ -13,14 +13,18 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Windows.Data;
+using System.Runtime.CompilerServices;
+using System.Collections.Specialized;
 
 namespace Haley.WPF.Controls
 {
     public class PlainListView : ListView, ICornerRadius, IItemsSelection
     {
+        //Based on the experience with setting up filter whenever Collection or ItemSource itself changes (ref:project:hippo.flipper), it is decided to add new collection view source instead of the itemssource itself
+
         private const string UIESearchBar = "PART_searchbar";
         private UIElement _searchBar;
-        private bool collectionChanging;
+        private bool _internalcollection_changing;
         private Func<object, string, bool> _defaultFilter = (item,filter) => 
         {
             if (string.IsNullOrWhiteSpace(filter)) return true; //Don't check if the filter is empty. Meaning return all.
@@ -51,17 +55,23 @@ namespace Haley.WPF.Controls
 
             return true; //Else the filter should fail 
         };
+
         static PlainListView()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PlainListView), new FrameworkPropertyMetadata(typeof(PlainListView)));
+            //ItemsSourceProperty.AddOwner(typeof(PlainListView), new FrameworkPropertyMetadata(null, propertyChangedCallback: SourceChanged));
         }
 
         public PlainListView()
         {
-            collectionChanging = false;
+            _internalcollection_changing = false;
             CommandBindings.Add(new CommandBinding(ApplicationCommands.SelectAll, ExecuteSelectAll));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Filter,ExecuteFilter));
         }
+
+        //protected override void OnItemsSourceChanged(IEnumerable oldValue, IEnumerable newValue) {
+        //    base.OnItemsSourceChanged(oldValue, newValue);
+        //}
 
         public override void OnApplyTemplate()
         {
@@ -140,6 +150,14 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty EnableFilterProperty =
             DependencyProperty.Register(nameof(EnableFilter), typeof(bool), typeof(PlainListView), new PropertyMetadata(false));
 
+        public bool ShowSearchBar {
+            get { return (bool)GetValue(ShowSearchBarProperty); }
+            set { SetValue(ShowSearchBarProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowSearchBarProperty =
+            DependencyProperty.Register(nameof(ShowSearchBar), typeof(bool), typeof(PlainListView), new PropertyMetadata(false));
+
         /// <summary>
         /// Always bind observablecollection<Object>. Else it will return null.
         /// </summary>
@@ -156,7 +174,7 @@ namespace Haley.WPF.Controls
         protected override void OnSelectionChanged(SelectionChangedEventArgs e)
         {
             base.OnSelectionChanged(e);
-            if (collectionChanging) return;
+            if (_internalcollection_changing) return;
             IList choosen = new ObservableCollection<object>();
             foreach (var item in base.SelectedItems)
             {
@@ -222,7 +240,7 @@ namespace Haley.WPF.Controls
 
                 if (uniquevalues.Count == 0) return;
 
-                pview.collectionChanging = true;
+                pview._internalcollection_changing = true;
                 //Compare and get only new items
                 foreach (var item in uniquevalues)
                 {
@@ -238,7 +256,7 @@ namespace Haley.WPF.Controls
             {
                 //Based on the new values, set the base value as well
                 PlainListView pview = d as PlainListView;
-                pview.collectionChanging = false;
+                pview._internalcollection_changing = false;
             }
         }
         //protected override void OnLostFocus(RoutedEventArgs e)
@@ -250,6 +268,7 @@ namespace Haley.WPF.Controls
         void _initiateFilter(string _filterKey)
         {
             if (!EnableFilter) return;
+            if (_filterKey == null) _filterKey = string.Empty; //Don't send null value.
                 //if (string.IsNullOrWhiteSpace(_filterKey)) return; // dont' because the user might need to reset the filter.
 
                 //Initiate the filter.
@@ -263,11 +282,12 @@ namespace Haley.WPF.Controls
 
             //Convert the predicate with one input to function with two inputs.
             collectionView.Filter = (item) => filter_to_use(item, _filterKey);
+            collectionView.Refresh();
         }
 
         void ExecuteFilter(object sender, ExecutedRoutedEventArgs e)
         {
-            var _filterKey = e.Parameter as string;
+            var _filterKey = e?.Parameter as string;
             _initiateFilter(_filterKey);
         }
     }

@@ -554,7 +554,7 @@ namespace Haley.WPF.Controls
                 //Check the menu item to find which container to use.
                 UserControl _targetView = null;
 
-                var _globalContainer = ContainerStore.Singleton.Controls;
+                var _globalContainer = ContainerStore.Controls;
 
                 //PRIORITY 1 : If local container is present, then try to find the view. 
                 if (_targetView == null && !item.IgnoreLocalContainer && LocalContainer != null) {

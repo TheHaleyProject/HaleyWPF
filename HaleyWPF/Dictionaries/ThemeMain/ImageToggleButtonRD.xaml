@@ -26,12 +26,13 @@
         <Setter Property="ColorOFF" Value="{DynamicResource def_toggle_off}"/>
         <Setter Property="ml:Hover.IsEnabled" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Padding" Value="2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:ImageToggleButton}">
                     <!--Base border which lays at the bottom and covers whole length and will be filled with the color representing the status-->
                     <Border x:Name="PART_BorderMain" Style="{StaticResource BorderWithShadow}">
-                        <Grid>
+                        <Grid Margin="{Binding Path=Padding,RelativeSource={RelativeSource TemplatedParent}}">
                             <bc:PlainImage x:Name="Image_ON" ml:Icon.DefaultColor="{TemplateBinding ColorON}" Style="{StaticResource internal_tglebtn_plainImage}" RotateAngle="{TemplateBinding RotateAngle}"/>
                             <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" ml:Icon.Default="{TemplateBinding OffIcon}"  Style="{StaticResource internal_tglebtn_plainImage}" RotateAngle="{TemplateBinding RotateAngle}"/>
                             <bc:PlainImage x:Name="Image_NULL"  ml:Icon.DefaultColor="{DynamicResource def_border_brush}" Style="{StaticResource internal_tglebtn_plainImage}" RotateAngle="{TemplateBinding RotateAngle}"/>

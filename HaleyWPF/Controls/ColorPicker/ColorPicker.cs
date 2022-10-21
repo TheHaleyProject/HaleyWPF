@@ -86,7 +86,7 @@ namespace Haley.WPF.Controls
             MaxStoredColors = 9;
             ShowMiniInfo = false;
             SavedColors.Add(Colors.Violet);
-            _ds = ContainerStore.Singleton.DI.Resolve<IDialogService>();
+            _ds = ContainerStore.DI.Resolve<IDialogService>();
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Add, _storeColorinPalette));
             CommandBindings.Add(new CommandBinding(AdditionalCommands.Reset, _clearPalette));
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete, _deleteLatestInPalette));

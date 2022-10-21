@@ -25,7 +25,7 @@
                     <Border x:Name="thumb_border" Background="{Binding Path=ThumbBackground, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}" Style="{StaticResource internal_flexiscroll_border}"/>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="thumb_border" Value="{DynamicResource def_button_hover}"/>
+                            <Setter Property="Background" TargetName="thumb_border" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiScroll}}}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -256,6 +256,7 @@
         <Setter Property="ThumbBackground" Value="{DynamicResource def_scroll_thumb}"/>
         <Setter Property="TrackBackground" Value="{DynamicResource def_scroll_track}"/>
         <Setter Property="RepeatBackground" Value="{DynamicResource def_scroll_repeat}"/>
+        <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:FlexiScroll}">
