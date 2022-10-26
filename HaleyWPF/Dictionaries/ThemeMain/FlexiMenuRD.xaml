@@ -13,15 +13,16 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
-        <Setter Property="Height" Value="{Binding Path=MenuItemHeight, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="Height" Value="{Binding Path=MenuItemHeight, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
         <Setter Property="ImageLocation" Value="Left" />
+        <!--<Setter Property="Width" Value="60"/>-->
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="5" />
         <Setter Property="Foreground" Value="{Binding Path=(mdl:FlexiMenuBar.Foreground), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="Background" Value="Transparent" />
         
-        <!--We are only binding the colors and preference to overall value from ancestor-->
+        <!--We are only binding the colors and preference to overall value from ancestor (FlexiMenu itself)-->
         <Setter Property="mdl:Icon.HoverColor" Value="{Binding Path=(mdl:Icon.HoverColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="mdl:Hover.Background" Value="{Binding Path=(mdl:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="mdl:Icon.DefaultColor" Value="{Binding Path=(mdl:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
@@ -103,7 +104,7 @@
                                     <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
                                     <MenuItem Header="Toggle MenuItems Location" CommandParameter="MenuItems" Command="{x:Static ul:AdditionalCommands.Toggle}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
                                     <MenuItem x:Name="PART_MenuItem_RepositionPanel" Header="Reposition FloatingPanel" Command="{x:Static ul:AdditionalCommands.Reset}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
-                                    <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="True" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
+                                    <MenuItem x:Name="PART_MenuItem_ShowPanel" Header="Show FloatingPanel" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Command="{x:Static ul:AdditionalCommands.Show}" IsCheckable="True" IsChecked="False" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
                                 </ContextMenu>
                             </Border.ContextMenu>
 
@@ -147,7 +148,7 @@
                                             <DataTemplate>
                                                 <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.RotateAngle="{Binding Path=(mdl:Icon.RotateAngle),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                             </DataTemplate>
                                         </bc:PlainListView.ItemTemplate>
                                     </bc:PlainListView>
@@ -167,7 +168,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.RotateAngle="{Binding Path=(mdl:Icon.RotateAngle),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </DataTemplate>
                                             </bc:PlainListView.ItemTemplate>
                                         </bc:PlainListView>
@@ -218,7 +219,7 @@
                             </Grid>
                             
                             <!--Floating Panel Display-->
-                            <Canvas x:Name="PART_FloatingPanelHolderCanvas" >
+                            <Canvas x:Name="PART_FloatingPanelHolderCanvas" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}">
                                 <ContentControl x:Name="PART_FloatingPanel" Height="Auto" Width="Auto" MinHeight="50" MinWidth="50" Style="{StaticResource FloatingPanel}" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}"/>
                             </Canvas>
                         </Grid>

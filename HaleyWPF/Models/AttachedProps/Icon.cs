@@ -67,6 +67,18 @@ namespace Haley.Models
         #endregion
 
         #region Attached Properties - General
+
+        public static double GetRotateAngle(DependencyObject obj) {
+            return (double)obj.GetValue(RotateAngleProperty);
+        }
+
+        public static void SetRotateAngle(DependencyObject obj, double value) {
+            obj.SetValue(RotateAngleProperty, value);
+        }
+
+        public static readonly DependencyProperty RotateAngleProperty =
+            DependencyProperty.RegisterAttached("RotateAngle", typeof(double), typeof(Icon), new PropertyMetadata(0.0));
+
         private static bool GetChangeInProgress(DependencyObject obj) {
             return (bool)obj.GetValue(ChangeInProgressProperty);
         }

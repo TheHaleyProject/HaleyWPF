@@ -23,13 +23,5 @@ namespace Haley.WPF.Controls
             base.OnApplyTemplate();
             Icon.InitiateImages(this);
         }
-
-        public double RotateAngle {
-            get { return (double)GetValue(RotateAngleProperty); }
-            set { SetValue(RotateAngleProperty, value); }
-        }
-
-        public static readonly DependencyProperty RotateAngleProperty =
-            DependencyProperty.Register(nameof(RotateAngle), typeof(double), typeof(ImageRepeatButton), new PropertyMetadata(0.0));
     }
 }

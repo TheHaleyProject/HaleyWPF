@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Haley.Models;
+using System.Windows.Data;
 
 namespace Haley.WPF.Controls
 {
@@ -34,20 +35,32 @@ namespace Haley.WPF.Controls
             var _imagebox = GetTemplateChild("PART_ImageViewBox") as Viewbox;
             var _cntPrsntr = GetTemplateChild("PART_ContentHolder") as ContentPresenter;
 
+            //column1.Width = new GridLength(1, GridUnitType.Auto); // Auto
+            //column2.Width = new GridLength(1, GridUnitType.Star); // *
+
             if (_dock == null) return;
             if (ImageLocation == Dock.Top || ImageLocation == Dock.Bottom)
             {
                 //In this case, Textbox holder should be the first child
                 _dock.Children.Clear();
+                //_imagebox.Height = _imagebox.Width = double.NaN;
                 _cntPrsntr.SetValue(DockPanel.DockProperty, ImageLocation == Dock.Top ? Dock.Bottom : Dock.Top); //Since we are using ImageLocation to specify Text location, we need to invert it.
                 _dock.Children.Add(_cntPrsntr);
                 _dock.Children.Add(_imagebox);
             }
             else
             {
-                //In this case, Textbox holder should be the first child
+                //In this case, imagebox should be the first child (image is on left or right).
                 _dock.Children.Clear();
-                _imagebox.SetValue(DockPanel.DockProperty, ImageLocation);
+
+                ////Handle the image size (only the height should be considered. Width should follow height)
+                //_imagebox.Child = null; //Don't put the image inside the viewbox. 
+                //Binding binding = new Binding();
+                //binding.Source = _image.ActualHeight;
+                //BindingOperations.SetBinding(_image, Image.WidthProperty, binding);
+                //_imagebox.Width = this.Height;
+                _imagebox.SetValue(DockPanel.DockProperty, ImageLocation); //Docking the image directly ( not the imagebox/viewbox)
+                //Also try to set the width
                 _dock.Children.Add(_imagebox);
                 _dock.Children.Add(_cntPrsntr);
             }

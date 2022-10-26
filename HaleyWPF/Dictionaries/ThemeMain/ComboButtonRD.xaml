@@ -19,6 +19,7 @@
         <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Padding" Value="3"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
@@ -27,16 +28,28 @@
                 <ControlTemplate TargetType="{x:Type bc:ComboButton}">
                     <Border x:Name="PART_BorderMain" Style="{StaticResource BorderWithShadow}">
                             <DockPanel x:Name="PART_maindock">
-                            <Viewbox x:Name="PART_ImageViewBox" Margin="3" DockPanel.Dock="{TemplateBinding ImageLocation}">
-                                <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" />
+                            <Viewbox x:Name="PART_ImageViewBox" Margin="{TemplateBinding Padding}" DockPanel.Dock="{TemplateBinding ImageLocation}">
+                                <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" RenderTransformOrigin="0.5,0.5">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <RotateTransform Angle="{Binding Path=(ml:Icon.RotateAngle), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
                             </Viewbox>
-                            <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="3" TextBlock.Foreground="{TemplateBinding Foreground}"/>
+                            <ContentPresenter x:Name="PART_ContentHolder" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding Padding}" TextBlock.Foreground="{TemplateBinding Foreground}"/>
                         </DockPanel>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
+                        <!--<Trigger Property="ImageLocation" Value="Left">
+                            <Setter TargetName="PART_ImageViewBox" Property="Width" Value="{Binding ElementName=PART_ImageViewBox,Path=ActualHeight}"/>
+                        </Trigger>
+                        <Trigger Property="ImageLocation" Value="Right">
+                            <Setter TargetName="PART_ImageViewBox" Property="Width" Value="{Binding ElementName=PART_ImageViewBox,Path=ActualHeight}"/>
+                        </Trigger>-->
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
                             <Setter TargetName="PART_ContentHolder" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>

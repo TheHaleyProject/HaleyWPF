@@ -25,7 +25,7 @@
                         <Image x:Name="PART_ImageHolder" Source="{Binding Path=(ml:Icon.Default), RelativeSource={RelativeSource TemplatedParent}}" Stretch="UniformToFill" StretchDirection="Both" Margin="{Binding Path=Padding,RelativeSource={RelativeSource TemplatedParent}}" SnapsToDevicePixels="True" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
-                                    <RotateTransform Angle="{Binding Path=RotateAngle, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    <RotateTransform Angle="{Binding Path=(ml:Icon.RotateAngle), RelativeSource={RelativeSource TemplatedParent}}"/>
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
