@@ -19,7 +19,7 @@
      
         <!--#region Base Styles-->
         <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FlexiScrollStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/internalStyles.xaml"/>
         <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
         <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FloatingPanelStyles.xaml"/>
         <!--#endregion-->

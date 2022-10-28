@@ -116,13 +116,13 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty ItemsCountTotalProperty =
             DependencyProperty.Register(nameof(ItemsCountTotal), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(0, ItemsCountTotalPropertyChanged));
 
-        public int TotalPages
+        internal int TotalPages
         {
             get { return (int)GetValue(TotalPagesProperty); }
             set { SetValue(TotalPagesProperty, value); }
         }
 
-        public static readonly DependencyProperty TotalPagesProperty =
+        internal static readonly DependencyProperty TotalPagesProperty =
             DependencyProperty.Register(nameof(TotalPages), typeof(int), typeof(Pagination), new FrameworkPropertyMetadata(0));
 
         public int ItemsCountPerPage
@@ -160,6 +160,23 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty PrimaryColorProperty =
             DependencyProperty.Register(nameof(PrimaryColor), typeof(Brush), typeof(Pagination), new FrameworkPropertyMetadata());
+
+        public Brush SecondaryColor {
+            get { return (Brush)GetValue(SecondaryColorProperty); }
+            set { SetValue(SecondaryColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty SecondaryColorProperty =
+            DependencyProperty.Register(nameof(SecondaryColor), typeof(Brush), typeof(Pagination), new FrameworkPropertyMetadata()); //Don't set default value, so that on initiation value from Style will be considered (it could even be a binding to another property like a fallback)
+
+        public Brush PrimaryForeground {
+            get { return (Brush)GetValue(PrimaryForegroundProperty); }
+            set { SetValue(PrimaryForegroundProperty, value); }
+        }
+
+        public static readonly DependencyProperty PrimaryForegroundProperty =
+            DependencyProperty.Register(nameof(PrimaryForeground), typeof(Brush), typeof(Pagination), new FrameworkPropertyMetadata());
+
         #endregion
 
         #region Command Methods
@@ -300,7 +317,7 @@ namespace Haley.WPF.Controls
             if (_tot_pages < 1)
             {
                 _tot_pages = 1; //We need atleast one page.
-                //In this case, also check the remainder items (because it is possible that the ItemsCountPerpage is greater than ItemsActualCount , then dision will give all the itemscount as remainder.
+                //In this case, also check the remainder items (because it is possible that the ItemsCountPerpage is greater than ItemsActualCount , then division will give all the itemscount as remainder.
                 //In this case, remainder should be zero
                 remainder_items = 0;
             }

@@ -35,7 +35,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid Grid.Column="1" Width="{Binding ElementName=PART_HeaderHolder,Path=ActualHeight}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
-                                <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="5" ml:Hover.IsEnabled="False"/>
+                                <bc:PlainImage Style="{StaticResource internal_mapping_plainimage}" Margin="5" ml:Hover.IsEnabled="False"/>
                             </Grid>
                             <Grid Margin="2,0" HorizontalAlignment="{TemplateBinding HeaderAlignment}" Style="{StaticResource internal_plaincard_grid}">
                                     <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}"/>
@@ -93,7 +93,7 @@
                 <!--Flyer-->
                 <Border x:Name="PART_FlyerHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding FlyerHeight}" Width="{TemplateBinding FlyerWidth}" MinHeight="50" MinWidth="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0">
                     <Viewbox VerticalAlignment="Bottom" Height="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
-                        <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
+                        <bc:PlainImage Style="{StaticResource internal_mapping_plainimage}" Margin="15" ml:Hover.IsEnabled="False"/>
                     </Viewbox>
                 </Border>
             </Grid>
@@ -124,7 +124,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Viewbox Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
-                        <bc:PlainImage ml:Icon.Default="{Binding Path=(ml:Icon.Default),RelativeSource={RelativeSource TemplatedParent}}" ml:Icon.DefaultColor="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}" Margin="15" ml:Hover.IsEnabled="False"/>
+                        <bc:PlainImage Style="{StaticResource internal_mapping_plainimage}" Margin="15" ml:Hover.IsEnabled="False"/>
                     </Viewbox>
                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1"/>
                 </Grid>

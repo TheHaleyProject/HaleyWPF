@@ -184,7 +184,7 @@ namespace Haley.WPF.Controls
             DependencyProperty.Register("FloatingPanel", typeof(object), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, propertyChangedCallback: FloatingPanelChanged));
 
         public static readonly DependencyProperty IsFloatingPanelVisibleProperty =
-            DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new FrameworkPropertyMetadata(true, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: IsFloatingPanelVisiblePropertyChanged));
+            DependencyProperty.Register("IsFloatingPanelVisible", typeof(bool), typeof(FlexiMenu), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: IsFloatingPanelVisiblePropertyChanged));
 
         public object FloatingPanel {
             get { return (object)GetValue(FloatingPanelProperty); }

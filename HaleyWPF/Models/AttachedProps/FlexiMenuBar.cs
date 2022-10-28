@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace Haley.Models
 {
-    public class FlexiMenuBar : DependencyObject
+    public static class FlexiMenuBar
     {
         public static FontFamily GetFontFamily(DependencyObject obj) {
             return (FontFamily)obj.GetValue(FontFamilyProperty);
@@ -77,8 +77,6 @@ namespace Haley.Models
 
         public static readonly DependencyProperty FontSizeProperty =
             DependencyProperty.RegisterAttached("FontSize", typeof(double), typeof(FlexiMenuBar), new PropertyMetadata(13.0));
-
-        public FlexiMenuBar() { }
 
     }
 }

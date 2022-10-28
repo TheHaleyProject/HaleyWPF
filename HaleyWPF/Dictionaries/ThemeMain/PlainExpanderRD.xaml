@@ -58,21 +58,37 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition /> <!--Content row or column should not be auto, else we will not get the scroll viewer-->
                         </Grid.RowDefinitions>
                     </Grid>
                 </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=ExpandDirection, RelativeSource={RelativeSource TemplatedParent}}" Value="Up">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                    <!--Content row or column should not be auto, else we will not get the scroll viewer-->
+                                </Grid.RowDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
             <DataTrigger Binding="{Binding Path=ExpandDirection, RelativeSource={RelativeSource TemplatedParent}}" Value="Left">
                 <Setter Property="ItemsPanel">
                     <Setter.Value>
                         <ItemsPanelTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
                                     <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition  Width="Auto"/>
+                                    <!--Content row or column should not be auto, else we will not get the scroll viewer-->
                                 </Grid.ColumnDefinitions>
                             </Grid>
                         </ItemsPanelTemplate>
@@ -85,9 +101,10 @@
                         <ItemsPanelTemplate>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition  />
                                 </Grid.ColumnDefinitions>
+                                <!--Content row or column should not be auto, else we will not get the scroll viewer-->
                             </Grid>
                         </ItemsPanelTemplate>
                     </Setter.Value>
@@ -98,49 +115,61 @@
 
     <ControlTemplate x:Key="internal_expander_Template" TargetType="bc:PlainExpander">
         <!--OVERALL STACKPANEL TO ENSURE THAT EXPANDER PROPERLY CLOSES AND OPENS-->
-        <StackPanel x:Name="PART_stackoverall" >
-        <!--MAIN BORDER : has a background which covers both content and header. It is the parent container-->
-        <Border x:Name="PART_borderMain" Style="{StaticResource BorderWithoutShadow}" Background="{TemplateBinding ContentBackground}">
-            
-            <!--ITEMS HOLDER: is to hold the header and content. It changes its style based on expand direction. Accordingly the itemspanel will have either two rows or two columns-->
-            <ItemsControl x:Name="PART_ItemsHolder" Margin="-1" Style="{StaticResource internal_expander_itemsControl}">
+        <StackPanel x:Name="PART_stackoverall">
+            <!--MAIN BORDER : has a background which covers both content and header. It is the parent container-->
+            <Border x:Name="PART_borderMain" Style="{StaticResource BorderWithoutShadow}" Background="{TemplateBinding ContentBackground}" MaxHeight="{TemplateBinding MaxHeight}" MaxWidth="{TemplateBinding MaxWidth}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
 
-                <!--HEADER BORDER : Header. This changes its position on the Itemscontrol based on the expand direction-->
-                    <Border x:Name="PART_borderheader"  Style="{StaticResource BorderWithShadow}">
-                    <!-- TOGGLE BUTTON: changes its width or height to match min width or min height as per the expand direction-->
-                    <ToggleButton x:Name="PART_toggleMain"  Focusable="False" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource internal_expander_cleanToggle}">
-                        <!--TOGGLE BUTTON CONTENT: The content of the header changes its transform based on the expand direction.-->
-                        <Grid Style="{StaticResource internal_expander_grid}" Margin="5,0,0,0" x:Name="grdHeaderHolder">
+                <!--ITEMS HOLDER: is to hold the header and content. It changes its style based on expand direction. Accordingly the itemspanel will have either two rows or two columns-->
+                <ItemsControl x:Name="PART_ItemsHolder" Margin="-1" Style="{StaticResource internal_expander_itemsControl}">
+
+                    <!--HEADER BORDER : Header. This changes its position on the Itemscontrol based on the expand direction-->
+                    <Border x:Name="PART_borderheader"  Style="{StaticResource BorderWithShadow}" BorderThickness="{Binding Path=HeaderBorderThickness, RelativeSource={RelativeSource TemplatedParent}}" >
+                        <!-- TOGGLE BUTTON: changes its width or height to match min width or min height as per the expand direction-->
+                        <ToggleButton x:Name="PART_toggleMain"  Focusable="False" Foreground="{TemplateBinding Foreground}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Style="{StaticResource internal_expander_cleanToggle}" Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HeaderPadding}">
+                            <!--TOGGLE BUTTON CONTENT: The content of the header changes its transform based on the expand direction.-->
+                            <Grid Style="{StaticResource internal_expander_grid}" Margin="5,0,0,0" x:Name="grdHeaderHolder">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="{Binding ElementName=grdHeaderHolder,Path=ActualHeight}"/>
                                 </Grid.ColumnDefinitions>
-                            <!--HEADER ICON-->
-                            <Viewbox x:Name="PART_IconHolder" Margin="4" >
-                                    <bc:PlainImage x:Name="PART_Icon" ml:Icon.Default="{TemplateBinding Icon}" ml:Icon.DefaultColor="{TemplateBinding IconDefColor}" IsHitTestVisible="False"/>
-                            </Viewbox>
-                            
-                            <!--HEADER TEXT-->
+                                <!--HEADER ICON-->
+                                <Viewbox x:Name="PART_IconHolder" Margin="4" >
+                                    <bc:PlainImage x:Name="PART_Icon" Style="{StaticResource internal_mapping_plainimage}" IsHitTestVisible="False"/>
+                                </Viewbox>
+
+                                <!--HEADER TEXT-->
                                 <ContentPresenter ContentSource="Header" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1" Margin="5,0,0,0"/>
-                            
-                            <!--HEADER ARROW-->
-                            <Viewbox x:Name="PART_ArrowHolder" Margin="4" Grid.Column="2">
-                                <bc:PlainImage x:Name="PART_Arrow"  IsHitTestVisible="False" ml:Icon.Default="{TemplateBinding Arrow}" ml:Icon.DefaultColor="{TemplateBinding ArrowDefColor}"/>
-                            </Viewbox>
+
+                                <!--HEADER ARROW-->
+                                <Viewbox x:Name="PART_ArrowHolder" Margin="4" Grid.Column="2">
+                                    <bc:PlainImage x:Name="PART_Arrow"  IsHitTestVisible="False" ml:Icon.Default="{TemplateBinding Arrow}" ml:Icon.DefaultColor="{TemplateBinding ArrowDefColor}"/>
+                                </Viewbox>
                             </Grid>
                         </ToggleButton>
                     </Border>
-                
-                <!--ACTUAL CONTENT: Most important part which holds the content. This changes its position on the Itemscontrol based on the expand direction-->
-                    <ContentPresenter Name="PART_contentHolder" Visibility="Collapsed"/>
+
+                    <!--ACTUAL CONTENT: Most important part which holds the content. This changes its position on the Itemscontrol based on the expand direction-->
+                    <Grid Name="PART_contentHolder" Visibility="Collapsed" Background="Transparent" >
+                        <ContentPresenter  Margin="{TemplateBinding Padding}" />
+                    </Grid>
                 </ItemsControl>
-        </Border>
+            </Border>
         </StackPanel>
         <ControlTemplate.Triggers>
-            <Trigger Property="IsMouseOver" Value="true">
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                    <Condition Binding="{Binding Path=(ml:Hover.IsEnabled), RelativeSource={RelativeSource Self}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <MultiDataTrigger.Setters>
+                    <Setter TargetName="PART_borderheader" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
+                    <Setter TargetName="PART_toggleMain" Property="TextBlock.Foreground" Value="{Binding Path=(ml:Hover.Foreground), RelativeSource={RelativeSource TemplatedParent}}"/>
+                </MultiDataTrigger.Setters>
+            </MultiDataTrigger>
+            <!--<Trigger Property="IsMouseOver" Value="true">
                 <Setter TargetName="PART_borderheader" Property="Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource TemplatedParent}}"/>
-            </Trigger>
+            </Trigger>-->
             <Trigger Property="IsExpanded" Value="true">
                 <Setter Property="Visibility" TargetName="PART_contentHolder" Value="Visible" />
                 <Setter Property="LayoutTransform" TargetName="PART_Arrow">
@@ -158,7 +187,7 @@
                 <Setter TargetName="PART_stackoverall" Property="Orientation" Value="Horizontal"/>
                 <Setter TargetName="PART_contentHolder" Property="Grid.Column" Value="0"/>
                 <Setter TargetName="PART_borderheader" Property="Grid.Column" Value="1"/>
-                <Setter TargetName="PART_toggleMain" Property="Width" Value="{Binding MinWidth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_toggleMain" Property="Width" Value="{Binding HeaderSize, RelativeSource={RelativeSource TemplatedParent}}"/>
                 <Setter Property="LayoutTransform" TargetName="PART_ArrowHolder">
                     <Setter.Value>
                         <TransformGroup>
@@ -170,18 +199,18 @@
             <Trigger Property="ExpandDirection" Value="Right">
                 <Setter TargetName="PART_stackoverall" Property="Orientation" Value="Horizontal"/>
                 <Setter TargetName="PART_contentHolder" Property="Grid.Column" Value="1"/>
-                <Setter TargetName="PART_toggleMain" Property="Width" Value="{Binding MinWidth, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_toggleMain" Property="Width" Value="{Binding HeaderSize, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger Property="ExpandDirection" Value="Down">
                 <Setter TargetName="PART_stackoverall" Property="Orientation" Value="Vertical"/>
                 <Setter TargetName="PART_contentHolder" Property="Grid.Row" Value="1"/>
-                <Setter TargetName="PART_toggleMain" Property="Height" Value="{Binding MinHeight, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_toggleMain" Property="Height" Value="{Binding HeaderSize, RelativeSource={RelativeSource TemplatedParent}}"/>
             </Trigger>
             <Trigger Property="ExpandDirection" Value="Up">
                 <Setter TargetName="PART_stackoverall" Property="Orientation" Value="Vertical"/>
                 <Setter TargetName="PART_contentHolder" Property="Grid.Row" Value="0"/>
                 <Setter TargetName="PART_borderheader" Property="Grid.Row" Value="1"/>
-                <Setter TargetName="PART_toggleMain" Property="Height" Value="{Binding MinHeight, RelativeSource={RelativeSource TemplatedParent}}"/>
+                <Setter TargetName="PART_toggleMain" Property="Height" Value="{Binding HeaderSize, RelativeSource={RelativeSource TemplatedParent}}"/>
                 <Setter Property="LayoutTransform" TargetName="PART_ArrowHolder">
                     <Setter.Value>
                         <TransformGroup>
@@ -202,15 +231,16 @@
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ml:Shadow.Color" Value="{DynamicResource def_accent_secondary}"/>
-        <Setter Property="IconDefColor" Value="{DynamicResource def_accent_primary}"/>
         <Setter Property="ArrowDefColor" Value="{DynamicResource def_accent_primary}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="HeaderBorderThickness" Value="{Binding Path=BorderThickness, RelativeSource={RelativeSource Self}}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="BorderThickness" Value="1" />
         <!--Min Height / Min Width is used to define the height of the Expander header-->
         <Setter Property="MinHeight" Value="{StaticResource def_height}"/>
         <Setter Property="MinWidth" Value="{StaticResource def_height}"/>
         <Setter Property="Template" Value="{StaticResource internal_expander_Template}"/>
+        <Setter Property="HeaderPadding" Value="4"/>
     </Style>
 </ResourceDictionary>

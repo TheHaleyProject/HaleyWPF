@@ -7,10 +7,9 @@ using System.Windows.Media;
 
 namespace Haley.Models
 {
-    public class Shadow : DependencyObject
+    public static class Shadow 
     {
         private static SolidColorBrush _defaultBrush = new SolidColorBrush(Colors.Transparent);
-        public Shadow() { }
 
         #region SHADOW
 

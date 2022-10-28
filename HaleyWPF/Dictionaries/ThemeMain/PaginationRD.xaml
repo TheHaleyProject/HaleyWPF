@@ -28,7 +28,7 @@
 
     <Style x:Key="internal_paginationImageButton" TargetType="{x:Type bc:ImageButton}">
         <Setter Property="ml:Icon.Default" Value="{StaticResource arrow_down_rounded}"/>
-        <Setter Property="ml:Icon.DefaultColor" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="ml:Icon.DefaultColor" Value="{Binding Path=SecondaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="ml:Icon.HoverColor" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="Margin" Value="5,0"/>
     </Style>
@@ -59,10 +59,10 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="50"/>
         <Setter Property="Margin" Value="5,0"/>
-        <Setter Property="Background" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="Background" Value="{Binding Path=SecondaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="ml:Hover.Background" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Foreground" Value="{DynamicResource def_content_inverted}"/>
+        <Setter Property="Foreground" Value="{Binding Path=PrimaryForeground, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Style.Triggers>
             <DataTrigger Value="true">
                 <DataTrigger.Binding>
@@ -82,7 +82,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="TurnOffTextDecorations" Value="True"/>
         <Setter Property="FontSize" Value="13"/>
-        <Setter Property="Foreground" Value="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
         <Setter Property="HoverForeground" Value="{Binding Path=PrimaryColor, RelativeSource={RelativeSource TemplatedParent}}"/>
     </Style>
 
@@ -103,13 +103,7 @@
             <StackPanel x:Name="PART_MainPanel" Orientation="Horizontal"  HorizontalAlignment="Right">
 
                 <!--NAVIGATE BACK-->
-                <bc:ImageButton  RenderTransformOrigin="0.5,0.5" Style="{StaticResource internal_paginationImageButton}" Command="{x:Static NavigationCommands.PreviousPage}">
-                    <bc:ImageButton.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform Angle="90"/>
-                        </TransformGroup>
-                    </bc:ImageButton.RenderTransform>
-                </bc:ImageButton>
+                <bc:ImageButton Style="{StaticResource internal_paginationImageButton}" Command="{x:Static NavigationCommands.PreviousPage}" ml:Icon.RotateAngle="90"/>
 
                 <!--START PAGE-->
                 <bc:PlainButton Content="1"  Style="{StaticResource internal_pagination_plainbutton_extended}" Command="{x:Static NavigationCommands.FirstPage}"/>
@@ -139,13 +133,7 @@
                 <bc:PlainButton x:Name="PART_btn_last" Content="{TemplateBinding TotalPages}" Margin="5,0" Style="{StaticResource internal_pagination_plainbutton_extended}"  Command="{x:Static NavigationCommands.LastPage}"/>
 
                 <!--NAVIGATE FORWARD-->
-                <bc:ImageButton Style="{StaticResource internal_paginationImageButton}" RenderTransformOrigin="0.5,0.5" Command="{x:Static NavigationCommands.NextPage}">
-                    <bc:ImageButton.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform Angle="-90"/>
-                        </TransformGroup>
-                    </bc:ImageButton.RenderTransform>
-                </bc:ImageButton>
+                <bc:ImageButton Style="{StaticResource internal_paginationImageButton}" Command="{x:Static NavigationCommands.NextPage}" ml:Icon.RotateAngle="-90"/>
 
                 <!--JUMP TO SPECIFIC PAGE-->
                 <bc:PlainTextBox x:Name="PART_btn_jump" WaterMark="Go To" Style="{StaticResource internal_paginationTextBlock}">
@@ -223,6 +211,8 @@
         <Setter Property="Background" Value="{DynamicResource def_accent_primary}"/>
         <Setter Property="PrimaryColor" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="PrimaryForeground" Value="{DynamicResource def_content_inverted}"/>
+        <Setter Property="SecondaryColor" Value="{Binding Path=Background,  RelativeSource={RelativeSource Self}}"/>
         <Setter Property="Template" Value="{StaticResource internal_pagination_extended}"/>
         <Setter Property="Visibility" Value="Visible"/>
         <Style.Triggers>

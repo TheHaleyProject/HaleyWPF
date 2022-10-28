@@ -14,7 +14,7 @@ using System.Collections.Generic;
 
 namespace Haley.Models
 {
-    public class Icon : Control
+    public static class Icon
     {
         #region Attributes
         private const string DEFAULT = "Default";
@@ -165,9 +165,9 @@ namespace Haley.Models
 
         public static ImageSource EmptyImage = ResourceHelper.getIcon(IconKind.empty_image.ToString());
      
-        public Icon() {
-            CommandBindings.Add(new CommandBinding(AdditionalCommands.Initiate, Execute_Initiate));
-        }
+        //public Icon() {
+        //    //CommandBindings.Add(new CommandBinding(AdditionalCommands.Initiate, Execute_Initiate)); //if we need commandbindings, then we need this class to be extended from "Control" which also comes with other properties.
+        //}
 
         public static void InitiateImages(DependencyObject sender, bool resetCaches = false, string[] affected_props = null) {
             //When we try to access any property before they are set, we end up with initiating the control (applying OnApplyTemplate) and finally end up with calling InitiateImages.
@@ -268,12 +268,11 @@ namespace Haley.Models
             if (!GetIsInitialized(d)) return;
             ReInitiateImages(d, false, new string[] { propname });
         }
-       
-        void Execute_Initiate(object sender, ExecutedRoutedEventArgs e) {
-            if (sender is DependencyObject sender_do)
-            {
-                InitiateImages(sender_do);
-            }
-        }
+
+        //void Execute_Initiate(object sender, ExecutedRoutedEventArgs e) {
+        //    if (sender is DependencyObject sender_do) {
+        //        InitiateImages(sender_do);
+        //    }
+        //}
     }
 }

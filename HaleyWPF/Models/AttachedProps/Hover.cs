@@ -9,10 +9,8 @@ using Haley.WPF;
 namespace Haley.Models
 {
     //Control already contains Background,borderbrush and border thickness values.
-    public class Hover : DependencyObject
+    public static class Hover
     {
-        public Hover() { }
-
         public static bool GetIsEnabled(DependencyObject obj)
         {
             return (bool)obj.GetValue(IsEnabledProperty);

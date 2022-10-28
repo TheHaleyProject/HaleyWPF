@@ -2,6 +2,7 @@
 using Haley.Enums;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -29,24 +30,6 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty ShowIconProperty =
             DependencyProperty.Register(nameof(ShowIcon), typeof(bool), typeof(PlainExpander), new PropertyMetadata(true));
 
-        public ImageSource Icon
-        {
-            get { return (ImageSource)GetValue(IconProperty); }
-            set { SetValue(IconProperty, value); }
-        }
-
-        public static readonly DependencyProperty IconProperty =
-            DependencyProperty.Register(nameof(Icon), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
-
-        public SolidColorBrush IconDefColor
-        {
-            get { return (SolidColorBrush)GetValue(IconDefColorProperty); }
-            set { SetValue(IconDefColorProperty, value); }
-        }
-
-        public static readonly DependencyProperty IconDefColorProperty =
-            DependencyProperty.Register(nameof(IconDefColor), typeof(SolidColorBrush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
-
         public ImageSource Arrow
         {
             get { return (ImageSource)GetValue(ArrowProperty); }
@@ -73,6 +56,30 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty ContentBackgroundProperty =
             DependencyProperty.Register(nameof(ContentBackground), typeof(Brush), typeof(PlainExpander), new FrameworkPropertyMetadata(null));
+
+        public Thickness HeaderBorderThickness {
+            get { return (Thickness)GetValue(HeaderBorderThicknessProperty); }
+            set { SetValue(HeaderBorderThicknessProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderBorderThicknessProperty =
+            DependencyProperty.Register(nameof(HeaderBorderThickness), typeof(Thickness), typeof(PlainExpander), new FrameworkPropertyMetadata());
+
+        public double HeaderSize {
+            get { return (double)GetValue(HeaderSizeProperty); }
+            set { SetValue(HeaderSizeProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderSizeProperty =
+            DependencyProperty.Register(nameof(HeaderSize), typeof(double), typeof(PlainExpander), new FrameworkPropertyMetadata(25.0));
+
+        public Thickness HeaderPadding {
+            get { return (Thickness)GetValue(HeaderPaddingProperty); }
+            set { SetValue(HeaderPaddingProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderPaddingProperty =
+            DependencyProperty.Register(nameof(HeaderPadding), typeof(Thickness), typeof(PlainExpander), new FrameworkPropertyMetadata());
 
         public CornerRadius CornerRadius
         {

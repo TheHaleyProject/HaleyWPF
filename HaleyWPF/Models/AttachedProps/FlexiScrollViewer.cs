@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace Haley.Models
 {
-    public class FlexiScrollViewer : DependencyObject
+    public static class FlexiScrollViewer  
     {
 
         public static readonly DependencyProperty AutoHideProperty =
@@ -39,7 +39,6 @@ namespace Haley.Models
         public static readonly DependencyProperty VerticalBarVisibilityProperty =
             DependencyProperty.RegisterAttached("VerticalBarVisibility", typeof(ScrollBarVisibility), typeof(FlexiScrollViewer), new PropertyMetadata(ScrollBarVisibility.Auto));
 
-        public FlexiScrollViewer() { }
 
         public static bool GetAutoHide(DependencyObject obj) {
             return (bool)obj.GetValue(AutoHideProperty);
