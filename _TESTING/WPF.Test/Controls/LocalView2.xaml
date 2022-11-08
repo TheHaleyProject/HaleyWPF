@@ -30,16 +30,16 @@
                 <DropShadowEffect ShadowDepth="0" Color="{DynamicResource def_shadow}" BlurRadius="10"/>
             </UniformGrid.Effect>
             <hw:ComboButton Content="Home" hw:Icon.Default="{hw:Img SvgKind=brand_vuejs,Preference=SvgKind,IconKind=home}" hw:Icon.DefaultColor="Green"/>
-            <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource settings_simple_medium}"/>
+            <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource settings_simple}"/>
             <hw:ComboButton Content="View" hw:Icon.Default="{StaticResource video_camera}"/>
 
-            <hw:ComboButton Content="Save" hw:Icon.Default="{StaticResource save_medium}"/>
-            <hw:ComboButton Content="Copy" hw:Icon.Default="{StaticResource copy_medium}"/>
-            <hw:ComboButton hw:Icon.Default="{StaticResource new_file_medium}"/>
-            <hw:ComboButton hw:Icon.Default="{StaticResource calender_medium}"/>
+            <hw:ComboButton Content="Save" hw:Icon.Default="{StaticResource save}"/>
+            <hw:ComboButton Content="Copy" hw:Icon.Default="{StaticResource copy}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource new_file}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource calender}"/>
 
-            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle_medium}"/>
-            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle_medium}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle}"/>
+            <hw:ComboButton hw:Icon.Default="{StaticResource info_circle}"/>
         </UniformGrid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

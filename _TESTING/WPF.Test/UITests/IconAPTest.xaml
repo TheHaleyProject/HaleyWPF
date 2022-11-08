@@ -15,15 +15,14 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <WrapPanel>
-            <hw:ImageButton Height="100" Width="100" hw:Icon.Default="{StaticResource success}" hw:Icon.Hover="{StaticResource camera_flat_medium}" />
-            <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource medical}"  BorderThickness="2" ColorON="Red" ColorOFF="Orange" Height="100" Width="100"/>
-            <hw:PlainImage Height="100" Width="100" hw:Icon.Default="{StaticResource success}" hw:Icon.Hover="{StaticResource camera_flat_medium}" />
-            <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{hw:Img SvgKind=brand_facebook_messenger, Preference=SvgKind,IconKind=arrow_down_square_medium}" hw:Icon.Hover="{StaticResource camera_flat_medium}"   hw:Icon.DefaultColor="YellowGreen"/>
+            <hw:ImageButton Height="200" Width="200" hw:Icon.Default="{StaticResource brand_apper}" hw:Icon.DefaultColor="Purple" hw:Icon.Hover="{StaticResource camera_flat}" />
+            <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource medical}"  BorderThickness="2" ColorON="Red" ColorOFF="Orange" Height="200" Width="200"/>
+            <hw:PlainImage Height="200" Width="200" hw:Icon.Default="{StaticResource success}" hw:Icon.DefaultColor="Violet" hw:Icon.Hover="{StaticResource camera_flat}" />
+            <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{StaticResource brand_bity}" hw:Icon.Hover="{StaticResource camera_flat}"   hw:Icon.DefaultColor="YellowGreen"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1">
-            <hw:SvgImage Source="{StaticResource brand_node_js}" Fill="Green" Height="150" Width="150"/>
-            <hw:SvgImage Source="{StaticResource brand_cc_apple_pay}" Fill="RosyBrown" Height="150" Width="150"/>
-
+            <hw:Image Source="{StaticResource bs_bag_dash_fill}" Height="250" Width="250"  HoverFill="Green" Fill="Red" RotateAngle="0"/>
+            <!--<hw:Image  Height="150" Width="150"/>-->
         </WrapPanel>
     </Grid>
 </Window>

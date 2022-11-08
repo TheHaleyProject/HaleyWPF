@@ -57,6 +57,6 @@
         <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" HeaderHeight="30"/>-->
         <hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Flyer" ShowSubHeader="False" SubHeader="whaaaa" HeaderBackground="Purple" CornerRadius="15" />
         <!--<hw:PlainCard hw:Icon.Default="{StaticResource coins_stack}"  hw:Icon.DefaultColor="White" HeaderAlignment="Center" Mode="Simple" ShowSubHeader="False" SubHeader="whaaaa" Background="LightYellow"/>
-        <hw:PlainCard hw:Icon.Default="{StaticResource car_2_medium}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />-->
+        <hw:PlainCard hw:Icon.Default="{StaticResource car_2}" HeaderAlignment="Right" SubHeader="What a life"  hw:Icon.DefaultColor="White" Mode="Flyer" HeaderBackground="Purple" HeaderForeground="Blue" HeaderHeight="80" />-->
     </WrapPanel>
 </Window>
