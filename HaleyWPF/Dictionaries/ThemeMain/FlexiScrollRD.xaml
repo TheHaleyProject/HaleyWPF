@@ -252,7 +252,6 @@
         <Setter Property="CornerRadius" Value="2"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
-        <!--<Setter Property="Arrow" Value="{DynamicResource arrow_line_medium}"/>-->
         <Setter Property="ThumbBackground" Value="{DynamicResource def_scroll_thumb}"/>
         <Setter Property="TrackBackground" Value="{DynamicResource def_scroll_track}"/>
         <Setter Property="RepeatBackground" Value="{DynamicResource def_scroll_repeat}"/>

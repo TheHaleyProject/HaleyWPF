@@ -41,7 +41,7 @@
                                 </Grid.ColumnDefinitions>
                                 <!--Search Icon goes to the left-->
                                 <Grid Width="{TemplateBinding Height}" Height="{Binding ActualWidth, RelativeSource={RelativeSource Self}}" ClipToBounds="True" >
-                                    <bc:ImageButton  ml:Icon.Default="{StaticResource search_medium}" ml:Icon.DefaultColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
+                                    <bc:ImageButton  ml:Icon.Default="{StaticResource search}" ml:Icon.DefaultColor="{TemplateBinding IconColor}" IsTabStop="False" Command="{x:Static NavigationCommands.Search}" Margin="3"/>
                                 </Grid>
                                 <!--Content and watermark goes to the right (column 1)-->
                                 <ScrollViewer  x:Name="PART_ContentHost" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Padding="3" Margin="4,0" Grid.Column="1">
