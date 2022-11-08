@@ -6,7 +6,7 @@
     xmlns:ml="clr-namespace:Haley.Models">
 
     <ResourceDictionary.MergedDictionaries>
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Common/ToggleButtonCommon.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Common/ToggleButtonCommon.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!--#region  DEFAULT-->

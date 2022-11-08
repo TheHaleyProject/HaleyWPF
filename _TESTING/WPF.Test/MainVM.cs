@@ -135,7 +135,7 @@ namespace WPF.Test
         {
            if (_dialogService == null)
             {
-                _dialogService = ContainerStore.Singleton.DI.Resolve<IDialogService>();
+                _dialogService =ContainerStore.DI.Resolve<IDialogService>();
             }
 
             if (_dialogService == null) return;

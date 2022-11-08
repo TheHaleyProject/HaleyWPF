@@ -38,6 +38,7 @@
             <Button  x:Name="btnContainerViewerTest" Content="ContainerViewer Test" Click="btnContainerViewerTest_Click"/>
             <Button  x:Name="btnExternalWindow" Content="ExternalWindow" Click="btnExternalWindow_Click"/>
             <Button  x:Name="bntIconAPTest" Content="Icon AP" Click="bntIconAPTest_Click"/>
+            <Button  x:Name="btnResourceTester" Content="Resource Tester" Click="btnResourceTester_Click"/>
         </WrapPanel>
         <TextBlock Text="" Grid.Row="1" FontSize="18" Margin="5" Foreground="Red" x:Name="tblckTheme"/>
     </Grid>

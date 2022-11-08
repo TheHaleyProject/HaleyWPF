@@ -11,8 +11,7 @@
                
                 <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
-                <hm:CommonDictionary Source="pack://application:,,,/WPF.Test.External;component/Resources/RDMain.xaml"/>
-             
+                <ResourceDictionary Source="pack://application:,,,/WPF.Test.External;component/Resources/RDMain.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <local:VerificationConverter x:Key="verfiyConv"/>
         </ResourceDictionary>

@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Haley.WPF;
+using Haley.Utils;
 
 namespace Haley.Models
 {

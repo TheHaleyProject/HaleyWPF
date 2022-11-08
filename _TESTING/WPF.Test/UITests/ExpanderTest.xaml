@@ -20,7 +20,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
        
-            <hw:PlainExpander Header="Down" VerticalAlignment="Top" CornerRadius="10" IsEnabled="True" Margin="20" BorderBrush="Gray" BorderThickness="1" MinHeight="30" IconDefColor="IndianRed"  Icon="{StaticResource chat_single}">
+            <hw:PlainExpander Header="Down" VerticalAlignment="Top" CornerRadius="10" IsEnabled="True" Margin="20" BorderBrush="Gray" BorderThickness="1" MinHeight="30" hw:Icon.DefaultColor="IndianRed"  hw:Icon.Default="{StaticResource chat_single}">
             <Grid Margin="20">
                     <StackPanel >
                         <TextBlock Text="What"/>
@@ -38,9 +38,9 @@
                 </Grid>
 
             </hw:PlainExpander>-->
-        
-      
-            <hw:PlainExpander Header="RIGHT" VerticalAlignment="Top" CornerRadius="10" Margin="20" BorderBrush="Gray" BorderThickness="1"  IconDefColor="IndianRed" ContentBackground="LightPink" ExpandDirection="Right" Grid.Row="1" MinWidth="30" IsExpanded="False" MinHeight="120" Icon="{StaticResource arrow_down_rounded}">
+
+
+        <hw:PlainExpander Header="RIGHT" VerticalAlignment="Top" CornerRadius="10" Margin="20" BorderBrush="Gray" BorderThickness="1" hw:Icon.DefaultColor="IndianRed" ContentBackground="LightPink" ExpandDirection="Right" Grid.Row="1" MinWidth="30" IsExpanded="False" MinHeight="120" hw:Icon.Default="{StaticResource arrow_down_rounded}">
             <Grid Margin="20" Width="120">
                     <StackPanel >
                         <TextBlock Text="What"/>

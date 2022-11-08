@@ -3,13 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:bc="clr-namespace:Haley.WPF.Controls"
     xmlns:enums="clr-namespace:Haley.Enums"
-    xmlns:mdl="clr-namespace:Haley.Models"
+    xmlns:ml="clr-namespace:Haley.Models"
     xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
     xmlns:ul="clr-namespace:Haley.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ContainerViewer}">
@@ -30,7 +30,7 @@
                                     </Grid.ColumnDefinitions>
                                     <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FF384B8C" TextWrapping="WrapWithOverflow" FontSize="11"/>
                                     <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
-                                        <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="Gray"/>
+                                        <bc:ImageButton ml:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" ml:Icon.DefaultColor="Gray"/>
                                     </Viewbox>
                                 </Grid>
                                 <Border.Style>

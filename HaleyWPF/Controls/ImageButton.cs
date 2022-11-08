@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Haley.Models;
 using System.Windows.Controls.Primitives;
 using Haley.Abstractions;
+using Haley.Utils;
 
 namespace Haley.WPF.Controls
 {

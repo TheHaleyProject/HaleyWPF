@@ -35,8 +35,8 @@ namespace WPF.Test
 
         private void ContainerRegistrations()
         {
-            var _key = ContainerStore.Singleton.Controls.Register<MainVM, LocalView2>("localdemokey", mode: RegisterMode.Transient);
-            var _key2 = ContainerStore.Singleton.Controls.Register<MainVM, VanakkamView>("testkitty2", mode: RegisterMode.Transient);
+            var _key =ContainerStore.Controls.RegisterWithKey<MainVM, LocalView2>("localdemokey", mode: RegisterMode.Transient);
+            var _key2 =ContainerStore.Controls.RegisterWithKey<MainVM, VanakkamView>("testkitty2", mode: RegisterMode.Transient);
         }
 
         private void prepareTheme()

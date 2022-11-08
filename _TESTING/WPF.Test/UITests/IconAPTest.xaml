@@ -5,14 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:enms="clr-namespace:Haley.Enums;assembly=Haley.WPF.Resources"
         xmlns:local="clr-namespace:WPF.Test.UITests"
         mc:Ignorable="d"
         Title="IconAPTest" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <WrapPanel>
-            <hw:ImageButton Height="30" Width="30" hw:Icon.Default="{StaticResource success}" hw:Icon.Hover="{StaticResource camera_flat_medium}" hw:Icon.DefaultKind="diamond"/>
-            <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource medical}"  BorderThickness="2" ColorON="Red" ColorOFF="Orange" Height="30" Width="30"/>
-            <hw:PlainImage Height="30" Width="30" hw:Icon.Default="{StaticResource success}" hw:Icon.Hover="{StaticResource camera_flat_medium}" hw:Icon.DefaultKind="diamond"/>
+            <hw:ImageButton Height="100" Width="100" hw:Icon.Default="{StaticResource success}" hw:Icon.Hover="{StaticResource camera_flat_medium}" />
+            <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource medical}"  BorderThickness="2" ColorON="Red" ColorOFF="Orange" Height="100" Width="100"/>
+            <hw:PlainImage Height="100" Width="100" hw:Icon.Default="{StaticResource success}" hw:Icon.Hover="{StaticResource camera_flat_medium}" />
+            <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{hw:Img SvgKind=brand_facebook_messenger, Preference=SvgKind,IconKind=arrow_down_square_medium}" hw:Icon.Hover="{StaticResource camera_flat_medium}"   hw:Icon.DefaultColor="YellowGreen"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1">
+            <hw:SvgImage Source="{StaticResource brand_node_js}" Fill="Green" Height="150" Width="150"/>
+            <hw:SvgImage Source="{StaticResource brand_cc_apple_pay}" Fill="RosyBrown" Height="150" Width="150"/>
+
         </WrapPanel>
     </Grid>
 </Window>

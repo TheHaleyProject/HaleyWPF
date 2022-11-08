@@ -103,11 +103,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Haley.WPF.Resources">
-      <Version>1.0.1</Version>
-    </PackageReference>
-  </ItemGroup>
+ 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
@@ -120,10 +116,27 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Abstractions" Version="1.0.17.5" />
+        <PackageReference Include="Haley.Abstractions" Version="1.0.19" />
       </ItemGroup>
     </Otherwise>
   </Choose>
+
+  <Choose>
+    <When Condition="Exists($(HaleyWPFResources))">
+      <ItemGroup>
+        <ProjectReference Include="$(HaleyWPFResources)\HaleyWPFResources.csproj">
+          <Name>HaleyWPFResources</Name>
+        </ProjectReference>
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <PackageReference Include="Haley.WPF.Resources" Version="1.0.1" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  
+  
   <Choose>
     <When Condition="Exists($(HaleyExtensions))">
       <ItemGroup>
@@ -135,7 +148,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Extensions" Version="2.1.13" />
+        <PackageReference Include="Haley.Extensions" Version="2.1.15.1" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -150,7 +163,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Helpers" Version="2.1.8" />
+        <PackageReference Include="Haley.Helpers" Version="2.1.9" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -205,7 +218,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Events" Version="2.1.10" />
+        <PackageReference Include="Haley.Events" Version="2.1.11" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -220,7 +233,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.IOC" Version="3.0.12.1" />
+        <PackageReference Include="Haley.IOC" Version="3.0.13" />
       </ItemGroup>
     </Otherwise>
   </Choose>

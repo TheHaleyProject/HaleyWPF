@@ -16,7 +16,7 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Copyright>Haley @ 2020</Copyright>
 		<PackageReleaseNotes>Adde</PackageReleaseNotes>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<AssemblyVersion>3.0.0.0</AssemblyVersion>
 		<FileVersion>3.0.0.0</FileVersion>
 		<PackageIcon>Haley.png</PackageIcon>
@@ -26,14 +26,34 @@
 		<AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
-	<!--<PropertyGroup>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	</PropertyGroup>-->
-	
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
     <Title>HaleyWPF</Title>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 	
   <ItemGroup>
@@ -77,7 +97,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Haley.WPF.Resources" Version="1.0.1" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
@@ -254,6 +273,8 @@
     <Folder Include="Internal\Utils\" />
   </ItemGroup>
 
+<Import Project="..\..\HaleyXamlShared\XamlShared\XamlShared.projitems" Label="Shared" />
+  
 <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
 
 	<Choose>
@@ -270,6 +291,21 @@
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
+
+  <Choose>
+		<When Condition="Exists($(HaleyWPFResources))">
+			<ItemGroup>
+				<ProjectReference Include="$(HaleyWPFResources)\HaleyWPFResources.csproj">
+					<Name>HaleyWPFResources</Name>
+				</ProjectReference>
+			</ItemGroup>
+		</When>
+		<Otherwise>
+			<ItemGroup>
+				<PackageReference Include="Haley.WPF.Resources" Version="1.0.1" />
+			</ItemGroup>
+		</Otherwise>
+	</Choose>
 	
 <Choose>
     <When Condition="Exists($(HaleyExtensions))">
@@ -281,7 +317,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Extensions" Version="2.1.15" />
+       <PackageReference Include="Haley.Extensions" Version="2.1.15.1" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

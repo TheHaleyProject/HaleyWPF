@@ -28,7 +28,7 @@ namespace WPF.Test
         IThemeService _ts;
         public BaseWindow()
         {
-            _ds = ContainerStore.Singleton.DI.Resolve<IDialogServiceEx>();
+            _ds =ContainerStore.DI.Resolve<IDialogServiceEx>();
             InitializeComponent();
             _ts = ThemeService.Singleton;
             _ts.ThemeChanged += _ts_ThemeChanged;
@@ -136,7 +136,7 @@ namespace WPF.Test
             }
 
             var res = _ds.ShowContainerView<LocalView2>("Test View");
-            var vmobj = res.ContainerViewModel;
+            var vmobj = res.ViewModel;
 
 
             MainVM _vm = new MainVM();
@@ -149,7 +149,7 @@ namespace WPF.Test
             _vm.something.Add(new Person("Lifebouy", 63));
 
             var _jesh = _ds.ShowContainerView<LocalView2>("Now new view", _vm);
-            var vmjesh = _jesh.ContainerViewModel;
+            var vmjesh = _jesh.ViewModel;
             _ds.SendToast("Processing Error2", "Error while doing this");
             _ds.SendToast("Processing Error 3", "Error while doing this");
             _ds.SendToast("Processing Error 3", "Error while doing this");
@@ -190,6 +190,10 @@ namespace WPF.Test
         private void bntIconAPTest_Click(object sender, RoutedEventArgs e) {
             IconAPTest _wndw = new IconAPTest();
             _wndw.ShowDialog();
+        }
+
+        private void btnResourceTester_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }

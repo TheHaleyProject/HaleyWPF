@@ -4,12 +4,12 @@
     xmlns:bc="clr-namespace:Haley.WPF.Controls"
     xmlns:enums="clr-namespace:Haley.Enums"
     xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
-    xmlns:mdl="clr-namespace:Haley.Models"
+    xmlns:ml="clr-namespace:Haley.Models"
     xmlns:ul="clr-namespace:Haley.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
-        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyThemeExtra.xaml" />
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
@@ -19,20 +19,20 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Margin" Value="5" />
-        <Setter Property="Foreground" Value="{Binding Path=(mdl:FlexiMenuBar.Foreground), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="Foreground" Value="{Binding Path=(ml:FlexiMenuBar.Foreground), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
         <Setter Property="Background" Value="Transparent" />
         
         <!--We are only binding the colors and preference to overall value from ancestor (FlexiMenu itself)-->
-        <Setter Property="mdl:Icon.HoverColor" Value="{Binding Path=(mdl:Icon.HoverColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
-        <Setter Property="mdl:Hover.Background" Value="{Binding Path=(mdl:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
-        <Setter Property="mdl:Icon.DefaultColor" Value="{Binding Path=(mdl:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
-        <!--<Setter Property="mdl:Icon.Preference" Value="{Binding Path=(mdl:Icon.Preference), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>-->
+        <Setter Property="ml:Icon.HoverColor" Value="{Binding Path=(ml:Icon.HoverColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="ml:Hover.Background" Value="{Binding Path=(ml:Hover.Background), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" />
+        <Setter Property="ml:Icon.DefaultColor" Value="{Binding Path=(ml:Icon.DefaultColor), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
+        <!--<Setter Property="ml:Icon.Preference" Value="{Binding Path=(ml:Icon.Preference), RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>-->
         <Setter Property="HideContent" Value="False" />
         <Style.Triggers>
             <DataTrigger Value="False" Binding="{Binding IsMenuBarOpen, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}">
                 <Setter Property="HideContent" Value="True"/>
                 <Setter Property="Height" Value="30" />
-                <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}" />
+                <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}" />
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
             </DataTrigger>
             <DataTrigger Value="{x:Static enums:Alignment.Right}" Binding="{Binding MenuItemsAlignment, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}">
@@ -54,21 +54,21 @@
     </Style>
 
      <Style x:Key="internal_plainlistview" TargetType="{x:Type bc:PlainListView}" BasedOn="{StaticResource CleanListView}">
-        <Setter Property="mdl:FlexiScrollViewer.EnableOverLay" Value="False"/>
-        <Setter Property="mdl:FlexiScrollViewer.AutoHide" Value="True"/>
-        <Setter Property="mdl:FlexiScrollViewer.HorizontalBarVisibility" Value="Hidden"/>
-        <Setter Property="mdl:FlexiScrollViewer.VerticalBarVisibility" Value="Auto"/>
-        <Setter Property="mdl:FlexiScrollViewer.VerticalBarSize" Value="15"/>
-        <Setter Property="mdl:FlexiScrollViewer.ShowButtons" Value="False"/>
+        <Setter Property="ml:FlexiScrollViewer.EnableOverLay" Value="False"/>
+        <Setter Property="ml:FlexiScrollViewer.AutoHide" Value="True"/>
+        <Setter Property="ml:FlexiScrollViewer.HorizontalBarVisibility" Value="Hidden"/>
+        <Setter Property="ml:FlexiScrollViewer.VerticalBarVisibility" Value="Auto"/>
+        <Setter Property="ml:FlexiScrollViewer.VerticalBarSize" Value="15"/>
+        <Setter Property="ml:FlexiScrollViewer.ShowButtons" Value="False"/>
         <Setter Property="SelectionMode" Value="Single"/>
     </Style>
 
     <Style TargetType="{x:Type bc:FlexiMenu}">
-        <Setter Property="mdl:Hover.Background" Value="{DynamicResource def_fleximenu_hoverbg}" />
-        <Setter Property="mdl:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}" />
-        <Setter Property="mdl:Icon.HoverColor" Value="{DynamicResource def_fleximenu_icon_hover}" />
+        <Setter Property="ml:Hover.Background" Value="{DynamicResource def_fleximenu_hoverbg}" />
+        <Setter Property="ml:Icon.DefaultColor" Value="{DynamicResource def_accent_primary}" />
+        <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_fleximenu_icon_hover}" />
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
-        <Setter Property="mdl:FlexiMenuBar.Foreground" Value="{DynamicResource def_content}"/>
+        <Setter Property="ml:FlexiMenuBar.Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="Background" Value="{DynamicResource def_fleximenu_bg}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="SelectedMenuColor" Value="{DynamicResource def_button_hover}"/>
@@ -108,7 +108,7 @@
                                 </ContextMenu>
                             </Border.ContextMenu>
 
-                            <Grid Width="Auto" TextBlock.FontFamily="{Binding Path=(mdl:FlexiMenuBar.FontFamily),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.Foreground="{Binding Path=(mdl:FlexiMenuBar.Foreground),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontSize="{Binding Path=(mdl:FlexiMenuBar.FontSize),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontWeight="{Binding Path=(mdl:FlexiMenuBar.FontWeight),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontStretch="{Binding Path=(mdl:FlexiMenuBar.FontStretch),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontStyle="{Binding Path=(mdl:FlexiMenuBar.FontStyle),RelativeSource={RelativeSource TemplatedParent}}">
+                            <Grid Width="Auto" TextBlock.FontFamily="{Binding Path=(ml:FlexiMenuBar.FontFamily),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.Foreground="{Binding Path=(ml:FlexiMenuBar.Foreground),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontSize="{Binding Path=(ml:FlexiMenuBar.FontSize),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontWeight="{Binding Path=(ml:FlexiMenuBar.FontWeight),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontStretch="{Binding Path=(ml:FlexiMenuBar.FontStretch),RelativeSource={RelativeSource TemplatedParent}}" TextBlock.FontStyle="{Binding Path=(ml:FlexiMenuBar.FontStyle),RelativeSource={RelativeSource TemplatedParent}}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" /> <!--HEADER-->
                                     <RowDefinition Height="Auto" /> <!--SEPARATOR-->
@@ -128,8 +128,8 @@
                                     <Rectangle x:Name="PART_ToggleButton_screen" Height="32" Width="32" Fill="{TemplateBinding ToggleButtonBackground}" />
                                     <!--(GRID-1 OVERLAP) Header Toggle Button (which lies outside the main grid.-->
                                     <bc:ImageToggleButton x:Name="PART_toggleButton"
-                                        ColorOFF="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                        ColorON="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
+                                        ColorOFF="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
+                                        ColorON="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                         Icon="{Binding ToggleIcon,RelativeSource={RelativeSource TemplatedParent}}" Height="30" Width="30" CommandParameter="Width" Command="{x:Static ul:AdditionalCommands.Toggle}" WindowChrome.IsHitTestVisibleInChrome="True"/>
                                 </Grid>
                                 <!--#endregion-->
@@ -137,7 +137,7 @@
                                 <!--SEPARATOR-->
                                 <bc:Separator
                                     Grid.Row="1"
-                                    Background="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
+                                    Background="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                     Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" />
 
                                 <!--#region MENU-->
@@ -148,7 +148,7 @@
                                             <DataTemplate>
                                                 <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.RotateAngle="{Binding Path=(mdl:Icon.RotateAngle),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessMenuAction}" ml:Icon.Default="{Binding Path=(ml:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ml:Icon.Hover="{Binding Path=(ml:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" ml:Icon.RotateAngle="{Binding Path=(ml:Icon.RotateAngle),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                             </DataTemplate>
                                         </bc:PlainListView.ItemTemplate>
                                     </bc:PlainListView>
@@ -158,7 +158,7 @@
                                 <!--SEPARATOR-->
                                 <bc:Separator
                                     Grid.Row="3"
-                                    Background="{Binding Path=(mdl:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
+                                    Background="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
                                     Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" />
                                 
                                 <!--OPTIONS MENU-->
@@ -168,7 +168,7 @@
                                                 <DataTemplate>
                                                     <bc:ComboButton
                                                         Content="{Binding Label,NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
-                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" mdl:Icon.Default="{Binding Path=(mdl:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.Hover="{Binding Path=(mdl:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}" mdl:Icon.Preference="{Binding Path=(mdl:Icon.Preference),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.DefaultKind="{Binding Path=(mdl:Icon.DefaultKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" mdl:Icon.HoverKind="{Binding Path=(mdl:Icon.HoverKind),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" mdl:Icon.RotateAngle="{Binding Path=(mdl:Icon.RotateAngle),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
+                                                        Style="{StaticResource internal_flexiMenu_cmbBtn}" CommandParameter="{Binding}" Command="{x:Static ul:AdditionalCommands.ProcessOptionsAction}" ml:Icon.Default="{Binding Path=(ml:Icon.Default),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ml:Icon.Hover="{Binding Path=(ml:Icon.Hover),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}" ToolTip="{Binding Label}" Tag="{Binding}"  ml:Icon.RotateAngle="{Binding Path=(ml:Icon.RotateAngle),NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"/>
                                                 </DataTemplate>
                                             </bc:PlainListView.ItemTemplate>
                                         </bc:PlainListView>
@@ -196,7 +196,7 @@
                                             </Grid.ColumnDefinitions>
                                             <TextBlock x:Name="PART_message" VerticalAlignment="Center" Margin="5" Foreground="#FF384B8C" TextWrapping="WrapWithOverflow" FontSize="11"/>
                                             <Viewbox HorizontalAlignment="Right" Margin="5" VerticalAlignment="Top" Grid.Column="1">
-                                                <bc:ImageButton mdl:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" mdl:Icon.DefaultColor="Gray"/>
+                                                <bc:ImageButton ml:Icon.Default="{StaticResource stop}" Command="{x:Static ApplicationCommands.Close}" ml:Icon.DefaultColor="Gray"/>
                                             </Viewbox>
                                         </Grid>
                                     <Border.Style>

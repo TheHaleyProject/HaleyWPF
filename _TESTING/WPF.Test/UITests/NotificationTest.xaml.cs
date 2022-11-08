@@ -28,7 +28,7 @@ namespace WPF.Test
         private IDialogServiceEx ds;
         public NotificationTest()
         {
-            ds = ContainerStore.Singleton.DI.Resolve<IDialogServiceEx>();
+            ds =ContainerStore.DI.Resolve<IDialogServiceEx>();
             InitializeComponent();
         }
 

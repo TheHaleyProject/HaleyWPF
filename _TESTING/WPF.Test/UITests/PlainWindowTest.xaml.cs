@@ -36,7 +36,7 @@ namespace WPF.Test.UITests
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var _ds = ContainerStore.Singleton.DI.Resolve<IDialogServiceEx>();
+            var _ds =ContainerStore.DI.Resolve<IDialogServiceEx>();
             _ds.StartupLocation = WindowStartupLocation.CenterScreen;
             //_ds.Background = Brushes.Transparent;
             //_ds.EnableBackgroundBlur = true;

@@ -35,8 +35,8 @@ namespace WPF.Test
 
             var _source = Haley.Models.Icon.GetDefault(imgeChanger);
 
-            var _imageinfo = ImageUtils.getImageInfo(_source);
-            var _newsource = ImageUtils.changeImageColor(_imageinfo, _red, _green, _blue);
+            var _imageinfo = ImageUtils.GetImageInfo(_source);
+            var _newsource = ImageUtils.ChangeImageColor(_imageinfo, _red, _green, _blue);
             Haley.Models.Icon.SetDefault(imgeChanger, _newsource);
 
         }

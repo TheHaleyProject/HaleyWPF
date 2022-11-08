@@ -21,12 +21,9 @@
     <Style x:Key="internal_mapping_plainimage" TargetType="{x:Type bc:PlainImage}">
         <Setter Property="ml:Icon.Default" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.Default)}"/>
         <Setter Property="ml:Icon.DefaultColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.DefaultColor)}"/>
-        <Setter Property="ml:Icon.DefaultKind" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.DefaultKind)}"/>
         <Setter Property="ml:Icon.DisableColorChange" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.DisableColorChange)}"/>
         <Setter Property="ml:Icon.Hover" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.Hover)}"/>
         <Setter Property="ml:Icon.HoverColor" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>
-        <Setter Property="ml:Icon.HoverKind" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverKind)}"/>
-        <Setter Property="ml:Icon.Preference" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.Preference)}"/>
         <!--<Setter Property="ml:Icon.Pressed" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.Pressed)}"/>
         <Setter Property="ml:Icon.PressedKind" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.PressedKind)}"/>-->
         <Setter Property="ml:Icon.RotateAngle" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.RotateAngle)}"/>
