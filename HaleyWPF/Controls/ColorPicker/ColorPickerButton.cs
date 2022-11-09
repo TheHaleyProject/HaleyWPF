@@ -54,7 +54,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ColorPickerButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ColorPickerButton), new FrameworkPropertyMetadata(default(CornerRadius)));
         #endregion
 
         public SolidColorBrush OldBrush

@@ -41,7 +41,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlexiScroll), new PropertyMetadata(ResourceHelper.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(FlexiScroll), new PropertyMetadata(default(CornerRadius)));
 
         public Brush ThumbBackground
         {

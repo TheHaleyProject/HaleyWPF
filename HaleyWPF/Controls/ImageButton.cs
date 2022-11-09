@@ -37,7 +37,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ImageButton), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(ImageButton), new FrameworkPropertyMetadata(default(CornerRadius)));
         #endregion
 
     }

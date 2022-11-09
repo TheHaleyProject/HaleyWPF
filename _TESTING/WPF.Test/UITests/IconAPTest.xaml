@@ -15,13 +15,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <WrapPanel>
-            <hw:ImageButton Height="200" Width="200" hw:Icon.Default="{StaticResource brand_apper}" hw:Icon.DefaultColor="Purple" hw:Icon.Hover="{StaticResource camera_flat}" />
-            <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource medical}"  BorderThickness="2" ColorON="Red" ColorOFF="Orange" Height="200" Width="200"/>
-            <hw:PlainImage Height="200" Width="200" hw:Icon.Default="{StaticResource success}" hw:Icon.DefaultColor="Violet" hw:Icon.Hover="{StaticResource camera_flat}" />
-            <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{StaticResource brand_bity}" hw:Icon.Hover="{StaticResource camera_flat}"   hw:Icon.DefaultColor="YellowGreen"/>
+            <hw:ImageButton Height="200" Width="200" hw:Icon.Default="{StaticResource brand_bluetooth}" hw:Icon.DefaultColor="Thistle" hw:Icon.Hover="{StaticResource book_bible_solid}" />
+            <hw:ImageToggleButton IsChecked="True" Icon="{StaticResource message_medical_light}"  BorderThickness="2" ColorON="Red" ColorOFF="Orange" Height="200" Width="200"/>
+            <hw:PlainImage Height="200" Width="200" hw:Icon.Default="{StaticResource sunglasses_light}" hw:Icon.DefaultColor="Violet" hw:Icon.Hover="{StaticResource camera_flat}" />
+            <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{StaticResource brand_wordpress}" hw:Icon.Hover="{StaticResource camera_flat}"   hw:Icon.DefaultColor="YellowGreen"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1">
-            <hw:Image Source="{StaticResource bs_bag_dash_fill}" Height="250" Width="250"  HoverFill="Green" Fill="Red" RotateAngle="0"/>
+            <hw:Image Source="{hw:ImgSource Kind=empty_image}" Height="250" Width="250"  HoverFill="Green" Fill="Aquamarine" RotateAngle="0"/>
             <!--<hw:Image  Height="150" Width="150"/>-->
         </WrapPanel>
     </Grid>

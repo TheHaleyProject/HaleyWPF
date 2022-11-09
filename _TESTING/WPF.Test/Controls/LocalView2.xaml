@@ -29,9 +29,9 @@
             <UniformGrid.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="{DynamicResource def_shadow}" BlurRadius="10"/>
             </UniformGrid.Effect>
-            <hw:ComboButton Content="Home" hw:Icon.Default="{hw:Img SvgKind=brand_vuejs,Preference=SvgKind,IconKind=home}" hw:Icon.DefaultColor="Green"/>
-            <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource settings_simple}"/>
-            <hw:ComboButton Content="View" hw:Icon.Default="{StaticResource video_camera}"/>
+            <hw:ComboButton Content="Home" hw:Icon.Default="{hw:Img Brand=brand_vue_js,Preference=BrandKind,BStrap=bs_house}" hw:Icon.DefaultColor="LimeGreen"/>
+            <hw:ComboButton Content="Settings" hw:Icon.Default="{StaticResource sheep_solid}"/>
+            <hw:ComboButton Content="View" hw:Icon.Default="{StaticResource brand_vue_js}"/>
 
             <hw:ComboButton Content="Save" hw:Icon.Default="{StaticResource save}"/>
             <hw:ComboButton Content="Copy" hw:Icon.Default="{StaticResource copy}"/>

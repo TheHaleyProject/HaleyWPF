@@ -105,7 +105,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(Pagination), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(Pagination), new FrameworkPropertyMetadata(default(CornerRadius)));
 
         public int ItemsCountTotal
         {

@@ -103,7 +103,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainListView), new PropertyMetadata(ResourceHelper.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainListView), new PropertyMetadata(default(CornerRadius)));
 
         public Brush ItemSelectedColor
         {
@@ -247,7 +247,7 @@ namespace Haley.WPF.Controls
                     base_view.SelectedItems.Add(item);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;

@@ -280,6 +280,7 @@
       <Name>WPF.Test.External</Name>
     </ProjectReference>
   </ItemGroup>
+
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
     <When Condition="Exists($(HaleyAbstractions))">
@@ -356,16 +357,16 @@
     </Otherwise>
   </Choose>
   <Choose>
-    <When Condition="Exists($(HaleyWPFResources))">
+    <When Condition="Exists($(HaleyWPFIconsPack))">
       <ItemGroup>
-        <ProjectReference Include="$(HaleyWPFResources)\HaleyWPFResources.csproj">
-          <Name>HaleyWPFResources</Name>
+        <ProjectReference Include="$(HaleyWPFIconsPack)\HaleyWPFIconsPack.csproj">
+          <Name>HaleyWPFIconsPack</Name>
         </ProjectReference>
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF.Resources" Version="1.0.1" />
+        <PackageReference Include="Haley.WPF.IconsPack" Version="1.0.1" />
       </ItemGroup>
     </Otherwise>
   </Choose>

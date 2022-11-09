@@ -124,8 +124,8 @@ namespace Haley.Models
 
         #endregion
 
-        public static ImageSource EmptyImage = ResourceHelper.GetIcon(IconKind.empty_image.ToString(), IconTargetType.Image);
-     
+        public static ImageSource EmptyImage = ResourceHelper.GetDefaultIcon();
+
         //public Icon() {
         //    //CommandBindings.Add(new CommandBinding(AdditionalCommands.Initiate, Execute_Initiate)); //if we need commandbindings, then we need this class to be extended from "Control" which also comes with other properties.
         //}

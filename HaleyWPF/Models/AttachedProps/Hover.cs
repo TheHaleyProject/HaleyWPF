@@ -63,7 +63,7 @@ namespace Haley.Models
         }
 
         public static readonly DependencyProperty BorderThicknessProperty =
-            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(Hover), new PropertyMetadata(ResourceHelper.borderThickness));
+            DependencyProperty.RegisterAttached("BorderThickness", typeof(Thickness), typeof(Hover), new PropertyMetadata(default(Thickness)));
 
         public static SolidColorBrush GetForeground(DependencyObject obj)
         {

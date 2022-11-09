@@ -131,7 +131,7 @@ namespace Haley.WPF.Controls {
                 _minbtn = VisualUtils.FindVisualChildren(_controlBox, UIEMinimizeBtn) as ButtonBase;
 
                 //_controlBox.ContentTemplate.LoadContent(); //Is required? check.
-            } catch (Exception ex) {
+            } catch (Exception) {
             }
 
             #endregion
@@ -279,7 +279,7 @@ namespace Haley.WPF.Controls {
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainWindow), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius, propertyChangedCallback: _cornerRadiusChanged));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainWindow), new FrameworkPropertyMetadata(default(CornerRadius), propertyChangedCallback: _cornerRadiusChanged));
 
         static void _cornerRadiusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             if (d is PlainWindow pw) {

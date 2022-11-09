@@ -38,7 +38,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty ArrowProperty =
-            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.GetIcon(IconKind.arrow_down_rounded.ToString(),IconTargetType.Image)));
+            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.GetIcon(IconKind.arrow_down_rounded.ToString(),IconSourceKey.Default)));
 
         public SolidColorBrush ArrowDefColor
         {
@@ -89,6 +89,6 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.cornerRadius));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainExpander), new FrameworkPropertyMetadata(default(CornerRadius)));
     }
 }

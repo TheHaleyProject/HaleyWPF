@@ -126,7 +126,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainCard), new FrameworkPropertyMetadata(defaultValue: ResourceHelper.cornerRadius,propertyChangedCallback:cornerRadiusPropertyChanged));
+            DependencyProperty.Register(nameof(CornerRadius), typeof(CornerRadius), typeof(PlainCard), new FrameworkPropertyMetadata(defaultValue: default(CornerRadius),propertyChangedCallback:cornerRadiusPropertyChanged));
 
         static void cornerRadiusPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

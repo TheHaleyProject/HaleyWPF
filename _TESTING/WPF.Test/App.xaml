@@ -8,8 +8,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-               
                 <ResourceDictionary Source="pack://application:,,,/WPF.Test;component/Resources/DicRD.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Haley.WPF.IconsPack;component/Dictionaries/haleyRD.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyRD.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPF.Test.External;component/Resources/RDMain.xaml"/>
             </ResourceDictionary.MergedDictionaries>
