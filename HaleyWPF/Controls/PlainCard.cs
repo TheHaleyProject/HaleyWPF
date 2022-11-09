@@ -41,25 +41,21 @@ namespace Haley.WPF.Controls
         {
             try
             {
-                if (CornerRadius != null)
-                {
-                    switch (Mode)
-                    {
-                        case CardMode.Simple:
-                            //Change the header border
-                            if (_headerborder == null) return;
-                            _headerborder.CornerRadius = new CornerRadius(CornerRadius.TopLeft, CornerRadius.TopRight, 0.0, 0.0);
-                            break;
-                        case CardMode.Flyer:
-                            if (_flyerBorder == null) return;
-                            //Change the flyer border.
-                            _flyerBorder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
-                            break;
-                        case CardMode.Professional:
-                            if (_headerborder == null) return;
-                            _headerborder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
-                            break;
-                    }
+                switch (Mode) {
+                    case CardMode.Simple:
+                        //Change the header border
+                        if (_headerborder == null) return;
+                        _headerborder.CornerRadius = new CornerRadius(CornerRadius.TopLeft, CornerRadius.TopRight, 0.0, 0.0);
+                        break;
+                    case CardMode.Flyer:
+                        if (_flyerBorder == null) return;
+                        //Change the flyer border.
+                        _flyerBorder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
+                        break;
+                    case CardMode.Professional:
+                        if (_headerborder == null) return;
+                        _headerborder.CornerRadius = new CornerRadius(0.0, 0.0, CornerRadius.BottomRight, CornerRadius.BottomLeft);
+                        break;
                 }
             }
             catch (Exception)

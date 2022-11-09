@@ -14,8 +14,8 @@
         <!--Order:  Defaults, Icons, Converters and then followed by base styles.-->
         
         <!--#region Primary-->
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/haleyDefaults.xaml"/>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF.Resources;component/Dictionaries/haleyRD.xaml"/> <!-- Should we also add reference to all resources or only the icons-->
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalDefaults.xaml"/>
+        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalIcons.xaml"/> 
         <!--#endregion-->
      
         <!--#region Base Styles-->

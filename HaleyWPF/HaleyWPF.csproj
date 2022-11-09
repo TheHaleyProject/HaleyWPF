@@ -117,11 +117,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\haleyBase.xaml">
+    <Page Update="Dictionaries\internalIcons.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionaries\internalBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\haleyDefaults.xaml">
+    <Page Update="Dictionaries\internalDefaults.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Update="Dictionaries\haleyThemeExtra.xaml">
+    <Page Update="Dictionaries\internalThemeExtra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -288,21 +292,6 @@
 		<Otherwise>
 			<ItemGroup>
 				<PackageReference Include="Haley.Abstractions" Version="1.0.19" />
-			</ItemGroup>
-		</Otherwise>
-	</Choose>
-
-  <Choose>
-		<When Condition="Exists($(HaleyWPFResources))">
-			<ItemGroup>
-				<ProjectReference Include="$(HaleyWPFResources)\HaleyWPFResources.csproj">
-					<Name>HaleyWPFResources</Name>
-				</ProjectReference>
-			</ItemGroup>
-		</When>
-		<Otherwise>
-			<ItemGroup>
-				<PackageReference Include="Haley.WPF.Resources" Version="1.0.1" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
