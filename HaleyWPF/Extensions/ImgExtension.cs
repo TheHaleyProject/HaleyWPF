@@ -15,6 +15,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
 using System.Windows.Markup;
+using Isolated.Haley.WPF;
 
 namespace Haley.Utils
 {
@@ -35,7 +36,7 @@ namespace Haley.Utils
 
         public override object ProvideValue(IServiceProvider serviceProvider) {
             if (!Process(out var @enum, out var @key)) return null;
-            return ResourceHelper.GetIcon(key, @enum);
+            return IconFinder.GetIcon(key, @enum);
         }
     }
 }

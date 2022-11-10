@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Haley.Utils;
+using Isolated.Haley.WPF;
 
 namespace Haley.WPF.Controls
 {
@@ -38,7 +39,7 @@ namespace Haley.WPF.Controls
         }
 
         public static readonly DependencyProperty ArrowProperty =
-            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(ResourceHelper.GetIcon(IconKind.arrow_down_rounded.ToString(),IconSourceKey.Default)));
+            DependencyProperty.Register(nameof(Arrow), typeof(ImageSource), typeof(PlainExpander), new FrameworkPropertyMetadata(IconFinder.GetIcon(IconKind.arrow_down_rounded.ToString(),IconSourceKey.Default)));
 
         public SolidColorBrush ArrowDefColor
         {

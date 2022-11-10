@@ -22,6 +22,6 @@
         <Grid Background="{DynamicResource color_bg_1}">
             <Button Content="ChangeTheme" Height="30" Width="150" Click="Button_Click"/>
         </Grid>
-        <Grid Grid.Column="1" Background="{DynamicResource color_bg_2}"/>
+        <Grid Grid.Column="1" Background="{DynamicResource color_bg_2}" MinWidth="{Binding this}"/>
     </Grid>
 </Window>

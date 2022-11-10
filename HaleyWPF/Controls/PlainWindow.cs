@@ -12,6 +12,7 @@ using Haley.Models;
 using System.Linq;
 using System.Windows.Controls.Primitives;
 using Haley.WPF.Internal;
+using Isolated.Haley.WPF;
 
 namespace Haley.WPF.Controls {
     [TemplatePart(Name = UIEDragMoveRegion, Type = typeof(Border))]
@@ -360,9 +361,9 @@ namespace Haley.WPF.Controls {
         }
 
         void _postLoadSetImages() {
-            //_setIconImage(_closebtn, ResourceHelper.getIcon("close_circle")); //default
-            //_setIconImage(_closebtn, ResourceHelper.getIcon("close_circle")); //default
-            //_setIconImage(_closebtn, ResourceHelper.getIcon("close_circle")); //default
+            //_setIconImage(_closebtn, IconFinder.getIcon("close_circle")); //default
+            //_setIconImage(_closebtn, IconFinder.getIcon("close_circle")); //default
+            //_setIconImage(_closebtn, IconFinder.getIcon("close_circle")); //default
 
             _setIconImage(_closebtn, CloseIcon);
             _setIconImage(_maxbtn, MaximizeIcon);

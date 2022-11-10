@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Media;
 using Haley.Enums;
 using Haley.Utils;
+using Isolated.Haley.WPF;
 
 namespace Haley.WPF.Controls
 {
@@ -23,7 +24,7 @@ namespace Haley.WPF.Controls
 
         public override void OnApplyTemplate()
         {
-            if (Icon == null) Icon = ResourceHelper.GetDefaultIcon();
+            if (Icon == null) Icon = IconFinder.GetDefaultIcon();
             if (OffIcon == null) SetCurrentValue(OffIconProperty, Icon);
             base.OnApplyTemplate();
         }
