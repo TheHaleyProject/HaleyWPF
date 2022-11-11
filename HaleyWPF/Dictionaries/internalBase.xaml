@@ -7,22 +7,22 @@
     >
 
     <ResourceDictionary.MergedDictionaries>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeColors/ThemeNormal.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/ThemeColors/ThemeNormal.xaml"/>
         
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.MVVM;component/Dictionaries/haleyConverters.xaml"/>
 
         <!--Order:  Defaults, Icons, Converters and then followed by base styles.-->
         
         <!--#region Primary-->
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalDefaults.xaml"/>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalIcons.xaml"/> 
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalDefaults.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalIcons.xaml"/> 
         <!--#endregion-->
      
         <!--#region Base Styles-->
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/internalStyles.xaml"/>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FloatingPanelStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/BorderStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/internalStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/ListViewStyles.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/Base/FloatingPanelStyles.xaml"/>
         <!--#endregion-->
    
     </ResourceDictionary.MergedDictionaries>

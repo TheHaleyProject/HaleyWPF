@@ -10,11 +10,11 @@
     <ResourceDictionary.MergedDictionaries>
        
         <!--#region Base-->
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalBase.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalBase.xaml"/>
         <!--#endregion-->
         
         <!--#region Theme Extra (For use as static resource)-->
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalThemeExtra.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalThemeExtra.xaml"/>
         <!--#endregion-->
        
     </ResourceDictionary.MergedDictionaries>

@@ -8,8 +8,8 @@
     xmlns:ul="clr-namespace:Haley.Utils">
 
     <ResourceDictionary.MergedDictionaries>
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalThemeExtra.xaml" />
-        <ml:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalBase.xaml"/>
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalThemeExtra.xaml" />
+        <hm:CommonDictionary Source="pack://application:,,,/Haley.WPF;component/Dictionaries/internalBase.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <Style TargetType="{x:Type bc:ContainerViewer}">

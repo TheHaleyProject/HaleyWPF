@@ -37,5 +37,9 @@ namespace Isolated.Haley.WPF {
         public static ImageSource GetDefaultIcon() {
             return GetIcon(IconKind.empty_image.ToString(), IconSourceKey.Default);
         }
+
+        public static List<Uri> GetAllSourcePaths() {
+            return ResourceFetcher.GetAllSourcePaths();
+        }
     }
 }
