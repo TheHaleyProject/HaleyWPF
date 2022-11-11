@@ -11,7 +11,7 @@ using System.Windows.Input;
 using Haley.Utils;
 using System.Windows.Media.Imaging;
 using System.Collections.Generic;
-using Isolated.Haley.WPF;
+
 
 namespace Haley.Models
 {

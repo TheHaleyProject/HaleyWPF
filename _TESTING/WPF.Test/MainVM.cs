@@ -105,9 +105,11 @@ namespace WPF.Test
         #endregion
 
         Random _random = new Random();
+        Random _randomBase = new Random();
         Array _values = Enum.GetValues(typeof(BrandKind));
-        Enum _source = BrandKind.brand_haley_square;
+        Array _valuesBase = Enum.GetValues(typeof(IconKind));
 
+        Enum _source = BrandKind.brand_haley_square;
         public Enum SourceEnum {
             get { return _source; }
             set {
@@ -115,6 +117,13 @@ namespace WPF.Test
                 OnPropertyChanged(); //Raise notification
             }
         }
+
+        private Enum _basesource = IconKind.empty_image;
+        public Enum BaseSource {
+            get { return _basesource; }
+            set { SetProp(ref _basesource, value); }
+        }
+
 
         #region Commands
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
@@ -125,10 +134,15 @@ namespace WPF.Test
         public ICommand Cmd_changetheme => new DelegateCommand(_changetheme);
         public ICommand Cmd_OpenColorDialog => new DelegateCommand(_openColorDialog);
         public ICommand Cmd_ChangeContainerKey => new DelegateCommand<object>(_changeContainerView);
-        public ICommand Cmd_GetRandomImage => new DelegateCommand<object>(_getRandomImage);
+        public ICommand Cmd_GetRandomImage => new DelegateCommand<bool>(_getRandomImage);
 
-        private void _getRandomImage(object obj) {
-            SourceEnum = (BrandKind)_values.GetValue(_random.Next(_values.Length));
+        private void _getRandomImage(bool obj) {
+            if (obj) {
+                BaseSource = (IconKind)_valuesBase.GetValue(_randomBase.Next(_valuesBase.Length));
+
+            } else {
+                SourceEnum = (BrandKind)_values.GetValue(_random.Next(_values.Length));
+            }
         }
 
         #endregion

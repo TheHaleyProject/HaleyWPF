@@ -7,7 +7,6 @@ using Haley.Enums;
 using Haley.Utils;
 using System.Windows;
 using System.Windows.Controls;
-using Haley.WPF.Internal;
 
 namespace Haley.Services
 {

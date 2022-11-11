@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Haley.Utils;
-using Isolated.Haley.WPF;
+
 
 namespace Haley.WPF.Controls
 {

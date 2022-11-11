@@ -6,7 +6,6 @@ using Haley.Abstractions;
 using Haley.Enums;
 using System.Windows;
 using System.Windows.Controls;
-using Haley.WPF.Internal;
 using Haley.Models;
 using Haley.Services;
 

@@ -11,8 +11,7 @@ using System.Windows.Media;
 using Haley.Models;
 using System.Linq;
 using System.Windows.Controls.Primitives;
-using Haley.WPF.Internal;
-using Isolated.Haley.WPF;
+
 
 namespace Haley.WPF.Controls {
     [TemplatePart(Name = UIEDragMoveRegion, Type = typeof(Border))]

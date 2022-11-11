@@ -21,7 +21,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace Haley.WPF.Internal
+namespace Haley.Utils
 {
     /// <summary>
     /// Interaction logic for ColorPickerWindow.xaml
