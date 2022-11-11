@@ -60,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataVM.cs" />
+    <Compile Include="Models\IconInfo.cs" />
     <Compile Include="UITests\BadgeTesting.xaml.cs">
       <DependentUpon>BadgeTesting.xaml</DependentUpon>
     </Compile>
@@ -280,7 +281,6 @@
       <Name>WPF.Test.External</Name>
     </ProjectReference>
   </ItemGroup>
-
   <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
   <Choose>
     <When Condition="Exists($(HaleyAbstractions))">

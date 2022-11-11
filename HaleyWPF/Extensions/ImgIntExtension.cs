@@ -19,8 +19,8 @@ using Isolated.Haley.WPF;
 
 namespace Haley.Utils
 {
-    public class ImgSourceExtension : MarkupExtension {
-        public ImgSourceExtension() {
+    public class ImgIntExtension : MarkupExtension {
+        public ImgIntExtension() {
             Kind = IconKind.empty_image;
         }
 

@@ -104,6 +104,18 @@ namespace WPF.Test
 
         #endregion
 
+        Random _random = new Random();
+        Array _values = Enum.GetValues(typeof(BrandKind));
+        Enum _source = BrandKind.brand_haley_square;
+
+        public Enum SourceEnum {
+            get { return _source; }
+            set {
+                _source = value;
+                OnPropertyChanged(); //Raise notification
+            }
+        }
+
         #region Commands
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
         public ICommand Cmd_Notify => new DelegateCommand<string>(_localNotify);
@@ -113,6 +125,11 @@ namespace WPF.Test
         public ICommand Cmd_changetheme => new DelegateCommand(_changetheme);
         public ICommand Cmd_OpenColorDialog => new DelegateCommand(_openColorDialog);
         public ICommand Cmd_ChangeContainerKey => new DelegateCommand<object>(_changeContainerView);
+        public ICommand Cmd_GetRandomImage => new DelegateCommand<object>(_getRandomImage);
+
+        private void _getRandomImage(object obj) {
+            SourceEnum = (BrandKind)_values.GetValue(_random.Next(_values.Length));
+        }
 
         #endregion
 

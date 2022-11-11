@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
           xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
-        xmlns:enms="clr-namespace:Haley.Enums;assembly=Haley.WPF.Resources"
+        xmlns:enms="clr-namespace:Haley.Enums;assembly=Haley.WPF.IconsPack"
         xmlns:local="clr-namespace:WPF.Test.UITests"
         mc:Ignorable="d"
         Title="IconAPTest" Height="450" Width="800">
@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <WrapPanel>
             <hw:ImageButton Height="200" Width="200" hw:Icon.Default="{StaticResource brand_bluetooth}" hw:Icon.DefaultColor="Thistle" hw:Icon.Hover="{StaticResource book_bible_solid}" />
@@ -21,8 +22,10 @@
             <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{StaticResource brand_wordpress}" hw:Icon.Hover="{StaticResource camera_flat}"   hw:Icon.DefaultColor="YellowGreen"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1">
-            <hw:Image Source="{hw:ImgSource Kind=empty_image}" Height="250" Width="250"  HoverFill="Green" Fill="Aquamarine" RotateAngle="0"/>
+            <hw:Image Source="{hw:ImgInt Kind=empty_image}" Height="150" Width="150"  HoverFill="Green" Fill="Aquamarine" RotateAngle="0"/>
+            <hw:Image Source="{hw:Img SourceEnum}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
             <!--<hw:Image  Height="150" Width="150"/>-->
         </WrapPanel>
+        <Button Grid.Row="2" Height="30" Width="200" Margin="5" HorizontalAlignment="Right" Content="Change Random Image" Command="{Binding Cmd_GetRandomImage}"/>
     </Grid>
 </Window>

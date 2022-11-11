@@ -19,6 +19,7 @@ namespace WPF.Test.UITests {
     public partial class IconAPTest : Window {
         public IconAPTest() {
             InitializeComponent();
+            this.DataContext = new MainVM();
         }
     }
 }
