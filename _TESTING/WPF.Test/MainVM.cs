@@ -12,6 +12,7 @@ using Haley.Events;
 using System.Windows.Media;
 using Haley.Services;
 using System.Collections.Generic;
+using WPF.Test.Models;
 
 namespace WPF.Test
 {
@@ -109,8 +110,8 @@ namespace WPF.Test
         Array _values = Enum.GetValues(typeof(BrandKind));
         Array _valuesBase = Enum.GetValues(typeof(IconKind));
 
-        Enum _source = BrandKind.brand_haley_square;
-        public Enum SourceEnum {
+        IconInfo _source ;
+        public IconInfo IconsPack {
             get { return _source; }
             set {
                 _source = value;
@@ -118,8 +119,8 @@ namespace WPF.Test
             }
         }
 
-        private Enum _basesource = IconKind.empty_image;
-        public Enum BaseSource {
+        private IconInfo _basesource;
+        public IconInfo BasePack {
             get { return _basesource; }
             set { SetProp(ref _basesource, value); }
         }
@@ -135,13 +136,19 @@ namespace WPF.Test
         public ICommand Cmd_OpenColorDialog => new DelegateCommand(_openColorDialog);
         public ICommand Cmd_ChangeContainerKey => new DelegateCommand<object>(_changeContainerView);
         public ICommand Cmd_GetRandomImage => new DelegateCommand<bool>(_getRandomImage);
+        public ICommand CmdMakePropsNull => new DelegateCommand(() => { 
+            BasePack = null;
+            IconsPack = null; 
+        });
 
         private void _getRandomImage(bool obj) {
+            var newinfo = new IconInfo() { };
             if (obj) {
-                BaseSource = (IconKind)_valuesBase.GetValue(_randomBase.Next(_valuesBase.Length));
-
+                newinfo.Source = (IconKind)_valuesBase.GetValue(_randomBase.Next(_valuesBase.Length));
+                BasePack = newinfo;
             } else {
-                SourceEnum = (BrandKind)_values.GetValue(_random.Next(_values.Length));
+                newinfo.Source = (BrandKind)_values.GetValue(_random.Next(_values.Length));
+                IconsPack = newinfo;
             }
         }
 

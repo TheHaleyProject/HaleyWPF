@@ -88,10 +88,11 @@ namespace Haley.Utils
                 //Since we are dealing with DataContextChange, we will always get DataContext Property
                 //If Binding Source is "." then we directly bind the property. So, don't process or validate.
                 if (e.NewValue != null && !(e.NewValue is string || e.NewValue is Enum) && BindingSource != ".") {
-                    propValue = CommonUtils.FetchValueAndMonitor(e.NewValue, BindingSource, ObjectPropertyChanged);
+                    CommonUtils.FetchValueAndMonitor(e.NewValue, BindingSource, ObjectPropertyChanged,_sourceProvider);
+                } else {
+                    _sourceProvider.OnDataChanged(propValue); //this will be the new data.
                 }
             } catch (Exception) { }
-            _sourceProvider.OnDataChanged(propValue); //this will be the new data.
         }
     }
 }

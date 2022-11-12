@@ -22,14 +22,15 @@
             <hw:PlainImage MaxHeight="100" MaxWidth="100" hw:Icon.Default="{StaticResource brand_wordpress}" hw:Icon.Hover="{StaticResource camera_flat}"   hw:Icon.DefaultColor="YellowGreen"/>
         </WrapPanel>
         <WrapPanel Grid.Row="1">
-            <hw:Image Source="{hw:ImgInt Kind=empty_image}" Height="150" Width="150"  HoverFill="Green" Fill="Aquamarine" RotateAngle="0"/>
-            <hw:Image Source="{hw:Img SourceEnum}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
-            <hw:Image Source="{hw:ImgInt BaseSource}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
+            <hw:Image DataContext="{Binding BasePack}" Source="{hw:ImgInt Source}" Height="150" Width="150"  HoverFill="Green" Fill="Aquamarine" RotateAngle="0"/>
+            <hw:Image Source="{hw:Img IconsPack.Source}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
+            <hw:Image Source="{hw:ImgInt BasePack.Source}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
             <!--<hw:Image  Height="150" Width="150"/>-->
         </WrapPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2" Height="40" HorizontalAlignment="Right"  Margin="5">
             <Button Grid.Row="2" Width="200" Margin="5" HorizontalAlignment="Right" CommandParameter="{StaticResource False}" Content="Change IP Image" Command="{Binding Cmd_GetRandomImage}"/>
             <Button Grid.Row="2" Width="200" Margin="5" HorizontalAlignment="Right" Content="Change Base Image" CommandParameter="{StaticResource True}" Command="{Binding Cmd_GetRandomImage}"/>
+            <Button Grid.Row="2" Width="200" Margin="5" HorizontalAlignment="Right" Content="MakePropsNull" Command="{Binding CmdMakePropsNull}"/>
         </StackPanel>
        
     </Grid>
