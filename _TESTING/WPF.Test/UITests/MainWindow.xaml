@@ -74,8 +74,10 @@
                 <hw:PlainTextBox x:Name="greenValue" Width="50" Margin="4" WaterMark="GREEN"/>
                 <hw:PlainTextBox x:Name="blueValue" Width="50" Margin="4" WaterMark="BLUE"/>
             </StackPanel>
-            <hw:ImageButton x:Name="imgeChanger" Height="40" Width="40" Margin="10" hw:Icon.Default="{StaticResource heart_plain}" hw:Icon.DefaultColor="{DynamicResource button_hover}" hw:Icon.HoverColor="Yellow"/>
-            
+            <hw:ImageButton x:Name="imgeChanger" Height="40" Width="40" Margin="10" hw:Icon.Default="{StaticResource heart_plain}" hw:Icon.DefaultColor="{DynamicResource button_hover}" hw:Icon.HoverColor="Orange"/>
+            <TextBlock Text="Hello" Foreground="{hm:Trigger Path=IsMouseOver, Value=True,OnSuccess='red'}">
+            </TextBlock>
+
             <!--<local:ToTestControl/>-->
         </StackPanel>
     </Grid>

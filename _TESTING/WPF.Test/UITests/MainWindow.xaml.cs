@@ -120,5 +120,9 @@ namespace WPF.Test
         {
 
         }
+
+        private void asdfwe(object sender, System.Windows.Data.DataTransferEventArgs e) {
+
+        }
     }
 }

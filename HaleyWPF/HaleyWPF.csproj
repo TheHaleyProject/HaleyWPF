@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.3.0-beta7</Version>
+		<Version>5.3.0</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -24,6 +24,7 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
+		<Configurations>Debug;Release;DebugWB</Configurations>
 	</PropertyGroup>
 
   <PropertyGroup>
@@ -36,6 +37,10 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
@@ -44,11 +49,19 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net5.0-windows|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
@@ -334,7 +347,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.3.0-beta6" />
+       <PackageReference Include="Haley.MVVM" Version="6.3.0" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
