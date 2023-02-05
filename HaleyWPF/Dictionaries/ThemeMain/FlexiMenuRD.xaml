@@ -85,20 +85,6 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             DockPanel.Dock="Left" 
                             Width="{Binding MenuBarWidth, RelativeSource={RelativeSource TemplatedParent}}">
-
-                            <!--<Border.Triggers>
-                                <EventTrigger RoutedEvent="Border.Loaded">
-                                  <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation
-                Storyboard.TargetName="PART_brderMain"
-                Storyboard.TargetProperty="(Border.Width)" From="5"
-                Duration="0:0:0.5"/>
-                                  </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger>
-                            </Border.Triggers>-->
-
                             <Border.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Toggle Dock Location" CommandParameter="Location" Command="{x:Static ul:AdditionalCommands.Toggle}" CommandTarget="{Binding Path=PlacementTarget,RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}}"/>
@@ -234,18 +220,32 @@
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetName="PART_brderMain" Storyboard.TargetProperty="Width"
-                  From="45" Duration="0:0:0.3" />
+                  From="45" Duration="0:0:0.2" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_brderMain" Storyboard.TargetProperty="Width" To="45" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                         
                         <Trigger Property="IsMenuBarOpen" Value="False">
                             <Setter TargetName="PART_toggleButton" Property="HorizontalAlignment" Value="Center"/>
                             <Setter TargetName="PART_footerRegion" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_headerRegion" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_brderMain" Property="Width" Value="45" />
+                            <!--<Setter TargetName="PART_brderMain" Property="Width" Value="45" />-->
                             <Setter TargetName="PART_ToggleButton_screen" Property="Visibility" Value="Collapsed"/>
+                            <!--<Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_brderMain" Storyboard.TargetProperty="Width" To="45" Duration="0:0:0.3"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>-->
                         </Trigger>
                         
                         <!--<DataTrigger Binding="{Binding Path=VerticalOffset, ElementName=MenuFlexiScroll}" Value="0">

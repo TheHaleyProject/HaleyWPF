@@ -326,7 +326,7 @@
     <When Condition="Exists($(HaleyHelpers))">
       <ItemGroup>
         <ProjectReference Include="$(HaleyHelpers)\HaleyHelpers.csproj">
-          <Name>HaleyExtensions</Name>
+          <Name>HaleyHelpers</Name>
         </ProjectReference>
       </ItemGroup>
     </When>
@@ -341,13 +341,13 @@
     <When Condition="Exists($(HaleyMVVM))">
       <ItemGroup>
         <ProjectReference Include="$(HaleyMVVM)\HaleyMVVM.csproj">
-          <Name>HaleyExtensions</Name>
+          <Name>HaleyMVVM</Name>
         </ProjectReference>
       </ItemGroup>
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.3.0" />
+       <PackageReference Include="Haley.MVVM" Version="6.3.3" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  

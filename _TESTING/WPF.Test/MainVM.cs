@@ -127,6 +127,8 @@ namespace WPF.Test
 
 
         #region Commands
+        public ICommand Cmd_MouseHover => new DelegateCommand<object>(_mouseOver);
+      
         public ICommand Cmd_Login => new DelegateCommand<PlainPasswordBox>(_login);
         public ICommand Cmd_Notify => new DelegateCommand<string>(_localNotify);
         public ICommand Cmd_Toggle => new DelegateCommand(_toggle);
@@ -140,6 +142,10 @@ namespace WPF.Test
             BasePack = null;
             IconsPack = null; 
         });
+
+        private void _mouseOver(object obj) {
+            //
+        }
 
         private void _getRandomImage(bool obj) {
             var newinfo = new IconInfo() { };

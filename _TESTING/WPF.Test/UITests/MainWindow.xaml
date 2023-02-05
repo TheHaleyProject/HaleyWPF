@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+        xmlns:cols ="clr-namespace:Microsoft.Xaml.Behaviors;assembly=Microsoft.Xaml.Behaviors"
+        xmlns:beh="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:WPF.Test"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" 
@@ -21,6 +23,18 @@
             <Setter Property="hw:Hover.IsEnabled" Value="True"/>
             <Setter Property="hw:Hover.BorderBrush" Value="#FF35C91D"/>
             <Setter Property="hw:Hover.BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="hm:StyleSetterAP.Triggers">
+                <Setter.Value>
+                    <hm:TriggerCollection>
+                        <beh:EventTrigger EventName="MouseEnter">
+                            <hm:EventToCommand Command="{Binding Cmd_MouseHover}" BindEventArgs="True"/>
+                        </beh:EventTrigger>
+                    </hm:TriggerCollection>
+                </Setter.Value>
+            </Setter>
         </Style>
         </Window.Resources>
     <Grid >
@@ -77,7 +91,8 @@
             <hw:ImageButton x:Name="imgeChanger" Height="40" Width="40" Margin="10" hw:Icon.Default="{StaticResource heart_plain}" hw:Icon.DefaultColor="pink" hw:Icon.HoverColor="Orange"/>
             <TextBlock Text="Hello" Background="{hm:DataTrigger Path={Binding ElementName=imgeChanger,Path=(hw:Icon.DefaultColor)},Value=pink,FallBack=green,OnSuccess=purple,CompareType=Color}" Foreground="{hm:Trigger Path=IsMouseOver, Value=True,OnSuccess='red'}">
             </TextBlock>
-
+            <TextBlock Text="Hello" Background="pink" Foreground="{hm:DataTrigger Path={Binding ElementName=imgeChanger,Path=(hw:Icon.DefaultColor)},Value=background,SelfBindValue=True, FallBack=Orange,OnSuccess=white,CompareType=Color}">
+            </TextBlock>
             <!--<local:ToTestControl/>-->
         </StackPanel>
     </Grid>
