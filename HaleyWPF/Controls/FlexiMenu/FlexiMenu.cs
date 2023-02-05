@@ -39,6 +39,7 @@ namespace Haley.WPF.Controls
             _contextMenuShow = GetTemplateChild(UIEContextMenuShow) as SysCtrls.MenuItem;
             _contextMenuReposition = GetTemplateChild(UIEContextMenuReposition) as SysCtrls.MenuItem;
             _toggleBtn = GetTemplateChild(UIEToggleButton) as Button;
+            _mainBorder = GetTemplateChild(UIEMainBorder) as UIElement;
 
             _changeHeader();
             _changeFloatingPanel();
@@ -47,6 +48,13 @@ namespace Haley.WPF.Controls
             {
                 if (_contextMenuReposition != null) _contextMenuReposition.Visibility = Visibility.Collapsed;
                 if (_contextMenuShow != null) _contextMenuShow.Visibility = Visibility.Collapsed; //If we need to disable floating panel, then the context menu should not be shown.
+            }
+
+            //Initial settings
+            if (IsMenuBarOpen) {
+                _mainBorder.SetCurrentValue(WidthProperty, MenuBarWidth > 45.0 ? MenuBarWidth : 45.0);
+            } else {
+                _mainBorder.SetCurrentValue(WidthProperty, 45.0);
             }
 
             //Set Welcome view if not null
@@ -70,35 +78,37 @@ namespace Haley.WPF.Controls
         #endregion
 
         #region Attributes
-        private const string UIEContextMenuReposition = "PART_MenuItem_RepositionPanel";
-        private const string UIEContextMenuShow = "PART_MenuItem_ShowPanel";
-        private const string UIEFloatingPanel = "PART_FloatingPanel";
-        private const string UIEFloatingPanelCanvas = "PART_FloatingPanelHolderCanvas";
-        private const string UIEHeaderHolder = "PART_header";
-        private const string UIEMainContentHolder = "PART_MainContentArea";
-        private const string UIEMessage = "PART_message";
-        private const string UIEMessageHolder = "PART_messageHolder";
-        private const string UIEToggleButton = "PART_toggleButton";
-        private static SolidColorBrush _defaultToggleButtonBg = Brushes.Transparent;
-        private static SolidColorBrush _defaultFootNote = Brushes.Gray;
-        private static double _headerRegionHeight = Convert.ToDouble(100);
-        private static double _menuBarWidth = Convert.ToDouble(250);
-        private static double _menuItemHeight = Convert.ToDouble(30);
-        private bool _canvasSet = false;
-        private DispatcherTimer _messageTimer;
-        private bool _pauseMenuSelection = false;
+        const string UIEContextMenuReposition = "PART_MenuItem_RepositionPanel";
+        const string UIEContextMenuShow = "PART_MenuItem_ShowPanel";
+        const string UIEFloatingPanel = "PART_FloatingPanel";
+        const string UIEFloatingPanelCanvas = "PART_FloatingPanelHolderCanvas";
+        const string UIEHeaderHolder = "PART_header";
+        const string UIEMainContentHolder = "PART_MainContentArea";
+        const string UIEMessage = "PART_message";
+        const string UIEMessageHolder = "PART_messageHolder";
+        const string UIEMainBorder = "PART_brderMain";
+        const string UIEToggleButton = "PART_toggleButton";
+        static SolidColorBrush _defaultToggleButtonBg = Brushes.Transparent;
+        static SolidColorBrush _defaultFootNote = Brushes.Gray;
+        static double _headerRegionHeight = Convert.ToDouble(100);
+        static double _menuBarWidth = Convert.ToDouble(250);
+        static double _menuItemHeight = Convert.ToDouble(30);
+        bool _canvasSet = false;
+        DispatcherTimer _messageTimer;
+        bool _pauseMenuSelection = false;
         #endregion
 
         #region UIElements
-        private SysCtrls.MenuItem _contextMenuReposition;
-        private SysCtrls.MenuItem _contextMenuShow;
-        private ContentControl _floatingPanel;
-        private Canvas _floatingPanelHolderCanvas;
-        private ContentControl _headerHolder;
-        private ContentControl _mainContentHolder;
-        private TextBlock _message;
-        private FrameworkElement _messageHolder;
-        private Button _toggleBtn;
+        SysCtrls.MenuItem _contextMenuReposition;
+        SysCtrls.MenuItem _contextMenuShow;
+        ContentControl _floatingPanel;
+        Canvas _floatingPanelHolderCanvas;
+        ContentControl _headerHolder;
+        ContentControl _mainContentHolder;
+        TextBlock _message;
+        FrameworkElement _messageHolder;
+        Button _toggleBtn;
+        UIElement _mainBorder;
         #endregion
 
         #region Constructors
