@@ -15,6 +15,7 @@
         <Setter Property="ml:Icon.HoverColor" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="ml:Icon.PressedColor" Value="{DynamicResource def_accent_tertiary}"/>
         <Setter Property="ml:Hover.Background" Value="{DynamicResource def_button_hover}"/>
+        <Setter Property="ml:Hover.Foreground" Value="{DynamicResource def_accent_secondary}"/>
         <Setter Property="PressedBackground" Value="{DynamicResource def_accent_tertiary}"/>
         <Setter Property="Background" Value="{DynamicResource def_button_background}"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -43,12 +44,18 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <Setter TargetName="PART_ContentHolder" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.HoverColor)}"/>
-                            <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.Background)}"/>
-                            <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.BorderBrush)}"/>
-                        </Trigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                <Condition Binding="{Binding Path=(ml:Hover.IsEnabled), RelativeSource={RelativeSource Self}}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <MultiDataTrigger.Setters>
+                                <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Hover), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter TargetName="PART_ContentHolder" Property="TextBlock.Foreground" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.Foreground)}"/>
+                                <Setter TargetName="PART_BorderMain" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.Background)}"/>
+                                <Setter TargetName="PART_BorderMain" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Hover.BorderBrush)}"/>
+                            </MultiDataTrigger.Setters>
+                        </MultiDataTrigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="PART_ImageHolder" Property="Source" Value="{Binding Path=(ml:Icon.Pressed), RelativeSource={RelativeSource TemplatedParent}}"/>
                         </Trigger>
