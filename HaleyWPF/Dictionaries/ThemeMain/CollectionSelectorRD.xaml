@@ -96,7 +96,7 @@
                                 <bc:PlainListView x:Name="PART_lstvew_selection" Style="{StaticResource internal_collectionselector_plainlstvw}" ItemsSource="{TemplateBinding SourceSelectedItems}" Grid.Row="1"/>
                                 <StackPanel Orientation="Horizontal" Grid.Row="2">
                                     <bc:LinkedText Text="Select All" TurnOffTextDecorations="True" CommandParameter="Target" Command="{x:Static ApplicationCommands.SelectAll}"/>
-                                    <bc:LinkedText Text="Highlight Selected" TurnOffTextDecorations="True" Command="{x:Static ul:AdditionalCommands.Highlight }" Margin="10,0" Visibility="{Binding ElementName=PART_cbx_hide,Path=IsChecked,Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}"/>
+                                    <bc:LinkedText Text="Highlight Selected" TurnOffTextDecorations="True" Command="{x:Static ul:AdditionalCommands.Highlight }" Margin="10,0" Visibility="{Binding ElementName=PART_cbx_hide,Path=IsChecked,Converter={StaticResource BooltoVisibility},ConverterParameter=1}"/>
                                 </StackPanel>
                             </Grid>
                         </Grid>

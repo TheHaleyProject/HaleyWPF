@@ -62,9 +62,9 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <bc:ImageButton x:Name="PART_minimize"  ml:Icon.Default="{StaticResource line}"  Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Minimize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMinimizeButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>
-                                    <bc:ImageButton x:Name="PART_maximize" Grid.Column="1"  ml:Icon.Default="{StaticResource box}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}"  Command="{x:Static ul:AdditionalCommands.Maximize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMaximizeButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>
-                                    <bc:ImageButton x:Name="PART_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Close}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideCloseButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}"/>  
+                                    <bc:ImageButton x:Name="PART_minimize"  ml:Icon.Default="{StaticResource line}"  Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Minimize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMinimizeButton,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}"/>
+                                    <bc:ImageButton x:Name="PART_maximize" Grid.Column="1"  ml:Icon.Default="{StaticResource box}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}"  Command="{x:Static ul:AdditionalCommands.Maximize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMaximizeButton,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}"/>
+                                    <bc:ImageButton x:Name="PART_close" Grid.Column="2"  ml:Icon.Default="{StaticResource close_circle}" Style="{StaticResource internal_plainwndw_ctrlbx_btns}" Command="{x:Static ul:AdditionalCommands.Close}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideCloseButton,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}"/>  
                                 </Grid>
                             </DataTemplate>
                             <DataTemplate x:Key="internal_controlboxMac">
@@ -74,17 +74,17 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Button x:Name="PART_minimize"  Style="{StaticResource internal_plainwnw_btnBase}" Command="{x:Static ul:AdditionalCommands.Minimize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMinimizeButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}" IsHitTestVisible="True" ToolTip="Minimize">
+                                    <Button x:Name="PART_minimize"  Style="{StaticResource internal_plainwnw_btnBase}" Command="{x:Static ul:AdditionalCommands.Minimize}" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMinimizeButton,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}" IsHitTestVisible="True" ToolTip="Minimize">
                                         <Viewbox Margin="3">
                                             <Ellipse Height="10" Width="10" Fill="#FFCAD728" Stroke="#FFC7C0C0" StrokeThickness="0.5"/>
                                         </Viewbox>
                                     </Button>
-                                    <Button x:Name="PART_maximize" Grid.Column="1" Style="{StaticResource internal_plainwnw_btnBase}" Command="{x:Static ul:AdditionalCommands.Maximize}" IsHitTestVisible="True" ToolTip="Maximize" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMaximizeButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}">
+                                    <Button x:Name="PART_maximize" Grid.Column="1" Style="{StaticResource internal_plainwnw_btnBase}" Command="{x:Static ul:AdditionalCommands.Maximize}" IsHitTestVisible="True" ToolTip="Maximize" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideMaximizeButton,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}">
                                         <Viewbox Margin="3">
                                             <Ellipse Height="10" Width="10" Fill="#FF2CCB22" Stroke="#FFC7C0C0" StrokeThickness="0.5"/>
                                         </Viewbox>
                                     </Button>
-                                    <Button x:Name="PART_close" Grid.Column="2" Style="{StaticResource internal_plainwnw_btnBase}" Command="{x:Static ul:AdditionalCommands.Close}" IsHitTestVisible="True" ToolTip="Close" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideCloseButton,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}">
+                                    <Button x:Name="PART_close" Grid.Column="2" Style="{StaticResource internal_plainwnw_btnBase}" Command="{x:Static ul:AdditionalCommands.Close}" IsHitTestVisible="True" ToolTip="Close" Visibility="{Binding RelativeSource={RelativeSource AncestorType=bc:PlainWindow},Path=HideCloseButton,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}">
                                         <Viewbox Margin="3">
                                             <Ellipse Height="10" Width="10" Fill="#FFC5671F" Stroke="#FFC7C0C0" StrokeThickness="0.5"/>
                                         </Viewbox>
@@ -126,10 +126,10 @@
                                     </Grid.RowDefinitions>
 
                                     <!--Header (can be hidden)-->
-                                    <ContentControl x:Name="PART_header" IsHitTestVisible="True" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HideHeader,Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}"/>
+                                    <ContentControl x:Name="PART_header" IsHitTestVisible="True" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HeaderHeight}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HideHeader,Converter={StaticResource BooltoVisibility},ConverterParameter=1}"/>
 
                                     <!--Footer (Can be hidden)-->
-                                    <Border x:Name="PART_footer_holder" Grid.Row="2" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HideFooter,Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                    <Border x:Name="PART_footer_holder" Grid.Row="2" Height="{Binding RelativeSource={RelativeSource TemplatedParent},Path=FooterHeight}" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=HideFooter,Converter={StaticResource BooltoVisibility},ConverterParameter=1}">
                                         <ContentControl x:Name="PART_footer"/>
                                     </Border>
 

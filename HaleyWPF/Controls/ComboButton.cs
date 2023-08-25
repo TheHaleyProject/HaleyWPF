@@ -92,5 +92,13 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty HideContentProperty =
             DependencyProperty.Register(nameof(HideContent), typeof(bool), typeof(ComboButton), new PropertyMetadata(false));
+
+        public bool HideImage {
+            get { return (bool)GetValue(HideImageProperty); }
+            set { SetValue(HideImageProperty, value); }
+        }
+
+        public static readonly DependencyProperty HideImageProperty =
+            DependencyProperty.Register("HideImage", typeof(bool), typeof(ComboButton), new PropertyMetadata(false));
     }
 }

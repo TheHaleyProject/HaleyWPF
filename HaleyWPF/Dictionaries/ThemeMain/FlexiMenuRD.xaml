@@ -14,6 +14,7 @@
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
         <Setter Property="Height" Value="{Binding Path=MenuItemHeight, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
+        <Setter Property="HideImage" Value="{Binding Path=HideCommandIcons, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
         <Setter Property="ImageLocation" Value="Left" />
         <!--<Setter Property="Width" Value="60"/>-->
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -74,6 +75,7 @@
         <Setter Property="SelectedMenuColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ToggleIcon" Value="{StaticResource hamburger_square}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HideHeaderRegion" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type bc:FlexiMenu}">
@@ -105,7 +107,7 @@
 
                                 <!--#region HEADER-->
                                 <!--(GRID-1) MENU HEADER & LOGO-->
-                                <Grid x:Name="PART_headerRegion" Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding HideHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                <Grid x:Name="PART_headerRegion" Height="{Binding HeaderRegionHeight, RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding HideHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility},ConverterParameter=1}">
                                     <ContentControl x:Name="PART_header"/>
                                 </Grid>
 
@@ -122,13 +124,13 @@
                                 <!--SEPARATOR-->
                                 <bc:Separator
                                     Grid.Row="1"
-                                    Background="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                    Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" />
+                                    Background="{Binding Path=BorderBrush,RelativeSource={RelativeSource TemplatedParent}}"
+                                    Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" Visibility="{Binding HideHeaderRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility},ConverterParameter=1}" />
 
                                 <!--#region MENU-->
                                 <Grid Grid.Row="2" Margin="0,5">
 
-                                    <bc:PlainListView Grid.Row="1" x:Name="PART_MenuSource" ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource internal_plainlistview}" Visibility="{Binding HideMenuRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                    <bc:PlainListView Grid.Row="1" x:Name="PART_MenuSource" ItemsSource="{Binding MenuItems, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource internal_plainlistview}" Visibility="{Binding HideMenuRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility},ConverterParameter=1}">
                                         <bc:PlainListView.ItemTemplate>
                                             <DataTemplate>
                                                 <bc:ComboButton
@@ -143,12 +145,12 @@
                                 <!--SEPARATOR-->
                                 <bc:Separator
                                     Grid.Row="3"
-                                    Background="{Binding Path=(ml:Icon.DefaultColor),RelativeSource={RelativeSource TemplatedParent}}"
-                                    Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}" />
+                                    Background="{Binding Path=BorderBrush,RelativeSource={RelativeSource TemplatedParent}}"
+                                    Size="{Binding SeparatorSize,RelativeSource={RelativeSource TemplatedParent}}"  Visibility="{Binding HideOptionsRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility},ConverterParameter=1}"/>
                                 
                                 <!--OPTIONS MENU-->
                                 <Grid Grid.Row="4">
-                                    <bc:PlainListView x:Name="PART_OptionSource" ItemsSource="{Binding OptionItems, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource internal_plainlistview}"  Visibility="{Binding HideOptionsRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibiliy},ConverterParameter=1}">
+                                    <bc:PlainListView x:Name="PART_OptionSource" ItemsSource="{Binding OptionItems, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource internal_plainlistview}"  Visibility="{Binding HideOptionsRegion, RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility},ConverterParameter=1}">
                                             <bc:PlainListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <bc:ComboButton
@@ -160,7 +162,7 @@
                                 </Grid>
                                 
                                 <!--FOOT NOTE-->
-                                <Grid Grid.Row="5" Margin="5" x:Name="PART_footerRegion" Visibility="{TemplateBinding ShowFooter,Converter={StaticResource BooltoVisibiliy}}">
+                                <Grid Grid.Row="5" Margin="5" x:Name="PART_footerRegion" Visibility="{TemplateBinding ShowFooter,Converter={StaticResource BooltoVisibility}}">
                                     <TextBlock Foreground="{Binding FootNoteForeground,RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource def_h4_inverted}" Text="{Binding FootNote, RelativeSource={RelativeSource TemplatedParent}}" />
                                 </Grid>
                             </Grid>
@@ -204,8 +206,8 @@
                             </Grid>
                             
                             <!--Floating Panel Display-->
-                            <Canvas x:Name="PART_FloatingPanelHolderCanvas" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}">
-                                <ContentControl x:Name="PART_FloatingPanel" Height="Auto" Width="Auto" MinHeight="50" MinWidth="50" Style="{StaticResource FloatingPanel}" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibiliy}}"/>
+                            <Canvas x:Name="PART_FloatingPanelHolderCanvas" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibility}}">
+                                <ContentControl x:Name="PART_FloatingPanel" Height="Auto" Width="Auto" MinHeight="50" MinWidth="50" Style="{StaticResource FloatingPanel}" Visibility="{TemplateBinding IsFloatingPanelVisible, Converter={StaticResource BooltoVisibility}}"/>
                             </Canvas>
                         </Grid>
                     </DockPanel>

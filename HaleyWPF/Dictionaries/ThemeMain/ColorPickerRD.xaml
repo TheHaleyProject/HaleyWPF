@@ -154,7 +154,7 @@
                         <!--#endregion-->
                         
                       <!--#region RGB COMPONENTS-->
-                        <Grid Grid.Row="1" Margin="5" Visibility="{TemplateBinding HideRGBComponents,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}">
+                        <Grid Grid.Row="1" Margin="5" Visibility="{TemplateBinding HideRGBComponents,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}">
                             <Grid.RowDefinitions>
                                 <RowDefinition MinHeight="35"/>
                                 <RowDefinition MinHeight="35"/>
@@ -221,7 +221,7 @@
                         <!--#endregion-->
 
                       <!--#region HEX & COLOR PALETTE-->
-                        <Grid Grid.Row="3" Margin="4" Visibility="{TemplateBinding HideColorPalette,Converter={StaticResource BooltoVisibiliy}, ConverterParameter=1}" Background="Transparent">
+                        <Grid Grid.Row="3" Margin="4" Visibility="{TemplateBinding HideColorPalette,Converter={StaticResource BooltoVisibility}, ConverterParameter=1}" Background="Transparent">
                             <Grid.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Clear All Favourites" Command="{x:Static ul:AdditionalCommands.Reset}"/>

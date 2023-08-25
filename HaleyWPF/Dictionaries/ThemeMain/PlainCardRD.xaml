@@ -34,7 +34,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="1" Width="{Binding ElementName=PART_HeaderHolder,Path=ActualHeight}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                            <Grid Grid.Column="1" Width="{Binding ElementName=PART_HeaderHolder,Path=ActualHeight}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibility}}">
                                 <bc:PlainImage Style="{StaticResource internal_mapping_plainimage}" Margin="5" ml:Hover.IsEnabled="False"/>
                             </Grid>
                             <Grid Margin="2,0" HorizontalAlignment="{TemplateBinding HeaderAlignment}" Style="{StaticResource internal_plaincard_grid}">
@@ -86,13 +86,13 @@
                             <RowDefinition Height="5"/>
                         </Grid.RowDefinitions>
                         <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}" Margin="15,0"/>
-                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1" TextWrapping="Wrap"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibility}}" Grid.Row="1" TextWrapping="Wrap"/>
                     </Grid>
                 </Grid>
 
                 <!--Flyer-->
                 <Border x:Name="PART_FlyerHolder" Background="{TemplateBinding HeaderBackground}" Height="{TemplateBinding FlyerHeight}" Width="{TemplateBinding FlyerWidth}" MinHeight="50" MinWidth="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,0,0,0">
-                    <Viewbox VerticalAlignment="Bottom" Height="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                    <Viewbox VerticalAlignment="Bottom" Height="{Binding ElementName=PART_FlyerHolder,Path=ActualWidth}" Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibility}}">
                         <bc:PlainImage Style="{StaticResource internal_mapping_plainimage}" Margin="15" ml:Hover.IsEnabled="False"/>
                     </Viewbox>
                 </Border>
@@ -123,7 +123,7 @@
                         <ColumnDefinition x:Name="coldefImage" Width="0.35*" MaxWidth="150"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Viewbox Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibiliy}}">
+                    <Viewbox Visibility="{TemplateBinding ShowIcon, Converter={StaticResource BooltoVisibility}}">
                         <bc:PlainImage Style="{StaticResource internal_mapping_plainimage}" Margin="15" ml:Hover.IsEnabled="False"/>
                     </Viewbox>
                     <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Grid.Column="1"/>
@@ -138,7 +138,7 @@
                             <RowDefinition Height="5"/>
                         </Grid.RowDefinitions>
                         <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding Header}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding HeaderFontSize}" Margin="15,0"/>
-                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibiliy}}" Grid.Row="1"/>
+                        <TextBlock Foreground="{TemplateBinding HeaderForeground}" Text="{TemplateBinding SubHeader}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" VerticalAlignment="Center" FontSize="{TemplateBinding SubHeaderFontSize}" Margin="15,0" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent},Path=ShowSubHeader,Converter={StaticResource BooltoVisibility}}" Grid.Row="1"/>
                     </Grid>
                 </Border>
                 

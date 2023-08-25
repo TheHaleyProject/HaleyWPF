@@ -83,17 +83,18 @@ namespace Haley.WPF.Controls
         const string UIEFloatingPanel = "PART_FloatingPanel";
         const string UIEFloatingPanelCanvas = "PART_FloatingPanelHolderCanvas";
         const string UIEHeaderHolder = "PART_header";
+        const string UIEMainBorder = "PART_brderMain";
         const string UIEMainContentHolder = "PART_MainContentArea";
         const string UIEMessage = "PART_message";
         const string UIEMessageHolder = "PART_messageHolder";
-        const string UIEMainBorder = "PART_brderMain";
         const string UIEToggleButton = "PART_toggleButton";
-        static SolidColorBrush _defaultToggleButtonBg = Brushes.Transparent;
         static SolidColorBrush _defaultFootNote = Brushes.Gray;
+        static SolidColorBrush _defaultToggleButtonBg = Brushes.Transparent;
         static double _headerRegionHeight = Convert.ToDouble(100);
         static double _menuBarWidth = Convert.ToDouble(250);
         static double _menuItemHeight = Convert.ToDouble(30);
         bool _canvasSet = false;
+        bool? _hideHeaderInitial;
         DispatcherTimer _messageTimer;
         bool _pauseMenuSelection = false;
         #endregion
@@ -104,11 +105,11 @@ namespace Haley.WPF.Controls
         ContentControl _floatingPanel;
         Canvas _floatingPanelHolderCanvas;
         ContentControl _headerHolder;
+        UIElement _mainBorder;
         ContentControl _mainContentHolder;
         TextBlock _message;
         FrameworkElement _messageHolder;
         Button _toggleBtn;
-        UIElement _mainBorder;
         #endregion
 
         #region Constructors
@@ -143,8 +144,11 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty DisableWelcomeViewProperty =
             DependencyProperty.Register(nameof(DisableWelcomeView), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
+        public static readonly DependencyProperty FootNoteForegroundProperty =
+            DependencyProperty.Register(nameof(FootNoteForeground), typeof(SolidColorBrush), typeof(FlexiMenu), new PropertyMetadata(_defaultFootNote));
+
         public static readonly DependencyProperty FootNoteProperty =
-            DependencyProperty.Register(nameof(FootNote), typeof(string), typeof(FlexiMenu), new PropertyMetadata("Foot Note"));
+                    DependencyProperty.Register(nameof(FootNote), typeof(string), typeof(FlexiMenu), new PropertyMetadata("Foot Note"));
 
         public static readonly DependencyProperty IsMenuBarOpenProperty =
             DependencyProperty.Register(nameof(IsMenuBarOpen), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
@@ -170,8 +174,11 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty SelectedMenuIdProperty =
             DependencyProperty.Register("SelectedMenuId", typeof(string), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, propertyChangedCallback: SelectedIdChanged));
 
+        public static readonly DependencyProperty SeparatorSizeProperty =
+            DependencyProperty.Register(nameof(SeparatorSize), typeof(double), typeof(FlexiMenu), new PropertyMetadata(1.0));
+
         public static readonly DependencyProperty ToggleButtonBackgroundProperty =
-            DependencyProperty.Register(nameof(ToggleButtonBackground), typeof(SolidColorBrush), typeof(FlexiMenu), new PropertyMetadata(_defaultToggleButtonBg));
+                    DependencyProperty.Register(nameof(ToggleButtonBackground), typeof(SolidColorBrush), typeof(FlexiMenu), new PropertyMetadata(_defaultToggleButtonBg));
 
         public static readonly DependencyProperty ToggleIconProperty =
             DependencyProperty.Register(nameof(ToggleIcon), typeof(ImageSource), typeof(FlexiMenu), new PropertyMetadata(null));
@@ -207,32 +214,20 @@ namespace Haley.WPF.Controls
         }
         #endregion
 
-        public SolidColorBrush FootNoteForeground {
-            get { return (SolidColorBrush)GetValue(FootNoteForegroundProperty); }
-            set { SetValue(FootNoteForegroundProperty, value); }
-        }
-        public static readonly DependencyProperty FootNoteForegroundProperty =
-            DependencyProperty.Register(nameof(FootNoteForeground), typeof(SolidColorBrush), typeof(FlexiMenu), new PropertyMetadata(_defaultFootNote));
-
-        public bool DisableWelcomeView
-        {
+        public bool DisableWelcomeView {
             get { return (bool)GetValue(DisableWelcomeViewProperty); }
             set { SetValue(DisableWelcomeViewProperty, value); }
         }
-
-        public double SeparatorSize {
-            get { return (double)GetValue(SeparatorSizeProperty); }
-            set { SetValue(SeparatorSizeProperty, value); }
-        }
-
-        public static readonly DependencyProperty SeparatorSizeProperty =
-            DependencyProperty.Register(nameof(SeparatorSize), typeof(double), typeof(FlexiMenu), new PropertyMetadata(1.0));
 
         public string FootNote {
             get { return (string)GetValue(FootNoteProperty); }
             set { SetValue(FootNoteProperty, value); }
         }
 
+        public SolidColorBrush FootNoteForeground {
+            get { return (SolidColorBrush)GetValue(FootNoteForegroundProperty); }
+            set { SetValue(FootNoteForegroundProperty, value); }
+        }
         public bool IsMenuBarOpen {
             get { return (bool)GetValue(IsMenuBarOpenProperty); }
             set { SetValue(IsMenuBarOpenProperty, value); }
@@ -273,6 +268,10 @@ namespace Haley.WPF.Controls
             set { SetValue(SelectedMenuIdProperty, value); }
         }
 
+        public double SeparatorSize {
+            get { return (double)GetValue(SeparatorSizeProperty); }
+            set { SetValue(SeparatorSizeProperty, value); }
+        }
         public SolidColorBrush ToggleButtonBackground {
             get { return (SolidColorBrush)GetValue(ToggleButtonBackgroundProperty); }
             set { SetValue(ToggleButtonBackgroundProperty, value); }
@@ -316,8 +315,11 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty HeaderTemplateProperty =
             DependencyProperty.Register(nameof(HeaderTemplate), typeof(DataTemplate), typeof(FlexiMenu), new FrameworkPropertyMetadata(null, propertyChangedCallback: HeaderTemplatePropertyChanged));
 
+        public static readonly DependencyProperty HideCommandIconsProperty =
+            DependencyProperty.Register("HideCommandIcons", typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
+
         public static readonly DependencyProperty HideHeaderRegionProperty =
-            DependencyProperty.Register(nameof(HideHeaderRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
+                    DependencyProperty.Register(nameof(HideHeaderRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
 
         public static readonly DependencyProperty HideMenuRegionProperty =
             DependencyProperty.Register(nameof(HideMenuRegion), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
@@ -333,6 +335,10 @@ namespace Haley.WPF.Controls
             set { SetValue(HeaderTemplateProperty, value); }
         }
 
+        public bool HideCommandIcons {
+            get { return (bool)GetValue(HideCommandIconsProperty); }
+            set { SetValue(HideCommandIconsProperty, value); }
+        }
         public bool HideHeaderRegion {
             get { return (bool)GetValue(HideHeaderRegionProperty); }
             set { SetValue(HideHeaderRegionProperty, value); }
@@ -428,9 +434,14 @@ namespace Haley.WPF.Controls
 
             _headerHolder.ContentTemplate = HeaderTemplate;
 
+            if (_hideHeaderInitial == null) _hideHeaderInitial = HideHeaderRegion; //Get the initial value (as set by the user)
             if (HeaderTemplate == null) {
-                //We also hide the header
-                this.SetCurrentValue(HideHeaderRegionProperty, false);
+                //We also hide the header.
+                //If we do so, then user will not have the control over hiding the header and showing it again.
+                this.SetCurrentValue(HideHeaderRegionProperty, true);
+            } else {
+                //Set the user value.
+                this.SetCurrentValue(HideHeaderRegionProperty,_hideHeaderInitial);
             }
         }
 
