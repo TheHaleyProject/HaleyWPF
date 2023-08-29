@@ -39,7 +39,7 @@ namespace Haley.WPF.Controls
             _contextMenuShow = GetTemplateChild(UIEContextMenuShow) as SysCtrls.MenuItem;
             _contextMenuReposition = GetTemplateChild(UIEContextMenuReposition) as SysCtrls.MenuItem;
             _toggleBtn = GetTemplateChild(UIEToggleButton) as Button;
-            _mainBorder = GetTemplateChild(UIEMainBorder) as UIElement;
+            _sideMenuHolder = GetTemplateChild(UIEMainBorder) as UIElement;
 
             _changeHeader();
             _changeFloatingPanel();
@@ -52,9 +52,9 @@ namespace Haley.WPF.Controls
 
             //Initial settings
             if (IsMenuBarOpen) {
-                _mainBorder.SetCurrentValue(WidthProperty, MenuBarWidth > 45.0 ? MenuBarWidth : 45.0);
+                _sideMenuHolder.SetCurrentValue(WidthProperty, MenuBarWidth > 45.0 ? MenuBarWidth : 45.0);
             } else {
-                _mainBorder.SetCurrentValue(WidthProperty, 45.0);
+                _sideMenuHolder.SetCurrentValue(WidthProperty, 45.0);
             }
 
             //Set Welcome view if not null
@@ -105,7 +105,7 @@ namespace Haley.WPF.Controls
         ContentControl _floatingPanel;
         Canvas _floatingPanelHolderCanvas;
         ContentControl _headerHolder;
-        UIElement _mainBorder;
+        UIElement _sideMenuHolder;
         ContentControl _mainContentHolder;
         TextBlock _message;
         FrameworkElement _messageHolder;
@@ -150,6 +150,9 @@ namespace Haley.WPF.Controls
         public static readonly DependencyProperty FootNoteProperty =
                     DependencyProperty.Register(nameof(FootNote), typeof(string), typeof(FlexiMenu), new PropertyMetadata("Foot Note"));
 
+        public static readonly DependencyProperty HideMenuDuringWelcomeProperty =
+            DependencyProperty.Register("HideMenuDuringWelcome", typeof(bool), typeof(FlexiMenu), new PropertyMetadata(false));
+
         public static readonly DependencyProperty IsMenuBarOpenProperty =
             DependencyProperty.Register(nameof(IsMenuBarOpen), typeof(bool), typeof(FlexiMenu), new PropertyMetadata(true));
 
@@ -192,9 +195,30 @@ namespace Haley.WPF.Controls
         }
 
         public bool AutoCloseWelcomeView { get; set; }
+
         public double AutoCloseWelcomeViewTimeSpan { get; set; }
+
         public bool DisableFloatingPanel { get; set; }
 
+        public bool DisableWelcomeView {
+            get { return (bool)GetValue(DisableWelcomeViewProperty); }
+            set { SetValue(DisableWelcomeViewProperty, value); }
+        }
+
+        public string FootNote {
+            get { return (string)GetValue(FootNoteProperty); }
+            set { SetValue(FootNoteProperty, value); }
+        }
+
+        public SolidColorBrush FootNoteForeground {
+            get { return (SolidColorBrush)GetValue(FootNoteForegroundProperty); }
+            set { SetValue(FootNoteForegroundProperty, value); }
+        }
+
+        public bool HideMenuDuringWelcome {
+            get { return (bool)GetValue(HideMenuDuringWelcomeProperty); }
+            set { SetValue(HideMenuDuringWelcomeProperty, value); }
+        }
         #region FloatingPanel
 
         public static readonly DependencyProperty FloatingPanelProperty =
@@ -213,21 +237,6 @@ namespace Haley.WPF.Controls
             set { SetValue(IsFloatingPanelVisibleProperty, value); }
         }
         #endregion
-
-        public bool DisableWelcomeView {
-            get { return (bool)GetValue(DisableWelcomeViewProperty); }
-            set { SetValue(DisableWelcomeViewProperty, value); }
-        }
-
-        public string FootNote {
-            get { return (string)GetValue(FootNoteProperty); }
-            set { SetValue(FootNoteProperty, value); }
-        }
-
-        public SolidColorBrush FootNoteForeground {
-            get { return (SolidColorBrush)GetValue(FootNoteForegroundProperty); }
-            set { SetValue(FootNoteForegroundProperty, value); }
-        }
         public bool IsMenuBarOpen {
             get { return (bool)GetValue(IsMenuBarOpenProperty); }
             set { SetValue(IsMenuBarOpenProperty, value); }
@@ -685,6 +694,9 @@ namespace Haley.WPF.Controls
                     AutoCloseWelcomeViewTimeSpan = 3.0;
                 }
 
+                //Only under autoclose welcome view mode, we should setup the side menu bar to be hidden or else, it will hide the side menu and we will not have other option to open the window.
+
+                if (HideMenuDuringWelcome) _sideMenuHolder.Visibility = Visibility.Collapsed;
                 //Setup timer
                 var timer = new DispatcherTimer();
                 timer.Interval = TimeSpan.FromSeconds(AutoCloseWelcomeViewTimeSpan);
@@ -726,6 +738,7 @@ namespace Haley.WPF.Controls
 
         void timerTick(object sender, EventArgs e) {
             ((DispatcherTimer)sender).Stop();
+            if (HideMenuDuringWelcome) _sideMenuHolder.Visibility = Visibility.Visible;
             _setFirstView();
         }
         #endregion

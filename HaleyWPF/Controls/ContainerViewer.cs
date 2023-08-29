@@ -56,22 +56,24 @@ namespace Haley.WPF.Controls
 
         #region Attributes
         private const string UIEMainContentHolder = "PART_MainContentArea";
-        private const string UIEMessageHolder = "PART_messageHolder";
         private const string UIEMessage = "PART_message";
-
+        private const string UIEMessageHolder = "PART_messageHolder";
         private DispatcherTimer _messageTimer;
-
+        private bool _welcomeInProgress = false;
         #endregion
 
         #region UIElements
         private ContentControl _mainContentHolder;
-        private FrameworkElement _messageHolder;
         private TextBlock _message;
+        private FrameworkElement _messageHolder;
         #endregion
 
         #region Constructors
-        public ContainerViewer()
-        {
+        static ContainerViewer() {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ContainerViewer), new FrameworkPropertyMetadata(typeof(ContainerViewer)));
+        }
+
+        public ContainerViewer() {
             //For both menuitems and option items, we do not directly allow the items to raise the command. When the button is clicked, we raise an application command which will be handled in this class and corresponding action will be taken.
             AutoCloseWelcomeView = true;
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Close, _closeMessage));
@@ -79,56 +81,60 @@ namespace Haley.WPF.Controls
             _messageTimer.Interval = TimeSpan.FromSeconds(4);
             _messageTimer.Tick += _messageTimerTick;
         }
-
-
-        static ContainerViewer()
-        {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(ContainerViewer), new FrameworkPropertyMetadata(typeof(ContainerViewer)));
-        }
         #endregion
 
         #region Properties
-        public bool IgnoreLocalContainer { get; set; }
-        public bool IgnoreGlobalContainer { get; set; }
-        public bool AutoCloseWelcomeView { get; set; }
-        public double AutoCloseWelcomeViewTimeSpan { get; set; }
-
-        public bool DisableWelcomeView
-        {
-            get { return (bool)GetValue(DisableWelcomeViewProperty); }
-            set { SetValue(DisableWelcomeViewProperty, value); }
-        }
-
         public static readonly DependencyProperty DisableWelcomeViewProperty =
             DependencyProperty.Register(nameof(DisableWelcomeView), typeof(bool), typeof(ContainerViewer), new PropertyMetadata(false));
 
-        public UserControl WelcomeView
-        {
-            get { return (UserControl)GetValue(WelcomeViewProperty); }
-            set { SetValue(WelcomeViewProperty, value); }
-        }
+        public static readonly DependencyProperty HideMenuDuringWelcomeProperty =
+            DependencyProperty.Register("HideMenuDuringWelcome", typeof(bool), typeof(ContainerViewer), new PropertyMetadata(false));
+
+        public static readonly DependencyProperty LocalContainerProperty =
+            DependencyProperty.Register(nameof(LocalContainer), typeof(IControlContainer), typeof(ContainerViewer), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty MenuVisibilityProperty =
+            DependencyProperty.Register("MenuVisibility", typeof(Visibility), typeof(ContainerViewer), new PropertyMetadata(Visibility.Visible));
+
+        public static readonly DependencyProperty ViewKeyProperty =
+            DependencyProperty.Register(nameof(ViewKey), typeof(object), typeof(ContainerViewer), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnViewKeyPropertyChanged));
 
         public static readonly DependencyProperty WelcomeViewProperty =
             DependencyProperty.Register(nameof(WelcomeView), typeof(UserControl), typeof(ContainerViewer), new PropertyMetadata(null));
 
-        public IControlContainer LocalContainer
-        {
+        public bool AutoCloseWelcomeView { get; set; }
+        public double AutoCloseWelcomeViewTimeSpan { get; set; }
+        public bool DisableWelcomeView {
+            get { return (bool)GetValue(DisableWelcomeViewProperty); }
+            set { SetValue(DisableWelcomeViewProperty, value); }
+        }
+
+        public bool HideMenuDuringWelcome {
+            get { return (bool)GetValue(HideMenuDuringWelcomeProperty); }
+            set { SetValue(HideMenuDuringWelcomeProperty, value); }
+        }
+
+        public bool IgnoreGlobalContainer { get; set; }
+        public bool IgnoreLocalContainer { get; set; }
+        public IControlContainer LocalContainer {
             get { return (IControlContainer)GetValue(LocalContainerProperty); }
             set { SetValue(LocalContainerProperty, value); }
         }
 
-        public static readonly DependencyProperty LocalContainerProperty =
-            DependencyProperty.Register(nameof(LocalContainer), typeof(IControlContainer), typeof(ContainerViewer), new PropertyMetadata(null));
-        
-        public object ViewKey
-        {
+        public Visibility MenuVisibility {
+            get { return (Visibility)GetValue(MenuVisibilityProperty); }
+            set { SetValue(MenuVisibilityProperty, value); }
+        }
+
+        public object ViewKey {
             get { return (object)GetValue(ViewKeyProperty); }
             set { SetValue(ViewKeyProperty, value); }
         }
 
-        public static readonly DependencyProperty ViewKeyProperty =
-            DependencyProperty.Register(nameof(ViewKey), typeof(object), typeof(ContainerViewer), new FrameworkPropertyMetadata(null,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnViewKeyPropertyChanged));
-
+        public UserControl WelcomeView {
+            get { return (UserControl)GetValue(WelcomeViewProperty); }
+            set { SetValue(WelcomeViewProperty, value); }
+        }
         private static void OnViewKeyPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
            if (d is ContainerViewer cviewr)
@@ -139,55 +145,27 @@ namespace Haley.WPF.Controls
         #endregion
 
         #region Private Methods
-        void _setupWelcomeViewCloseTimer()
-        {
-            if (AutoCloseWelcomeView)
-            {
-                //Validate timer duration
-                if (AutoCloseWelcomeViewTimeSpan < 1 || AutoCloseWelcomeViewTimeSpan > 20 || double.IsNaN(AutoCloseWelcomeViewTimeSpan))
-                {
-                    AutoCloseWelcomeViewTimeSpan = 3.0;
-                }
+        void _closeMessage(object sender, ExecutedRoutedEventArgs e) {
+            _closeMessage();
+        }
 
-                //Setup timer
-                var timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(AutoCloseWelcomeViewTimeSpan);
-                timer.Tick += timerTick;
-                timer.Start();
+        void _closeMessage() {
+            //hide the message display.
+            if (_messageHolder != null) {
+                _messageHolder.Visibility = Visibility.Collapsed;
             }
         }
-        void timerTick(object sender, EventArgs e)
-        {
-            ((DispatcherTimer)sender).Stop();
-            _setFirstView();
-        }
-        void _messageTimerTick(object sender, EventArgs e)
-        {
+
+        void _messageTimerTick(object sender, EventArgs e) {
             ((DispatcherTimer)sender).Stop();
             _closeMessage();
         }
-        void _setFirstView()
-        {
-            if (ViewKey == null)
-            {
-                _mainContentHolder.Content = new TextBlock() {Text = "Container Key is empty. Please set a proper key to initiate the view.",HorizontalAlignment= HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Foreground = Brushes.Gray,FontSize = 20 };
-                return;
-            }
-            _setContainerView(ViewKey);
-        }
 
-        private void SendEvent(bool status, string message)
-        {
-            if (!IsInitialized) return;
-            RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = status, Message = message});
-        }
-        void _setContainerView(object key)
-        {
-            try
-            {
+        void _setContainerView(object key) {
+            try {
+                if (_welcomeInProgress) return; //Don't do any task when the welcome is in progress
                 //First ensure that the key is present.
-                if (key == null)
-                {
+                if (key == null) {
                     //Set the error as message
 
                     _setMessage($@"Container key cannot be empty. Please assign a container key value.");
@@ -201,48 +179,47 @@ namespace Haley.WPF.Controls
                 var _globalContainer = ContainerStore.Controls;
 
                 //PRIORITY 1 : If local container is present, then try to find the view. 
-                if (_targetView == null && !IgnoreLocalContainer && LocalContainer != null)
-                {
+                if (_targetView == null && !IgnoreLocalContainer && LocalContainer != null) {
                     var _value = LocalContainer.ContainsKey(key);
-                    if (_value.HasValue && _value.Value)
-                    {
+                    if (_value.HasValue && _value.Value) {
                         _targetView = LocalContainer.GenerateViewFromKey(key) as UserControl;
                         containerName = "Local Container";
                     }
                 }
 
                 //PRIORIY 2 : If global container is present and also view is still empty, try finding the view.
-                if (_targetView == null && !IgnoreGlobalContainer && _globalContainer != null)
-                {
+                if (_targetView == null && !IgnoreGlobalContainer && _globalContainer != null) {
                     var _value = _globalContainer.ContainsKey(key);
-                    if (_value.HasValue && _value.Value)
-                    {
+                    if (_value.HasValue && _value.Value) {
                         _targetView = _globalContainer.GenerateViewFromKey(key) as UserControl;
                         containerName = "Global Container";
                     }
                 }
 
                 //Somehow , if we manage to find the view, then set it.
-                if (_mainContentHolder != null && _targetView != null)
-                {
+                if (_mainContentHolder != null && _targetView != null) {
                     _mainContentHolder.Content = _targetView;
                     SendEvent(true, $@"View for key {key.AsString()} is obtained from {containerName} sucessfully.");
-                }
-                else
-                {
+                } else {
                     var _message = $@"Unable to find any view for the container key - {key}. Check if key is correct. {Environment.NewLine} If you are using a separate ContainerFactory, then update the LocalContainer Value to fetch correct mapped value.";
                     _setMessage(_message);
                     SendEvent(false, _message);
                 }
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 _setMessage(ex.ToString());
                 SendEvent(false, ex.ToString());
             }
         }
-        void _setMessage(string message)
-        {
+
+        void _setFirstView() {
+            if (ViewKey == null) {
+                _mainContentHolder.Content = new TextBlock() { Text = "Container Key is empty. Please set a proper key to initiate the view.", HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, Foreground = Brushes.Gray, FontSize = 20 };
+                return;
+            }
+            _setContainerView(ViewKey);
+        }
+
+        void _setMessage(string message) {
             if (_messageHolder == null) return;
             _messageTimer.Stop(); //stop any running timer.
             //Set the error as message
@@ -250,17 +227,36 @@ namespace Haley.WPF.Controls
             _messageHolder.Visibility = Visibility.Visible;
             _messageTimer.Start();
         }
-        void _closeMessage(object sender, ExecutedRoutedEventArgs e)
-        {
-            _closeMessage();
-        }
-        void _closeMessage()
-        {
-            //hide the message display.
-            if (_messageHolder != null)
+
+        void _setupWelcomeViewCloseTimer() {
+            if (AutoCloseWelcomeView)
             {
-                _messageHolder.Visibility = Visibility.Collapsed;
+                //Validate timer duration
+                if (AutoCloseWelcomeViewTimeSpan < 1 || AutoCloseWelcomeViewTimeSpan > 20 || double.IsNaN(AutoCloseWelcomeViewTimeSpan))
+                {
+                    AutoCloseWelcomeViewTimeSpan = 3.0;
+                }
+
+                //Start the welcome Process (Setup the hide menu during welcome only when we are dealing with autoclose mode or else the welcome view will be visible and hte menu bar will be hidden and there will be no way to close it.
+                if (HideMenuDuringWelcome) this.SetCurrentValue(MenuVisibilityProperty, Visibility.Collapsed);
+                _welcomeInProgress = true;
+                //Setup timer
+                var timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(AutoCloseWelcomeViewTimeSpan);
+                timer.Tick += timerTick;
+                timer.Start();
             }
+        }
+        private void SendEvent(bool status, string message) {
+            if (!IsInitialized) return;
+            RaiseEvent(new UIRoutedEventArgs<bool>(ViewChangingEvent, this) { Value = status, Message = message });
+        }
+
+        void timerTick(object sender, EventArgs e) {
+            ((DispatcherTimer)sender).Stop();
+            _welcomeInProgress = false;
+            if (HideMenuDuringWelcome) this.SetCurrentValue(MenuVisibilityProperty, Visibility.Visible); //Which means that we have already changed the value. Now, we need to change it back
+            _setFirstView();
         }
         #endregion
     }
