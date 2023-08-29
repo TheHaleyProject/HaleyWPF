@@ -14,7 +14,7 @@
 
     <Style x:Key="internal_flexiMenu_cmbBtn" TargetType="{x:Type bc:ComboButton}">
         <Setter Property="Height" Value="{Binding Path=MenuItemHeight, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
-        <Setter Property="HideImage" Value="{Binding Path=HideCommandIcons, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
+        <Setter Property="HideImage" Value="{Binding Path=RemoveIcon, NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
         <Setter Property="ImageLocation" Value="Left" />
         <!--<Setter Property="Width" Value="60"/>-->
         <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -50,6 +50,11 @@
                     </MultiBinding>
                 </DataTrigger.Binding>
                 <Setter Property="Background" Value="{Binding SelectedMenuColor, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}"/>
+            </DataTrigger>
+
+            <!-- Keep this at last so that individual settings and global settings are both respected.-->
+            <DataTrigger Binding="{Binding Path=HideCommandIcons, RelativeSource={RelativeSource AncestorType={x:Type bc:FlexiMenu}}}" Value="True">
+                <Setter Property="HideImage" Value="True"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -99,9 +104,9 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" /> <!--HEADER-->
                                     <RowDefinition Height="Auto" /> <!--SEPARATOR-->
-                                    <RowDefinition /> <!--MENU ITEMS-->
+                                    <RowDefinition x:Name="menuRowDef"/> <!--MENU ITEMS-->
                                     <RowDefinition Height="Auto" /> <!--SEPARATOR-->
-                                    <RowDefinition Height="Auto" /><!--OPTION ITEMS-->
+                                    <RowDefinition x:Name="optionsRowDef"/><!--OPTION ITEMS-->
                                     <RowDefinition Height="Auto" /><!--FOOTER-->
                                 </Grid.RowDefinitions>
 
@@ -240,7 +245,15 @@
                             <Setter TargetName="PART_headerRegion" Property="Visibility" Value="Collapsed"/>
                             <Setter TargetName="PART_ToggleButton_screen" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
-                        
+
+                        <Trigger Property="HideMenuRegion" Value="True">
+                            <Setter TargetName="menuRowDef" Property="Height" Value="Auto"/>
+                        </Trigger>
+
+                        <Trigger Property="HideOptionsRegion" Value="True">
+                            <Setter TargetName="optionsRowDef" Property="Height" Value="Auto"/>
+                        </Trigger>
+
                         <!--<DataTrigger Binding="{Binding Path=VerticalOffset, ElementName=MenuFlexiScroll}" Value="0">
                             <Setter TargetName="upButton" Property="Visibility" Value="Collapsed"/>
                         </DataTrigger>-->

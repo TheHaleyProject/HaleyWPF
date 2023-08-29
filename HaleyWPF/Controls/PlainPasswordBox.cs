@@ -33,7 +33,7 @@ namespace Haley.WPF.Controls
             DependencyProperty.Register(nameof(PasswordChar), typeof(char), typeof(PlainPasswordBox), new PropertyMetadata('*'));
 
         public static readonly DependencyProperty PasswordValueProperty =
-            DependencyProperty.Register("PasswordValue", typeof(string), typeof(PlainPasswordBox), new PropertyMetadata(null,OnPasswordValueChanged));
+            DependencyProperty.Register("PasswordValue", typeof(string), typeof(PlainPasswordBox), new FrameworkPropertyMetadata(null,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPasswordValueChanged));
 
         private const string UIEMainPWDbox = "PART_mainpwdbox";
 
