@@ -54,6 +54,7 @@
         <Setter Property="BorderBrush" Value="{DynamicResource def_border_brush}"/>
         <Setter Property="Foreground" Value="{DynamicResource def_content}"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="bc:SearchBar.InstantSearchMode" Value="false"/>
         <Setter Property="ItemSelectedColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ItemHoverColor" Value="{DynamicResource def_button_hover}"/>
         <Setter Property="ml:FlexiScrollViewer.HorizontalBarVisibility" Value="Auto"/>
@@ -76,10 +77,14 @@
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <bc:SearchBar x:Name="PART_searchbar" Height="25" CornerRadius="{TemplateBinding CornerRadius}" Visibility="{Binding ShowSearchBar,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource NegateValue}}" DisplaySuggestions="False" Command="{x:Static ul:AdditionalCommands.Filter}" Text="{Binding SearchFilter,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}"/>
-                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" Style="{StaticResource internal_mapping_flexiscroll}" Grid.Row="1" CanContentScroll="True" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.IsContainerVirtualizable="True" VirtualizingPanel.VirtualizationMode="Recycling">
+                                <Grid Grid.Row="0" x:Name="PART_headerRegion" Visibility="Collapsed">
+                                    <ContentControl x:Name="PART_header"/>
+                                </Grid>
+                                <bc:SearchBar x:Name="PART_searchbar" Grid.Row="1" Height="25" CornerRadius="{TemplateBinding CornerRadius}" Visibility="{Binding ShowSearchBar,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BooltoVisibility}}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="{Binding BorderThickness,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource NegateValue}}" DisplaySuggestions="False" Command="{x:Static ul:AdditionalCommands.Filter}" Text="{Binding SearchFilter,RelativeSource={RelativeSource TemplatedParent},UpdateSourceTrigger=PropertyChanged}" bc:SearchBar.InstantSearchMode="{Binding Path=(bc:SearchBar.InstantSearchMode),RelativeSource={RelativeSource TemplatedParent},NotifyOnSourceUpdated=True,UpdateSourceTrigger=PropertyChanged}"/>
+                                <bc:FlexiScroll Padding="{TemplateBinding Padding}" Style="{StaticResource internal_mapping_flexiscroll}" Grid.Row="2" CanContentScroll="True" VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.IsContainerVirtualizable="True" VirtualizingPanel.VirtualizationMode="Recycling">
                                     <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </bc:FlexiScroll>
                             </Grid>

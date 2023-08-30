@@ -23,7 +23,11 @@ namespace Haley.WPF.Controls
         //Based on the experience with setting up filter whenever Collection or ItemSource itself changes (ref:project:hippo.flipper), it is decided to add new collection view source instead of the itemssource itself
 
         private const string UIESearchBar = "PART_searchbar";
+        const string UIEHeader = "PART_header";
+        const string UIEHeaderRegion = "PART_headerRegion";
         private UIElement _searchBar;
+        private ContentControl _header;
+        private UIElement _headerRegion;
         private bool _internalcollection_changing;
         private Func<object, string, bool> _defaultFilter = (item,filter) => 
         {
@@ -77,14 +81,23 @@ namespace Haley.WPF.Controls
         {
             base.OnApplyTemplate();
             _searchBar = GetTemplateChild(UIESearchBar) as UIElement;
+            _header = GetTemplateChild(UIEHeader) as ContentControl;
+            _headerRegion  = GetTemplateChild(UIEHeaderRegion) as UIElement;
             if (_searchBar != null)
             {
                 _searchBar.LostFocus += _searchBar_LostFocus;
             }
+            setHeader();
         }
         private void _searchBar_LostFocus(object sender, RoutedEventArgs e)
         {
             _initiateFilter(SearchFilter);
+        }
+
+        void setHeader() {
+            if (_headerRegion == null || _header == null) return;
+            _header.ContentTemplate = HeaderTemplate;
+            _headerRegion.Visibility = HeaderTemplate != null ? Visibility.Visible : Visibility.Collapsed; //Mkae the holder visible
         }
 
         public Visibility ControlAreaVisibility
@@ -95,6 +108,19 @@ namespace Haley.WPF.Controls
 
         public static readonly DependencyProperty ControlAreaVisibilityProperty =
             DependencyProperty.Register(nameof(ControlAreaVisibility), typeof(Visibility), typeof(PlainListView), new PropertyMetadata(Visibility.Collapsed));
+
+        public DataTemplate HeaderTemplate {
+            get { return (DataTemplate)GetValue(HeaderTemplateProperty); }
+            set { SetValue(HeaderTemplateProperty, value); }
+        }
+
+        public static readonly DependencyProperty HeaderTemplateProperty =
+            DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(PlainListView), new PropertyMetadata(null, OnHeaderTemplateChanged));
+
+        private static void OnHeaderTemplateChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
+            if (!(d is PlainListView pv)) return;
+            pv.setHeader();
+        }
 
         public CornerRadius CornerRadius
         {

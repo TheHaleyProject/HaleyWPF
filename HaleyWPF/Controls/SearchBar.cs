@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -9,6 +10,21 @@ namespace Haley.WPF.Controls
 {
     public class SearchBar : PlainTextBox, ICommandSource
     {
+
+        public static readonly DependencyProperty CommandParameterProperty =
+            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(SearchBar), new PropertyMetadata(default(object)));
+
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(SearchBar), new PropertyMetadata(default(ICommand), OnCommandPropertyChanged));
+
+        public static readonly DependencyProperty CommandTargetProperty =
+            DependencyProperty.Register(nameof(CommandTarget), typeof(IInputElement), typeof(SearchBar), new PropertyMetadata(default(IInputElement)));
+
+        public static readonly DependencyProperty IconColorProperty =
+            DependencyProperty.Register(nameof(IconColor), typeof(SolidColorBrush), typeof(SearchBar), new PropertyMetadata(null));
+
+        const string UIEContentHost = "PART_ContentHost";
+        ScrollViewer _contentHost;
         #region Events
         public static readonly RoutedEvent SearchStartedEvent = EventManager.RegisterRoutedEvent(nameof(SearchStarted), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(SearchBar));
 
@@ -24,88 +40,73 @@ namespace Haley.WPF.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(SearchBar), new FrameworkPropertyMetadata(typeof(SearchBar)));
         }
 
-        public bool BindTextToCommand { get; set; }
-
-        public SearchBar()
-        {
+        public SearchBar() {
             CommandBindings.Add(new CommandBinding(NavigationCommands.Search, Execute_Search));
             BindTextToCommand = true; //By default it is true. If user needs to change, he needs to specifically set it.
         }
 
-        public SolidColorBrush IconColor
-        {
-            get { return (SolidColorBrush)GetValue(IconColorProperty); }
-            set { SetValue(IconColorProperty, value); }
+        public override void OnApplyTemplate() {
+            base.OnApplyTemplate();
+            _contentHost = GetTemplateChild(UIEContentHost) as ScrollViewer;
+            if(_contentHost != null) _contentHost.KeyDown += HandleAllKeyDown;
         }
 
-        public static readonly DependencyProperty IconColorProperty =
-            DependencyProperty.Register(nameof(IconColor), typeof(SolidColorBrush), typeof(SearchBar), new PropertyMetadata(null));
+        private void HandleAllKeyDown(object sender, KeyEventArgs e) {
+            //should work only on instant search mode.
+            if (!GetInstantSearchMode(this)) return;
+            if (e.Key == Key.Enter || e.Key == Key.LeftCtrl || e.Key == Key.Space) return;
+            ExecuteSearchInternal();
+        }
 
-        public ICommand Command
-        {
+
+
+        public static bool GetInstantSearchMode(DependencyObject obj) {
+            return (bool)obj.GetValue(InstantSearchModeProperty);
+        }
+
+        public static void SetInstantSearchMode(DependencyObject obj, bool value) {
+            obj.SetValue(InstantSearchModeProperty, value);
+        }
+
+        public static readonly DependencyProperty InstantSearchModeProperty =
+            DependencyProperty.RegisterAttached("InstantSearchMode", typeof(bool), typeof(SearchBar), new PropertyMetadata(false));
+
+        public bool BindTextToCommand { get; set; }
+        public ICommand Command {
             get { return (ICommand)GetValue(CommandProperty); }
             set { SetValue(CommandProperty, value); }
         }
 
-        public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.Register(nameof(Command), typeof(ICommand), typeof(SearchBar), new PropertyMetadata(default(ICommand), OnCommandPropertyChanged));
-
-        public object CommandParameter
-        {
+        public object CommandParameter {
             get { return GetValue(CommandParameterProperty); }
             set { SetValue(CommandParameterProperty, value); }
         }
 
-        public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.Register(nameof(CommandParameter), typeof(object), typeof(SearchBar), new PropertyMetadata(default(object)));
-
-        public IInputElement CommandTarget
-        {
+        public IInputElement CommandTarget {
             get { return (IInputElement)GetValue(CommandTargetProperty); }
             set { SetValue(CommandTargetProperty, value); }
         }
 
-        public static readonly DependencyProperty CommandTargetProperty =
-            DependencyProperty.Register(nameof(CommandTarget), typeof(IInputElement), typeof(SearchBar), new PropertyMetadata(default(IInputElement)));
-
-        object _getCommandParameter()
-        {
-            if (BindTextToCommand) return Text;
-            return CommandParameter;
+        public SolidColorBrush IconColor {
+            get { return (SolidColorBrush)GetValue(IconColorProperty); }
+            set { SetValue(IconColorProperty, value); }
         }
-
-        void Execute_Search(object sender, ExecutedRoutedEventArgs e)
-        {
-            RaiseEvent(new UIRoutedEventArgs<string>(SearchStartedEvent, this) { Value = Text });
-            object _cmdParameter = _getCommandParameter();
-            switch (Command)
-            {
-                case null:
-                    return;
-                case RoutedCommand command: //same as  if (Command is RoutedCommand command)
-                    command.Execute(_cmdParameter, CommandTarget);
-                    break;
-                default:
-                    Command.Execute(_cmdParameter);
-                    break;
-            }
-        }
-
-        private static void OnCommandPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
+        private static void OnCommandPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             var searchbar = (SearchBar)d;
-            if (e.OldValue is ICommand oldCommand)
-            {
+            if (e.OldValue is ICommand oldCommand) {
                 oldCommand.CanExecuteChanged -= searchbar.CanExecuteChanged;
             }
-            if (e.NewValue is ICommand newCommand)
-            {
+            if (e.NewValue is ICommand newCommand) {
                 newCommand.CanExecuteChanged += searchbar.CanExecuteChanged;
             }
         }
 
-        private void CanExecuteChanged(object sender, EventArgs e)
-        {
+        object _getCommandParameter() {
+            if (BindTextToCommand) return Text;
+            return CommandParameter;
+        }
+
+        private void CanExecuteChanged(object sender, EventArgs e) {
             if (Command == null) return;
             object _cmdParameter = _getCommandParameter();
             //IsEnabled = Command is RoutedCommand command
@@ -116,5 +117,23 @@ namespace Haley.WPF.Controls
                : Command.CanExecute(_cmdParameter);
         }
 
+        void Execute_Search(object sender, ExecutedRoutedEventArgs e) {
+            RaiseEvent(new UIRoutedEventArgs<string>(SearchStartedEvent, this) { Value = Text });
+            ExecuteSearchInternal();
+        }
+
+        void ExecuteSearchInternal() {
+            object _cmdParameter = _getCommandParameter();
+            switch (Command) {
+                case null:
+                    return;
+                case RoutedCommand command: //same as  if (Command is RoutedCommand command)
+                    command.Execute(_cmdParameter, CommandTarget);
+                    break;
+                default:
+                    Command.Execute(_cmdParameter);
+                    break;
+            }
+        }
     }
 }
