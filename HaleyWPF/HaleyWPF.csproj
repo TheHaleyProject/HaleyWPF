@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.3.4.5</Version>
+		<Version>5.3.4.6</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -317,7 +317,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Extensions" Version="2.1.18.2" />
+       <PackageReference Include="Haley.Extensions" Version="2.1.18.4" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -347,7 +347,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.3.4.5" />
+       <PackageReference Include="Haley.MVVM" Version="6.3.4.7" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
