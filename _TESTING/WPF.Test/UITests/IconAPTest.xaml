@@ -23,7 +23,7 @@
         </WrapPanel>
         <WrapPanel Grid.Row="1">
             <hw:Image DataContext="{Binding BasePack}" Source="{hw:ImgInt Source}" Height="150" Width="150"  HoverFill="Green" Fill="Aquamarine" RotateAngle="0"/>
-            <hw:Image Source="{hw:Img IconsPack.Source}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
+            <!--<hw:Image Source="{hw:Img IconsPack.Source}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>-->
             <hw:Image Source="{hw:ImgInt BasePack.Source}" Height="150" Width="150"  HoverFill="Green" Fill="DarkSlateBlue" RotateAngle="0"/>
             <!--<hw:Image  Height="150" Width="150"/>-->
         </WrapPanel>
