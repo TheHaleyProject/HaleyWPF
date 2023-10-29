@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.4.1</Version>
+		<Version>5.4.2</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -25,15 +25,25 @@
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>HaleyProject.snk</AssemblyOriginatorKeyFile>
 		<Configurations>Debug;Release;DebugWB</Configurations>
+		<Platforms>AnyCPU;ARM64;x64</Platforms>
 	</PropertyGroup>
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <UseWPF>true</UseWPF>
     <Title>HaleyWPF</Title>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net462|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
@@ -41,7 +51,23 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net462|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net462|ARM64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net462|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
@@ -49,7 +75,23 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|ARM64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
@@ -57,7 +99,23 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|ARM64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
@@ -65,7 +123,23 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net5.0-windows|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net5.0-windows|ARM64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|x64'">
+    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 	
@@ -302,7 +376,7 @@
 		</When>
 		<Otherwise>
 			<ItemGroup>
-				<PackageReference Include="Haley.Abstractions" Version="1.1.2" />
+				<PackageReference Include="Haley.Abstractions" Version="1.1.3" />
 			</ItemGroup>
 		</Otherwise>
 	</Choose>
@@ -332,7 +406,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.Helpers" Version="2.1.14" />
+       <PackageReference Include="Haley.Helpers" Version="2.1.15" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
@@ -347,7 +421,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.4.1" />
+       <PackageReference Include="Haley.MVVM" Version="6.4.2" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
