@@ -53,7 +53,12 @@
             <hw:PlainToggleButton Height="30" Width="70" SwitchWidth="30"  CornerRadius="8" IsChecked="True"/>
             <hw:PlainToggleButton Height="30" Width="70" SwitchWidth="30" CornerRadius="8" IsChecked="True" ShowText="False"  Style="{StaticResource CircularToggleButton}" EnlargeSwitchButton="True"/>
             <hw:PlainToggleButton CornerRadius="8" IsChecked="{x:Null}" OnText="Yes" OffText="No" Margin="3"/>
-            <hw:PlainToggleButton  IsChecked="False" OnText="True" OffText="False"/>
+            <hw:PlainToggleButton  IsChecked="{Binding Flag1}" OnText="True" OffText="False"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <hw:PlainButton Height="30" Width="70" HorizontalAlignment="Center"  Content="Btn 1" Margin="10,0" Command="{Binding CmdDelegateCheck}" CommandParameter="{Binding Flag1}"/>
+                <hw:PlainButton Height="30" Width="70" HorizontalAlignment="Center"  Content="Btn 1"  Command="{Binding CmdRelayCheck}" CommandParameter="{Binding Flag1}"/>
+                <hw:PlainButton Height="30" Width="70" HorizontalAlignment="Center"  Content="Btn 1"  Command="{Binding CmdDirectRelayInvoke}"/>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="20" Background="{DynamicResource color_bg_2}">
             <hw:ComboButton Height="70" Width="90" Content="Favourites" ImageLocation="Top" Background="{x:Null}" hw:Icon.Default="{StaticResource heart_shiny}" hw:Icon.DefaultColor="{DynamicResource button_hover}" hw:Icon.HoverColor="#FF9413C2"/>

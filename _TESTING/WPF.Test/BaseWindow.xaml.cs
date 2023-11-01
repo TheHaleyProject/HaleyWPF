@@ -150,10 +150,10 @@ namespace WPF.Test
 
             var _jesh = _ds.ShowContainerView<LocalView2>("Now new view", _vm);
             var vmjesh = _jesh.ViewModel;
-            _ds.SendToast("Processing Error2", "Error while doing this");
+            _ds.SendToast("Processing Error 2", "Error while doing this");
             _ds.SendToast("Processing Error 3", "Error while doing this");
             _ds.SendToast("Processing Error 3", "Error while doing this");
-            _ds.SendToast("Processing Erro 5 r", "Error while doing this");
+            _ds.SendToast("Processing Error 5", "Error while doing this");
             _ds.SendToast("Processing Error 6", "Error while doing this");
         }
 
