@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Windows.Shell;
+using System.Runtime.InteropServices;
 
 namespace Haley.WPF.Controls
 {
@@ -467,6 +468,9 @@ namespace Haley.WPF.Controls
 
         void _executeCommand(CommandMenuItem item) {
             var dc = this.DataContext;
+
+            //CommandMenuItem is a Frameworkelement which is isolated. So, apply the data context
+            item.DataContext = dc;
             //if command is null, try to check if we can process a new command with the help of command name.
             var _command = item.Command;
             if (_command == null && !string.IsNullOrWhiteSpace(item.CommandName)) {

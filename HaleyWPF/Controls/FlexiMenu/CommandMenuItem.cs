@@ -20,7 +20,8 @@ namespace Haley.WPF.Controls
      /// <summary>
      /// Fleximenu for both left/right and topbottom docking.s
      /// </summary>
-    public class CommandMenuItem : DependencyObject, ICommandMenuItem
+    //public class CommandMenuItem : DependencyObject, ICommandMenuItem
+    public class CommandMenuItem : FrameworkElement, ICommandMenuItem
     {
         public static readonly DependencyProperty CommandNameProperty =
             DependencyProperty.Register(nameof(CommandName), typeof(string), typeof(CommandMenuItem), new PropertyMetadata(null));

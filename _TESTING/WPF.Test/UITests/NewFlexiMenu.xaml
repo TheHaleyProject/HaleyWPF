@@ -54,7 +54,7 @@
                 <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{hw:Img Brand=brand_bandcamp,Preference=FAKind}" hw:Icon.Hover="{StaticResource arrow_down_square}"  Label="Container View 4" ContainerKey="whataworld"/>
                 <hw:MenuItem Action="ShowContainerView" hw:Icon.Default="{StaticResource phone_directory}" hw:Icon.Hover="{StaticResource car}"  Label="Container View 2" ContainerKey="localdemokey"/>
                 <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource car_crash_solid}"  Label="Referenced Command 2" CommandParameter="{Binding DataContext.proxymessageholder,Source={StaticResource proxy}}" CommandName="Cmd_Notify"/>
-                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource calender}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding DataContext.Cmd_Notify,Source={StaticResource proxy}}"/>
+                <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource calender}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding Cmd_Notify}"/>
                 <hw:MenuItem Action="RaiseCommand" hw:Icon.Default="{StaticResource camera}"  Label="Referenced Command w" CommandParameter="12345" Command="{Binding Path=DataContext.Cmd_Notify, Source={StaticResource proxy2}}"/>
             </hw:FlexiMenu.MenuItems>
             <!--Add Option Buttons like logout, login-->
