@@ -6,14 +6,18 @@
         xmlns:local="clr-namespace:WPF.Test.UITests"
         xmlns:hw="http://schemas.hpod9.com/haley/wpf"
         xmlns:hm="http://schemas.hpod9.com/haley/mvvm"
+                xmlns:beh="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="PlainWindowTest" Height="450" Width="800" WindowStartupLocation="CenterScreen" hw:Icon.DefaultColor="White"  HeaderHeight="30" HideHeader="True" HideFooter="True" SnapsToDevicePixels="True"  BorderBrush="Pink" Margin="0" Background="Transparent" hm:WindowBlurAP.IsEnabled="True" CloseIcon="{StaticResource arrow}">
+        Title="PlainWindowTest" Height="450" Width="800" WindowStartupLocation="CenterScreen" hw:Icon.DefaultColor="White"  HeaderHeight="30" HideHeader="True" HideFooter="True" SnapsToDevicePixels="True"  BorderBrush="Pink" Margin="0" Background="Transparent"  CloseIcon="{StaticResource arrow}"  CornerRadius="25" AllowsTransparency="True" hm:WindowBlurAP.IsEnabled="True" >
     <Border Margin="0,30,0,0">
+        <!--<beh:Interaction.Behaviors>
+            <hw:BorderClipper EnableClip="True"/>
+        </beh:Interaction.Behaviors>-->
         <TabControl PreviewMouseLeftButtonDown="TabControl_PreviewMouseLeftButtonDown">
             <TabItem Header="One" Height="40">
                 <Grid>
                     <Button Height="30" Width="150" Content="Raise Dialog" Click="Button_Click"/>
-                    <hw:ImageButton Height="100" Width="100"/>
+                    <hw:ImageButton Height="100" Width="100" HorizontalAlignment="Left"/>
                 </Grid>
             </TabItem>
             <TabItem Header="two">
