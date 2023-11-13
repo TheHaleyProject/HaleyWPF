@@ -10,7 +10,6 @@
     </ResourceDictionary.MergedDictionaries>
 
     <Style x:Key="internal_tglebtn_plainImage" TargetType="{x:Type bc:PlainImage}">
-        <Setter Property="Margin" Value="2"/>
         <Setter Property="Visibility" Value="Collapsed"/>
         <Setter Property="ml:Icon.Default" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Icon}"/>
         <Setter Property="ml:Icon.RotateAngle" Value="{Binding RelativeSource={RelativeSource TemplatedParent},Path=(ml:Icon.RotateAngle)}"/>
@@ -21,8 +20,6 @@
     <Style TargetType="{x:Type bc:ImageToggleButton}">
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="Height" Value="{StaticResource def_height}"/>
-        <Setter Property="Width" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}}"/>
         <Setter Property="ColorON" Value="{DynamicResource def_toggle_on}"/>
         <Setter Property="ColorOFF" Value="{DynamicResource def_toggle_off}"/>
         <Setter Property="ml:Hover.IsEnabled" Value="False"/>
@@ -33,11 +30,13 @@
                 <ControlTemplate TargetType="{x:Type bc:ImageToggleButton}">
                     <!--Base border which lays at the bottom and covers whole length and will be filled with the color representing the status-->
                     <Border x:Name="PART_BorderMain" Style="{StaticResource BorderWithShadow}">
-                        <Grid Margin="{Binding Path=Padding,RelativeSource={RelativeSource TemplatedParent}}">
-                            <bc:PlainImage x:Name="Image_ON" ml:Icon.DefaultColor="{TemplateBinding ColorON}" Style="{StaticResource internal_tglebtn_plainImage}"/>
-                            <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" ml:Icon.Default="{TemplateBinding OffIcon}"  Style="{StaticResource internal_tglebtn_plainImage}" />
-                            <bc:PlainImage x:Name="Image_NULL"  ml:Icon.DefaultColor="{DynamicResource def_border_brush}" Style="{StaticResource internal_tglebtn_plainImage}"/>
-                        </Grid>
+                        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}">
+                            <Grid>
+                                <bc:PlainImage x:Name="Image_ON" ml:Icon.DefaultColor="{TemplateBinding ColorON}" Style="{StaticResource internal_tglebtn_plainImage}"  />
+                                <bc:PlainImage x:Name="Image_OFF" ml:Icon.DefaultColor="{TemplateBinding ColorOFF}" ml:Icon.Default="{TemplateBinding OffIcon}"  Style="{StaticResource internal_tglebtn_plainImage}"/>
+                                <bc:PlainImage x:Name="Image_NULL"  ml:Icon.DefaultColor="{DynamicResource def_border_brush}" Style="{StaticResource internal_tglebtn_plainImage}" />
+                            </Grid>
+                        </Viewbox>
                     </Border>
                     <ControlTemplate.Triggers>
                         <!--For disabled status-->

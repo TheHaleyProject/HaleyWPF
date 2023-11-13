@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Test", "_TESTING\WPF.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Test.External", "_TESTING\WPF.Test.External\WPF.Test.External.csproj", "{55CABF85-5B4B-42CF-B974-0F5501BB17AD}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HaleyShared", "..\HaleyShared\HaleyShared\HaleyShared.shproj", "{645462F3-ACB2-460B-A3B1-CFEA0FC93527}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XamlUtilsShared", "..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.shproj", "{9677EDBD-EA53-47EF-B8CB-8546516624A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,7 +71,6 @@ Global
 		SolutionGuid = {2D992CC4-7837-4664-A260-F38CD8C93746}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\HaleyShared\HaleyShared\HaleyShared.projitems*{1210c59d-cd1d-4d0e-8746-30e69db5c095}*SharedItemsImports = 5
-		..\HaleyShared\HaleyShared\HaleyShared.projitems*{645462f3-acb2-460b-a3b1-cfea0fc93527}*SharedItemsImports = 13
+		..\HaleyXamlShared\XamlUtilsShared\XamlUtilsShared.projitems*{9677edbd-ea53-47ef-b8cb-8546516624a8}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
