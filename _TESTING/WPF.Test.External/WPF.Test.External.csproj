@@ -124,7 +124,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Abstractions" Version="1.0.19" />
+        <PackageReference Include="Haley.Abstractions" Version="1.2.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -138,7 +138,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.WPF.IconsPack" Version="1.0.1" />
+        <PackageReference Include="Haley.WPF.IconsPack" Version="1.0.10" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -153,7 +153,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Extensions" Version="2.1.15.1" />
+        <PackageReference Include="Haley.Extensions" Version="2.3.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -168,7 +168,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Helpers" Version="2.1.9" />
+        <PackageReference Include="Haley.Helpers" Version="2.3.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -183,7 +183,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.MVVM" Version="6.2.21" />
+        <PackageReference Include="Haley.MVVM" Version="6.5.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -223,7 +223,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.Events" Version="2.1.11" />
+        <PackageReference Include="Haley.Events" Version="2.2.0" />
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -238,7 +238,7 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <PackageReference Include="Haley.IOC" Version="3.0.13" />
+        <PackageReference Include="Haley.IOC" Version="3.0.19" />
       </ItemGroup>
     </Otherwise>
   </Choose>
