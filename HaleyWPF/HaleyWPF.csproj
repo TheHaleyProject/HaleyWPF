@@ -5,7 +5,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.4.4</Version>
+		<Version>5.5.0</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -71,75 +71,39 @@
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows|x64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|ARM64'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-windows|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net6.0-windows|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net6.0-windows|x64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|netcoreapp3.1|ARM64'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net6.0-windows|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|x64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|ARM64'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|x64'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0-windows|ARM64'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net5.0-windows|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net5.0-windows|x64'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='DebugWB|net5.0-windows|ARM64'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|x64'">
-    <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0-windows|ARM64'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-windows|ARM64'">
     <DefineConstants>$(DefineConstants)TRACE;HWPF</DefineConstants>
   </PropertyGroup>
 	
@@ -181,10 +145,6 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
 
   <ItemGroup>
@@ -366,7 +326,7 @@
   
 <Import Project="$(SolutionDir)ProjectReferences_$(SolutionName).txt" Condition="Exists('$(SolutionDir)ProjectReferences_$(SolutionName).txt')" />
 
-	<Choose>
+	<!--<Choose>
 		<When Condition="Exists($(HaleyAbstractions))">
 			<ItemGroup>
 				<ProjectReference Include="$(HaleyAbstractions)\HaleyAbstractions.csproj">
@@ -409,7 +369,7 @@
        <PackageReference Include="Haley.Helpers" Version="2.2.8" />
 	 </ItemGroup>
     </Otherwise>
-</Choose>  
+</Choose>-->  
 
 <Choose>
     <When Condition="Exists($(HaleyMVVM))">
@@ -421,7 +381,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.4.4" />
+       <PackageReference Include="Haley.MVVM" Version="6.5.0" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
