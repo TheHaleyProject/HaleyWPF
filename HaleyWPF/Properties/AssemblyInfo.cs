@@ -13,7 +13,7 @@ using System.Windows.Markup;
                                               // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: XmlnsPrefix("http://schemas.hpod9.com/haley/wpf", "hlyWPF")]
+[assembly: XmlnsPrefix("http://schemas.hpod9.com/haley/wpf", "hw")]
 
 //FOR XAML NAMESPACES - WPF
 //[assembly: XmlnsDefinition("http://schemas.hpod9.com/haley/wpf", "Haley.WPF.ViewModels")]

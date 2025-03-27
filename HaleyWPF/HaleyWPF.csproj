@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
 	<PropertyGroup>
-		<TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
+		<TargetFrameworks>net48;net8.0-windows</TargetFrameworks>
 		<UseWPF>true</UseWPF>
 		<AssemblyName>Haley.WPF</AssemblyName>
 		<RootNamespace>Haley.WPF</RootNamespace>
-		<Version>5.5.2</Version>
+		<Version>5.5.3</Version>
 		<Authors>The Haley Project</Authors>
 		<Product>Haley WPF Core</Product>
 		<Company>TheHaleyProject</Company>
@@ -381,7 +381,7 @@
     </When>
     <Otherwise>
      <ItemGroup>
-       <PackageReference Include="Haley.MVVM" Version="6.5.2" />
+       <PackageReference Include="Haley.MVVM" Version="6.5.3" />
 	 </ItemGroup>
     </Otherwise>
 </Choose>  
