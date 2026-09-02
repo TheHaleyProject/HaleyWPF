@@ -1,5 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <HaleyWPF>$(SolutionDir)HaleyWPF</HaleyWPF>
+    <HaleyProject Condition="'$(HaleyProject)' == ''">$(MSBuildThisFileDirectory)..</HaleyProject>
   </PropertyGroup>
+  <Import Project="$(HaleyProject)\HaleyProject\Haley.Paths.Props"
+          Condition="'$(HaleyAbstractionsProj)' == '' and Exists('$(HaleyProject)\HaleyProject\Haley.Paths.Props')" />
 </Project>
